@@ -1,0 +1,47 @@
+:host ::ng-deep .p-menubar {
+    border: 1px solid black;
+    border: none;    
+    background-color: #fb884f;
+    color: black;
+    padding: 10px 70px;
+}
+:host ::ng-deep .link1 {
+    font-size: 30px;
+    left: 200px;
+}
+:host ::ng-deep .link2  {
+
+    font-size: 30px;
+    left: 220px;
+}
+:host ::ng-deep  .link3  {
+    font-size: 30px;
+    left: 240px;
+}
+:host ::ng-deep  .link4  {
+    font-size: 30px;
+    left: 260px;
+}
+:host ::ng-deep  .link5  {
+    font-size: 30px;
+    left: 280px;
+}
+.text{
+    height: 50px;
+    width: 250px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: none;
+}
+:host ::ng-deep .send{
+    font-size: 75px;
+    color: rgb(30, 177, 221);
+}
+.Copy_Rights p{
+padding-right: 700px; 
+color: rgba(0, 0, 0, 0.627);  
+font-size: 25px; 
+}
+
+

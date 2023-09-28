@@ -26,8 +26,4 @@ export class BranchesComponent {
       location: "https://www.google.com/"
     }
   ]
-
-  openLink(location: string) {
-    window.open(location, "_blank");
-  }
 }

@@ -1,0 +1,51 @@
+<div class="contact-us-container">
+  <div class="image-cover-container">
+    <div class="overlay"></div>
+    <img
+      class="cover-image"
+      src="assets/images/contact-us-cover.jpg"
+      alt="image cover"
+    />
+  </div>
+  <div class="content">
+    <h3 class="page-title">Contact us</h3>
+
+    <div class="contacts-container flex flex-wrap">
+      <div class="col">
+        <h3 class="page-title title">Customers services phones</h3>
+        <a
+          class="text phone block my-2"
+          *ngFor="let value of phones"
+          [href]="'tel:' + value.phone"
+          >{{ value.phone }}</a
+        >
+      </div>
+      <div class="col">
+        <h3 class="page-title title">Emails</h3>
+        <a
+          class="text block my-2"
+          *ngFor="let value of emails"
+          [href]="'mailto:' + value.email"
+          >{{ value.email }}</a
+        >
+      </div>
+      <div class="col">
+        <h3 class="page-title title">Social media accounts</h3>
+        <div class="social-links">
+          <a href="">
+            <i class="link pi pi-facebook"></i>
+          </a>
+          <a href="">
+            <i class="link pi pi-twitter"></i>
+          </a>
+          <a href="">
+            <i class="link pi pi-instagram"></i>
+          </a>
+          <a href="">
+            <i class="link pi pi-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

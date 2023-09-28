@@ -1,0 +1,32 @@
+@import "/src/styles.scss";
+
+.branches-container {
+  background-color: $Background-orange-color;
+  padding: 40px;
+
+  .list {
+    margin-top: 30px;
+
+    .item {
+      padding: 15px 25px;
+      background-color: $Background-orange-color;
+      filter: brightness(94%);
+
+      .text {
+        color: $title-text-color;
+      }
+
+      .title {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .location {
+        color: $Button-orange-color;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

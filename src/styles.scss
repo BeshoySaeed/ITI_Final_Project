@@ -41,3 +41,22 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// SASS Variables
+$base-orange : orange;
+$Button-orange-color: #fd702a;
+$Background-orange-color: #F1E1E1;
+$light-yellow-color: #ffd924;
+$Violet-Button-color: #8056db;
+$light-red-color: #f2303e;
+$footer-color: #1c0b01;
+$title-text-color: #2d1201; 
+
+// Shared classes
+.page-title {
+    margin: 0;
+    text-align: center;
+    color: $Button-orange-color;
+    font-size: 48px;
+    font-weight: 500;
+}

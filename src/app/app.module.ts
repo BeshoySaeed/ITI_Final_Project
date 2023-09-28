@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BranchesComponent } from './branches/branches.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BranchesComponent
   ],
   imports: [
     BrowserModule,

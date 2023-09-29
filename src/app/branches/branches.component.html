@@ -1,7 +1,7 @@
 <div class="branches-container">
     <h3 class="page-title">Branches</h3>
 
-    <div class="list grid" style="gap: 2rem; flex-wrap: wrap;">
+    <div class="list grid w-11 md:w-10 lg:w-9 mx-auto" style="gap: 2rem; flex-wrap: wrap;">
         <div class="item col-12 md:col-6 grid block" *ngFor="let branch of branches">
             <h3 class="text title">{{ branch.name }}</h3>
             <p class="text address">{{ branch.address }}</p>

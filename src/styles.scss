@@ -54,7 +54,7 @@ $title-text-color: #2d1201;
 $facebook-color: #0866FF;
 $twitter-color: #26a7de;
 $instagram-color: #d62976;
-$whatsapp-color: #075e54;
+$whatsapp-color: #31a73d;
 // Shared classes
 .page-title {
     margin: 0;
@@ -62,4 +62,15 @@ $whatsapp-color: #075e54;
     color: $Button-orange-color;
     font-size: 48px;
     font-weight: 500;
+}
+
+.primary-button {
+    background-color: $Button-orange-color;
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 11px 0;
+    border-radius: 5px;
+    cursor: pointer;
 }

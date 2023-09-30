@@ -37,6 +37,7 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import "/src/assets/styles/variables.scss";
 
 * {
   box-sizing: border-box;
@@ -47,24 +48,6 @@
 html, body { height: 100%; }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-// ______________________________________________________________________________________
-// *********************************** SASS Variables ***********************************
-// ______________________________________________________________________________________
-
-$base-orange: orange;
-$Button-orange-color: #fd702a;
-$Background-orange-color: #f1e1e1;
-$light-yellow-color: #ffd924;
-$Violet-Button-color: #8056db;
-$light-red-color: #f2303e;
-$footer-color: #1c0b01;
-$title-text-color: #2d1201;
-$facebook-color: #0866ff;
-$twitter-color: #26a7de;
-$instagram-color: #d62976;
-$whatsapp-color: #31a73d;
 
 // ______________________________________________________________________________________
 // ******************************** Shared classes **************************************

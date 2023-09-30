@@ -8,12 +8,6 @@ import { SharedModule } from './shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 
-import { MessageService } from 'primeng/api';
-// import { GMapModule } from 'primeng/gmap';
-import { HttpClientModule } 
-    from '@angular/common/http';
-
-import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -25,12 +19,11 @@ import { CarouselModule } from 'primeng/carousel';
     SharedModule,
     MenubarModule,
     NoopAnimationsModule,
-    CarouselModule,
     ButtonModule,
 
 
   ],
-  providers: [MessageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig, MenuItem } from "primeng/api";
+import {  MenuItem } from "primeng/api";
 
 declare var google: any;
 

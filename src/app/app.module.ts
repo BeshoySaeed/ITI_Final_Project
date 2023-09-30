@@ -13,6 +13,8 @@ import { ContactUsFormComponent } from './Contact Us page/contact-us-form/contac
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ButtonModule } from 'primeng/button';
     BranchesComponent,
     ContactUsComponent,
     ContactUsFormComponent,
+    LoginFormComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,33 @@
+.container-heading{
+    height: calc(100vh - 145px);
+    width: 100%;
+    background-color: rgb(232, 222, 233);
+
+    @media (max-width: 400px) {
+        &{
+            display: flex;
+            justify-content: center;
+        }
+        .story{
+            width: 300px;
+            text-align: center;
+        }
+    }
+
+    .heading-text{
+        color: #fd702a;
+    }
+    .text-data{
+        width: 800px;
+    }
+    .restaurant-data-branches  {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img{
+            width: 120px;
+        }
+      }
+      
+
+}

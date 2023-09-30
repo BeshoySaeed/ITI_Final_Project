@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="container-form border-round-lg">
+      <p><span class="word-color">Login</span> Page</p>
+      <span
+        class="pi pi-user"
+        style="font-size: 44px; margin-bottom: 40px"
+      ></span>
+  
+      <form
+        class="flex align-items-center gap-1"
+        [formGroup]="formGroup"
+        #loginForm="ngForm"
+      >
+        <div class="box">
+          <label htmlFor="username">Email</label>
+          <span class="">
+            <i class="pi pi-user"></i>
+            <input
+              type="text"
+              pInputText
+              placeholder="Email.."
+              formControlName="emailControl"
+            />
+          </span>
+        </div>
+  
+        <div class="box">
+          <label htmlFor="username">Password</label>
+          <span class="">
+            <i class="pi pi-lock"></i>
+            <input
+              type="password"
+              pInputText
+              placeholder="password"
+              formControlName="passControl"
+            />
+          </span>
+        </div>
+  
+        <div class="check-box">
+          <div class="checkBox">
+            <p-checkbox
+              formControlName="city"
+              value="New York"
+              inputId="ny"
+              formControlName="checkControl"
+            ></p-checkbox>
+            <label for="ny">Remember me</label>
+          </div>
+          <a href="">forget password?</a>
+        </div>
+        <!-- <button class="px-4 py-2 bg-green-500" [disabled]="loginForm.invalid" >submit</button> -->
+        <p-button
+          label="Success"
+          styleClass="p-button-danger px-4 py-2 mt-4"
+          [disabled]="loginForm.invalid ? true : false"
+        ></p-button>
+        <div
+          class="errors"
+          [hidden]="formGroup.get('emailControl')?.untouched"
+          class="text-red-400"
+        >
+          <small *ngIf="formGroup.get('emailControl')?.errors?.['required']"
+            >email required</small
+          >
+          <small *ngIf="formGroup.get('emailControl')?.errors?.['pattern']"
+            >Sorry, your email was incorrect. Please double-check your
+            email.</small
+          >
+        </div>
+        <div
+          class="errors"
+          [hidden]="formGroup.get('passControl')?.untouched"
+          class="text-red-400"
+        >
+          <small *ngIf="formGroup.get('passControl')?.errors?.['required']"
+            >password required</small
+          >
+          <small *ngIf="formGroup.get('passControl')?.errors?.['pattern']"
+            >Sorry, your password was incorrect. Please double-check your
+            password.</small
+          >
+        </div>
+        <p-button styleClass="p-button-secondary p-button-text" class="mt-2 mb-3"
+          >Create a new account</p-button
+        >
+      </form>
+    </div>
+  </div>
+  

@@ -47,7 +47,6 @@ ngOnInit() {
         styleClass:'link3',        
       },
 
-     
     ];
   }
 }

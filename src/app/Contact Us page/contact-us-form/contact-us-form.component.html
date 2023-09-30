@@ -76,7 +76,7 @@
           [required]="true"
           pInputText
           formControlName="email"
-          class="input p-2 border-round outline-none w-full"
+          class="input p-2 border-round outline-none w-full mask-button "
         />
         <label for="email" class="block mb-2">Email *</label>
       </div>
@@ -100,16 +100,27 @@
     <div class="col-12 md:col-6 mb-4">
       <div class="flex flex-column-reverse">
         <p-inputMask
-          id="phone1"
-          [autoClear]="false"
+  id="phone"
+  [required]="true"
+  formControlName="phone"
+  mask="+20-999999999"
+  placeholder="+20-999999999"
+  styleClass="input p-2 border-round outline-none w-full"
+  class="mask-button"
+></p-inputMask>
+
+<label for="phone1" class="block mb-2">Phone 1 *</label>
+        
+        <!-- <p-inputMask
+          id="phone"
           [required]="true"
-          formControlName="phone1"
-          mask="+20-9999999999"
-          placeholder="+20-9999999999"
-          styleClass="input p-2 border-round outline-none w-full "
+          formControlName="phone"
+          mask="+20-999999999"
+          placeholder="+20-999999999"
+          styleClass="input p-2 border-round outline-none w-full"
         ></p-inputMask>
 
-        <label for="phone1" class="block mb-2">Phone 1 *</label>
+        <label for="phone1" class="block mb-2 ">Phone 1 *</label> -->
       </div>
 
       <div

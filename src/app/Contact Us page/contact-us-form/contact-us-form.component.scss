@@ -16,7 +16,7 @@
     color: $title-text-color;
   }
 
-  .p-inputtext {
+  .p-inputtext, .mask-button {
     border: 1.5px solid;
 
     &:focus,
@@ -29,6 +29,8 @@
         font-weight: 500;
         color: $Button-orange-color;
       }
+    
     }
   }
 }
+

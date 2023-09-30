@@ -11,26 +11,4 @@
   .error-message {
     color: red;
   }
-
-  label {
-    color: $title-text-color;
-  }
-
-  .p-inputtext, .mask-button {
-    border: 1.5px solid;
-
-    &:focus,
-    &:hover {
-      border-color: $Button-orange-color;
-      color: $Button-orange-color;
-      box-shadow: none;
-
-      + label {
-        font-weight: 500;
-        color: $Button-orange-color;
-      }
-    
-    }
-  }
 }
-

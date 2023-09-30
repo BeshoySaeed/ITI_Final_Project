@@ -14,8 +14,8 @@ export class ContactUsFormComponent {
   ngOnInit() {
     this.contactUsForm = this.fb.group(
       {
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         email: [
           '',
           Validators.pattern(
@@ -24,7 +24,7 @@ export class ContactUsFormComponent {
         ],
         phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-        message: [''],
+        message: ['', Validators.pattern(/^[a-zA-Z][^0-9\s\W]+/)],
       },
       { updateOn: 'submit' }
     );

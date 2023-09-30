@@ -25,14 +25,17 @@ export class FooterComponent {
       {
           label: 'About Us',
           styleClass:'link1',
+          routerLink: "aboutus"
         },
         {
           label: 'Contact Us',
-          styleClass:'link2',        
+          styleClass:'link2',   
+          routerLink: "contact-us"     
         },
         {
           label: 'Branches',
-          styleClass:'link3',       
+          styleClass:'link3',    
+          routerLink: "branches"   
         },
       
         {

@@ -1,24 +1,24 @@
 :host ::ng-deep .p-menubar {
-    border: 1px solid black;
-    border: none;    
-    background-color: #fb884f;
+    border-radius: 0;
+    border: none;
+    background-color: #fd702a;
+    padding: 10px 20px;
     color: black;
-    padding: 10px 70px;
 }
 :host ::ng-deep .link1 {
-    font-size: 30px;
-    left: 300px;
+    font-size: 20px;
+    left: 200px;
 }
-:host ::ng-deep .link2  {
+:host ::ng-deep .link2 {
 
-    font-size: 30px;
-    left: 320px;
+    font-size: 20px;
+    left: 220px;
 }
-:host ::ng-deep  .link3  {
-    font-size: 30px;
-    left: 340px;
+:host ::ng-deep .link3 {
+    font-size: 20px;
+    left: 240px;
 }
-.text{
+.text {
     height: 50px;
     width: 200px;
     padding: 10px;
@@ -26,17 +26,15 @@
     border-radius: 50px;
     border: none;
 }
-:host ::ng-deep .send{
-    font-size: 75px;
+:host ::ng-deep .send {
+    font-size: 45px;
     color: rgb(30, 177, 221);
 }
 :host ::ng-deep {
     .pi {
-        font-size: 25px;
+        font-size: 20px;
         color: black;
-    }
-    .pi-chevron-down:before {
+    }.pi-chevron-down:before {
         color: black;
     }
 }
-

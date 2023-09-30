@@ -12,6 +12,7 @@ import { ContactUsComponent } from './Contact Us page/contact-us/contact-us.comp
 import { ContactUsFormComponent } from './Contact Us page/contact-us-form/contact-us-form.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     MenubarModule,
     NoopAnimationsModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

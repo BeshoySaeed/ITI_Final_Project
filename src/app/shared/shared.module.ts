@@ -5,26 +5,28 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
-
-
+import { ButtonModule } from 'primeng/button';
+// import { GMapModule } from 'primeng/gmap';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     MenubarModule,
-    ImageModule
+    ImageModule,
+    ButtonModule,
+    
 
   ],
   exports:[
     NavbarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 
 })

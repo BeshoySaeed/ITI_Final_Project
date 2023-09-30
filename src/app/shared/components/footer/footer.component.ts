@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig, MenuItem } from "primeng/api";
+import {  MenuItem } from "primeng/api";
+
+declare var google: any;
+
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
+
 export class FooterComponent {
 
   items: MenuItem[] = [];

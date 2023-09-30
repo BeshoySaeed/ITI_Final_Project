@@ -39,10 +39,17 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 // SASS Variables
+
 $base-orange : orange;
 $Button-orange-color: #fd702a;
 $Background-orange-color: #F1E1E1;

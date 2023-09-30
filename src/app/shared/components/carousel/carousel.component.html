@@ -1,0 +1,64 @@
+<!-- 
+	<div style="width:100%;background-color:oldlace;">
+		<p-carousel     [value]="cars" 
+         [value]="images" [numVisible]="1"
+					[circular]="true">
+			<ng-template pTemplate="header">
+			</ng-template>
+
+			<ng-template let-images let-car pTemplate="item">
+				<div class="product-item" style="width:100%">
+					<div class="product-item-content">
+						<img [src]="images.previewImageSrc"
+							style="overflow: hidden;
+									background-repeat: no-repeat;"
+							width="100%" height="100%"
+							[alt]="images.alt"
+							[title]="images.title">
+                            <div class="p-mb-3"></div>
+                            <div>
+                                <h4 
+                                    class="p-mb-1">
+                                    {{ car.id }}
+                                </h4>
+                                <h4 
+                                    class="p-mb-1">
+                                    {{ car.name }}
+                                </h4>
+                                <h4 
+                                    class="p-mb-1">
+                                    {{ car.description }}
+                                </h4>
+                                <h6 
+                                    class="p-mt-0 p-mb-3">
+                                    ${{ car.price }}
+                                </h6>
+                                <div class="car-buttons p-mt-3">
+                                    <p-button 
+                                        type="button" 
+                                        styleClass="p-button 
+                                            p-button-rounded p-mr-2" 
+                                        icon="pi pi-search">
+                                    </p-button>
+                                    <p-button 
+                                        type="button" 
+                                        styleClass="p-button-success 
+                                            p-button-rounded p-mr-2" 
+                                        icon="pi pi-star">
+                                    </p-button>
+                                    <p-button 
+                                        type="button" 
+                                        styleClass="p-button-help 
+                                            p-button-rounded" 
+                                        icon="pi pi-cog">
+                                    </p-button>
+                                </div>
+</div>
+					</div>
+				</div>
+			</ng-template>
+			<ng-template pTemplate="footer">
+				<h3>GFG Footer</h3>
+			</ng-template>
+		</p-carousel>
+	</div> -->

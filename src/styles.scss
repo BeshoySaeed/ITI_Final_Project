@@ -39,5 +39,21 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+$base-orange : orange;
+$Button-orange-color: #fd702a;
+$Background-orange-color: #F1E1E1;
+$light-yellow-color: #ffd924;
+$Violet-Button-color: #8056db;
+$light-red-color: #f2303e;
+$footer-color: #1c0b01;
+$title-text-color: #2d1201; 

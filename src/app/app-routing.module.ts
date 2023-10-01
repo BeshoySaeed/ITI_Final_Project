@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { JobAppComponent } from './job-app/job-app.component';
+import { PaymentComponent } from './payment/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'job-application',
     component: JobAppComponent,
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent
   },
   {
     path: '**',

@@ -1,0 +1,81 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "/src/styles.scss";
+
+ 
+
+.cent {
+  text-align: center;
+  background-color: $Background-orange-color;
+
+}
+
+input[type="file"]{
+  position: relative;
+  margin-top: 9px;
+  margin-left: 5px;
+}
+
+.all{
+  background-color: whitesmoke;
+  text-align: center;
+  display: inline-block;
+  width: 60%;
+  height: 40%;
+}
+form {
+  display: inline-block;
+  position: relative;
+  margin-top: 70px;
+}
+.form-row {
+  display: flex;
+}
+
+
+.header{
+  position: relative;
+  //border: 2px solid $Button-orange-color;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+h1{
+  color: $Button-orange-color;
+}
+.form-control{
+  border-radius: 4px;
+  width: 100%;
+}
+
+
+
+.form-control:focus {
+    outline: none;
+    transition: all 0.3s ease;
+    color:$Button-orange-color;
+  }
+
+
+input::placeholder{
+    color: silver;
+  }
+
+.text_danger{
+    color: $Button-orange-color;
+    margin-left: 15px;
+    margin-top: 8px;
+}  
+
+.form-label {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.fileDiv{
+  border: 1px solid black;
+  width: 100%;
+}
+

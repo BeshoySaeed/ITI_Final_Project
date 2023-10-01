@@ -1,0 +1,61 @@
+@import "/src/styles.scss";
+
+.contact-us-container {
+    background-color: $Background-orange-color;
+    min-height: 100vh;
+
+    .image-cover-container {
+        position: relative;
+        .cover-image {
+            width: 100%;
+            object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #0000007a;
+        }
+    }
+    
+    .content {
+        margin: 0 40px;
+        padding: 20px;
+        background-color: #fff;
+
+        .contacts-container {
+            margin-top: 40px;
+
+            .title {
+                font-size: 20px;
+                text-align: left;
+            }
+            .text {
+                color: $title-text-color;
+            }
+            .phone {
+                text-decoration: none;
+            }
+            .social-links {
+                margin-top: 15px;
+                
+                .link {
+                    font-size: 30px;
+                    margin-right: 20px;
+                }
+                .pi-facebook {
+                    color: $facebook-color;
+                }
+                .pi-twitter {
+                    color: $twitter-color;
+                }
+                .pi-instagram {
+                    color: $instagram-color;
+                }
+                .pi-whatsapp {
+                    color: $whatsapp-color;
+                }
+            }
+        }
+    }
+}

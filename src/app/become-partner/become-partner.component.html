@@ -1,0 +1,179 @@
+<div class="cent">
+  <div class="all">
+    <div class="header">
+      <h1>Become a Partner</h1>
+    </div>
+    <form [formGroup]="partnerForm" (ngSubmit)="submitPartnerForm()">
+      <div class="form-row">
+        <div>
+          <label for="name_input" class="form-label">First Name</label>
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input
+              pInputText
+              placeholder="Enter your first name"
+              type="text"
+              class="form-control"
+              id="name_input"
+              aria-describedby="name_input_help"
+              formControlName="name"
+            />
+          </div>
+          <div
+            id="name_input_help"
+            *ngIf="name!.invalid && (name!.touched || name!.dirty)"
+            class="text_danger block"
+          >
+            <small
+              class="block"
+              *ngIf="partnerForm!.controls['name'].errors?.['required']"
+              >This field is required
+            </small>
+          </div>
+        </div>
+        <br />
+        <div>
+          <label for="l_name_input" class="form-label">Last Name</label>
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <input
+              pInputText
+              placeholder="Enter your Last name"
+              type="text"
+              class="form-control"
+              id="l_name_input"
+              aria-describedby="l_name_input_help"
+              formControlName="l_name"
+            />
+          </div>
+          <div
+            id="l_name_input_help"
+            *ngIf="l_name!.invalid && (l_name!.touched || l_name!.dirty)"
+            class="text_danger"
+          >
+            <small
+              class="block"
+              *ngIf="partnerForm!.controls['l_name'].errors?.['required']"
+              >This field is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <br />
+      <label for="email_input" class="form-label">Email</label>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-envelope"></i>
+        </span>
+        <input
+          pInputText
+          placeholder="Enter your email"
+          type="email"
+          class="form-control"
+          id="email_input"
+          formControlName="email"
+        />
+        <div
+          id="email_input_help"
+          *ngIf="email!.invalid && (email!.touched || email!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="email!.errors?.['required']"
+            >This field is required</small
+          >
+          <small *ngIf="email!.errors?.['pattern']"
+            >please enter a valid email</small
+          >
+        </div>
+      </div>
+      <br />
+      <label for="mobile_input" class="form-label">Mobile</label>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-phone"></i>
+        </span>
+
+        <input
+          pInputText
+          placeholder="Enter your phone number"
+          type="number"
+          class="form-control"
+          id="mobile_input"
+          formControlName="mobile"
+        />
+        <div
+          id="mobile_input_help"
+          *ngIf="mobile!.invalid && (mobile!.touched || mobile!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="mobile!.errors?.['required']"
+            >This field is required</small
+          >
+          <small *ngIf="mobile!.errors?.['pattern']"
+            >please enter a valid phone number</small
+          >
+        </div>
+      </div>
+      <br />
+      <label for="subject_input" class="form-label">Subject</label>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon icon">
+          <i class="pi pi-book"></i>
+        </span>
+        <input
+          pInputText
+          placeholder="Enter your phone number"
+          type="text"
+          class="form-control"
+          id="subject_input"
+          formControlName="subject"
+        />
+        <div
+          id="subject_input_help"
+          *ngIf="subject!.invalid && (subject!.touched || subject!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="partnerForm!.controls['subject'].errors?.['required']"
+            >This field is required
+          </small>
+        </div>
+      </div>
+      <br />
+      <label for="Message_input" class="form-label">Message</label>
+      <div class="p-inputgroup">
+        <textarea
+          pInputTextarea
+          name="Message_input"
+          id="Message_input"
+          formControlName="message"
+          class="form-control"
+          cols="30"
+          rows="10"
+        ></textarea>
+
+        <div
+          id="message_input_help"
+          *ngIf="message!.invalid && (message!.touched || message!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="partnerForm!.controls['message'].errors?.['required']"
+            >This field is required
+          </small>
+        </div>
+      </div>
+      <br />
+      <br />
+
+      <p-button
+        label="Apply"
+        styleClass="p-button-warning"
+        type="submit"
+        [disabled]="partnerForm.invalid"
+      ></p-button>
+    </form>
+  </div>
+</div>

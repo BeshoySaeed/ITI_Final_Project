@@ -1,0 +1,66 @@
+:host ::ng-deep .p-menubar {
+    border-radius: 0;
+    border: none;
+    background-color: #fd702a;
+    padding: 10px 20px;
+}
+// :host ::ng-deep .link1 ,
+// :host ::ng-deep .link2 ,
+// :host ::ng-deep .link3 ,
+// :host ::ng-deep .link4 ,
+// :host ::ng-deep .link5
+// {
+//     font-size: 20px;
+//     color: #fff !important;
+// }
+
+:host ::ng-deep .links {
+    font-size: 20px;
+  
+    .p-menuitem-icon,
+    .p-menuitem-text {
+      color: #fff !important;
+    }
+    &:hover {
+      .p-menuitem-icon,
+      .p-menuitem-text {
+        color: black !important;
+      }
+    }
+    /*your style goes here*/
+    // for tablet size
+    @media (min-width: 768px) and (max-width: 991px) {
+
+        .p-menuitem-text,
+        .p-menuitem-icon {
+
+            color: black !important;
+
+        }
+    }
+    // for mobile size
+    @media (max-width: 767px) {
+
+        .p-menuitem-text,
+        .p-menuitem-icon {
+
+            color: black !important;
+
+        }
+    }
+
+  }
+
+
+:host ::ng-deep .send {
+    font-size: 45px;
+    color: rgb(30, 177, 221);
+    margin-right: 170px;
+}
+.Copy_Rights  {
+    color: #fff;
+    background-color: #fd702a;
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 20px;
+}

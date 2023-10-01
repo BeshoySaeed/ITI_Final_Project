@@ -1,0 +1,45 @@
+:host ::ng-deep .p-menubar {
+    border-radius: 0;
+    border: none;
+    background-color: #F1E1E1;
+    color: black;
+}
+
+:host ::ng-deep .phone ,:host ::ng-deep .stick ,:host ::ng-deep .login {
+    font-size: 16px;
+    padding-right: 10px;
+}
+:host ::ng-deep .phoneNumber {
+    font-size: 16px;
+}
+:host ::ng-deep .register {
+    font-size: 16px;
+    margin-right: 55px;
+}
+:host ::ng-deep .facebook {
+    font-size: 16px;
+    color: blue;
+    margin-right: 10px
+}
+:host ::ng-deep .twitter {
+    font-size: 16px;
+    color: rgb(30, 177, 221);
+    margin-right: 10px
+}
+:host ::ng-deep .instagram {
+    font-size: 16px;
+    color: rgb(93, 19, 19);
+    margin-right: 10px
+}
+// @media (min-width: 768px) and (max-width: 991px) {
+
+//     .instagram,.facebook,.twitter {
+
+//         color: black !important;
+//     }
+// }
+@media (max-width: 767px) {
+    .instagram,.facebook,.twitter {
+        display: none;
+    }
+}

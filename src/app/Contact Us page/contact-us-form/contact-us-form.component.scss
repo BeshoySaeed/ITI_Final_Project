@@ -1,0 +1,14 @@
+@import "/src/styles.scss";
+
+:host ::ng-deep .contact-us-form-container {
+  margin: 100px 0 30px;
+
+  .page-title {
+    font-size: 35px;
+    margin: 50px 0;
+  }
+
+  .error-message {
+    color: red;
+  }
+}

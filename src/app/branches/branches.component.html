@@ -1,0 +1,15 @@
+<div class="branches-container">
+  <h3 class="page-title">Branches</h3>
+
+  <div class="list grid w-11 md:w-10 lg:w-9 mx-auto">
+    <div class="col-12 lg:col-6 grid block p-3" *ngFor="let branch of branches">
+      <div class="item">
+        <h3 class="text title">{{ branch.name }}</h3>
+        <p class="text address">{{ branch.address }}</p>
+        <a [href]="branch.location" target="_blank" class="location"
+          >Get Location <i class="pi pi-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>

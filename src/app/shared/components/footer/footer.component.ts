@@ -24,27 +24,27 @@ export class FooterComponent {
       },
       {
           label: 'About Us',
-          styleClass:'link1',
+          styleClass:'links',
           routerLink: "aboutus"
         },
         {
           label: 'Contact Us',
-          styleClass:'link2',   
+          styleClass:'links',   
           routerLink: "contact-us"     
         },
         {
           label: 'Branches',
-          styleClass:'link3',    
+          styleClass:'links',    
           routerLink: "branches"   
         },
       
         {
           label: 'Job Application',
-          styleClass:'link4',        
+          styleClass:'links',        
         },
         {
           label: 'Become a Partner',
-          styleClass:'link5',        
+          styleClass:'links',        
         },
        
       ];

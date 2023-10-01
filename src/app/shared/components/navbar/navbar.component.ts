@@ -32,19 +32,19 @@ ngOnInit() {
     {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
-        styleClass:'link1',
+        styleClass:'links & link1',
       },
     
       {
         label: 'Menu',
         icon: 'pi pi-fw pi-list',
-        styleClass:'link2',       
+        styleClass:'links & link2',
       },
     
       {
         label: 'Cart',
         icon:'pi pi-fw pi-shopping-cart',
-        styleClass:'link3',        
+        styleClass:'links & link3',
       },
 
     ];

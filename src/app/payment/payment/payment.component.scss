@@ -1,12 +1,29 @@
 @import "/src/styles.scss";
 
 .payment-container {
-    background-color: $Background-orange-color;
-    min-height: 100vh;
+  background-color: $Background-orange-color;
+  min-height: 100vh;
 
-    .page-title {
-        background-color: #fff;
-        border: 2px solid $Button-orange-color;
-        font-size: 28px;
-    }
+  .page-title {
+    background-color: #fff;
+    border: 2px solid $Button-orange-color;
+    font-size: 28px;
+  }
+
+  .sub-title {
+    font-size: 20px;
+    width: fit-content;
+    margin: 0 auto 40px;
+    padding: 7px 30px !important;
+  }
+
+  .content-part {
+    background-color: #fff;
+    padding: 35px;
+    margin: 10px 0;
+  }
+
+  .error-message {
+    color: red;
+  }
 }

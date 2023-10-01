@@ -21,6 +21,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ButtonModule,
     BrowserAnimationsModule,
     FileUploadModule,
+    PaymentModule
   ],
 
   providers: [],

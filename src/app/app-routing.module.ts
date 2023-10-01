@@ -4,6 +4,8 @@ import { BranchesComponent } from './branches/branches.component';
 import { ContactUsComponent } from './Contact Us page/contact-us/contact-us.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterComponent } from './register/register.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,15 @@ const routes: Routes = [
   {
     path: "aboutus",
     component: AboutUsComponent
-  }
+  },
+  {
+    path: "register",
+    component: RegisterComponent
+  },  
+  {
+    path: "**",
+    component: NotfoundComponent
+  },
 ];
 
 @NgModule({

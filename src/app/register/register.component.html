@@ -1,0 +1,182 @@
+<div class="register-container">
+    <h3 class="page-title mt-4">Register</h3>
+    <form [formGroup]="registerform" class="form">
+      <div class="row">
+      <div class="multi">
+        <div class=" w-50 mb-3">
+          <label for="name_input" class="form-label">First Name</label>
+          <input
+            type="text"
+            id="name_input"
+            pInputText
+            formControlName="name"
+          />
+          <div
+            id="name_input_help"
+            *ngIf="
+              registerform.controls['name'].touched &&
+              registerform.controls['name'].invalid
+            "
+            class="form-text"
+          >
+            <small *ngIf="registerform.controls['name'].errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+        </div>
+        <div class="w-50 mb-3">
+          <label for="name_input" class="form-label">Last Name</label>
+          <input
+            type="text"
+            id="name_input"
+            pInputText
+            formControlName="name"
+          />
+          <div
+            id="name_input_help"
+            *ngIf="
+              registerform.controls['name'].touched &&
+              registerform.controls['name'].invalid
+            "
+            class="form-text"
+          >
+            <small *ngIf="registerform.controls['name'].errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="single">
+        <div class="mb-3 w-100">
+          <label for="email_input" class="form-label">Email</label>
+          <input
+            type="email"
+            pInputText
+            id="email_input"
+            formControlName="email"
+          />
+          <div
+            id="email_input"
+            *ngIf="
+              registerform.controls['email'].touched &&
+              registerform.controls['email'].invalid
+            "
+            class="form-text"
+          >
+            <small *ngIf="registerform.controls['email'].errors?.['required']"
+              >This field is required</small
+            >
+            <small *ngIf="registerform.controls['email'].errors?.['pattern']"
+              >the email must be like (example@example.com)</small
+            >
+          </div>
+        </div>
+      </div>
+  <div class="multi">
+    <div class="mb-3 w-50">
+      <label for="Phone_input" class="form-label">Phone 1</label>
+      <input
+        type="text"
+        pInputText
+        id="Phone_input"
+        formControlName="Phone"
+      />
+      <div
+        id="Phone_input_help"
+        *ngIf="
+          registerform.controls['Phone'].touched &&
+          registerform.controls['Phone'].invalid
+        "
+        class="form-text"
+      >
+        <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+          >This field is required</small>
+        <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
+      </div>
+    </div>
+    <div class="mb-3 w-50">
+      <label for="Phone_input" class="form-label">Phone 2</label>
+      <input
+        type="text"
+        id="Phone_input"
+        pInputText
+        formControlName="Phone"
+      />
+      <div
+        id="Phone_input_help"
+        *ngIf="
+          registerform.controls['Phone'].touched &&
+          registerform.controls['Phone'].invalid
+        "
+        class="form-text"
+      >
+        <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+          >This field is required</small>
+          <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
+        </div>
+    </div>
+  </div>
+  <div class="multi">
+    <div class="mb-3 w-50">
+      <label for="password_input" class="form-label">Password</label>
+      <input
+        type="password"
+        pInputText
+        id="password_input"
+        formControlName="password"
+      />
+      <div
+        id="password_input_help"
+        *ngIf="
+          registerform.controls['password'].touched &&
+          registerform.controls['password'].invalid
+        "
+        class="form-text"
+      >
+        <small *ngIf="registerform.controls['password'].errors?.['required']"
+          >This field is required</small>
+          <small *ngIf="registerform.controls['password'].errors?.['minlength']"
+          >This field is minlength 8</small>
+          <small *ngIf="registerform.controls['password'].errors?.['pattern']"
+          >This field is must contain</small>
+      </div>
+    </div>
+    <div class="mb-3 w-50">
+        <label for="confirmpassword_input" class="form-label">confirmPassword</label>
+        <input
+          type="password"
+          pInputText
+          id="confirmpassword_input"
+          formControlName="confirmpassword"
+        />
+        <div
+          id="confirmpassword_input_help"
+          *ngIf="
+            registerform.controls['confirmpassword'].touched &&
+            registerform.controls['confirmpassword'].invalid
+          "
+          class="form-text"
+  
+        >
+          <small *ngIf="registerform.controls['confirmpassword'].errors?.['required']"
+            >This field is required</small>
+            <small *ngIf="registerform.controls['confirmpassword'].errors?.['minlength']"
+            >This field is minlength 8</small>
+            <small *ngIf="registerform.controls['confirmpassword'].errors?.['pattern']"
+            >This field is must contain</small>        
+            <small *ngIf="registerform.controls['confirmpassword'].errors?.['checkpass']">
+                Password and Confirm Password do not match.
+              </small>
+        </div>
+      </div>
+      </div>
+  
+      <!-- <button type="submit" class="btn button" [disabled]="registerform.invalid">
+        Rejecter
+      </button> -->
+      <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
+      <p-button  class="btn button" [disabled]="registerform.invalid"  routerLinkActive="active" routerLink="**"> <span>Register</span></p-button>
+  
+    </div>
+     </form>
+  </div>

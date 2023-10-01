@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MenubarModule } from 'primeng/menubar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -15,6 +14,10 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterComponent } from './register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ContactUsFormComponent,
     LoginFormComponent,
     AboutUsComponent,
+    RegisterComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     NoopAnimationsModule,
     InputTextModule,
     InputMaskModule,
-    ButtonModule
+    ButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

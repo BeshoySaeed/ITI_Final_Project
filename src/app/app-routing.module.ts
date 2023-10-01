@@ -6,6 +6,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BecomePartnerComponent } from './become-partner/become-partner.component';
+import { JobAppComponent } from './job-app/job-app.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent
   },  
+  {
+    path: 'become-partner',  
+    component:  BecomePartnerComponent
+  },
+  {
+    path: 'job-app',
+    component: JobAppComponent 
+  },
   {
     path: "**",
     component: NotfoundComponent

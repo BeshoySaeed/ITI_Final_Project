@@ -18,6 +18,11 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { JobAppComponent } from './job-app/job-app.component';
+import { BecomePartnerComponent } from './become-partner/become-partner.component';
+import { FileUploadModule } from 'primeng/fileupload';
+
+
 
 @NgModule({
   declarations: [
@@ -29,6 +34,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AboutUsComponent,
     RegisterComponent,
     NotfoundComponent,
+    JobAppComponent,
+    BecomePartnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     InputTextModule,
     InputMaskModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent],

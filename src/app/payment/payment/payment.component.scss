@@ -1,0 +1,12 @@
+@import "/src/styles.scss";
+
+.payment-container {
+    background-color: $Background-orange-color;
+    min-height: 100vh;
+
+    .page-title {
+        background-color: #fff;
+        border: 2px solid $Button-orange-color;
+        font-size: 28px;
+    }
+}

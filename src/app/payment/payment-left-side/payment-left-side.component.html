@@ -270,12 +270,11 @@
           type="text"
           pInputText
           [required]="true"
-          [minlength]="1"
           formControlName="buildingNumber"
           class="input p-2 border-round outline-none w-full"
         />
         <label for="buildingNumber" class="block mb-2"
-          >Building name or number *</label
+          >Building Name or Number *</label
         >
       </div>
 
@@ -292,12 +291,71 @@
         >
           Building name or number is required
         </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4 mb-4 pr-0 md:pr-3">
+      <div class="flex flex-column-reverse">
+        <p-inputNumber
+          [useGrouping]="false"
+          formControlName="floorNumber"
+          [format]="false"
+          styleClass="w-full"
+          class="mask-button"
+          [required]="true"
+        >
+        </p-inputNumber>
+        <label for="floorNumber" class="block mb-2">Floor Number *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['floorNumber'].touched &&
+          paymentForm.controls['floorNumber'].invalid
+        "
+      >
         <small
           class="block"
-          *ngIf="paymentForm.controls['buildingNumber'].errors?.['minlength']"
+          *ngIf="paymentForm.controls['floorNumber'].errors?.['required']"
         >
-          Building name or number is must be more than 1 character or number
+          Floor number is required
         </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4 mb-4">
+      <div class="flex flex-column-reverse">
+        <p-inputNumber
+          [useGrouping]="false"
+          formControlName="flatNumber"
+          [format]="false"
+          styleClass="w-full"
+          class="mask-button"
+        >
+        </p-inputNumber>
+
+        <label for="flatNumber" class="block mb-2">Flat Number</label>
+      </div>
+    </div>
+
+    <div class="col-12 mb-4">
+      <div class="flex flex-column-reverse">
+        <input
+          id="locationOnGps"
+          type="text"
+          pInputText
+          formControlName="locationOnGps"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="locationOnGps" class="block mb-2">location On GPS (Optional)</label>
+      </div>
+    </div>
+
+    <div class="col-12 mb-4">
+      <div class="flex flex-column-reverse">
+        <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
+        <label for="notes" class="block mb-2">Notes</label>
       </div>
     </div>
   </div>

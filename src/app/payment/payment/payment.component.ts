@@ -25,7 +25,7 @@ export class PaymentComponent {
         floorNumber: [''],
         flatNumber: [''],
         locationOnGps: [''],
-        notes: ['', Validators.pattern(/^[a-zA-Z][^0-9\s\W]+/)],
+        notes: [''],
         paymentMethod: [''],
         discountCode: ['']
       },

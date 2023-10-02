@@ -7,6 +7,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PaymentRightSideComponent } from './payment-right-side/payment-right-side.component';
 import { PaymentLeftSideComponent } from './payment-left-side/payment-left-side.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PaymentLeftSideComponent } from './payment-left-side/payment-left-side.
     ReactiveFormsModule,
     InputTextModule,
     InputMaskModule,
-    InputNumberModule
+    InputNumberModule,
+    InputTextareaModule 
   ]
 })
 export class PaymentModule { }

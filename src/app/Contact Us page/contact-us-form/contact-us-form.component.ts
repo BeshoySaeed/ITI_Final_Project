@@ -26,7 +26,6 @@ export class ContactUsFormComponent {
         phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         message: ['', Validators.pattern(/^[a-zA-Z][^0-9\s\W]+/)],
       },
-      { updateOn: 'submit' }
     );
   }
 

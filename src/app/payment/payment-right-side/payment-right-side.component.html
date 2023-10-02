@@ -1,0 +1,20 @@
+<div class="right-side-container">
+  <div [formGroup]="paymentForm">
+      <div class="flex flex-column-reverse">
+        <div class="flex">
+          <input
+          id="discountCode"
+          type="text"
+          pInputText
+          formControlName="discountCode"
+          class="input p-2 outline-none w-full border-noround"
+        />
+        <button class="primary-button px-5 verify-button border-noround" [disabled]="!paymentForm.controls['discountCode'].value">Verify</button>
+        </div>
+        <label for="discountCode" class="label block mb-2">Discount Code (If you have)</label>
+      </div>
+  </div>
+  <button type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid">
+    Checkout
+  </button>
+</div>

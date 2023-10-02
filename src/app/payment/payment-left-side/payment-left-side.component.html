@@ -1,0 +1,304 @@
+<div class="left-side-container" [formGroup]="paymentForm">
+  <div class="content-part flex flex-wrap">
+    <div class="col-12">
+      <h3 class="page-title sub-title py-3">Order information</h3>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+      <div class="flex flex-column-reverse">
+        <input
+          id="first-name"
+          type="text"
+          pInputText
+          [required]="true"
+          [minlength]="4"
+          formControlName="firstName"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="first-name" class="block mb-2">First Name *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['firstName'].touched &&
+          paymentForm.controls['firstName'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['firstName'].errors?.['required']"
+        >
+          First name is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['firstName'].errors?.['minlength']"
+        >
+          First name is must be more than 3 characters
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['firstName'].errors?.['pattern']"
+        >
+          First name must contains only letters
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4">
+      <div class="flex flex-column-reverse">
+        <input
+          id="last-name"
+          type="text"
+          [required]="true"
+          [minlength]="4"
+          pInputText
+          formControlName="lastName"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="last-name" class="block mb-2">Last Name *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['lastName'].touched &&
+          paymentForm.controls['lastName'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['lastName'].errors?.['required']"
+        >
+          Last name is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['lastName'].errors?.['minlength']"
+        >
+          Last name is must be more than 3 characters
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['lastName'].errors?.['pattern']"
+        >
+          Last name is must contains only letters
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+      <div class="flex flex-column-reverse">
+        <p-inputMask
+          id="phone1"
+          [required]="true"
+          [autoClear]="false"
+          formControlName="phone1"
+          mask="+20-1999999999"
+          placeholder="+20-1999999999"
+          styleClass="input p-2 border-round outline-none w-full"
+          class="mask-button"
+        ></p-inputMask>
+
+        <label htmlFor="phone1" class="block mb-2">Phone 1 *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['phone1'].touched &&
+          paymentForm.controls['phone1'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['phone1'].errors?.['required']"
+        >
+          Phone is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['phone1'].errors?.['pattern']"
+        >
+          It must be a valid phone number
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4">
+      <div class="flex flex-column-reverse">
+        <p-inputMask
+          id="phone2"
+          [autoClear]="false"
+          formControlName="phone2"
+          mask="+20-1999999999"
+          placeholder="+20-1999999999"
+          styleClass="input p-2 border-round outline-none w-full"
+          class="mask-button"
+        ></p-inputMask>
+        <label htmlFor="phone2" class="block mb-2">Phone 2</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['phone2'].touched &&
+          paymentForm.controls['phone2'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['phone2'].errors?.['required']"
+        >
+          Phone is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['phone2'].errors?.['pattern']"
+        >
+          It must be a valid phone number
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 mb-4">
+      <div class="flex flex-column-reverse">
+        <input
+          id="address"
+          type="text"
+          [required]="true"
+          pInputText
+          formControlName="address"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="address" class="block mb-2">Address *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['address'].touched &&
+          paymentForm.controls['address'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['address'].errors?.['required']"
+        >
+          Address is required
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+      <div class="flex flex-column-reverse">
+        <input
+          id="area"
+          type="text"
+          pInputText
+          [required]="true"
+          [minlength]="2"
+          formControlName="area"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="area" class="block mb-2">Area *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['area'].touched &&
+          paymentForm.controls['area'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['area'].errors?.['required']"
+        >
+          Area is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['area'].errors?.['minlength']"
+        >
+          Area is must be more than 2 characters
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 mb-4">
+      <div class="flex flex-column-reverse">
+        <input
+          id="city"
+          type="text"
+          [required]="true"
+          [minlength]="2"
+          pInputText
+          formControlName="city"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="city" class="block mb-2">City *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['city'].touched &&
+          paymentForm.controls['city'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['city'].errors?.['required']"
+        >
+          City is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['city'].errors?.['minlength']"
+        >
+          City is must be more than 2 characters
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4 mb-4 pr-0 md:pr-3">
+      <div class="flex flex-column-reverse">
+        <input
+          id="buildingNumber"
+          type="text"
+          pInputText
+          [required]="true"
+          [minlength]="1"
+          formControlName="buildingNumber"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="buildingNumber" class="block mb-2"
+          >Building name or number *</label
+        >
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          paymentForm.controls['buildingNumber'].touched &&
+          paymentForm.controls['buildingNumber'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['buildingNumber'].errors?.['required']"
+        >
+          Building name or number is required
+        </small>
+        <small
+          class="block"
+          *ngIf="paymentForm.controls['buildingNumber'].errors?.['minlength']"
+        >
+          Building name or number is must be more than 1 character or number
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

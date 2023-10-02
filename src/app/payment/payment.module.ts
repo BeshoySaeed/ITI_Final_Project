@@ -5,10 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { PaymentRightSideComponent } from './payment-right-side/payment-right-side.component';
+import { PaymentLeftSideComponent } from './payment-left-side/payment-left-side.component';
 
 @NgModule({
   declarations: [
-    PaymentComponent
+    PaymentComponent,
+    PaymentRightSideComponent,
+    PaymentLeftSideComponent
   ],
   imports: [
     CommonModule,

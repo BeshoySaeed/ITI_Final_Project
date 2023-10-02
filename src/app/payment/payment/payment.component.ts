@@ -29,7 +29,6 @@ export class PaymentComponent {
         paymentMethod: [''],
         discountCode: ['']
       },
-      { updateOn: 'submit' }
     );
   }
 

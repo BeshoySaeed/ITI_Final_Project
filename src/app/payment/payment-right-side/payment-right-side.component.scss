@@ -1,5 +1,11 @@
-.right-side-container {
+@import "/src/styles.scss";
+
+:host ::ng-deep .right-side-container {
   .verify-button {
     font-size: 16px;
+  }
+
+  .title {
+    color: $Button-orange-color;
   }
 }

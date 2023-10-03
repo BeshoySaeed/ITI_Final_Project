@@ -8,11 +8,11 @@
     </li>
   </ul>
 
-  <div class="confirm-container mt-5 py-2 px-3">
+  <div class="confirm-container mt-5 p-3" [formGroup]="paymentForm">
     <p-radioButton
-      name="confirm"
-      value="confirmed"
+      [value]="true"
       inputId="confirm"
+      formControlName="confirmInstructions"
     ></p-radioButton>
     <label for="confirm" class="ml-2 cursor-pointer">I read all instructions carefully</label>
   </div>

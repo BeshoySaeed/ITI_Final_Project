@@ -27,7 +27,8 @@ export class PaymentComponent {
         locationOnGps: [''],
         notes: [''],
         paymentMethod: [''],
-        discountCode: ['']
+        discountCode: [''],
+        confirmInstructions: [false]
       },
     );
   }

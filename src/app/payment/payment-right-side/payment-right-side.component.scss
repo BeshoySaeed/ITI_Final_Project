@@ -8,4 +8,12 @@
   .title {
     color: $Button-orange-color;
   }
+  
+  .p-inputtext {
+    &:enabled:hover,
+    &:enabled:focus {
+      border: 1px solid $Button-orange-color;
+      box-shadow: none;
+    }
+  }
 }

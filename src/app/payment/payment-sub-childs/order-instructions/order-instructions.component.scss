@@ -1,17 +1,31 @@
 @import "/src/styles.scss";
 
 :host ::ng-deep .order-instruction-container {
-    .confirm-container,
+  .confirm-container {
+    border: 1.5px solid $title-text-color !important;
+    
     .p-radiobutton-box {
-        border: 1.5px solid $title-text-color;
-    }
+      border: 1.5px solid $title-text-color !important;
 
-    label {
-        color: $title-text-color;
+      &:hover {
+        border-color: $Button-orange-color !important;
+      }
     }
+  }
 
-    .p-radiobutton-checked,
-    .p-radiobutton-focused {
-        border: 1.5px solid $Button-orange-color;
+  label {
+    color: $title-text-color;
+  }
+
+  .p-radiobutton-checked,
+  .p-radiobutton-focused {
+    .p-radiobutton-box {
+      border: 1.5px solid $Button-orange-color !important;
+      box-shadow: none;
     }
+  }
+
+  .p-radiobutton .p-radiobutton-box.p-highlight {
+    background: $Button-orange-color;
+  }
 }

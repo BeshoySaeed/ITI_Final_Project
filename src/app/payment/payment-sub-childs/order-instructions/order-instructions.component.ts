@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-order-instructions',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./order-instructions.component.scss']
 })
 export class OrderInstructionsComponent {
+  @Input() paymentForm! :FormGroup;
+
   instructions = [
     {
       id: 0,
@@ -21,5 +24,5 @@ export class OrderInstructionsComponent {
       id: 2,
       description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
     }
-  ]
+  ];
 }

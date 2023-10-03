@@ -1,5 +1,6 @@
 <div class="right-side-container">
   <app-payment-order-list></app-payment-order-list>
+
   <div [formGroup]="paymentForm">
       <div class="flex flex-column-reverse">
         <div class="flex">
@@ -15,6 +16,8 @@
         <label for="discountCode" class="label block mb-2">Discount Code (If you have)</label>
       </div>
   </div>
+
+  <app-order-instructions></app-order-instructions>
   <button type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid">
     Checkout
   </button>

@@ -1,1 +1,19 @@
-<p>order-instructions works!</p>
+<div class="order-instruction-container my-6">
+  <h3 class="title">Order Instructions</h3>
+
+  <ul class="instructions-container mt-3 list-none">
+    <li class="item my-2" *ngFor="let item of instructions">
+      <i class="pi pi-check mr-2"></i>
+      {{ item.description }}
+    </li>
+  </ul>
+
+  <div class="confirm-container mt-5 py-2 px-3">
+    <p-radioButton
+      name="confirm"
+      value="confirmed"
+      inputId="confirm"
+    ></p-radioButton>
+    <label for="confirm" class="ml-2 cursor-pointer">I read all instructions carefully</label>
+  </div>
+</div>

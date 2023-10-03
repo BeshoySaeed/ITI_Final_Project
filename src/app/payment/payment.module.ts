@@ -12,6 +12,7 @@ import { PaymentOrderListComponent } from './payment-sub-childs/payment-order-li
 import { OrderInstructionsComponent } from './payment-sub-childs/order-instructions/order-instructions.component';
 import { CreditCardFormComponent } from './payment-sub-childs/credit-card-form/credit-card-form.component';
 import { PaymentUserBalanceComponent } from './payment-sub-childs/payment-user-balance/payment-user-balance.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PaymentUserBalanceComponent } from './payment-sub-childs/payment-user-b
     InputTextModule,
     InputMaskModule,
     InputNumberModule,
-    InputTextareaModule 
+    InputTextareaModule,
+    RadioButtonModule
   ]
 })
 export class PaymentModule { }

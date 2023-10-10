@@ -8,4 +8,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class PaymentLeftSideComponent {
   @Input() paymentForm! :FormGroup;
+
+  payment_methods: any[] = [
+    { name: 'Cash on delivery', key: 'cash_on_delivery' },
+    { name: 'Credit card', key: 'credit_card' },
+    { name: 'Your balance', key: 'balance' }
+];
 }

@@ -105,39 +105,39 @@
       </div>
     </div>
 
-    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+    <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <p-inputMask
-          id="phone1"
+          id="mobile"
           [required]="true"
           [autoClear]="false"
-          formControlName="phone1"
+          formControlName="mobile"
           mask="+20-1999999999"
           placeholder="+20-1999999999"
           styleClass="input p-2 border-round outline-none w-full"
           class="mask-button"
         ></p-inputMask>
 
-        <label htmlFor="phone1" class="block mb-2">Phone 1 *</label>
+        <label htmlFor="mobile" class="block mb-2">Mobile *</label>
       </div>
 
       <div
         class="error-message"
         *ngIf="
-          contactUsForm.controls['phone1'].touched &&
-          contactUsForm.controls['phone1'].invalid
+          contactUsForm.controls['mobile'].touched &&
+          contactUsForm.controls['mobile'].invalid
         "
       >
-        <small class="block" *ngIf="contactUsForm.controls['phone1'].errors?.['required']">
+        <small class="block" *ngIf="contactUsForm.controls['mobile'].errors?.['required']">
           Phone is required
         </small>
-        <small class="block" *ngIf="contactUsForm.controls['phone1'].errors?.['pattern']">
+        <small class="block" *ngIf="contactUsForm.controls['mobile'].errors?.['pattern']">
           It must be a valid phone number
         </small>
       </div>
     </div>
 
-    <div class="col-12 md:col-6 mb-4">
+    <!-- <div class="col-12 md:col-6 mb-4">
       <div class="flex flex-column-reverse">
         <p-inputMask
           id="phone2"
@@ -165,7 +165,7 @@
           It must be a valid phone number
         </small>
       </div>
-    </div>
+    </div> -->
 
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">

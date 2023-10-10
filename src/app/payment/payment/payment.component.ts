@@ -14,8 +14,8 @@ export class PaymentComponent {
   ngOnInit() {
     this.paymentForm = this.fb.group(
       {
-        firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        // firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        // lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         address: [''],
@@ -26,7 +26,7 @@ export class PaymentComponent {
         flatNumber: [''],
         locationOnGps: [''],
         notes: [''],
-        paymentMethod: [''],
+        paymentMethod: ['cash_on_delivery'],
         discountCode: [''],
         confirmInstructions: [false]
       },

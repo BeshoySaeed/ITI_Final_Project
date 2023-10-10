@@ -4,7 +4,7 @@
       <h3 class="page-title sub-title py-3">Order information</h3>
     </div>
 
-    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+    <!-- <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
       <div class="flex flex-column-reverse">
         <input
           id="first-name"
@@ -86,7 +86,7 @@
           Last name is must contains only letters
         </small>
       </div>
-    </div>
+    </div> -->
 
     <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
       <div class="flex flex-column-reverse">
@@ -348,15 +348,52 @@
           formControlName="locationOnGps"
           class="input p-2 border-round outline-none w-full"
         />
-        <label for="locationOnGps" class="block mb-2">location On GPS (Optional)</label>
+        <label for="locationOnGps" class="block mb-2"
+          >location On GPS (Optional)</label
+        >
       </div>
     </div>
 
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
-        <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="notes"
+        ></textarea>
         <label for="notes" class="block mb-2">Notes</label>
       </div>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label class="block mb-4">Payment Method *</label>
+      <div class="flex flex-wrap">
+        <div *ngFor="let method of payment_methods" class="col-12 md:col-4 p-2">
+          <div
+            class="field-checkbox p-4"
+            [class.div-focused]="paymentForm.value.paymentMethod === method.key"
+          >
+            <p-radioButton
+              [inputId]="method.key"
+              [value]="method.key"
+              formControlName="paymentMethod"
+            ></p-radioButton>
+            <label
+              [for]="method.key"
+              class="ml-2 cursor-pointer"
+              [class.label-focused]="
+                paymentForm.value.paymentMethod === method.key
+              "
+              >{{ method.name }}</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="paymentForm.value.paymentMethod === 'balance'">
+      <app-balance-details></app-balance-details>
     </div>
   </div>
 </div>

@@ -22,8 +22,8 @@ export class ContactUsFormComponent {
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
           ),
         ],
-        phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-        phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+        mobile: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+        // phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         message: ['', Validators.pattern(/^[a-zA-Z][^0-9\s\W]+/)],
       },
     );

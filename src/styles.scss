@@ -92,6 +92,7 @@ body {
 
   .p-inputtext,
   .mask-button {
+    width: 100%;
     &:focus,
     &:hover {
       border-color: $Button-orange-color;

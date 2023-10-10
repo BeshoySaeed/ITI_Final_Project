@@ -26,4 +26,40 @@
   .error-message {
     color: red;
   }
+
+  .field-checkbox,
+  .confirm-container {
+    border: 1.5px solid $title-text-color !important;
+
+    .p-radiobutton-box {
+      border: 1.5px solid $title-text-color !important;
+
+      &:hover {
+        border-color: $Button-orange-color !important;
+      }
+    }
+
+    label {
+      color: $title-text-color;
+    }
+    .p-radiobutton-checked,
+    .p-radiobutton-focused {
+      .p-radiobutton-box {
+        border: 1.5px solid $Button-orange-color !important;
+        box-shadow: none;
+      }
+    }
+  
+    .p-radiobutton .p-radiobutton-box.p-highlight {
+      background: $Button-orange-color;
+    }
+
+    .label-focused {
+      color: $Button-orange-color;
+    }
+  }
+
+  .div-focused {
+    border: 1.5px solid $Button-orange-color !important;
+  }
 }

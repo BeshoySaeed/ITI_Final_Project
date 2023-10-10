@@ -13,6 +13,7 @@ import { OrderInstructionsComponent } from './payment-sub-childs/order-instructi
 import { CreditCardFormComponent } from './payment-sub-childs/credit-card-form/credit-card-form.component';
 import { PaymentUserBalanceComponent } from './payment-sub-childs/payment-user-balance/payment-user-balance.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/balance-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     PaymentOrderListComponent,
     OrderInstructionsComponent,
     CreditCardFormComponent,
-    PaymentUserBalanceComponent
+    PaymentUserBalanceComponent,
+    BalanceDetailsComponent
   ],
   imports: [
     CommonModule,

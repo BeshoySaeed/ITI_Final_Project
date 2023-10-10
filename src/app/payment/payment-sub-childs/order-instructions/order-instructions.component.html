@@ -8,12 +8,12 @@
     </li>
   </ul>
 
-  <div class="confirm-container mt-5 p-3" [formGroup]="paymentForm">
+  <div class="confirm-container mt-5 p-3" [formGroup]="paymentForm" [class.div-focused]="paymentForm.value.confirmInstructions">
     <p-radioButton
       [value]="true"
       inputId="confirm"
       formControlName="confirmInstructions"
     ></p-radioButton>
-    <label for="confirm" class="ml-2 cursor-pointer">I read all instructions carefully</label>
+    <label for="confirm" class="ml-2 cursor-pointer" [class.label-focused]="paymentForm.value.confirmInstructions">I read all instructions carefully</label>
   </div>
 </div>

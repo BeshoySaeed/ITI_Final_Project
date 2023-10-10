@@ -1,1 +1,21 @@
-<p>banner works!</p>
+<div >
+    <div class="card md:flex md:justify-content-center first-container">
+        <p-galleria [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template pTemplate="item" let-item class="image-container" >
+                <img [src]="item.itemImageSrc"  class="banner-image"/>
+            </ng-template>
+        </p-galleria>
+    </div>
+    <!-- <div class="card md:flex md:justify-content-center">
+        <p-galleria [value]="images" class="second-container" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true" [showIndicatorsOnItem]="true" [responsiveOptions]="responsiveOptions"> 
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" style="width: 100%;" class="banner-image" />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center">
+                    <img [src]="item.thumbnailImageSrc" />
+                </div>
+            </ng-template>
+        </p-galleria>
+    </div> -->
+</div>

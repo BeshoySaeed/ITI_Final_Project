@@ -21,6 +21,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     JobAppComponent,
     BecomePartnerComponent,
     RegisterComponent,
+    HomeComponent,
   ],
 
   imports: [
@@ -49,6 +52,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ButtonModule,
     BrowserAnimationsModule,
     FileUploadModule,
+    HomeModule
   ],
 
   providers: [],

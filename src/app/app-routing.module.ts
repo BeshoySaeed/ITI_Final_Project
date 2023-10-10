@@ -9,11 +9,16 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { JobAppComponent } from './job-app/job-app.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: 'branches',
     component: BranchesComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'contact-us',

@@ -1,6 +1,6 @@
 <div class="first-container">
     <div class=" "  leaveClass="fadeoutleft" >
-        <p-galleria  [autoPlay]="true" [transitionInterval]="2000" [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
+        <p-galleria  [shouldStopAutoplayByClick]="false" [autoPlay]="true" [transitionInterval]="4000" [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
             <ng-template pTemplate="item" let-item class="image-container" >
                  <img [src]="item.itemImageSrc"  class="banner-image"/>
                 <div class="overlay">      

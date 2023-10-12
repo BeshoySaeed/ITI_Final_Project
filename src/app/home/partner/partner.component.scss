@@ -11,13 +11,7 @@
     border-radius: 50%;
     margin:10px;
 }
-:host ::ng-deep .p-carousel-next{
-display: none;
-}
-:host ::ng-deep .p-carousel-prev{
-    display: none;
-
-}:host ::ng-deep .p-carousel-indicators{
+:host ::ng-deep .p-carousel-indicators{
     display: none;
 
 }

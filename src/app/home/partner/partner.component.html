@@ -1,25 +1,19 @@
-<!-- <div>
+ <div>
     <div>
         <p class="text-center mb-2 font-italic font-light text-3xl">Partner Success</p>
 
     </div>
-    <div class="container ">
-        <div class="partner-container" *ngFor=" let item of items">
-            <a href="{{item.link}}"><img class="partner-logo" src="{{item.Image}}" alt="{{item.Name}}"></a>
-        </div>
-    </div>    
-</div> -->
 
 <div class="card">
-    <p-carousel #carousel [value]="items" [numVisible]="5" [numScroll]="5" [autoplayInterval]="2000" [circular]="true">
+    <p-carousel #carousel [value]="items" [numVisible]="5" [numScroll]="5" [autoplayInterval]="2000" [circular]="true" (click)="startAutoplay()">
         <ng-template let-item pTemplate="item">
-            <div class="product-item">
-                <div class="product-item-content">
-                    <div class="mb-3">
-                        <a href="{{item.link}}"><img class="partner-logo" src="{{item.Image}}" alt="{{item.Name}}"></a>
-                    </div>
-                </div>
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="mb-3">
+                <a href="{{item.link}}"><img class="partner-logo" src="{{item.Image}}" alt="{{item.Name}}"></a>
+              </div>
             </div>
+          </div>
         </ng-template>
-    </p-carousel>
+      </p-carousel>
 </div>

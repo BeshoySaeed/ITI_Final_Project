@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryComponent } from './category/category.component';
 import { PartnerComponent } from './partner/partner.component'
 import { CarouselModule } from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CarouselModule } from 'primeng/carousel';
     CommonModule,
     GalleriaModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    ButtonModule
   ],
   exports:[
 BannerComponent,

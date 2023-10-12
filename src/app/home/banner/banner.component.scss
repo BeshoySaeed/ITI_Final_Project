@@ -39,9 +39,31 @@
   z-index: 9;
   margin: 0px;
   position:absolute;
-  right: 1000px;
-  top: 36%;
+  right: 917px;
+  top: 62%;
 }
+:host ::ng-deep .p-button {
+  width: 152px;
+  background-color: #FD702A;
+  opacity: 0.5;
+  height: 100%;
+  border: 0;
+  color: #ffffff;
+  position: relative;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  justify-content: center;
+}
+:host ::ng-deep .p-button:focus {
+  box-shadow: 0 0 0 0;
+  background-color: #FD702A;
+
+}:host ::ng-deep .p-button:hover {
+  box-shadow: 0 0 0 0;
+  background-color: #FD702A;
+
+}
+
 // :host ::ng-deep .p-galleria-item-wrapper {
 //     display: flex;
 //     flex-direction: column;

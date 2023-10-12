@@ -3,7 +3,9 @@
         <p-galleria  [autoPlay]="true" [transitionInterval]="2000" [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
             <ng-template pTemplate="item" let-item class="image-container" >
                  <img [src]="item.itemImageSrc"  class="banner-image"/>
-                <div class="overlay"><p style="font-size:42px ;"> DIV SAAD</p></div>
+                <div class="overlay">      
+                    <p-button  class="btn button" routerLinkActive="active" routerLink="**"> <span>Get Offer</span></p-button>
+                </div>
             </ng-template>
         </p-galleria>
     </div>

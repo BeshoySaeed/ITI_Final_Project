@@ -1,0 +1,61 @@
+@import "/src/styles.scss";
+.Category-container{
+    margin:110px 0px;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:3.9% ;
+    margin:20px 0px;
+}
+.Card-container {
+    margin:40px 0px;
+    width: 232px;
+    height: 383px;
+    position: relative;
+  }
+  
+  .box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .7;
+    background:$Background-orange-color;
+    text-align: center;
+
+  }
+  .circle{
+    width: 72%;
+    height: 47%;
+    position: absolute;
+    top: 12%;
+    left: 13%;
+    border-radius: 50%;
+    transform: rotate(0deg) !important;
+  }
+  .type{
+    position: relative;
+    top: 65%;
+    left: 35%;
+    color: black;
+    font-size: 28px;
+    z-index: 10;
+  }
+  .arrow{
+    position: relative;
+    top: 67%;
+    left: 33%;
+    color: #9861c2;
+    font-size: 2.5rem;
+    z-index: 10;
+    text-align: center;
+  }
+  .overlay {
+    z-index: 9;
+    margin: 0px;
+    transform: rotate(349deg);
+    background:$Button-orange-color;
+  }

@@ -1,94 +1,94 @@
-.container{
-    height: calc(100vh - 145px);
-    width: 100%;
-    background-color: #f6e0e0;
+.container {
+  height: 580px;
+  width: 100%;
+  background-color: #f6e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .container-form{
-        background-color: white;
-        width: 600px;
-        height: 550px;
-        text-align: center;
-        padding-top: 30px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        // box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-
-        p{
-            font-size: 22px;
-            padding: 10px 0 20px;
-            .word-color{
-                color: Button-orange-color;
-                font-weight: bold;
-            }
+  .container-form {
+    background-color: white;
+    width: fit-content;
+    height: 90%;
+    text-align: center;
+    // padding-top: 25px;
+    padding: 25px 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @media (max-width: 400px) {
+        & {
+          width: 300px;
         }
-        form{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            .box{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-bottom: 20px;
-
-                label{
-                    align-self: flex-start;
-                    margin-bottom: 4px;
-                }
-                span{
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                    i{
-                        position: absolute;
-                        left: 5px;
-                        font-size: 18px;
-                        font-weight: bold;
-                    }
-                    input{
-                        padding: 10px 10px 10px 25px;
-                        font-size: 18px;
-                        width: 350px;
-                        @media (max-width: 400px) {
-                            &{
-                                width: 250px;
-                            }
-                            
-                        }
-                    }
-                }
-            }
-            .check-box{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 350px;
-                @media (max-width: 400px) {
-                    &{
-                        width: 250px;
-                    }
-                    
-                }
-                .checkBox{
-                    display: flex;
-                    gap: 5px;
-                    font-size: 13px;
-                    align-items: center;                
-                }
-                a{
-                    font-size: 14px;
-                    text-decoration: none;
-                }
-            }
-    
-        }
+      }
+ 
+    p {
+      font-size: 20px;
+      padding: 10px 0 20px;
+      font-weight: bold;
     }
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
 
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 15px;
+        
+
+        label {
+          align-self: flex-start;
+          margin-bottom: 4px;
+        }
+        span {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          i {
+            position: absolute;
+            left: 5px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+          input {
+            padding: 10px 10px 10px 25px;
+            font-size: 18px;
+            width: 280px;
+            @media (max-width: 400px) {
+              & {
+                width: 230px;
+              }
+            }
+          }
+        }
+      }
+      .check-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 280px;
+        @media (max-width: 400px) {
+          & {
+            width: 250px;
+          }
+        }
+        .checkBox {
+          display: flex;
+          gap: 5px;
+          font-size: 13px;
+          align-items: center;
+        }
+        a {
+          font-size: 14px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

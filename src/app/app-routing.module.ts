@@ -45,6 +45,11 @@ const routes: Routes = [
     component: JobAppComponent,
   },
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     component: NotfoundComponent,
   },

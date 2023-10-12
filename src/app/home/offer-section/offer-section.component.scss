@@ -1,0 +1,16 @@
+:host ::ng-deep .p-card{
+    background-color: rgb(250, 218, 158);
+    padding-top: 30px;
+}
+.card-container{
+    position: relative;
+}
+.discount{
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    padding: 10px 20px;
+    transform: rotate(-45deg);
+    background-color: rgb(54, 54, 158);
+    border-radius: 10px;
+}

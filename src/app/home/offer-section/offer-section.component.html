@@ -1,0 +1,77 @@
+<div class="container mt-8">
+  <p class="text-center mb-2 font-italic font-light text-3xl">Offer</p>
+  <p class="text-center mb-2 font-italic font-light text-3xl">
+    we have an amazing offer for this
+  </p>
+  <div
+    class="flex flex-wrap justify-content-center gap-2 mt-3 text-center"
+  >
+    <ng-container *ngFor="let offer of offers; let index = index">
+      <div class="card-container">
+        <p class="text-white discount">discount 50%</p>
+        <p-card
+          [header]="offer.title"
+          [subheader]="'description of meal description of meal '"
+          [style]="{ width: '360px', 'border-radius': '8%' }"
+        >
+          <ng-template pTemplate="header">
+            <div class="flex justify-content-center align-content-center">
+              <img alt="Card" [src]="offer.img" style="margin-top: -30px" />
+            </div>
+          </ng-template>
+              <a routerLink="/cart">
+              <p-button
+                label="Get Offer"
+                icon="pi pi-arrow-up-right"
+                styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em' }"
+              ></p-button>
+            </a>
+        </p-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <p class="text-center mb-2 font-italic font-light text-3xl">Offer</p>
+  <p class="text-center mb-2 font-italic font-light text-3xl">
+    we have an amazing offer for this
+  </p>
+  <div  class="flex flex-wrap justify-content-center gap-2 mt-3 text-center">
+
+  </div>
+  <div class="flex flex-wrap justify-content-center gap-2 mt-3">
+    <ng-container  *ngFor="let offer of offers, let index = index ">
+      <div class="card-container">
+
+      <p class="text-white discount">discount 50%</p>
+
+        <p-card [header]="offer.title" [subheader]="offer.available" [style]="{ width: '300px', 'border-radius': '8%', 'position': 'relative' }">
+          <ng-template pTemplate="header">
+            <div class="flex justify-content-center align-content-center">
+              <img alt="Card" [src]="offer.img" style="margin-top: -30px" />
+            </div>
+          </ng-template>
+            <div class="flex flex-wrap gap-2">
+         
+            </div>
+
+            <div class="text-center">
+              <a routerLink="/cart" ]>
+                <p-button
+                  label="Get Offer"
+                  icon="pi pi-arrow-up-right"
+                  styleClass="p-button-secondary"
+                  [style]="{ 'margin-left': '.5em' }"
+                ></p-button>
+              </a>
+            </div>
+      
+    
+        </p-card>
+      </div>
+    </ng-container>
+  </div>
+</div> -->

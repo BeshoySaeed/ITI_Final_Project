@@ -1,0 +1,41 @@
+<div class="container mt-8">
+  <p class="text-center mb-2 font-italic font-light text-3xl">Subscription</p>
+  <p class="text-center mb-2 font-italic font-light text-3xl">
+    we have an amazing offer for this
+  </p>
+  <div class="flex flex-wrap justify-content-center gap-2 mt-3 text-center">
+    <ng-container *ngFor="let offer of offers; let index = index">
+      <div class="card-container">
+        <p class="text-white discount">Super</p>
+
+        <p-card
+          [header]="offer.title"
+          [subheader]="offer.available"
+          [style]="{
+            width: '360px',
+            'border-radius': '8%',
+            overflow: 'hidden'
+          }"
+        >
+          <ul class="p-d-flex p-flex-column align-self-start">
+            <p><i class="pi pi-check"></i> {{ offer.available }}</p>
+            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
+            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
+            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
+          </ul>
+          <ng-template pTemplate="header"> </ng-template>
+          <div class="text-center">
+            <a href="">
+              <p-button
+                label="Get Offer"
+                icon="pi pi-arrow-up-right"
+                styleClass="p-button-secondary"
+                [style]="{ 'margin-left': '.5em', 'margin-top': '40px' }"
+              ></p-button>
+            </a>
+          </div>
+        </p-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

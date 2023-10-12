@@ -1,0 +1,42 @@
+<div class="container">
+  <p class="text-center mb-2 font-italic font-light text-3xl">Our Menu</p>
+  <div class="flex gap-4 justify-content-center flex-wrap">
+    <ng-container *ngFor="let item of items, let index = index">
+        <a
+          routerlink=""
+          class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+        >
+          {{ item }}</a
+        >
+    </ng-container>
+    <a
+    routerlink=""
+    class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+  >
+    Menu</a
+  >
+  </div>
+  <div class="flex flex-wrap justify-content-center gap-2 mt-3">
+    <ng-container  *ngFor="let offer of offers, let index = index ">
+        <p-card [header]="offer.title" [subheader]="offer.available" [style]="{ width: '300px', 'border-radius': '8%', 'position': 'relative' }">
+            <ng-template pTemplate="header">
+                <div class="flex justify-content-center align-content-center">
+                    <img alt="Card" [src]="offer.img" class="border-circle w-8" />
+                </div>
+            </ng-template>
+            <div class="flex flex-wrap gap-2">
+                <ng-container *ngFor="let _ of getStarsCount(offer.stars)">
+                    <i class="pi pi-star-fill text-yellow-500" ></i>
+                </ng-container>
+            </div>
+      
+            <p class="mt-2 text-xl font-bold">{{ offer.price }}</p>
+            <a routerLink="/cart">
+            <div class="cartIcon">
+                <i class="pi pi-shopping-cart text-4xl font-bold transition-duration-500  hover:text-orange-900 cursor-pointer"></i>
+            </div>
+          </a>
+        </p-card>
+    </ng-container>
+  </div>
+</div>

@@ -52,7 +52,7 @@ import { HomeModule } from './home/home.module';
     ButtonModule,
     BrowserAnimationsModule,
     FileUploadModule,
-    HomeModule
+    HomeModule,
   ],
 
   providers: [],

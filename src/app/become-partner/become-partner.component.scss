@@ -18,7 +18,7 @@ input[type="file"]{
 }
 
 .all{
-  background-color: whitesmoke;
+  background-color: white;
   text-align: center;
   display: inline-block;
   width: 60%;
@@ -29,9 +29,7 @@ form {
   position: relative;
   margin-top: 70px;
 }
-.form-row {
-  display: flex;
-}
+
 
 
 .header{
@@ -74,8 +72,34 @@ input::placeholder{
   margin-bottom: 5px;
 }
 
-.fileDiv{
-  border: 1px solid black;
-  width: 100%;
+
+
+.column {
+  float: left;
+  width: 50%;
+ 
+}
+.form-row{
+  display: flex;
+}
+/* Clear floats after the columns */
+.form-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column,.form-row {
+    width: 100%;
+    display: block;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .lcolumn {
+    width: 100%;
+    margin-top: 15px;
+    display: block;
+  }
+ 
+}

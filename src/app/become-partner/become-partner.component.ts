@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, ValidationErrors ,ReactiveFormsModule } from '@angular/forms';  
-import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ButtonModule } from 'primeng/button';
+
 
 
 
 import {
   FormGroup,
-  FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';

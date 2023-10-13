@@ -1,8 +1,11 @@
-<div >
-    <div class="card md:flex md:justify-content-center first-container">
-        <p-galleria [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
+<div class="first-container">
+    <div class=" "  leaveClass="fadeoutleft" >
+        <p-galleria  [shouldStopAutoplayByClick]="false" [autoPlay]="true" [transitionInterval]="4000" [value]="images" class="second-container" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions">
             <ng-template pTemplate="item" let-item class="image-container" >
-                <img [src]="item.itemImageSrc"  class="banner-image"/>
+                 <img [src]="item.itemImageSrc"  class="banner-image"/>
+                <div class="overlay">      
+                    <p-button  class="btn button" routerLinkActive="active" routerLink="**"> <span>Get Offer</span></p-button>
+                </div>
             </ng-template>
         </p-galleria>
     </div>

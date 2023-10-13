@@ -6,25 +6,64 @@
   :host ::ng-deep .banner-image{
     width:100%;
     height: 100%;
-    background-color: rgb(51, 255, 0);
+    
 
   }
   :host ::ng-deep .p-galleria-item {
     align-items: normal ;
-    height: 58%;
+    height: 100%;
     object-fit:cover;
-
-    background-color: rgb(31, 65, 23);
 
 }
 :host ::ng-deep .p-galleria-item-nav {
-    top:25%;
+    top:40%;
+    z-index: 1;
+
 }
 
 :host ::ng-deep .p-link:focus {
 
      box-shadow: 0 0 0 0; 
+
 }
+:host ::ng-deep .first-container{
+  height: fit-content;
+
+  
+}
+:host ::ng-deep .p-galleria-item-container{
+  height: 80vh;
+
+}
+.overlay {
+  z-index: 9;
+  margin: 0px;
+  position:absolute;
+  right: 917px;
+  top: 62%;
+}
+:host ::ng-deep .p-button {
+  width: 152px;
+  background-color: #FD702A;
+  opacity: 0.5;
+  height: 100%;
+  border: 0;
+  color: #ffffff;
+  position: relative;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  justify-content: center;
+}
+:host ::ng-deep .p-button:focus {
+  box-shadow: 0 0 0 0;
+  background-color: #FD702A;
+
+}:host ::ng-deep .p-button:hover {
+  box-shadow: 0 0 0 0;
+  background-color: #FD702A;
+
+}
+
 // :host ::ng-deep .p-galleria-item-wrapper {
 //     display: flex;
 //     flex-direction: column;

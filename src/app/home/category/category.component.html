@@ -1,0 +1,14 @@
+
+
+<div class="Category-container">
+    <p class="text-center mb-2 font-italic font-light text-3xl">Popular Category</p>
+<div class="container">
+    <div class="Card-container" *ngFor="let item of items">
+        <div class="box"></div>
+        <div class="box overlay"></div>
+        <img class="circle overlay" src="{{item.Image}}">
+        <p class="type">{{item.Name}}</p>
+        <a href="{{item.link}}"><i class="pi pi-arrow-right arrow" ></i></a>
+    </div>
+</div>
+</div>

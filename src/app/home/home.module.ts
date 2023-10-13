@@ -9,6 +9,10 @@ import { CardModule } from 'primeng/card';
 import { OfferSectionComponent } from './offer-section/offer-section.component';
 import { SubscriptionSectionComponent } from './subscription-section/subscription-section.component';
 import { Routes, RouterModule, RouterLink } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoryComponent } from './category/category.component';
+import { PartnerComponent } from './partner/partner.component';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,8 @@ import { Routes, RouterModule, RouterLink } from '@angular/router';
     MenuSectionComponent,
     OfferSectionComponent,
     SubscriptionSectionComponent,
+    CategoryComponent,
+    PartnerComponent,
   ],
   imports: [
     CommonModule,
@@ -25,12 +31,19 @@ import { Routes, RouterModule, RouterLink } from '@angular/router';
     CardModule,
     RouterLink,
     RouterModule,
+    CarouselModule,
   ],
   exports: [
     BannerComponent,
     MenuSectionComponent,
     OfferSectionComponent,
     SubscriptionSectionComponent,
+    BrowserAnimationsModule,
+    ButtonModule,
+    BannerComponent,
+    CategoryComponent,
+    PartnerComponent,
+    CarouselModule,
   ],
 })
 export class HomeModule {}

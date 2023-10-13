@@ -12,6 +12,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { HomeComponent } from './home/home.component';
+import { PaymentComponent } from './payment/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -47,17 +48,8 @@ const routes: Routes = [
     component: JobAppComponent,
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'cart',
-    component: CartComponent,
-  },
-  {
-    path: 'all-items',
-    component: AllItemsComponent,
+    path: 'payment',
+    component: PaymentComponent,
   },
   {
     path: '**',

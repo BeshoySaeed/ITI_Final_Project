@@ -46,9 +46,15 @@
   padding: 0;
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 // ______________________________________________________________________________________
 // ******************************** Shared classes **************************************
@@ -71,6 +77,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 11px 0;
   border-radius: 5px;
   cursor: pointer;
+
+  &:disabled {
+    background-color: $Background-orange-color;
+    color: $disabled-text-color;
+    cursor: not-allowed;
+  }
 }
 
 .form {
@@ -80,6 +92,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   .p-inputtext,
   .mask-button {
+    width: 100%;
     &:focus,
     &:hover {
       border-color: $Button-orange-color;

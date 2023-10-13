@@ -1,0 +1,65 @@
+@import "/src/styles.scss";
+
+:host ::ng-deep .payment-container {
+  background-color: $Background-orange-color;
+  min-height: 100vh;
+
+  .page-title {
+    background-color: #fff;
+    border: 2px solid $Button-orange-color;
+    font-size: 28px;
+  }
+
+  .sub-title {
+    font-size: 20px;
+    width: fit-content;
+    margin: 0 auto 40px;
+    padding: 7px 30px !important;
+  }
+
+  .content-part {
+    background-color: #fff;
+    padding: 35px;
+    margin: 10px 0;
+  }
+
+  .error-message {
+    color: red;
+  }
+
+  .field-checkbox,
+  .confirm-container {
+    border: 1.5px solid $title-text-color !important;
+
+    .p-radiobutton-box {
+      border: 1.5px solid $title-text-color !important;
+
+      &:hover {
+        border-color: $Button-orange-color !important;
+      }
+    }
+
+    label {
+      color: $title-text-color;
+    }
+    .p-radiobutton-checked,
+    .p-radiobutton-focused {
+      .p-radiobutton-box {
+        border: 1.5px solid $Button-orange-color !important;
+        box-shadow: none;
+      }
+    }
+  
+    .p-radiobutton .p-radiobutton-box.p-highlight {
+      background: $Button-orange-color;
+    }
+
+    .label-focused {
+      color: $Button-orange-color;
+    }
+  }
+
+  .div-focused {
+    border: 1.5px solid $Button-orange-color !important;
+  }
+}

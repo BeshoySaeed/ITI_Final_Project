@@ -29,6 +29,7 @@ import { ItemComponent } from './menu-module/components/item/item.component';
 import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
 import { ItemDetailsComponent } from './menu-module/components/item-details/item-details.component';
 import { MenuModuleModule } from './menu-module/menu-module.module';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     CartModuleModule,
     TableModule,
     MenuModuleModule,
+    PaymentModule,
   ],
 
   providers: [],

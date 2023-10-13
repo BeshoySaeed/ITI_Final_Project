@@ -1,0 +1,20 @@
+@import "/src/styles.scss";
+
+.payment-order-list-container {
+    .list-container {
+        .item {
+          background-color: $Background-orange-color;
+        }
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: $title-text-color;
+
+            span {
+                font-size: 20px;
+                color: $Button-orange-color;
+            }
+        }
+      }
+}

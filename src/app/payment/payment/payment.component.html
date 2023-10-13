@@ -1,0 +1,22 @@
+<div class="payment-container px-5 py-6">
+  <h3 class="page-title py-3">Complete your order</h3>
+
+  <div class="content-container">
+    <form
+      [formGroup]="paymentForm"
+      (ngSubmit)="onSubmit()"
+      class="formgrid w-full form"
+    >
+      <div class="flex flex-wrap mt-5">
+        <div class="col-12 lg:col-7 lg:pr-5">
+          <app-payment-left-side [paymentForm]="paymentForm"></app-payment-left-side>
+        </div>
+        <div class="col-12 lg:col-5">
+          <div class="content-part">
+            <app-payment-right-side [paymentForm]="paymentForm"></app-payment-right-side>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

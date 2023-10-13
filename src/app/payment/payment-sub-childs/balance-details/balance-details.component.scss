@@ -1,0 +1,24 @@
+@import "/src/styles.scss";
+
+.balance-details-container {
+  border: 1.5px solid $title-text-color;
+  .title {
+    color: $title-text-color;
+  }
+
+  .content {
+    border: 1.5px solid $title-text-color;
+    background-color: $Background-orange-color;
+
+    .title {
+      font-weight: 500;
+      color: $title-text-color;
+    }
+
+    .value {
+      color: $Button-orange-color;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}

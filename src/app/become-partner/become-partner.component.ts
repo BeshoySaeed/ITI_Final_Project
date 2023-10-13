@@ -1,33 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, ValidationErrors ,ReactiveFormsModule } from '@angular/forms';  
-import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ButtonModule } from 'primeng/button';
 
-
-
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
-
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-become-partner',
   templateUrl: './become-partner.component.html',
-  styleUrls: ['./become-partner.component.scss']
+  styleUrls: ['./become-partner.component.scss'],
 })
-export class BecomePartnerComponent implements OnInit{
-
+export class BecomePartnerComponent implements OnInit {
   partnerForm!: FormGroup;
- 
 
-
-  constructor(private fb: FormBuilder) {  
-   
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.partnerForm = this.fb.group({
@@ -38,38 +21,43 @@ export class BecomePartnerComponent implements OnInit{
         '',
         [
           Validators.required,
-          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
         ],
       ],
-    //  password: ['', [Validators.required,Validators.minLength(8)]] (?=.*?[!@#%^&*()_+-=[]{}|;':\",./<>?~`])
-      mobile: ['', [Validators.required, Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]],
+      //  password: ['', [Validators.required,Validators.minLength(8)]] (?=.*?[!@#%^&*()_+-=[]{}|;':\",./<>?~`])
+      mobile: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$'
+          ),
+        ],
+      ],
       message: ['', [Validators.required]],
-
     });
   }
-  
 
   submitPartnerForm() {
     console.log(this.partnerForm);
   }
 
-  get name(){
+  get name() {
     return this.partnerForm.get('name');
   }
-  get l_name(){
+  get l_name() {
     return this.partnerForm.get('l_name');
   }
-  get email(){
+  get email() {
     return this.partnerForm.get('email');
   }
-  get mobile(){
+  get mobile() {
     return this.partnerForm.get('mobile');
   }
-  get subject(){
+  get subject() {
     return this.partnerForm.get('subject');
   }
-  get message(){
+  get message() {
     return this.partnerForm.get('message');
   }
 }
-

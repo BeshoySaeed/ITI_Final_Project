@@ -23,6 +23,8 @@ import { BecomePartnerComponent } from './become-partner/become-partner.componen
 import { FileUploadModule } from 'primeng/fileupload';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { CartModuleModule } from './cart-module/cart-module.module';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { HomeModule } from './home/home.module';
     BrowserAnimationsModule,
     FileUploadModule,
     HomeModule,
+    CartModuleModule,
+    TableModule,
   ],
 
   providers: [],

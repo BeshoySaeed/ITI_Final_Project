@@ -24,7 +24,7 @@ import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/ba
     OrderInstructionsComponent,
     CreditCardFormComponent,
     PaymentUserBalanceComponent,
-    BalanceDetailsComponent
+    BalanceDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +34,7 @@ import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/ba
     InputMaskModule,
     InputNumberModule,
     InputTextareaModule,
-    RadioButtonModule
-  ]
+    RadioButtonModule,
+  ],
 })
-export class PaymentModule { }
+export class PaymentModule {}

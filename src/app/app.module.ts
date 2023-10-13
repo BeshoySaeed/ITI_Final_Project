@@ -21,6 +21,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ItemComponent } from './menu-module/components/item/item.component';
+import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
+import { ItemDetailsComponent } from './menu-module/components/item-details/item-details.component';
+import { MenuModuleModule } from './menu-module/menu-module.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     JobAppComponent,
     BecomePartnerComponent,
     RegisterComponent,
+  
   ],
 
   imports: [
@@ -49,6 +54,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ButtonModule,
     BrowserAnimationsModule,
     FileUploadModule,
+    MenuModuleModule
   ],
 
   providers: [],

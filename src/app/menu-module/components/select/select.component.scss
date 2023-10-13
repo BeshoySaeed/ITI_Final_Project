@@ -1,0 +1,67 @@
+@import "/src/styles.scss";
+
+.selctCategory{
+    display: flex;
+    padding-left: 20px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    border: 1px solid $Violet-Button-color;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: 0;
+
+
+}
+select{
+    font-size: 20px;
+    border-radius: 20px;
+    width: 800px;
+    margin-left: 20px;
+    padding-left: 5px;
+    background-color: $Background-orange-color;
+}
+/*your style goes here*/
+    // for tablet size
+    @media (min-width: 768px) and (max-width: 991px) {
+        select {
+            width: 300px;
+            font-size: 15px;
+        }
+    }
+    // for mobile size
+    @media (max-width: 767px) {
+        select {
+            width: 140px;
+            font-size: 15px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        .selctCategory {
+            font-size: 15px;
+            left: 0px;
+        }
+    }
+    // for mobile size
+    @media (max-width: 767px) {
+        .selctCategory {
+            font-size: 15px;
+        }
+    }
+label{
+    margin-top: 10px;
+}
+    @media (min-width: 768px) and (max-width: 991px) {
+        label {
+            padding-top: 10px;
+        }
+    }
+    // for mobile size
+    @media (max-width: 767px) {
+        label {
+
+            padding-top: 5px;
+
+        }
+    }

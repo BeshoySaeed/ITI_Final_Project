@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from "primeng/api";
 import { PrimeNGConfig, MenuItem } from "primeng/api";
 
-
+import { AllItemsComponent } from 'src/app/menu-module/components/all-items/all-items.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -33,12 +33,15 @@ ngOnInit() {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
         styleClass:'links & link1',
+
       },
     
       {
         label: 'Menu',
         icon: 'pi pi-fw pi-list',
         styleClass:'links & link2',
+        routerLink: 'all-items',
+
       },
     
       {

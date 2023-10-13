@@ -9,8 +9,14 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { JobAppComponent } from './job-app/job-app.component';
+import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
+import { HomeModule } from './home/home.module';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: ContactUsComponent,
+  },
   {
     path: 'branches',
     component: BranchesComponent,
@@ -38,6 +44,10 @@ const routes: Routes = [
   {
     path: 'job-application',
     component: JobAppComponent,
+  },
+  {
+    path: 'all-items',
+    component: AllItemsComponent,
   },
   {
     path: '**',

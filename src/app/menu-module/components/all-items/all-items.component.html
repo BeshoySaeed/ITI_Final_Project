@@ -1,0 +1,20 @@
+<div>
+  <app-select [data]="categories" [title]="'Categories'" (selectedvalue)="filterCategory($event)"> </app-select>
+</div>
+
+<div class='container-item'>
+  <ng-container *ngFor= "let product of products" >
+    <app-item [data]="product" ></app-item>       
+  </ng-container>
+</div>
+
+   <div fxLayout="row wrap"  fxLayoutAlign="flex-center">    
+    <ng-container *ngFor ="let item of products" >
+      <app-item [data]="item" ></app-item>       
+    </ng-container>
+</div> 
+
+
+<div  >
+    <app-loader></app-loader>
+    </div>

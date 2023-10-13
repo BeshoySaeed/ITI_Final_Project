@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './cart-module/cart/cart.component';
+import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
+
 import { BranchesComponent } from './branches/branches.component';
 import { ContactUsComponent } from './Contact Us page/contact-us/contact-us.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -9,7 +12,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { BecomePartnerComponent } from './become-partner/become-partner.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart-module/cart/cart.component';
+
 const routes: Routes = [
   {
     path: 'branches',
@@ -51,6 +54,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+  },
+  {
+    path: 'all-items',
+    component: AllItemsComponent,
   },
   {
     path: '**',

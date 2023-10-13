@@ -25,6 +25,10 @@ import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { CartModuleModule } from './cart-module/cart-module.module';
 import { TableModule } from 'primeng/table';
+import { ItemComponent } from './menu-module/components/item/item.component';
+import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
+import { ItemDetailsComponent } from './menu-module/components/item-details/item-details.component';
+import { MenuModuleModule } from './menu-module/menu-module.module';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,7 @@ import { TableModule } from 'primeng/table';
     HomeModule,
     CartModuleModule,
     TableModule,
+    MenuModuleModule,
   ],
 
   providers: [],

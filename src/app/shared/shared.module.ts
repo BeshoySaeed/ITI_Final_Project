@@ -6,7 +6,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
-// import { GMapModule } from 'primeng/gmap';
 
 
 @NgModule({
@@ -14,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -27,6 +27,7 @@ import { ButtonModule } from 'primeng/button';
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
+
   ]
 
 })

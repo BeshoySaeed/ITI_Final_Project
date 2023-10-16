@@ -6,7 +6,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
-import { UserRoutingModule } from './user-routing.module';
 import { PaymentModule } from './payment/payment.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BranchesComponent } from './branches/branches.component';
@@ -43,7 +42,6 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     BrowserModule,
     MenubarModule,
     CommonModule,
-    UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     PaymentModule,

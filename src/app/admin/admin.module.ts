@@ -1,15 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AdminRoutingModule } from './admin-routing.module';
+import { AdminHeaderComponent } from './layouts/admin-header/admin-header.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { UsersComponent } from './users/users/users.component';
 
+import { MenubarModule } from 'primeng/menubar';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
+    SidebarComponent, 
+    UsersComponent, 
+    AdminHeaderComponent
   ],
+
   imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+    CommonModule, 
+    MenubarModule, 
+    SidebarModule,
+    ButtonModule
+  ],
+
+  exports: [
+    AdminHeaderComponent
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

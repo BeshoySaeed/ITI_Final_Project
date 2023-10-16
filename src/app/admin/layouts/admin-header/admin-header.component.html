@@ -1,0 +1,15 @@
+<p-menubar>
+    <ng-template pTemplate="start">
+        <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+        <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>
+        <p-sidebar [(visible)]="sidebarVisible" [modal]="false">
+            <h3>Sidebar</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </p-sidebar>
+    </ng-template>
+    <ng-template pTemplate="end">
+    </ng-template>
+</p-menubar>

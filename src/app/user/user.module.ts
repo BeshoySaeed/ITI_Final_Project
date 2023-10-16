@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MenubarModule } from 'primeng/menubar';
+import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
 import { UserRoutingModule } from './user-routing.module';
 import { PaymentModule } from './payment/payment.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +28,6 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
 
 @NgModule({
   declarations: [
-    // AppComponent,
     BranchesComponent,
     ContactUsComponent,
     ContactUsFormComponent,
@@ -36,6 +40,8 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     HomeComponent,
   ],
   imports: [
+    BrowserModule,
+    MenubarModule,
     CommonModule,
     UserRoutingModule,
     FormsModule,
@@ -47,6 +53,10 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     InputMaskModule,
     CartModuleModule,
     MenuModuleModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    FileUploadModule,
+    TableModule,
   ]
 })
 export class UserModule { }

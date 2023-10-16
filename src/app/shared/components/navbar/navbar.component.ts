@@ -2,7 +2,7 @@ import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig, MenuItem } from 'primeng/api';
-import { AllItemsComponent } from 'src/app/menu-module/components/all-items/all-items.component';
+import { AllItemsComponent } from 'src/app/user/menu-module/components/all-items/all-items.component';
 
 @Component({
   selector: 'app-navbar',
@@ -45,6 +45,7 @@ export class NavbarComponent {
         label: 'Cart',
         icon: 'pi pi-fw pi-shopping-cart',
         styleClass: 'links & link3',
+        routerLink: 'cart',
       },
     ];
   }

@@ -21,7 +21,7 @@ export class FooterComponent {
       {
         label: 'About Us',
         styleClass: 'links',
-        routerLink: 'aboutus',
+        routerLink: 'about-us',
       },
       {
         label: 'Contact Us',

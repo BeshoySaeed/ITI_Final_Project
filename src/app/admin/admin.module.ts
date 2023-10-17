@@ -22,6 +22,9 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { PasswordModule } from 'primeng/password';
+import { MenuItemsComponent } from './menu-items/menu-items/menu-items.component';
+import { AddMenuItemsComponent } from './menu-items/add-menu-items/add-menu-items.component';
+import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-items.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { PasswordModule } from 'primeng/password';
     CategoriesComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    MenuItemsComponent,
+    AddMenuItemsComponent,
+    EditMenuItemsComponent,
   ],
 
   imports: [

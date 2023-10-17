@@ -8,6 +8,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoriesComponent } from './categories/categories/categories.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { MenuItemsComponent } from './menu-items/menu-items/menu-items.component';
+import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-items.component';
+import { AddMenuItemsComponent } from './menu-items/add-menu-items/add-menu-items.component';
 
 const routes: Routes = [
   {
@@ -46,6 +49,23 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditCategoryComponent,
+          },
+        ],
+      },
+      {
+        path: 'menu-items',
+        children: [
+          {
+            path: '',
+            component: MenuItemsComponent,
+          },
+          {
+            path: 'create',
+            component: AddMenuItemsComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditMenuItemsComponent,
           },
         ],
       },

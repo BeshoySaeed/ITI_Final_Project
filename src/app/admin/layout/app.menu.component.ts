@@ -50,12 +50,12 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'All Categories',
             icon: 'pi pi-fw pi-th-large',
-            routerLink: ['/admin/Categories'],
+            routerLink: ['/admin/categories'],
           },
           {
             label: 'Add Category',
             icon: 'pi pi-fw pi-plus',
-            routerLink: ['/admin/Categories/create'],
+            routerLink: ['/admin/categories/create'],
           },
         ],
       },

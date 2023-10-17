@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { CategoriesComponent } from './categories/categories/categories.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { DropdownModule } from 'primeng/dropdown';
     AddUserComponent,
     EditUserComponent,
     NotFoundComponent,
+    CategoriesComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
   ],
 
   imports: [

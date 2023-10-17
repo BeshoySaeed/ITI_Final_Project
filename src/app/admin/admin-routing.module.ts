@@ -5,6 +5,9 @@ import { AppLayoutComponent } from './layout/app.layout.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CategoriesComponent } from './categories/categories/categories.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,23 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditUserComponent,
+          },
+        ],
+      },
+      {
+        path: 'categories',
+        children: [
+          {
+            path: '',
+            component: CategoriesComponent,
+          },
+          {
+            path: 'create',
+            component: AddCategoryComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditCategoryComponent,
           },
         ],
       },

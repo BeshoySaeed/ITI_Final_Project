@@ -11,10 +11,12 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
     UsersComponent,
+    AddUserComponent,
   ],
 
   imports: [

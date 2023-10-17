@@ -1,5 +1,13 @@
 <div class="users-container">
-  <h3 class="admin-page-title">All Users</h3>
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Users</h3>
+    <a routerLink="/admin/users/create">
+      <button
+        pButton
+        class="p-button-primary"
+      >Add User</button>
+    </a>
+  </div>
 
   <div class="card">
     <p-table

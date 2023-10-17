@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users/users.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -11,19 +12,28 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       {
-        path:"users",
-        component: UsersComponent
+        path: 'users',
+        children: [
+          {
+            path: '',
+            component: UsersComponent,
+          },
+          {
+            path: 'create',
+            component: AddUserComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditUserComponent,
+          },
+        ],
       },
-      {
-        path:"users/create",
-        component: AddUserComponent
-      }
     ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

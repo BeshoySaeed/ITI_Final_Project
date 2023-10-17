@@ -86,10 +86,6 @@ export class UsersComponent {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
-  editUser(id:number) {
-    console.log(id)
-  }
-
   deleteUser(id:number) {
     console.log(id)
   }

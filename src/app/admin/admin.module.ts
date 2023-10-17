@@ -8,6 +8,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { AdminRoutingModule } from './admin-routing.module';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AdminRoutingModule } from './admin-routing.module';
     MenubarModule, 
     SidebarModule,
     ButtonModule,
-    LayoutModule
+    LayoutModule,
+    TableModule,
+    InputTextModule
   ],
 })
 export class AdminModule {}

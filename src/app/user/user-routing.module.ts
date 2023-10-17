@@ -12,55 +12,62 @@ import { JobAppComponent } from './job-app/job-app.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart-module/cart/cart.component';
 import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'contact-us',
-    component: ContactUsComponent,
-  },
-  {
-    path: 'login',
-    component: LoginFormComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'payment',
-    component: PaymentComponent,
-  },
-  {
-    path: 'about-us',
-    component: AboutUsComponent,
-  },
-  {
-    path: 'branches',
-    component: BranchesComponent,
-  },
-  {
-    path: 'become-partner',
-    component: BecomePartnerComponent,
-  },
-  {
-    path: 'job-application',
-    component: JobAppComponent,
-  },
-  {
-    path: 'cart',
-    component: CartComponent,
-  },
-  {
-    path: 'all-items',
-    component: AllItemsComponent,
-  },
-  {
-    path: '**',
-    component: NotfoundComponent,
+    path: '',
+    component: UserLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'contact-us',
+        component: ContactUsComponent,
+      },
+      {
+        path: 'login',
+        component: LoginFormComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent,
+      },
+      {
+        path: 'about-us',
+        component: AboutUsComponent,
+      },
+      {
+        path: 'branches',
+        component: BranchesComponent,
+      },
+      {
+        path: 'become-partner',
+        component: BecomePartnerComponent,
+      },
+      {
+        path: 'job-application',
+        component: JobAppComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+      },
+      {
+        path: 'all-items',
+        component: AllItemsComponent,
+      },
+      {
+        path: '**',
+        component: NotfoundComponent,
+      },
+    ],
   },
 ];
 

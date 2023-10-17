@@ -7,21 +7,19 @@ import { UsersComponent } from './users/users/users.component';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
   declarations: [
-    UsersComponent, 
+    UsersComponent,
   ],
 
   imports: [
     CommonModule, 
+    AdminRoutingModule,
     MenubarModule, 
     SidebarModule,
     ButtonModule,
-    LayoutModule
-  ],
-
-  exports: [
     LayoutModule
   ],
 })

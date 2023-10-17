@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
-import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
 
 @NgModule({
@@ -15,12 +12,9 @@ import { AdminModule } from './admin/admin.module';
 
   imports: [
     CommonModule,
-    AdminRoutingModule,
-    UserRoutingModule,
-    SharedModule,
     AppRoutingModule,
+    UserModule,
     AdminModule,
-    UserModule
   ],
 
   providers: [],

@@ -24,6 +24,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { CartModuleModule } from './cart-module/cart-module.module';
 import { MenuModuleModule } from './menu-module/menu-module.module';
+import { SharedModule } from './shared/shared.module';
+import { UserRoutingModule } from './user-routing.module';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     BecomePartnerComponent,
     RegisterComponent,
     HomeComponent,
+    UserLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,8 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
     BrowserAnimationsModule,
     FileUploadModule,
     TableModule,
+    SharedModule,
+    UserRoutingModule,
   ]
 })
 export class UserModule { }

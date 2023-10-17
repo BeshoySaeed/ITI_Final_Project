@@ -16,6 +16,7 @@ import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from './app.sidebar.component';
 import { AppLayoutComponent } from './app.layout.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AppMenuitemComponent } from './app.menuitem.component';
     RippleModule,
     RouterModule,
     AppConfigModule,
+    TooltipModule
   ],
   exports: [AppLayoutComponent, AppTopBarComponent, AppSidebarComponent, AppConfigModule],
 })

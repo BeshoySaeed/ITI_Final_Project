@@ -1,96 +1,165 @@
 <div class="users-container">
-    <h3 class="admin-page-title">All Users</h3>
+  <h3 class="admin-page-title">All Users</h3>
 
-    
-<div class="card">
+  <div class="card">
     <p-table
-        #dt1
-        [value]="users"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [loading]="loading"
-        [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['role', 'firstName', 'lastName', 'email', 'subscriptionPlan', 'balance']"
-        >
-        <ng-template pTemplate="caption">
-            <div class="flex">
-                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
-                <span class="p-input-icon-left ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="applyFilterGlobal($event, dt1, 'contains')" placeholder="Search keyword" />
-                </span>
+      #dt1
+      [value]="users"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'role',
+        'firstName',
+        'lastName',
+        'email',
+        'subscriptionPlan',
+        'balance'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">
+              Role
+              <p-columnFilter
+                type="text"
+                field="role"
+                display="menu"
+              ></p-columnFilter>
             </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="min-width:15rem">
-                    <div class="flex align-items-center">
-                        Role
-                        <p-columnFilter type="text" field="role" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:15rem">
-                    <div class="flex align-items-center">
-                        First name
-                        <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:15rem">
-                    <div class="flex align-items-center">
-                        Last name
-                        <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:15rem">
-                    <div class="flex align-items-center">
-                        Email
-                        <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:10rem">
-                    <div class="flex align-items-center">
-                        Subscription plan
-                        <p-columnFilter type="text" field="subscriptionPlan" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:10rem">
-                    <div class="flex align-items-center">
-                        Balance
-                        <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
-                    </div>
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-            <tr>
-                <td>
-                    {{ user.role }}
-                </td>
-                <td>
-                    {{ user.firstName }}
-                </td>
-                <td>
-                    {{ user.lastName }}
-                </td>
-                <td>
-                    {{ user.email }}
-                </td>
-                <td>
-                    {{ user.subscriptionPlan }}
-                </td>
-                <td>
-                    {{ user.balance | currency: 'USD':'symbol' }}
-                </td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="7">No users found.</td>
-            </tr>
-        </ng-template>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              First name
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Last name
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Subscription plan
+              <p-columnFilter
+                type="text"
+                field="subscriptionPlan"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Balance
+              <p-columnFilter
+                type="numeric"
+                field="balance"
+                display="menu"
+                currency="USD"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>
+            {{ user.role }}
+          </td>
+          <td>
+            {{ user.firstName }}
+          </td>
+          <td>
+            {{ user.lastName }}
+          </td>
+          <td>
+            {{ user.email }}
+          </td>
+          <td>
+            {{ user.subscriptionPlan }}
+          </td>
+          <td>
+            {{ user.balance | currency : "USD" : "symbol" }}
+          </td>
+          <td class="flex">
+            <button
+              pButton
+              pRipple
+              pTooltip="Edit user"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              class="p-button-success p-2 rounded mr-2"
+              (click)="editUser(user.id)"
+            >
+              <i class="pi pi-fw pi-user-edit"></i>
+            </button>
+
+            <button
+              pButton
+              pRipple
+              pTooltip="Delete user"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              class="p-button-danger p-2 rounded"
+              (click)="deleteUser(user.id)"
+            >
+              <i class="pi pi-fw pi-user-minus"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No users found.</td>
+        </tr>
+      </ng-template>
     </p-table>
-</div>
+  </div>
 </div>

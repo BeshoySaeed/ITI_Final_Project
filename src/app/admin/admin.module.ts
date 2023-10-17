@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { AdminRoutingModule } from './admin-routing.module';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     LayoutModule,
     TableModule,
-    InputTextModule
+    InputTextModule,
+    TooltipModule,
   ],
 })
 export class AdminModule {}

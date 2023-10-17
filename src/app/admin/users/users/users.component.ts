@@ -19,7 +19,7 @@ export class UsersComponent {
     },
 
     {
-      id: 1,
+      id: 2,
       role: "Admin",
       firstName: 'Martina',
       lastName: "Magdi",
@@ -29,7 +29,6 @@ export class UsersComponent {
     }
   ];
 
-  // representatives!: Representative[];
   loading: boolean = false;
 
   ngOnInit() {
@@ -41,5 +40,13 @@ export class UsersComponent {
 
   applyFilterGlobal($event:any, dt:any, stringVal:string) {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
+
+  editUser(id:number) {
+    console.log(id)
+  }
+
+  deleteUser(id:number) {
+    console.log(id)
   }
 }

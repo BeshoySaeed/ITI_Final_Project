@@ -28,11 +28,11 @@ export class EditUserComponent {
     phones: [
       {
         id: 1,
-        value: '01254646441',
+        value: '+20-1999999999',
       },
       {
         id: 2,
-        value: '01254655441',
+        value: '+20-1999999999',
       },
     ],
   };

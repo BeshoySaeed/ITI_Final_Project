@@ -37,7 +37,7 @@ export class AddUserComponent {
         phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         password: [
           '',
-          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
         ],
         confirmPassword: [''],
       },

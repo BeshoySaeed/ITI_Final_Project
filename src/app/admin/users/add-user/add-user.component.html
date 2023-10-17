@@ -93,7 +93,14 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <p-dropdown name="role" styleClass="w-full" [options]="roles" formControlName="role" optionLabel="name" optionValue="id"></p-dropdown>
+          <p-dropdown
+            name="role"
+            styleClass="w-full"
+            [options]="roles"
+            formControlName="role"
+            optionLabel="name"
+            optionValue="id"
+          ></p-dropdown>
           <label for="role" class="block mb-2">Role *</label>
         </div>
       </div>
@@ -135,15 +142,17 @@
 
       <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
         <div class="flex flex-column-reverse">
-          <input
-            id="password"
-            type="password"
-            pInputText
+          <p-password
             [required]="true"
             [minlength]="8"
             formControlName="password"
-            class="input p-2 border-round outline-none w-full"
-          />
+            name="password"
+            strongRegex="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            class="input border-round outline-none"
+            styleClass="w-full"
+            [toggleMask]="true"
+          ></p-password>
+
           <label for="password" class="block mb-2">Password *</label>
         </div>
 
@@ -167,24 +176,27 @@
             Password must be more than 8 characters
           </small>
           <small *ngIf="addUserForm.controls['password'].errors?.['pattern']"
-            >Password must contains at least one lowercase character, one uppercase character, one number and one
-            special character</small
+            >Password must contains at least one lowercase character, one
+            uppercase character, one number and one special character</small
           >
         </div>
       </div>
 
       <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
         <div class="flex flex-column-reverse">
-          <input
+          <p-password
             id="confirm-password"
-            type="password"
-            pInputText
             [required]="true"
-            [minlength]="8"
             formControlName="confirmPassword"
-            class="input p-2 border-round outline-none w-full"
-          />
-          <label for="confirm-password" class="block mb-2">Confirm password *</label>
+            name="confirmPassword"
+            class="input border-round outline-none"
+            styleClass="w-full"
+            [toggleMask]="true"
+            [feedback]="false"
+          ></p-password>
+          <label for="confirm-password" class="block mb-2"
+            >Confirm password *</label
+          >
         </div>
 
         <div

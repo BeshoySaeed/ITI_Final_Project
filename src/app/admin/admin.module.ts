@@ -21,6 +21,7 @@ import { CategoriesComponent } from './categories/categories/categories.componen
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
-    FileUploadModule
+    FileUploadModule,
+    PasswordModule
   ],
 })
 export class AdminModule {}

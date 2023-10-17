@@ -20,6 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CategoriesComponent } from './categories/categories/categories.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
     InputMaskModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    FileUploadModule
   ],
 })
 export class AdminModule {}

@@ -15,7 +15,27 @@ export class UsersComponent {
       lastName: "Magdi",
       email: "martinamagdi@gmail.com",
       subscriptionPlan: "Plan 1",
-      balance: 1000
+      balance: 1000,
+      phones: [
+        {
+          id: 1,
+          value: '01254646441'
+        },
+        {
+          id: 2,
+          value: '01254655441'
+        },
+      ],
+      addresses: [
+        {
+          id: 1,
+          value: 'Cairo'
+        },
+        {
+          id: 2,
+          value: 'Cairo'
+        },
+      ]
     },
 
     {
@@ -25,7 +45,27 @@ export class UsersComponent {
       lastName: "Magdi",
       email: "martinamagdi@gmail.com",
       subscriptionPlan: "Plan 2",
-      balance: 2000
+      balance: 2000,
+      phones: [
+        {
+          id: 1,
+          value: '01254646441'
+        },
+        {
+          id: 2,
+          value: '01254655441'
+        },
+      ],
+      addresses: [
+        {
+          id: 1,
+          value: 'Cairo'
+        },
+        {
+          id: 2,
+          value: 'Cairo'
+        },
+      ]
     }
   ];
 

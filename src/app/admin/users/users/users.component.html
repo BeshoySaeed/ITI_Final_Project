@@ -111,6 +111,26 @@
               ></p-columnFilter>
             </div>
           </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Phones
+              <p-columnFilter
+                type="numeric"
+                field="phones"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Addresses
+              <p-columnFilter
+                type="text"
+                field="addresses"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
           <th>Actions</th>
         </tr>
       </ng-template>
@@ -133,6 +153,12 @@
           </td>
           <td>
             {{ user.balance | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            <span class="surface-600 text-white px-2 py-1 border-round m-1" *ngFor="let phone of user.phones">{{ phone.value }}</span>
+          </td>
+          <td>
+            <span class="surface-600 text-white px-2 py-1 border-round m-1" *ngFor="let address of user.addresses">{{ address.value }}</span>
           </td>
           <td class="flex">
             <button

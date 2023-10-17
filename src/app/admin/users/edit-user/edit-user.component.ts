@@ -1,49 +1,57 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { checkpass } from 'src/app/user/register/confirmpass';
 
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  styleUrls: ['./edit-user.component.scss'],
 })
 export class EditUserComponent {
   editUserForm!: FormGroup;
-  roles= [
+  roles = [
     {
       id: 1,
-      name: "User"
+      name: 'User',
     },
     {
       id: 2,
-      name: "Admin"
+      name: 'Admin',
     },
   ];
-  
+
+  user = {
+    id: 1,
+    role: 1,
+    firstName: 'Martina',
+    lastName: 'Magdi',
+    email: 'martinamagdi@gmail.com',
+    phones: [
+      {
+        id: 1,
+        value: '01254646441',
+      },
+      {
+        id: 2,
+        value: '01254655441',
+      },
+    ],
+  };
+
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
-    this.editUserForm = this.fb.group(
-      {
-        firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        role: ['1'],
-        email: [
-          '',
-          Validators.pattern(
-            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          ),
-        ],
-        phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-        phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-        message: ['', Validators.pattern(/^[a-zA-Z][^0-9\s\W]+/)],
-        password: [
-          '',
-          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/),
-        ],
-        confirmPassword: [''],
-      },
-      { validator: checkpass('password', 'confirmPassword') }
-    );
+    this.editUserForm = this.fb.group({
+      firstName: [this.user.firstName, Validators.pattern(/^[a-zA-Z]+$/)],
+      lastName: [this.user.lastName, Validators.pattern(/^[a-zA-Z]+$/)],
+      role: [this.user.role],
+      email: [
+        this.user.email,
+        Validators.pattern(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        ),
+      ],
+      phone1: [this.user.phones[0].value, Validators.pattern(/^\+20-1\d{9}$/)],
+      phone2: [this.user.phones[1].value, Validators.pattern(/^\+20-1\d{9}$/)],
+    });
   }
 
   onSubmit() {

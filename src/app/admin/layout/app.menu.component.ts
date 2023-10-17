@@ -192,21 +192,6 @@ export class AppMenuComponent implements OnInit {
         ],
       },
       {
-        label: 'Employees',
-        items: [
-          {
-            label: 'All Employees',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/admin/employees'],
-          },
-          {
-            label: 'Add Employee',
-            icon: 'pi pi-fw pi-user-plus',
-            routerLink: ['/admin/employees/create'],
-          },
-        ],
-      },
-      {
         label: 'Job Application Appliers',
         items: [
           {

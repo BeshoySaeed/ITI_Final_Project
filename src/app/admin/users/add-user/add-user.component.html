@@ -93,15 +93,8 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <input
-            id="email"
-            type="email"
-            [required]="true"
-            pInputText
-            formControlName="role"
-            class="input p-2 border-round outline-none w-full"
-          />
-          <label for="email" class="block mb-2">Role *</label>
+          <p-dropdown name="role" styleClass="w-full" [options]="roles" formControlName="role" optionLabel="name" optionValue="id"></p-dropdown>
+          <label for="role" class="block mb-2">Role *</label>
         </div>
       </div>
 

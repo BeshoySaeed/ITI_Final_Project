@@ -16,6 +16,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     InputMaskModule,
     FormsModule,
     ReactiveFormsModule,
+    DropdownModule
   ],
 })
 export class AdminModule {}

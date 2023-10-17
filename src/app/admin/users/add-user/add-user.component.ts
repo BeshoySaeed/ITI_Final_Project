@@ -9,13 +9,24 @@ import { checkpass } from 'src/app/user/register/confirmpass';
 })
 export class AddUserComponent {
   addUserForm!: FormGroup;
+  roles= [
+    {
+      id: 1,
+      name: "User"
+    },
+    {
+      id: 2,
+      name: "Admin"
+    },
+  ];
+
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.addUserForm = this.fb.group(
       {
         firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        role: [''],
+        role: ['1'],
         email: [
           '',
           Validators.pattern(

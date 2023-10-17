@@ -15,12 +15,14 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     UsersComponent,
     AddUserComponent,
     EditUserComponent,
+    NotFoundComponent,
   ],
 
   imports: [

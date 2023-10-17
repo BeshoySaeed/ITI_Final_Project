@@ -4,6 +4,7 @@ import { UsersComponent } from './users/users/users.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: "**",
+        component: NotFoundComponent
+      }
     ],
   },
 ];

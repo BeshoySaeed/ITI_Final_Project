@@ -12,6 +12,8 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { InputMaskModule } from 'primeng/inputmask';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,9 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     TableModule,
     InputTextModule,
     TooltipModule,
+    InputMaskModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AdminModule {}

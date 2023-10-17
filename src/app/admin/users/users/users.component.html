@@ -23,9 +23,13 @@
         'role',
         'firstName',
         'lastName',
-        'email',
+        'totalOrders',
+        'totalPayed',
         'subscriptionPlan',
-        'balance'
+        'balance',
+        'email',
+        'phones',
+        'addresses'
       ]"
     >
       <ng-template pTemplate="caption">
@@ -80,13 +84,24 @@
               ></p-columnFilter>
             </div>
           </th>
-          <th style="min-width: 15rem">
+          <th style="min-width: 10rem">
             <div class="flex align-items-center">
-              Email
+              Total orders
               <p-columnFilter
-                type="text"
-                field="email"
+                type="numeric"
+                field="totalOrders"
                 display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Total payed
+              <p-columnFilter
+                type="numeric"
+                field="totalPayed"
+                display="menu"
+                currency="USD"
               ></p-columnFilter>
             </div>
           </th>
@@ -108,6 +123,16 @@
                 field="balance"
                 display="menu"
                 currency="USD"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
               ></p-columnFilter>
             </div>
           </th>
@@ -146,13 +171,19 @@
             {{ user.lastName }}
           </td>
           <td>
-            {{ user.email }}
+            {{ user.totalOrders }}
+          </td>
+          <td>
+            {{ user.totalPayed | currency : "USD" : "symbol" }}
           </td>
           <td>
             {{ user.subscriptionPlan }}
           </td>
           <td>
             {{ user.balance | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            {{ user.email }}
           </td>
           <td>
             <span class="surface-600 text-white px-2 py-1 border-round m-1" *ngFor="let phone of user.phones">{{ phone.value }}</span>

@@ -35,7 +35,9 @@ export class UsersComponent {
           id: 2,
           value: 'Cairo'
         },
-      ]
+      ],
+      totalOrders: 5,
+      totalPayed: 200
     },
 
     {
@@ -65,7 +67,9 @@ export class UsersComponent {
           id: 2,
           value: 'Cairo'
         },
-      ]
+      ],
+      totalOrders: 10,
+      totalPayed: 500
     }
   ];
 

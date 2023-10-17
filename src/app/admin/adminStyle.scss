@@ -2,4 +2,11 @@
     .admin-page-title {
         color: $title-text-color;
     }
+
+    .error-message {
+        small {
+            color: red;
+            margin-top: 5px;
+        }
+    }
 }

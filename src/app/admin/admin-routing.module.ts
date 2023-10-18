@@ -102,6 +102,14 @@ const routes: Routes = [
             path: 'social/edit/:id',
             component: EditSocialComponent,
           },
+          {
+            path: 'phones/create',
+            component: EditPhoneComponent,
+          },
+          {
+            path: 'emails/create',
+            component: EditEmailComponent,
+          },
         ],
       },
       {

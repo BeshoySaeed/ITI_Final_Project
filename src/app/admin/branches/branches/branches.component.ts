@@ -12,30 +12,39 @@ export class BranchesComponent {
       name:"Branch Name",
       address:" 6st  Maddi",
       location:"Cairo",
+      locationlink:"https://www.google.com/maps",
     },
     {
       id: 2,
       name:"Branch Name",
       address:" 6st  Maddi",
       location:"Giza",
+      locationlink:"https://www.google.com/maps",
+
     },
     {
       id: 3,
       name:"Branch Name",
       address:" 6st  Maddi",
       location:"Cairo",
+      locationlink:"https://www.google.com/maps",
+
     },
     {
       id: 4,
       name:"Branch Name",
       address:" 6st  Maddi",
       location:"Alex",
+      locationlink:"https://www.google.com/maps",
+
     },
     {
       id: 5,
       name:"Branch Name",
       address:" 6st  Maddi",
       location:"Port Said",
+      locationlink:"https://www.google.com/maps",
+
     },
     
   ];

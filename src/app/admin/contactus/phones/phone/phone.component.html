@@ -74,8 +74,11 @@
             <td>
               {{ phone.phone }}
             </td>
-            <td [ngStyle]="{'color': phone.status | Active }">
-              {{ phone.status }}
+            <td Style="text-transform: capitalize;">
+              <p-tag
+              [value]=" phone.status"
+              [severity]="status( phone.status)"
+            ></p-tag>
             </td>
             <td class="flex">
               <button

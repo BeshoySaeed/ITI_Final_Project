@@ -53,5 +53,9 @@ applyFilterGlobal($event:any, dt:any, stringVal:string) {
 deleteEmail(id:number) {
   console.log(id)
 }
+status(active: string) {
+  let status = active == 'active'? 'success' : 'danger';
+  return status;
+}
 }
 

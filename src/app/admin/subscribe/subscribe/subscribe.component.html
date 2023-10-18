@@ -130,8 +130,11 @@
             <td>
               {{ Subscribe.subscribe_value }} L.E
             </td>
-            <td [ngStyle]="{'color': Subscribe.status | Active }">
-              {{ Subscribe.status }}
+            <td Style="text-transform: capitalize;">
+              <p-tag
+              [value]=" Subscribe.status"
+              [severity]="status( Subscribe.status)"
+            ></p-tag>
             </td>
           <td class="flex">
             <button

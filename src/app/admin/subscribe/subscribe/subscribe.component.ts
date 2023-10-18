@@ -70,4 +70,8 @@ export class SubscribeComponent {
   deleteSubscribe(id:number) {
     console.log(id)
   }
+  status(active: string) {
+    let status = active == 'active'? 'success' : 'danger';
+    return status;
+  }
 }

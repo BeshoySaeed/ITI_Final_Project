@@ -7,47 +7,6 @@
         (ngSubmit)="onSubmit()"
         class="formgrid grid w-full mt-3 mx-auto form"
       >
-        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
-          <div class="flex flex-column-reverse">
-            <input
-              id="name"
-              type="text"
-              pInputText
-              [required]="true"
-              [minlength]="4"
-              formControlName="name"
-              class="input p-2 border-round outline-none w-full"
-            />
-            <label for="name" class="block mb-2">Name *</label>
-          </div>
-  
-          <div
-            class="error-message"
-            *ngIf="
-              AddEmail.controls['name'].touched &&
-              AddEmail.controls['name'].invalid
-            "
-          >
-            <small
-              class="block"
-              *ngIf="AddEmail.controls['name'].errors?.['required']"
-            >
-              First name is required
-            </small>
-            <small
-              class="block"
-              *ngIf="AddEmail.controls['name'].errors?.['minlength']"
-            >
-              First name is must be more than 3 characters
-            </small>
-            <small
-              class="block"
-              *ngIf="AddEmail.controls['name'].errors?.['pattern']"
-            >
-              First name must contains only letters
-            </small>
-          </div>
-        </div>
         <div class="col-12 md:col-6 mb-4">
           <div class="flex flex-column-reverse">
             <input

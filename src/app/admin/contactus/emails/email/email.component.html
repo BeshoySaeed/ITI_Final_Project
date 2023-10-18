@@ -74,8 +74,11 @@
             <td>
               {{ Email.Email }}
             </td>
-            <td [ngStyle]="{'color': Email.status | Active }">
-              {{ Email.status }}
+            <td Style="text-transform: capitalize;">
+              <p-tag
+              [value]="Email.status"
+              [severity]="status(Email.status)"
+            ></p-tag>
             </td>
             <td class="flex">
               <button

@@ -54,6 +54,12 @@ export class PhoneComponent {
   deletePhone(id:number) {
     console.log(id)
   }
+  status(active: string) {
+    let status = active == 'active'? 'success' : 'danger';
+    return status;
+  }
+
+  
 }
 @Pipe({
   name: 'Active'

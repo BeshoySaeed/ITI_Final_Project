@@ -20,6 +20,7 @@ import { EditSocialComponent } from './contactus/social/edit-social/edit-social.
 import { AdditionsComponent } from './additions/additions/additions.component';
 import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
 import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     // This layout component will render in apps router-outlet
     component: AppLayoutComponent,
     children: [
+      {
+        path: 'orders',
+        component: OrdersComponent,
+      },
       {
         path: 'users',
         children: [

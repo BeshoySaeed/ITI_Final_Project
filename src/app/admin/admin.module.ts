@@ -41,6 +41,7 @@ import { EditAdditionComponent } from './additions/edit-addition/edit-addition.c
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TagModule } from 'primeng/tag';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { TagModule } from 'primeng/tag';
     Active,
     AdditionsComponent,
     AddAdditionComponent,
-    EditAdditionComponent
+    EditAdditionComponent,
+    OrdersComponent
   ],
 
   imports: [

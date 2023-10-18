@@ -7,74 +7,139 @@ import { Table } from 'primeng/table';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent {
-  menuItems = [
+  orders = [
     {
       id: 1,
-      name: 'Menu Item 1',
-      image:
-        'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
-      description: 'This is the first item in our menu.',
-      price: 20,
-      category: 'pizza',
-      active: 'active',
-      discount: 10,
-      additions: [
+      userName: "Martina",
+      createdAt: "18-10-2023",
+      totalPrice: "120",
+      orderItems: [
         {
           id: 1,
-          name: "Addition 1",
+          name: 'Menu Item 1',
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-          description: "This is the first item in our menu.",
-          price: 10,
+            'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
+          price: 20,
+          category: 'pizza',
+          discount: 10,
+          additions: [
+            {
+              id: 1,
+              name: "Addition 1",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 10,
+            },
+            {
+              id: 2,
+              name: "Addition 2",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+          ],
         },
         {
-          id: 2,
-          name: "Addition 2",
+          id: 1,
+          name: 'Menu Item 2',
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-          description: "This is the first item in our menu.",
-          price: 5,
+            'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
+          price: 20,
+          category: 'pizza',
+          discount: 10,
+          additions: [
+            {
+              id: 1,
+              name: "Addition 1",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+            {
+              id: 2,
+              name: "Addition 2",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 15,
+            },
+            {
+              id: 3,
+              name: "Addition 3",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+          ],
         },
-      ],
+      ]
     },
+
     {
-      id: 1,
-      name: 'Menu Item 2',
-      image:
-        'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
-      description: 'This is the first item in our menu.',
-      price: 20,
-      category: 'pizza',
-      active: 'inactive',
-      discount: 10,
-      additions: [
+      id: 2,
+      userName: "User",
+      createdAt: "18-10-2023",
+      totalPrice: "120",
+      orderItems: [
         {
           id: 1,
-          name: "Addition 1",
+          name: 'Menu Item 1',
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-          description: "This is the first item in our menu.",
-          price: 5,
+            'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
+          price: 20,
+          category: 'pizza',
+          discount: 10,
+          additions: [
+            {
+              id: 1,
+              name: "Addition 1",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 10,
+            },
+            {
+              id: 2,
+              name: "Addition 2",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+          ],
         },
         {
-          id: 2,
-          name: "Addition 2",
+          id: 1,
+          name: 'Menu Item 2',
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-          description: "This is the first item in our menu.",
-          price: 15,
+            'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
+          price: 20,
+          category: 'pizza',
+          discount: 10,
+          additions: [
+            {
+              id: 1,
+              name: "Addition 1",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+            {
+              id: 2,
+              name: "Addition 2",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 15,
+            },
+            {
+              id: 3,
+              name: "Addition 3",
+              image:
+                "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+              price: 5,
+            },
+          ],
         },
-        {
-          id: 3,
-          name: "Addition 3",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-          description: "This is the first item in our menu.",
-          price: 5,
-        },
-      ],
-    },
-  ];
+      ]
+    }
+  ]
 
   loading: boolean = false;
 

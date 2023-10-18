@@ -4,21 +4,14 @@
   <div class="card">
     <p-table
       #dt1
-      [value]="menuItems"
-      dataKey="name"
+      [value]="orders"
+      dataKey="userName"
       [rows]="10"
       [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
       [paginator]="true"
-      [globalFilterFields]="[
-        'name',
-        'price',
-        'discount',
-        'description',
-        'category',
-        'active'
-      ]"
+      [globalFilterFields]="['price', 'userName', 'createdAt', 'totalPrice']"
     >
       <ng-template pTemplate="caption">
         <div class="flex">
@@ -43,32 +36,29 @@
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 4rem"></th>
-          <th style="min-width: 4rem">
-            <div class="flex align-items-center">Image</div>
-          </th>
           <th style="min-width: 8rem">
             <div class="flex align-items-center">
-              Name
+              User name
               <p-columnFilter
                 type="text"
-                field="name"
+                field="userName"
                 display="menu"
               ></p-columnFilter>
             </div>
           </th>
           <th style="min-width: 8rem">
             <div class="flex align-items-center">
-              Category
+              createdAt
               <p-columnFilter
                 type="text"
-                field="name"
+                field="createdAt"
                 display="menu"
               ></p-columnFilter>
             </div>
           </th>
           <th style="min-width: 8rem">
             <div class="flex align-items-center">
-              Price
+              Total price
               <p-columnFilter
                 type="numeric"
                 field="name"
@@ -77,27 +67,7 @@
               ></p-columnFilter>
             </div>
           </th>
-          <th style="min-width: 8rem">
-            <div class="flex align-items-center">
-              Description
-              <p-columnFilter
-                type="text"
-                field="name"
-                display="menu"
-              ></p-columnFilter>
-            </div>
-          </th>
-          <th style="min-width: 8rem">
-            <div class="flex align-items-center">
-              Discount
-              <p-columnFilter
-                type="numeric"
-                field="name"
-                display="menu"
-              ></p-columnFilter>
-            </div>
-          </th>
-          <th style="min-width: 8rem">
+          <!-- <th style="min-width: 8rem">
             <div class="flex align-items-center">
               Status
               <p-columnFilter
@@ -106,113 +76,68 @@
                 display="menu"
               ></p-columnFilter>
             </div>
-          </th>
-          <th style="min-width: 8rem">
-            <div class="flex align-items-center">Actions</div>
-          </th>
+          </th> -->
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-menuItem let-expanded="expanded">
+      <ng-template pTemplate="body" let-order let-expanded="expanded">
         <tr>
           <td>
             <button
               type="button"
               pButton
               pRipple
-              [pRowToggler]="menuItem"
+              [pRowToggler]="order"
               class="p-button-text p-button-rounded p-button-plain"
               [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
             ></button>
           </td>
           <td>
-            <img width="150" [src]="menuItem.image" [alt]="menuItem.name" />
+            {{ order.userName }}
           </td>
           <td>
-            {{ menuItem.name }}
+            {{ order.createdAt }}
           </td>
           <td>
-            {{ menuItem.category }}
+            {{ order.totalPrice | currency : "USD" : "symbol" }}
           </td>
-          <td>
-            {{ menuItem.price | currency : "USD" : "symbol" }}
-          </td>
-          <td>
-            {{ menuItem.description }}
-          </td>
-          <td>
-            {{ menuItem.discount }}
-          </td>
-          <!-- <td [ngStyle]="{'color': menuItem.active | Active }">
-              {{ menuItem.active }}
-            </td> -->
-          <td>
+          <!-- <td>
             <p-tag
-              [value]="menuItem.active"
-              [severity]="status(menuItem.active)"
+              [value]="order.active"
+              [severity]="status(order.active)"
             ></p-tag>
-          </td>
-          <td>
-            <button
-              pButton
-              pRipple
-              pTooltip="Edit menu item"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              routerLink="/admin/menu-items/edit/{{ menuItem.id }}"
-              class="p-button-success p-2 rounded mr-2"
-            >
-              <i class="pi pi-fw pi-pencil"></i>
-            </button>
-
-            <button
-              pButton
-              pRipple
-              pTooltip="Delete menu i"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              class="p-button-danger p-2 rounded"
-              (click)="deleteItem(menuItem.id)"
-            >
-              <i class="pi pi-fw pi-trash"></i>
-            </button>
-          </td>
+          </td> -->
         </tr>
       </ng-template>
-      <ng-template pTemplate="rowexpansion" let-menuItem>
+      <ng-template pTemplate="rowexpansion" let-item>
         <tr>
           <td colspan="12">
             <div class="p-3">
-              <p-table [value]="menuItem.additions" dataKey="id">
+              <p-table [value]="item.orderItems" dataKey="id">
                 <ng-template pTemplate="header">
                   <tr>
                     <th>Image</th>
-                    <th pSortableColumn="name">
-                      Name <p-sortIcon field="name"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="price">
-                      price <p-sortIcon field="price"></p-sortIcon>
-                    </th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Discount</th>
+                    <th>Additions</th>
                   </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-addition>
+                <ng-template pTemplate="body" let-item>
                   <tr>
                     <td>
-                      <img
-                        width="100"
-                        [src]="menuItem.image"
-                        [alt]="menuItem.name"
-                      />
+                      <img width="100" [src]="item.image" [alt]="item.name" />
                     </td>
-                    <td>{{ addition.name }}</td>
-                    <td>{{ addition.price | currency : "USD" }}</td>
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="emptymessage">
-                  <tr>
-                    <td colspan="6">
-                      There are no additions for this menu item.
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price | currency : "USD" }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.discount }}</td>
+                    <td>
+                      <span
+                        class="surface-600 text-white px-2 py-1 border-round m-1"
+                        *ngFor="let addition of item.additions"
+                        >{{ addition.name }}</span
+                      >
                     </td>
                   </tr>
                 </ng-template>
@@ -224,7 +149,7 @@
 
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="7">No menu items found.</td>
+          <td colspan="7">No orders found.</td>
         </tr>
       </ng-template>
     </p-table>

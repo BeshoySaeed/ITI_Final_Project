@@ -11,7 +11,25 @@
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
       [paginator]="true"
-      [globalFilterFields]="['price', 'userName', 'createdAt', 'totalPrice']"
+      [globalFilterFields]="[
+        'price',
+        'userName',
+        'createdAt',
+        'totalPrice',
+        'note',
+        'paymentMethod',
+        'discountCode',
+        'confirmInstruction',
+        'street',
+        'area',
+        'city',
+        'building_name',
+        'floor_number',
+        'flat_number',
+        'gps_location',
+        'phone1',
+        'phone2'
+      ]"
     >
       <ng-template pTemplate="caption">
         <div class="flex">
@@ -36,7 +54,7 @@
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 4rem"></th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 4rem">
             <div class="flex align-items-center">
               User name
               <p-columnFilter
@@ -46,7 +64,7 @@
               ></p-columnFilter>
             </div>
           </th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 4rem">
             <div class="flex align-items-center">
               Created at
               <p-columnFilter
@@ -56,27 +74,147 @@
               ></p-columnFilter>
             </div>
           </th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Phone 1
+              <p-columnFilter
+                type="numeric"
+                field="phone1"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Phone 2
+              <p-columnFilter
+                type="numeric"
+                field="phone2"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Street
+              <p-columnFilter
+                type="text"
+                field="street"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Area
+              <p-columnFilter
+                type="text"
+                field="area"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              City
+              <p-columnFilter
+                type="text"
+                field="city"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Building name
+              <p-columnFilter
+                type="text"
+                field="building_name"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Floor number
+              <p-columnFilter
+                type="numeric"
+                field="floor_number"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Flat number
+              <p-columnFilter
+                type="numeric"
+                field="flat_number"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              GPS location
+              <p-columnFilter
+                type="text"
+                field="gps_location"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Note
+              <p-columnFilter
+                type="text"
+                field="note"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
             <div class="flex align-items-center">
               Total price
               <p-columnFilter
                 type="numeric"
-                field="name"
+                field="totalPrice"
                 display="menu"
                 currency="USD"
               ></p-columnFilter>
             </div>
           </th>
-          <!-- <th style="min-width: 8rem">
+          <th style="min-width: 4rem">
             <div class="flex align-items-center">
-              Status
+              Payment method
               <p-columnFilter
                 type="text"
-                field="name"
+                field="paymentMethod"
                 display="menu"
               ></p-columnFilter>
             </div>
-          </th> -->
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Discount code
+              <p-columnFilter
+                type="text"
+                field="discountCode"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Confirm instructions
+              <p-columnFilter
+                type="text"
+                field="confirmInstruction"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-order let-expanded="expanded">
@@ -91,21 +229,29 @@
               [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
             ></button>
           </td>
-          <td>
-            {{ order.userName }}
-          </td>
-          <td>
-            {{ order.createdAt }}
-          </td>
+          <td>{{ order.userName }}</td>
+          <td>{{ order.createdAt }}</td>
+          <td>{{ order.phone1 }}</td>
+          <td>{{ order.phone2 }}</td>
+          <td>{{ order.street }}</td>
+          <td>{{ order.area }}</td>
+          <td>{{ order.city }}</td>
+          <td>{{ order.building_name }}</td>
+          <td>{{ order.floor_number }}</td>
+          <td>{{ order.flat_number }}</td>
+          <td>{{ order.gps_location }}</td>
+          <td>{{ order.note }}</td>
           <td>
             {{ order.totalPrice | currency : "USD" : "symbol" }}
           </td>
-          <!-- <td>
+          <td>{{ order.paymentMethod }}</td>
+          <td>{{ order.discountCode }}</td>
+          <td>
             <p-tag
-              [value]="order.active"
-              [severity]="status(order.active)"
+              [value]="order.confirmInstruction"
+              [severity]="confirmInstructionStatus(order.confirmInstruction)"
             ></p-tag>
-          </td> -->
+          </td>
         </tr>
       </ng-template>
       <ng-template pTemplate="rowexpansion" let-item>

@@ -38,6 +38,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { AdditionsComponent } from './additions/additions/additions.component';
 import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
 import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 @NgModule({
   declarations: [
     UsersComponent,
@@ -80,7 +82,8 @@ import { EditAdditionComponent } from './additions/edit-addition/edit-addition.c
     DropdownModule,
     FileUploadModule,
     PasswordModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    InputNumberModule
   ],
 })
 export class AdminModule {}

@@ -95,8 +95,6 @@
               ></p-columnFilter>
             </div>
           </th>
-
-          <th>Status</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-feedback>
@@ -116,16 +114,6 @@
           </td>
           <td>
             {{ feedback.created_at }}
-          </td>
-
-          <td>
-            <p-toggleButton
-              name="{{ feedback.id }}"
-              [(ngModel)]="feedback.checked"
-              (onChange)="toggleFeedback(feedback)"
-              onLabel="Contacted"
-              offLabel="Not contacted"
-            ></p-toggleButton>
           </td>
         </tr>
       </ng-template>

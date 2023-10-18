@@ -79,7 +79,20 @@
           </small>
         </div>
       </div>
-
+      <div class="col-12 md:col-6 mb-4">
+        <select
+          class="custom-select mb-3"
+          (change)="changeState($event)"
+          formControlName="state"
+        >
+          <option value="" [defaultSelected]="true" [disabled]="true">
+            Choose Status
+          </option>
+          <option *ngFor="let state of status" [ngValue]="state">
+            {{ state }}
+          </option>
+        </select>
+      </div>
       <button
         type="submit"
         class="primary-button w-5 mx-auto my-3"

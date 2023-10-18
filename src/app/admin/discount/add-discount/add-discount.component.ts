@@ -9,7 +9,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AddDiscountComponent {
   addDiscountForm!: FormGroup;
   isActive: boolean = false;
-
+  state:any;
+  status: any = ['active', 'Not active'];
 
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -19,10 +20,17 @@ export class AddDiscountComponent {
 
         percent: ['', Validators.pattern(/^(?:[1-9]|[1-9][0-9]|100)$/) ],
         
-    
+        state: ['', Validators.required],
       },
    
     );
+    
+  }
+
+  changeState(e: any) {
+    this.state?.setValue(e.target.value, {
+      onlySelf: true,
+    });
   }
 
   onSubmit() {

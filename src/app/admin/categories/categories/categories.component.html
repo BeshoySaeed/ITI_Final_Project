@@ -88,7 +88,7 @@
               placeholder="Top"
               [showDelay]="700"
               class="p-button-danger p-2 rounded"
-              (click)="deleteUser(category.id)"
+              (click)="deleteItem(category.id)"
             >
               <i class="pi pi-fw pi-trash"></i>
             </button>
@@ -97,7 +97,7 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="7">No users found.</td>
+          <td colspan="7">No categories found.</td>
         </tr>
       </ng-template>
     </p-table>

@@ -34,7 +34,7 @@ export class CategoriesComponent {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
-  deleteUser(id:number) {
+  deleteItem(id:number) {
     console.log(id)
   }
 }

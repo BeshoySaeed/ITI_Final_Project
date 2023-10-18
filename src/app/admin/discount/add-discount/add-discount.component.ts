@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AddDiscountComponent {
   addDiscountForm!: FormGroup;
   isActive: boolean = false;
-  state:any;
+
   status: any = ['active', 'Not active'];
 
   constructor(private fb: FormBuilder) {}
@@ -20,17 +20,25 @@ export class AddDiscountComponent {
 
         percent: ['', Validators.pattern(/^(?:[1-9]|[1-9][0-9]|100)$/) ],
         
-        state: ['', Validators.required],
       },
    
     );
     
   }
 
-  changeState(e: any) {
-    this.state?.setValue(e.target.value, {
-      onlySelf: true,
-    });
+ 
+
+  toggleActive(active: any) {
+    this.isActive = active;
+
+    if (active) {
+      console.log(active.id);
+    } else {
+      console.log(active.id);
+    }
+  }
+  getToggleButtonClass() {
+    return this.isActive ? 'Active' : 'not-active';
   }
 
   onSubmit() {

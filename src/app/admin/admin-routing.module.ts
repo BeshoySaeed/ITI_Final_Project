@@ -5,6 +5,12 @@ import { AppLayoutComponent } from './layout/app.layout.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PhoneComponent } from './contactus/phones/phone/phone.component';
+import { EmailComponent } from './contactus/emails/email/email.component';
+import { SocialComponent } from './contactus/social/social/social.component';
+import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
+import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
+import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
 
 const routes: Routes = [
   {
@@ -26,6 +32,35 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditUserComponent,
+          },
+        ],
+      },
+      {
+        path: 'contact-us-info',
+        children: [
+          {
+            path: 'phones',
+            component: PhoneComponent,
+          },
+          {
+            path: 'emails',
+            component: EmailComponent,
+          },
+          {
+            path: 'social-media-accounts',
+            component:SocialComponent,
+          },
+          {
+            path: 'phones/edit/:id',
+            component: EditPhoneComponent,
+          },
+          {
+            path: 'emails/edit/:id',
+            component: EditEmailComponent,
+          },
+          {
+            path: 'social/edit/:id',
+            component: EditSocialComponent,
           },
         ],
       },

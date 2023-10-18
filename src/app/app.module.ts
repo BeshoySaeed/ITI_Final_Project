@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     AdminModule,
     UserModule,
-    BrowserModule
+    BrowserModule,
+    ToggleButtonModule
   ],
 
   providers: [],

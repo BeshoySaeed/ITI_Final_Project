@@ -16,13 +16,30 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { Active, PhoneComponent } from './contactus/phones/phone/phone.component';
+import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
+import { AddPhoneComponent } from './contactus/phones/add-phone/add-phone.component';
+import { AddEmailComponent } from './contactus/emails/add-email/add-email.component';
+import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
+import { EmailComponent } from './contactus/emails/email/email.component';
+import { SocialComponent } from './contactus/social/social/social.component';
+import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 @NgModule({
   declarations: [
     UsersComponent,
     AddUserComponent,
     EditUserComponent,
     NotFoundComponent,
+    PhoneComponent,
+    EditPhoneComponent,
+    AddPhoneComponent,
+    AddEmailComponent,
+    EditEmailComponent,
+    EmailComponent,
+    SocialComponent,
+    EditSocialComponent,
+    Active
   ],
 
   imports: [
@@ -38,6 +55,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     InputMaskModule,
     FormsModule,
     ReactiveFormsModule,
+    ToggleButtonModule
   ],
 })
 export class AdminModule {}

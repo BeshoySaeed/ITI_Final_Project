@@ -17,8 +17,8 @@ export class EditSocialComponent {
         name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         link: [
           '',
-          Validators.pattern(
-          ),
+          // Validators.pattern(
+          // ),
         ],
       },
     );

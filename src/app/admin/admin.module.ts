@@ -26,6 +26,15 @@ import { MenuItemsComponent } from './menu-items/menu-items/menu-items.component
 import { AddMenuItemsComponent } from './menu-items/add-menu-items/add-menu-items.component';
 import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-items.component';
 
+import { Active, PhoneComponent } from './contactus/phones/phone/phone.component';
+import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
+import { AddPhoneComponent } from './contactus/phones/add-phone/add-phone.component';
+import { AddEmailComponent } from './contactus/emails/add-email/add-email.component';
+import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
+import { EmailComponent } from './contactus/emails/email/email.component';
+import { SocialComponent } from './contactus/social/social/social.component';
+import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -38,6 +47,15 @@ import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-i
     MenuItemsComponent,
     AddMenuItemsComponent,
     EditMenuItemsComponent,
+    PhoneComponent,
+    EditPhoneComponent,
+    AddPhoneComponent,
+    AddEmailComponent,
+    EditEmailComponent,
+    EmailComponent,
+    SocialComponent,
+    EditSocialComponent,
+    Active
   ],
 
   imports: [
@@ -55,7 +73,8 @@ import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-i
     ReactiveFormsModule,
     DropdownModule,
     FileUploadModule,
-    PasswordModule
+    PasswordModule,
+    ToggleButtonModule
   ],
 })
 export class AdminModule {}

@@ -11,6 +11,12 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
 import { MenuItemsComponent } from './menu-items/menu-items/menu-items.component';
 import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-items.component';
 import { AddMenuItemsComponent } from './menu-items/add-menu-items/add-menu-items.component';
+import { PhoneComponent } from './contactus/phones/phone/phone.component';
+import { EmailComponent } from './contactus/emails/email/email.component';
+import { SocialComponent } from './contactus/social/social/social.component';
+import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
+import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
+import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
 
 const routes: Routes = [
   {
@@ -70,9 +76,38 @@ const routes: Routes = [
         ],
       },
       {
-        path: "**",
-        component: NotFoundComponent
-      }
+        path: 'contact-us-info',
+        children: [
+          {
+            path: 'phones',
+            component: PhoneComponent,
+          },
+          {
+            path: 'emails',
+            component: EmailComponent,
+          },
+          {
+            path: 'social-media-accounts',
+            component: SocialComponent,
+          },
+          {
+            path: 'phones/edit/:id',
+            component: EditPhoneComponent,
+          },
+          {
+            path: 'emails/edit/:id',
+            component: EditEmailComponent,
+          },
+          {
+            path: 'social/edit/:id',
+            component: EditSocialComponent,
+          },
+        ],
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+      },
     ],
   },
 ];

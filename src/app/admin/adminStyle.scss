@@ -10,3 +10,20 @@
         }
     }
 }
+
+:host ::ng-deep .p-highlight.p-togglebutton, 
+:host ::ng-deep .p-highlight.p-togglebutton:hover { 
+    background: green; 
+    border: none; 
+    color: white; 
+} 
+:host ::ng-deep .p-togglebutton, 
+:host ::ng-deep .p-togglebutton:hover { 
+    background: rgb(146, 19, 10); 
+    border: none; 
+    color: white; 
+} 
+  
+:host ::ng-deep .p-togglebutton:focus { 
+    box-shadow: 0 0 0 0; 
+}

@@ -8,6 +8,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoriesComponent } from './categories/categories/categories.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { FeedbackComponent } from './feedback/feedback/feedback.component';
+import { AppliersComponent } from './appliers/appliers.component';
+import { PartnersComponent } from './partners/partners.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
+import { DiscountsComponent } from './discount/discounts/discounts.component';
+import { AddDiscountComponent } from './discount/add-discount/add-discount.component';
+import { EditDiscountComponent } from './discount/edit-discount/edit-discount.component';
+import { EmployeesComponent } from './employees/employees/employees.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   {
@@ -48,6 +58,56 @@ const routes: Routes = [
             component: EditCategoryComponent,
           },
         ],
+      },
+      {
+        path: 'discount-codes',
+        children: [
+          {
+            path: '',
+            component: DiscountsComponent,
+          },
+          {
+            path: 'create',
+            component: AddDiscountComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditDiscountComponent,
+          },
+        ],
+      },
+      {
+        path: 'employees',
+        children: [
+          {
+            path: '',
+            component: EmployeesComponent,
+          },
+          {
+            path: 'create',
+            component: AddEmployeeComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditEmployeeComponent,
+          },
+        ],
+      },
+      {
+        path: "feedback",
+        component: FeedbackComponent
+      },
+      {
+        path: "contact-us-appliers",
+        component: AppliersComponent
+      },
+      {
+        path: "partners",
+        component: PartnersComponent
+      },
+      {
+        path: "job-applicants",
+        component: ApplicantsComponent
       },
       {
         path: "**",

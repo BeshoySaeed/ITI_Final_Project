@@ -1,0 +1,166 @@
+<div class="users-container">
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Applicants</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="applicants"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'jobTitle',
+        'firstName',
+        'lastName',
+        'email',
+        'mobile',
+        'education',
+        'cv'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Job Title
+              <p-columnFilter
+                type="text"
+                field="jobTitle"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              First name
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Last name
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Mobile
+              <p-columnFilter
+                type="numeric"
+                field="mobile"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              education
+              <p-columnFilter
+                type="text"
+                field="education"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              CV file
+              <p-columnFilter
+                type="text"
+                field="cv"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th>Status</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-applicant>
+        <tr>
+          <td>
+            {{ applicant.jobTitle }}
+          </td>
+          <td>
+            {{ applicant.firstName }}
+          </td>
+          <td>
+            {{ applicant.lastName }}
+          </td>
+          <td>
+            {{ applicant.email }}
+          </td>
+
+          <td>
+            {{ applicant.mobile }}
+          </td>
+          <td>
+            {{ applicant.education }}
+          </td>
+          <td>
+            <a href="{{ applicant.cv }}" download>CV</a>
+          </td>
+
+          <td>
+            <p-toggleButton
+              name="{{ applicant.id }}"
+              [(ngModel)]="applicant.checked"
+              (onChange)="toggleapplicant(applicant)"
+              onLabel="Contacted"
+              offLabel="Not contacted"
+            ></p-toggleButton>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No applicant found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

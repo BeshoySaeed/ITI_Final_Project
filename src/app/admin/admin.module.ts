@@ -20,6 +20,20 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CategoriesComponent } from './categories/categories/categories.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { EditCategoryComponent } from './categories/edit-category/edit-category.component';
+import { FeedbackComponent } from './feedback/feedback/feedback.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { AppliersComponent } from './appliers/appliers.component';
+import { PartnersComponent } from './partners/partners.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
+import { AddDiscountComponent } from './discount/add-discount/add-discount.component';
+import { EditDiscountComponent } from './discount/edit-discount/edit-discount.component';
+import { DiscountsComponent } from './discount/discounts/discounts.component';
+import { EmployeesComponent } from './employees/employees/employees.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { TagModule } from 'primeng/tag';
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +44,16 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
     CategoriesComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    FeedbackComponent,
+    AppliersComponent,
+    PartnersComponent,
+    ApplicantsComponent,
+    AddDiscountComponent,
+    EditDiscountComponent,
+    DiscountsComponent,
+    EmployeesComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent,
   ],
 
   imports: [
@@ -45,7 +69,9 @@ import { EditCategoryComponent } from './categories/edit-category/edit-category.
     InputMaskModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    ToggleButtonModule,
+    TagModule
   ],
 })
 export class AdminModule {}

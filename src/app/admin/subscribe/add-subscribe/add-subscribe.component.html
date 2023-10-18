@@ -1,0 +1,147 @@
+<div class="add-user-container">
+    <h3 class="admin-page-title">Add Subscribe</h3>
+  
+    <div class="card">
+      <form
+        [formGroup]="AddSubscribe"
+        (ngSubmit)="onSubmit()"
+        class="formgrid grid w-full mt-3 mx-auto form"
+      >
+        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+          <div class="flex flex-column-reverse">
+            <input
+              id="name"
+              type="text"
+              pInputText
+              [required]="true"
+              [minlength]="4"
+              formControlName="name"
+              class="input p-2 border-round outline-none w-full"
+            />
+            <label for="name" class="block mb-2">Name *</label>
+          </div>
+  
+          <div
+            class="error-message"
+            *ngIf="
+              AddSubscribe.controls['name'].touched &&
+              AddSubscribe.controls['name'].invalid
+            "
+          >
+            <small
+              class="block"
+              *ngIf="AddSubscribe.controls['name'].errors?.['required']"
+            >
+              Name is required
+            </small>
+            <small
+              class="block"
+              *ngIf="AddSubscribe.controls['name'].errors?.['minlength']"
+            >
+              Name is must be more than 3 characters
+            </small>
+            <small
+              class="block"
+              *ngIf="AddSubscribe.controls['name'].errors?.['pattern']"
+            >
+              Name must contains only letters
+            </small>
+          </div>
+        </div>
+          <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+            <div class="flex flex-column-reverse">
+              <input
+                id="benefits"
+                type="text"
+                pInputText
+                formControlName="benefits"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="benefits" class="block mb-2">Benefits *</label>
+            </div>
+          
+            <div class="error-message" *ngIf="AddSubscribe.controls['benefits'].touched && AddSubscribe.controls['benefits'].hasError('required')">
+              <small class="block">Benefits is required</small>
+            </div>
+          </div>
+          
+          <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+            <div class="flex flex-column-reverse">
+              <input
+                id="discount_value"
+                type="text"
+                pInputText
+                formControlName="discount_value"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="discount_value" class="block mb-2">Discount Value *</label>
+            </div>
+          
+            <div class="error-message" *ngIf="AddSubscribe.controls['discount_value'].touched && AddSubscribe.controls['discount_value'].hasError('required')">
+              <small class="block">Discount Value is required</small>
+            </div>
+            <div class="error-message" *ngIf="AddSubscribe.controls['discount_value'].touched && AddSubscribe.controls['discount_value'].hasError('pattern')">
+              <small class="block">It must be a valid Discount Value number</small>
+            </div>
+          </div>
+          
+          <div class="col-12 md:col-6 mb-4">
+            <div class="flex flex-column-reverse">
+              <input
+                id="duration"
+                type="text"
+                pInputText
+                formControlName="duration"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="duration" class="block mb-2">Duration *</label>
+            </div>
+          
+            <div class="error-message" *ngIf="AddSubscribe.controls['duration'].touched && AddSubscribe.controls['duration'].hasError('required')">
+              <small class="block">Duration is required</small>
+            </div>
+            <div class="error-message" *ngIf="AddSubscribe.controls['duration'].touched && AddSubscribe.controls['duration'].hasError('pattern')">
+              <small class="block">It must be a valid Duration number</small>
+            </div>
+          </div>
+          
+          <div class="col-12 md:col-6 mb-4">
+            <div class="flex flex-column-reverse">
+              <input
+                id="subscribe_value"
+                type="text"
+                pInputText
+                formControlName="subscribe_value"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="subscribe_value" class="block mb-2">Subscribe Value *</label>
+            </div>
+          
+            <div class="error-message" *ngIf="AddSubscribe.controls['subscribe_value'].touched && AddSubscribe.controls['subscribe_value'].hasError('required')">
+              <small class="block">Subscribe Value is required</small>
+            </div>
+            <div class="error-message" *ngIf="AddSubscribe.controls['subscribe_value'].touched && AddSubscribe.controls['subscribe_value'].hasError('pattern')">
+              <small class="block">It must be a valid Subscribe Value number</small>
+            </div>
+          </div>
+      
+            <div  class=" row col-12 md:col-12 mb-4 md:pr-3">
+            <label for="toogle" class="block mb-2">Status *</label>
+            <p-toggleButton
+            id="toggle"
+            [ngModel]="isContacted"
+            [class]="getToggleButtonClass()"
+            onLabel="Active"
+            offLabel="In Active"></p-toggleButton>
+          </div>
+        <button
+          type="submit"
+          class="primary-button w-5 mx-auto my-3"
+          [disabled]="AddSubscribe.invalid"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+  

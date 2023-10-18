@@ -2,20 +2,24 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-phone',
-  templateUrl: './add-phone.component.html',
-  styleUrls: ['./add-phone.component.scss']
+  selector: 'app-add-subscribe',
+  templateUrl: './add-subscribe.component.html',
+  styleUrls: ['./add-subscribe.component.scss']
 })
-export class AddPhoneComponent {
+export class AddSubscribeComponent {
   isContacted: boolean = false;
-  AddPhone!: FormGroup;
+  AddSubscribe!: FormGroup;
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
-    this.AddPhone = this.fb.group(
+    this.AddSubscribe = this.fb.group(
       {
         name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        phone: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-
+        benefits: [''],
+        location: [''],
+        discount_value:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
+        duration:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
+        subscribe_value:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
+       
       },
     );
   }
@@ -32,6 +36,6 @@ export class AddPhoneComponent {
     return this.isContacted ? 'contacted' : 'not-contacted';
   }
   onSubmit() {
-    console.log(this.AddPhone);
+    console.log(this.AddSubscribe);
   }
 }

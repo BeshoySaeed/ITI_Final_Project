@@ -43,6 +43,12 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TagModule } from 'primeng/tag';
 import { OrdersComponent } from './orders/orders.component';
 
+import { BranchesComponent } from './branches/branches/branches.component';
+import { EditBranchesComponent } from './branches/edit-branches/edit-branches.component';
+import { AddBranchesComponent } from './branches/add-branches/add-branches.component';
+import { AddSubscribeComponent } from './subscribe/add-subscribe/add-subscribe.component';
+import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscribe.component';
+import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -67,7 +73,13 @@ import { OrdersComponent } from './orders/orders.component';
     AdditionsComponent,
     AddAdditionComponent,
     EditAdditionComponent,
-    OrdersComponent
+    OrdersComponent,
+    BranchesComponent,
+    EditBranchesComponent,
+    AddBranchesComponent,
+    AddSubscribeComponent,
+    EditSubscribeComponent,
+    SubscribeComponent
   ],
 
   imports: [

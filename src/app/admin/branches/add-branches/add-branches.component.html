@@ -1,0 +1,132 @@
+<div class="add-user-container">
+    <h3 class="admin-page-title">Add Branch</h3>
+  
+    <div class="card">
+      <form
+        [formGroup]="Addbranch"
+        (ngSubmit)="onSubmit()"
+        class="formgrid grid w-full mt-3 mx-auto form"
+      >
+        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+          <div class="flex flex-column-reverse">
+            <input
+              id="name"
+              type="text"
+              pInputText
+              [required]="true"
+              [minlength]="4"
+              formControlName="name"
+              class="input p-2 border-round outline-none w-full"
+            />
+            <label for="name" class="block mb-2">Name *</label>
+          </div>
+  
+          <div
+            class="error-message"
+            *ngIf="
+              Addbranch.controls['name'].touched &&
+              Addbranch.controls['name'].invalid
+            "
+          >
+            <small
+              class="block"
+              *ngIf="Addbranch.controls['name'].errors?.['required']"
+            >
+              Name is required
+            </small>
+            <small
+              class="block"
+              *ngIf="Addbranch.controls['name'].errors?.['minlength']"
+            >
+              Name is must be more than 3 characters
+            </small>
+            <small
+              class="block"
+              *ngIf="Addbranch.controls['name'].errors?.['pattern']"
+            >
+              Name must contains only letters
+            </small>
+          </div>
+        </div>
+
+        
+        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+            <div class="flex flex-column-reverse">
+              <input
+                id="address"
+                type="text"
+                pInputText
+                [required]="true"
+                [minlength]="4"
+                formControlName="address"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="address" class="block mb-2">Address *</label>
+            </div>
+    
+            <div
+              class="error-message"
+              *ngIf="
+                Addbranch.controls['address'].touched &&
+                Addbranch.controls['address'].invalid
+              "
+            >
+              <small
+                class="block"
+                *ngIf="Addbranch.controls['address'].errors?.['required']"
+              >
+                Address is required
+              </small>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+            <div class="flex flex-column-reverse">
+              <input
+                id="location"
+                type="text"
+                pInputText
+                [required]="true"
+                [minlength]="4"
+                formControlName="location"
+                class="input p-2 border-round outline-none w-full"
+              />
+              <label for="location" class="block mb-2">Location *</label>
+            </div>
+    
+            <div
+              class="error-message"
+              *ngIf="
+                Addbranch.controls['location'].touched &&
+                Addbranch.controls['location'].invalid
+              "
+            >
+              <small
+                class="block"
+                *ngIf="Addbranch.controls['location'].errors?.['required']"
+              >
+              Location is required
+              </small>
+            </div>
+          </div>
+      
+        <div  class=" row col-12 md:col-12 mb-4 md:pr-3">
+            <label for="toogle" class="block mb-2">Status *</label>
+            <p-toggleButton
+            id="toggle"
+            [ngModel]="isContacted"
+            [class]="getToggleButtonClass()"
+            onLabel="Active"
+            offLabel="In Active"
+          ></p-toggleButton>
+          </div>
+        <button
+          type="submit"
+          class="primary-button w-5 mx-auto my-3"
+          [disabled]="Addbranch.invalid"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+  

@@ -136,8 +136,11 @@
           <td>
             {{ menuItem.discount }}
           </td>
-          <td [ngStyle]="{'color': menuItem.active | Active }">
+          <!-- <td [ngStyle]="{'color': menuItem.active | Active }">
             {{ menuItem.active }}
+          </td> -->
+          <td>
+            <p-tag [value]="menuItem.active" [severity]="status(menuItem.active)"></p-tag>
           </td>
           <td>
             <button

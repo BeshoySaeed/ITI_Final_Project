@@ -10,7 +10,7 @@
     <p-table
       #dt1
       [value]="menuItems"
-      dataKey="id"
+      dataKey="name"
       [rows]="10"
       [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]"
@@ -47,6 +47,7 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
+          <th style="width: 4rem"></th>
           <th style="min-width: 4rem">
             <div class="flex align-items-center">Image</div>
           </th>
@@ -116,8 +117,18 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-menuItem>
+      <ng-template pTemplate="body" let-menuItem let-expanded="expanded">
         <tr>
+          <td>
+            <button
+              type="button"
+              pButton
+              pRipple
+              [pRowToggler]="menuItem"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            ></button>
+          </td>
           <td>
             <img width="150" [src]="menuItem.image" [alt]="menuItem.name" />
           </td>
@@ -140,7 +151,10 @@
             {{ menuItem.active }}
           </td> -->
           <td>
-            <p-tag [value]="menuItem.active" [severity]="status(menuItem.active)"></p-tag>
+            <p-tag
+              [value]="menuItem.active"
+              [severity]="status(menuItem.active)"
+            ></p-tag>
           </td>
           <td>
             <button
@@ -171,6 +185,48 @@
           </td>
         </tr>
       </ng-template>
+      <ng-template pTemplate="rowexpansion" let-menuItem>
+        <tr>
+          <td colspan="12">
+            <div class="p-3">
+              <p-table [value]="menuItem.additions" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Image</th>
+                    <th pSortableColumn="name">
+                      Name <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="price">
+                      price <p-sortIcon field="price"></p-sortIcon>
+                    </th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-addition>
+                  <tr>
+                    <td>
+                      <img
+                        width="100"
+                        [src]="menuItem.image"
+                        [alt]="menuItem.name"
+                      />
+                    </td>
+                    <td>{{ addition.name }}</td>
+                    <td>{{ addition.price | currency : "USD" }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">
+                      There are no additions for this menu item.
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      
       <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="7">No menu items found.</td>

@@ -21,15 +21,19 @@ export class MenuItemsComponent {
       additions: [
         {
           id: 1,
-          name: 'Addition 1',
+          name: "Addition 1",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+          description: "This is the first item in our menu.",
+          price: 10,
         },
         {
           id: 2,
-          name: 'Addition 2',
-        },
-        {
-          id: 3,
-          name: 'Addition 3',
+          name: "Addition 2",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+          description: "This is the first item in our menu.",
+          price: 5,
         },
       ],
     },
@@ -46,11 +50,27 @@ export class MenuItemsComponent {
       additions: [
         {
           id: 1,
-          name: 'Addition 1',
+          name: "Addition 1",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+          description: "This is the first item in our menu.",
+          price: 5,
         },
         {
           id: 2,
-          name: 'Addition 2',
+          name: "Addition 2",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+          description: "This is the first item in our menu.",
+          price: 15,
+        },
+        {
+          id: 3,
+          name: "Addition 3",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+          description: "This is the first item in our menu.",
+          price: 5,
         },
       ],
     },

@@ -15,7 +15,17 @@ export class MenuItemsComponent {
       description: "This is the first item in our menu.",
       price: 20,
       category: "pizza",
-      active: true,
+      active: 'active',
+      discount: 10
+    },
+    {
+      id: 1,
+      name: "Menu Item 2",
+      image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+      description: "This is the first item in our menu.",
+      price: 20,
+      category: "pizza",
+      active: 'inactive',
       discount: 10
     },
   ];

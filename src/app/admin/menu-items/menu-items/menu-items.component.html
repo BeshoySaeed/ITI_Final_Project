@@ -22,7 +22,7 @@
         'discount',
         'description',
         'menuItem',
-        'status'
+        'active'
       ]"
     >
       <ng-template pTemplate="caption">
@@ -74,9 +74,10 @@
             <div class="flex align-items-center">
               Price
               <p-columnFilter
-                type="text"
+                type="numeric"
                 field="name"
                 display="menu"
+                currency="USD"
               ></p-columnFilter>
             </div>
           </th>
@@ -94,7 +95,7 @@
             <div class="flex align-items-center">
               Discount
               <p-columnFilter
-                type="text"
+                type="numeric"
                 field="name"
                 display="menu"
               ></p-columnFilter>
@@ -118,7 +119,7 @@
       <ng-template pTemplate="body" let-menuItem>
         <tr>
           <td>
-            <img width="200" [src]="menuItem.image" [alt]="menuItem.name" />
+            <img width="150" [src]="menuItem.image" [alt]="menuItem.name" />
           </td>
           <td>
             {{ menuItem.name }}
@@ -127,7 +128,7 @@
             {{ menuItem.category }}
           </td>
           <td>
-            {{ menuItem.price }}
+            {{ menuItem.price | currency : "USD" : "symbol" }}
           </td>
           <td>
             {{ menuItem.description }}
@@ -135,7 +136,7 @@
           <td>
             {{ menuItem.discount }}
           </td>
-          <td>
+          <td [ngStyle]="{'color': menuItem.active | Active }">
             {{ menuItem.active }}
           </td>
           <td>

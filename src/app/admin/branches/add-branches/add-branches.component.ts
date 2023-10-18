@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-phone',
-  templateUrl: './edit-phone.component.html',
-  styleUrls: ['./edit-phone.component.scss']
+  selector: 'app-add-branches',
+  templateUrl: './add-branches.component.html',
+  styleUrls: ['./add-branches.component.scss']
 })
-export class EditPhoneComponent {
+export class AddBranchesComponent {
   isContacted: boolean = false;
-  EditPhone!: FormGroup;
+  Addbranch!: FormGroup;
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
-    this.EditPhone = this.fb.group(
+    this.Addbranch = this.fb.group(
       {
-        phone: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-
+        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        address: [''],
+        location: [''],
+       
       },
     );
   }
@@ -31,6 +33,6 @@ export class EditPhoneComponent {
     return this.isContacted ? 'contacted' : 'not-contacted';
   }
   onSubmit() {
-    console.log(this.EditPhone);
+    console.log(this.Addbranch);
   }
 }

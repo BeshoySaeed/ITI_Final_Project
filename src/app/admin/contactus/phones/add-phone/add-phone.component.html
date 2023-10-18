@@ -1,5 +1,5 @@
 <div class="add-user-container">
-    <h3 class="admin-page-title">Add User</h3>
+    <h3 class="admin-page-title">Add Phone</h3>
   
     <div class="card">
       <form
@@ -7,81 +7,42 @@
         (ngSubmit)="onSubmit()"
         class="formgrid grid w-full mt-3 mx-auto form"
       >
-        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
-          <div class="flex flex-column-reverse">
-            <input
-              id="name"
-              type="text"
-              pInputText
-              [required]="true"
-              [minlength]="4"
-              formControlName="name"
-              class="input p-2 border-round outline-none w-full"
-            />
-            <label for="name" class="block mb-2">Name *</label>
-          </div>
-  
-          <div
-            class="error-message"
-            *ngIf="
-              AddPhone.controls['name'].touched &&
-              AddPhone.controls['name'].invalid
-            "
-          >
-            <small
-              class="block"
-              *ngIf="AddPhone.controls['name'].errors?.['required']"
-            >
-              First name is required
-            </small>
-            <small
-              class="block"
-              *ngIf="AddPhone.controls['name'].errors?.['minlength']"
-            >
-              First name is must be more than 3 characters
-            </small>
-            <small
-              class="block"
-              *ngIf="AddPhone.controls['name'].errors?.['pattern']"
-            >
-              First name must contains only letters
-            </small>
-          </div>
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-inputMask
+            id="phone"
+            [autoClear]="false"
+            [required]="true"
+            formControlName="phone"
+            mask="+20-1999999999"
+            placeholder="+20-1999999999"
+            styleClass="input p-2 border-round outline-none w-full"
+            class="mask-button"
+          ></p-inputMask>
+          <label htmlFor="phone" class="block mb-2">Phone  *</label>
         </div>
-        <div class="col-12 md:col-6 mb-4">
-          <div class="flex flex-column-reverse">
-            <input
-              id="email"
-              type="email"
-              [required]="true"
-              pInputText
-              formControlName="email"
-              class="input p-2 border-round outline-none w-full"
-            />
-            <label for="email" class="block mb-2">Email *</label>
-          </div>
-  
-          <div
-            class="error-message"
-            *ngIf="
-              AddPhone.controls['email'].touched &&
-              AddPhone.controls['email'].invalid
-            "
+
+        <div
+          class="error-message"
+          *ngIf="
+            AddPhone.controls['phone'].touched ||
+            AddPhone.controls['phone'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="AddPhone.controls['phone'].errors?.['required']"
           >
-            <small
-              class="block"
-              *ngIf="AddPhone.controls['email'].errors?.['required']"
-            >
-              Email is required
-            </small>
-            <small
-              class="block"
-              *ngIf="AddPhone.controls['email'].errors?.['pattern']"
-            >
-              It must be a valid email
-            </small>
-          </div>
+            Phone is required
+          </small>
+          <small
+            class="block"
+            *ngIf="AddPhone.controls['phone'].errors?.['pattern']"
+          >
+            It must be a valid phone number
+          </small>
         </div>
+      </div>
         <div  class="col-12 md:col-12 mb-4 md:pr-3">
             <label for="toogle" class="block mb-2">Status *</label>
             <p-toggleButton
@@ -89,8 +50,8 @@
             [ngModel]="isContacted"
             [class]="getToggleButtonClass()"
             onLabel="Active"
-            offLabel="In Active"
-          ></p-toggleButton>
+            offLabel="In Active">
+          </p-toggleButton>
           </div>
         <button
           type="submit"

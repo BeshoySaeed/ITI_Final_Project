@@ -1,105 +1,104 @@
 <div class="add-user-container">
-    <h3 class="admin-page-title">Add User</h3>
-  
-    <div class="card">
-      <form
-        [formGroup]="EditSocial"
-        (ngSubmit)="onSubmit()"
-        class="formgrid grid w-full mt-3 mx-auto form"
-      >
-        <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
-          <div class="flex flex-column-reverse">
-            <input
-              id="name"
-              type="text"
-              pInputText
-              [required]="true"
-              [minlength]="4"
-              formControlName="name"
-              class="input p-2 border-round outline-none w-full"
-            />
-            <label for="name" class="block mb-2">Name *</label>
-          </div>
-  
-          <div
-            class="error-message"
-            *ngIf="
-              EditSocial.controls['name'].touched &&
-              EditSocial.controls['name'].invalid
-            "
-          >
-            <small
-              class="block"
-              *ngIf="EditSocial.controls['name'].errors?.['required']"
-            >
-             Name is required
-            </small>
-            <small
-              class="block"
-              *ngIf="EditSocial.controls['name'].errors?.['minlength']"
-            >
-             Name is must be more than 3 characters
-            </small>
-            <small
-              class="block"
-              *ngIf="EditSocial.controls['name'].errors?.['pattern']"
-            >
-             Name must contains only letters
-            </small>
-          </div>
+  <h3 class="admin-page-title">Edit Social</h3>
+
+  <div class="card">
+    <form
+      [formGroup]="EditSocial"
+      (ngSubmit)="onSubmit()"
+      class="formgrid grid w-full mt-3 mx-auto form"
+    >
+      <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+        <div class="flex flex-column-reverse">
+          <input
+            id="name"
+            type="text"
+            pInputText
+            [required]="true"
+            [minlength]="4"
+            formControlName="name"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="name" class="block mb-2">Name *</label>
         </div>
-        <div class="col-12 md:col-6 mb-4">
-          <div class="flex flex-column-reverse">
-            <input
-              id="Link"
-              type="Link"
-              [required]="true"
-              pInputText
-              formControlName="Link"
-              class="input p-2 border-round outline-none w-full"
-            />
-            <label for="Link" class="block mb-2">Link *</label>
-          </div>
-  
-          <div
-            class="error-message"
-            *ngIf="
-              EditSocial.controls['Link'].touched &&
-              EditSocial.controls['Link'].invalid
-            "
-          >
-            <small
-              class="block"
-              *ngIf="EditSocial.controls['Link'].errors?.['required']"
-            >
-              Link is required
-            </small>
-            <small
-              class="block"
-              *ngIf="EditSocial.controls['Link'].errors?.['pattern']"
-            >
-              It must be a valid Link
-            </small>
-          </div>
-        </div>
-        <!-- <div  class="col-12 md:col-12 mb-4 md:pr-3">
-            <label for="toogle" class="block mb-2">Status *</label>
-            <p-toggleButton
-            id="toggle"
-            [ngModel]="isContacted"
-            [class]="getToggleButtonClass()"
-            onLabel="Active"
-            offLabel="In Active"
-          ></p-toggleButton>
-          </div> -->
-        <button
-          type="submit"
-          class="primary-button w-5 mx-auto my-3"
-          [disabled]="EditSocial.invalid"
+
+        <div
+          class="error-message"
+          *ngIf="
+            EditSocial.controls['name'].touched &&
+            EditSocial.controls['name'].invalid
+          "
         >
-          Add
-        </button>
-      </form>
-    </div>
+          <small
+            class="block"
+            *ngIf="EditSocial.controls['name'].errors?.['required']"
+          >
+            First name is required
+          </small>
+          <small
+            class="block"
+            *ngIf="EditSocial.controls['name'].errors?.['minlength']"
+          >
+            First name is must be more than 3 characters
+          </small>
+          <small
+            class="block"
+            *ngIf="EditSocial.controls['name'].errors?.['pattern']"
+          >
+            First name must contains only letters
+          </small>
+        </div>
+      </div>
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <input
+            id="link"
+            type="link"
+            [required]="true"
+            pInputText
+            formControlName="link"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="link" class="block mb-2">Link *</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            EditSocial.controls['link'].touched &&
+            EditSocial.controls['link'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="EditSocial.controls['link'].errors?.['required']"
+          >
+            Link is required
+          </small>
+          <small
+            class="block"
+            *ngIf="EditSocial.controls['link'].errors?.['pattern']"
+          >
+            It must be a valid Link
+          </small>
+        </div>
+      </div>
+      <!-- <div  class="col-12 md:col-12 mb-4 md:pr-3">
+          <label for="toogle" class="block mb-2">Status *</label>
+          <p-toggleButton
+          id="toggle"
+          [ngModel]="isContacted"
+          [class]="getToggleButtonClass()"
+          onLabel="Active"
+          offLabel="In Active"
+        ></p-toggleButton>
+        </div> -->
+      <button
+        type="submit"
+        class="primary-button w-5 mx-auto my-3"
+        [disabled]="EditSocial.invalid"
+      >
+        Edit
+      </button>
+    </form>
   </div>
-  
+</div>

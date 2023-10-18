@@ -1,18 +1,18 @@
 <div class="users-container">
     <div class="flex justify-content-between flex-wrap mb-3">
-      <h3 class="admin-page-title">All Phones</h3>
-      <a routerLink="/admin/contact-us-info/phones/create">
+      <h3 class="admin-page-title">All Branches</h3>
+      <a routerLink="/admin/branches/create">
         <button
           pButton
           class="p-button-primary"
-        >Add Phone</button>
+        >Add Branch</button>
       </a>
     </div>
   
     <div class="card">
       <p-table
         #dt1
-        [value]="phones"
+        [value]="Branches"
         dataKey="id"
         [rows]="10"
         [showCurrentPageReport]="true"
@@ -20,8 +20,9 @@
         [loading]="loading"
         [paginator]="true"
         [globalFilterFields]="[
-          'phone',
-          'status',
+          'name',
+          'address',
+          'location',
         ]"
       >
         <ng-template pTemplate="caption">
@@ -48,44 +49,57 @@
           <tr>
             <th style="min-width: 10rem">
               <div class="flex align-items-center">
-                Phone
+                Branch Name
                 <p-columnFilter
                   type="text"
-                  field="phone"
+                  field="branch"
                   display="menu"
                 ></p-columnFilter>
               </div>
             </th>
             <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Status
-                <p-columnFilter
-                  type="text"
-                  field="status"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
+                <div class="flex align-items-center">
+                  Address
+                  <p-columnFilter
+                    type="text"
+                    field="status"
+                    display="menu"
+                  ></p-columnFilter>
+                </div>
+              </th>
+              <th style="min-width: 10rem">
+                <div class="flex align-items-center">
+                  Location
+                  <p-columnFilter
+                    type="text"
+                    field="status"
+                    display="menu"
+                  ></p-columnFilter>
+                </div>
+              </th>
             <th>Actions</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-phone>
+        <ng-template pTemplate="body" let-branch>
           <tr>
             <td>
-              {{ phone.phone }}
+              {{ branch.name }}
             </td>
-            <td [ngStyle]="{'color': phone.status | Active }">
-              {{ phone.status }}
-            </td>
+            <td>
+                {{ branch.address }}
+              </td>
+              <td>
+                {{ branch.location }}
+              </td>
             <td class="flex">
               <button
                 pButton
                 pRipple
-                pTooltip="Edit Phone"
+                pTooltip="Edit branch"
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
-                routerLink= "/admin/contact-us-info/phones/edit/{{phone.id}}"
+                routerLink= "/admin/branches/edit/{{branch.id}}"
                 class="p-button-success p-2 rounded mr-2"
               >
                 <i class="pi pi-fw pi-user-edit"></i>
@@ -94,12 +108,12 @@
               <button
                 pButton
                 pRipple
-                pTooltip="Delete Phone"
+                pTooltip="Delete branch"
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
                 class="p-button-danger p-2 rounded"
-                (click)="deletePhone(phone.id)"
+                (click)="deleteBranch(branch.id)"
               >
                 <i class="pi pi-fw pi-trash"></i>
               </button>
@@ -108,7 +122,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="7">No Phones found.</td>
+            <td colspan="7">No Branches found.</td>
           </tr>
         </ng-template>
       </p-table>

@@ -17,6 +17,14 @@ import { SocialComponent } from './contactus/social/social/social.component';
 import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
 import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
 import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
+import { AddPhoneComponent } from './contactus/phones/add-phone/add-phone.component';
+import { AddEmailComponent } from './contactus/emails/add-email/add-email.component';
+import { BranchesComponent } from './branches/branches/branches.component';
+import { AddBranchesComponent } from './branches/add-branches/add-branches.component';
+import { EditBranchesComponent } from './branches/edit-branches/edit-branches.component';
+import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
+import { AddSubscribeComponent } from './subscribe/add-subscribe/add-subscribe.component';
+import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscribe.component';
 
 const routes: Routes = [
   {
@@ -104,11 +112,45 @@ const routes: Routes = [
           },
           {
             path: 'phones/create',
-            component: EditPhoneComponent,
+            component: AddPhoneComponent,
           },
           {
             path: 'emails/create',
-            component: EditEmailComponent,
+            component: AddEmailComponent,
+          },
+        ],
+      },
+      {
+        path: 'branches',
+        children: [
+          {
+            path: '',
+            component: BranchesComponent,
+          },
+          {
+            path: 'create',
+            component: AddBranchesComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditBranchesComponent,
+          },
+        ],
+      },
+      {
+        path: 'subscription-plans',
+        children: [
+          {
+            path: '',
+            component: SubscribeComponent,
+          },
+          {
+            path: 'create',
+            component: AddSubscribeComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditSubscribeComponent,
           },
         ],
       },

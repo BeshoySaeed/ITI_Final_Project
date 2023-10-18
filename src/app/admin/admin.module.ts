@@ -35,6 +35,12 @@ import { EmailComponent } from './contactus/emails/email/email.component';
 import { SocialComponent } from './contactus/social/social/social.component';
 import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { BranchesComponent } from './branches/branches/branches.component';
+import { EditBranchesComponent } from './branches/edit-branches/edit-branches.component';
+import { AddBranchesComponent } from './branches/add-branches/add-branches.component';
+import { AddSubscribeComponent } from './subscribe/add-subscribe/add-subscribe.component';
+import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscribe.component';
+import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -55,7 +61,13 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     EmailComponent,
     SocialComponent,
     EditSocialComponent,
-    Active
+    Active,
+    BranchesComponent,
+    EditBranchesComponent,
+    AddBranchesComponent,
+    AddSubscribeComponent,
+    EditSubscribeComponent,
+    SubscribeComponent
   ],
 
   imports: [

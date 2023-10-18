@@ -51,7 +51,7 @@ export class EditMenuItemsComponent {
       description: [this.item.description],
       additions: [this.item.additions],
       active: [this.item.active],
-      image: [null, Validators.required],
+      image: [null],
     });
   }
 

@@ -35,6 +35,9 @@ import { EmailComponent } from './contactus/emails/email/email.component';
 import { SocialComponent } from './contactus/social/social/social.component';
 import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { AdditionsComponent } from './additions/additions/additions.component';
+import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
+import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -55,7 +58,10 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     EmailComponent,
     SocialComponent,
     EditSocialComponent,
-    Active
+    Active,
+    AdditionsComponent,
+    AddAdditionComponent,
+    EditAdditionComponent
   ],
 
   imports: [

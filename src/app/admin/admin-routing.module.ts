@@ -17,6 +17,9 @@ import { SocialComponent } from './contactus/social/social/social.component';
 import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
 import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.component';
 import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
+import { AdditionsComponent } from './additions/additions/additions.component';
+import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
+import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
 
 const routes: Routes = [
   {
@@ -72,6 +75,23 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditMenuItemsComponent,
+          },
+        ],
+      },
+      {
+        path: 'additions',
+        children: [
+          {
+            path: '',
+            component: AdditionsComponent,
+          },
+          {
+            path: 'create',
+            component: AddAdditionComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditAdditionComponent,
           },
         ],
       },

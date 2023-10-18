@@ -22,6 +22,7 @@ export class OrdersComponent {
           price: 20,
           category: 'pizza',
           discount: 10,
+          quantity: 2,
           additions: [
             {
               id: 1,
@@ -47,6 +48,7 @@ export class OrdersComponent {
           price: 20,
           category: 'pizza',
           discount: 10,
+          quantity: 4,
           additions: [
             {
               id: 1,
@@ -88,6 +90,7 @@ export class OrdersComponent {
           price: 20,
           category: 'pizza',
           discount: 10,
+          quantity: 3,
           additions: [
             {
               id: 1,
@@ -113,6 +116,7 @@ export class OrdersComponent {
           price: 20,
           category: 'pizza',
           discount: 10,
+          quantity: 1,
           additions: [
             {
               id: 1,

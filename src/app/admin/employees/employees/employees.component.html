@@ -1,15 +1,12 @@
 <div class="users-container">
   <div class="flex justify-content-between flex-wrap mb-3">
-    <h3 class="admin-page-title">All Users</h3>
-    <a routerLink="/admin/users/create">
-      <button pButton class="p-button-primary">Add User</button>
-    </a>
+    <h3 class="admin-page-title">All Employees</h3>
   </div>
 
   <div class="card">
     <p-table
       #dt1
-      [value]="users"
+      [value]="employees"
       dataKey="id"
       [rows]="10"
       [showCurrentPageReport]="true"
@@ -17,16 +14,18 @@
       [loading]="loading"
       [paginator]="true"
       [globalFilterFields]="[
-        'role',
+        'jobTitle',
         'firstName',
         'lastName',
-        'totalOrders',
-        'totalPayed',
-        'subscriptionPlan',
-        'balance',
         'email',
-        'phones',
-        'address'
+        'mobile',
+        'national_id',
+        'address',
+        'salary',
+        'joined_at',
+        'branch_name',
+        'created_at',
+        'updated_at'
       ]"
     >
       <ng-template pTemplate="caption">
@@ -51,16 +50,6 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th style="min-width: 8rem">
-            <div class="flex align-items-center">
-              Role
-              <p-columnFilter
-                type="text"
-                field="role"
-                display="menu"
-              ></p-columnFilter>
-            </div>
-          </th>
           <th style="min-width: 10rem">
             <div class="flex align-items-center">
               First name
@@ -83,47 +72,15 @@
           </th>
           <th style="min-width: 10rem">
             <div class="flex align-items-center">
-              Total orders
-              <p-columnFilter
-                type="numeric"
-                field="totalOrders"
-                display="menu"
-              ></p-columnFilter>
-            </div>
-          </th>
-          <th style="min-width: 10rem">
-            <div class="flex align-items-center">
-              Total payed
-              <p-columnFilter
-                type="numeric"
-                field="totalPayed"
-                display="menu"
-                currency="USD"
-              ></p-columnFilter>
-            </div>
-          </th>
-          <th style="min-width: 10rem">
-            <div class="flex align-items-center">
-              Subscription plan
+              Job Title
               <p-columnFilter
                 type="text"
-                field="subscriptionPlan"
+                field="jobTitle"
                 display="menu"
               ></p-columnFilter>
             </div>
           </th>
           <th style="min-width: 10rem">
-            <div class="flex align-items-center">
-              Balance
-              <p-columnFilter
-                type="numeric"
-                field="balance"
-                display="menu"
-                currency="USD"
-              ></p-columnFilter>
-            </div>
-          </th>
-          <th style="min-width: 15rem">
             <div class="flex align-items-center">
               Email
               <p-columnFilter
@@ -133,12 +90,23 @@
               ></p-columnFilter>
             </div>
           </th>
+
           <th style="min-width: 10rem">
             <div class="flex align-items-center">
-              Phones
+              Mobile
               <p-columnFilter
                 type="numeric"
-                field="phones"
+                field="mobile"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              national_id
+              <p-columnFilter
+                type="text"
+                field="national_id"
                 display="menu"
               ></p-columnFilter>
             </div>
@@ -153,54 +121,107 @@
               ></p-columnFilter>
             </div>
           </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              salary
+              <p-columnFilter
+                type="numeric"
+                field="salary"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              joined at
+              <p-columnFilter
+                type="text"
+                field="joined_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              branch name
+              <p-columnFilter
+                type="text"
+                field="branch_name"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              created at
+              <p-columnFilter
+                type="text"
+                field="created_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              updated at
+              <p-columnFilter
+                type="text"
+                field="updated_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
           <th>Actions</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-user>
+      <ng-template pTemplate="body" let-employee>
         <tr>
           <td>
-            {{ user.role }}
+            {{ employee.firstName }}
           </td>
           <td>
-            {{ user.firstName }}
+            {{ employee.lastName }}
           </td>
           <td>
-            {{ user.lastName }}
+            {{ employee.jobTitle }}
           </td>
           <td>
-            {{ user.totalOrders }}
+            {{ employee.email }}
+          </td>
+
+          <td>
+            {{ employee.mobile }}
           </td>
           <td>
-            {{ user.totalPayed | currency : "USD" : "symbol" }}
+            {{ employee.national_id }}
           </td>
           <td>
-            {{ user.subscriptionPlan }}
+            {{ employee.address }}
           </td>
           <td>
-            {{ user.balance | currency : "USD" : "symbol" }}
+            {{ employee.salary | currency : "USD" : "symbol" }}
           </td>
           <td>
-            {{ user.email }}
+            {{ employee.joined_at }}
           </td>
           <td>
-            <span
-              class="surface-600 text-white px-2 py-1 border-round m-1"
-              *ngFor="let phone of user.phones"
-              >{{ phone.value }}</span
-            >
+            {{ employee.branch_name }}
           </td>
           <td>
-            <span class="surface-600 text-white px-2 py-1 border-round m-1" *ngFor="let address of user.addresses">{{ address.value }}</span>
+            {{ employee.created_at }}
+          </td>
+          <td>
+            {{ employee.updated_at }}
           </td>
           <td class="flex">
             <button
               pButton
               pRipple
-              pTooltip="Edit user"
+              pTooltip="Edit employee"
               tooltipPosition="top"
               placeholder="Top"
               [showDelay]="700"
-              routerLink="/admin/users/edit/{{ user.id }}"
+              routerLink="/admin/employees/edit/{{ employee.id }}"
               class="p-button-success p-2 rounded mr-2"
             >
               <i class="pi pi-fw pi-user-edit"></i>
@@ -209,12 +230,12 @@
             <button
               pButton
               pRipple
-              pTooltip="Delete user"
+              pTooltip="Delete employee"
               tooltipPosition="top"
               placeholder="Top"
               [showDelay]="700"
               class="p-button-danger p-2 rounded"
-              (click)="deleteUser(user.id)"
+              (click)="deleteEmployee(employee.id)"
             >
               <i class="pi pi-fw pi-user-minus"></i>
             </button>
@@ -223,7 +244,7 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="7">No users found.</td>
+          <td colspan="7">No employee found.</td>
         </tr>
       </ng-template>
     </p-table>

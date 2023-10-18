@@ -29,6 +29,16 @@ import { EditBranchesComponent } from './branches/edit-branches/edit-branches.co
 import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
 import { AddSubscribeComponent } from './subscribe/add-subscribe/add-subscribe.component';
 import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscribe.component';
+import { FeedbackComponent } from './feedback/feedback/feedback.component';
+import { AppliersComponent } from './appliers/appliers.component';
+import { PartnersComponent } from './partners/partners.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
+import { DiscountsComponent } from './discount/discounts/discounts.component';
+import { AddDiscountComponent } from './discount/add-discount/add-discount.component';
+import { EditDiscountComponent } from './discount/edit-discount/edit-discount.component';
+import { EmployeesComponent } from './employees/employees/employees.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   {
@@ -92,6 +102,23 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'discount-codes',
+        children: [
+          {
+            path: '',
+            component: DiscountsComponent,
+          },
+          {
+            path: 'create',
+            component: AddDiscountComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditDiscountComponent,
+          },
+        ],
+      },
+      {
         path: 'additions',
         children: [
           {
@@ -105,6 +132,23 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditAdditionComponent,
+          },
+        ],
+      },
+      {
+        path: 'employees',
+        children: [
+          {
+            path: '',
+            component: EmployeesComponent,
+          },
+          {
+            path: 'create',
+            component: AddEmployeeComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditEmployeeComponent,
           },
         ],
       },
@@ -178,6 +222,22 @@ const routes: Routes = [
             component: EditSubscribeComponent,
           },
         ],
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent,
+      },
+      {
+        path: 'contact-us-appliers',
+        component: AppliersComponent,
+      },
+      {
+        path: 'partners',
+        component: PartnersComponent,
+      },
+      {
+        path: 'job-applicants',
+        component: ApplicantsComponent,
       },
       {
         path: '**',

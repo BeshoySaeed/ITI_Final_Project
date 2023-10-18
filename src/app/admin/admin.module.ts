@@ -25,7 +25,17 @@ import { PasswordModule } from 'primeng/password';
 import { MenuItemsComponent } from './menu-items/menu-items/menu-items.component';
 import { AddMenuItemsComponent } from './menu-items/add-menu-items/add-menu-items.component';
 import { EditMenuItemsComponent } from './menu-items/edit-menu-items/edit-menu-items.component';
-
+import { FeedbackComponent } from './feedback/feedback/feedback.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { AppliersComponent } from './appliers/appliers.component';
+import { PartnersComponent } from './partners/partners.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
+import { AddDiscountComponent } from './discount/add-discount/add-discount.component';
+import { EditDiscountComponent } from './discount/edit-discount/edit-discount.component';
+import { DiscountsComponent } from './discount/discounts/discounts.component';
+import { EmployeesComponent } from './employees/employees/employees.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 import { Active, PhoneComponent } from './contactus/phones/phone/phone.component';
 import { EditPhoneComponent } from './contactus/phones/edit-phone/edit-phone.component';
 import { AddPhoneComponent } from './contactus/phones/add-phone/add-phone.component';
@@ -34,7 +44,6 @@ import { EditEmailComponent } from './contactus/emails/edit-email/edit-email.com
 import { EmailComponent } from './contactus/emails/email/email.component';
 import { SocialComponent } from './contactus/social/social/social.component';
 import { EditSocialComponent } from './contactus/social/edit-social/edit-social.component';
-import { ToggleButtonModule } from 'primeng/togglebutton';
 import { AdditionsComponent } from './additions/additions/additions.component';
 import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
 import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
@@ -42,7 +51,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TagModule } from 'primeng/tag';
 import { OrdersComponent } from './orders/orders.component';
-
 import { BranchesComponent } from './branches/branches/branches.component';
 import { EditBranchesComponent } from './branches/edit-branches/edit-branches.component';
 import { AddBranchesComponent } from './branches/add-branches/add-branches.component';
@@ -79,7 +87,17 @@ import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
     AddBranchesComponent,
     AddSubscribeComponent,
     EditSubscribeComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    FeedbackComponent,
+    AppliersComponent,
+    PartnersComponent,
+    ApplicantsComponent,
+    AddDiscountComponent,
+    EditDiscountComponent,
+    DiscountsComponent,
+    EmployeesComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent,
   ],
 
   imports: [

@@ -1,0 +1,139 @@
+<div class="users-container">
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Appliers</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="appliers"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'firstName',
+        'lastName',
+        'email',
+        'mobile',
+        'message'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              First name
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Last name
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Mobile
+              <p-columnFilter
+                type="numeric"
+                field="mobile"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              message
+              <p-columnFilter
+                type="text"
+                field="message"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th>Status</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-applier>
+        <tr>
+          <td>
+            {{ applier.firstName }}
+          </td>
+          <td>
+            {{ applier.lastName }}
+          </td>
+          <td>
+            {{ applier.email }}
+          </td>
+
+          <td>
+            {{ applier.mobile }}
+          </td>
+          <td>
+            {{ applier.message }}
+          </td>
+
+          <td>
+            <p-toggleButton
+              name="{{ applier.id }}"
+              [(ngModel)]="applier.checked"
+              (onChange)="toggleApplier(applier)"
+              onLabel="Contacted"
+              offLabel="Not contacted"
+            ></p-toggleButton>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No applier found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

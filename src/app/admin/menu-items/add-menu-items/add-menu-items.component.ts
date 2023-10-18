@@ -8,6 +8,24 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddMenuItemsComponent {
   form!: FormGroup;
+  categories= [
+    {
+      id: 1,
+      name: "Category 1"
+    },
+    {
+      id: 2,
+      name: "Category 2"
+    },
+  ];
+
+  additions = [
+    { id: 1, name: 'Addition 1' },
+    { id: 2, name: 'Addition 2' },
+    { id: 3, name: 'Addition 3' },
+    { id: 4, name: 'Addition 4' },
+    { id: 5, name: 'Addition 5' }
+];
 
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -15,9 +33,10 @@ export class AddMenuItemsComponent {
       name: [''],
       price: [''],
       discount: [''],
-      active: [''],
+      category: ['1'],
       description: [''],
-      category: [''],
+      additions: [''],
+      active: [true],
       image: [null, Validators.required],
     });
   }

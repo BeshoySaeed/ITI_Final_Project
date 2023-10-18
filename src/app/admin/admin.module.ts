@@ -39,6 +39,7 @@ import { AdditionsComponent } from './additions/additions/additions.component';
 import { AddAdditionComponent } from './additions/add-addition/add-addition.component';
 import { EditAdditionComponent } from './additions/edit-addition/edit-addition.component';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     FileUploadModule,
     PasswordModule,
     ToggleButtonModule,
-    InputNumberModule
+    InputNumberModule,
+    MultiSelectModule
   ],
 })
 export class AdminModule {}

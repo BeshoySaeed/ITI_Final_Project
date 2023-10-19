@@ -7,7 +7,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-branches.component.scss']
 })
 export class AddBranchesComponent {
-  isContacted: boolean = false;
   Addbranch!: FormGroup;
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -19,18 +18,6 @@ export class AddBranchesComponent {
        
       },
     );
-  }
-  toggleContacted(feedback: any) {
-    this.isContacted = feedback;
-
-    if (feedback) {
-      console.log(feedback.id);
-    } else {
-      console.log(feedback.id);
-    }
-  }
-  getToggleButtonClass() {
-    return this.isContacted ? 'contacted' : 'not-contacted';
   }
   onSubmit() {
     console.log(this.Addbranch);

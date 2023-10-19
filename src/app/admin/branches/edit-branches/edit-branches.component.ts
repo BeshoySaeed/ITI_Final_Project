@@ -7,7 +7,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./edit-branches.component.scss']
 })
 export class EditBranchesComponent {
-  isContacted: boolean = false;
   Editbranch!: FormGroup;
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -16,21 +15,8 @@ export class EditBranchesComponent {
         name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         address: [''],
         location: [''],
-       
       },
     );
-  }
-  toggleContacted(feedback: any) {
-    this.isContacted = feedback;
-
-    if (feedback) {
-      console.log(feedback.id);
-    } else {
-      console.log(feedback.id);
-    }
-  }
-  getToggleButtonClass() {
-    return this.isContacted ? 'contacted' : 'not-contacted';
   }
   onSubmit() {
     console.log(this.Editbranch);

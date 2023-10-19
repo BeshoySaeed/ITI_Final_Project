@@ -1,0 +1,103 @@
+<div class="add-user-container">
+  <h3 class="admin-page-title">Add discount code</h3>
+
+  <div class="card">
+    <form
+      [formGroup]="addDiscountForm"
+      (ngSubmit)="onSubmit()"
+      class="formgrid grid w-full mt-3 mx-auto form"
+    >
+      <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+        <div class="flex flex-column-reverse">
+          <input
+            id="code"
+            type="text"
+            pInputText
+            [required]="true"
+            [minlength]="4"
+            formControlName="code"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="code" class="block mb-2">code *</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            addDiscountForm.controls['code'].touched &&
+            addDiscountForm.controls['code'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addDiscountForm.controls['code'].errors?.['required']"
+          >
+            code is required
+          </small>
+          <small
+            class="block"
+            *ngIf="addDiscountForm.controls['code'].errors?.['minlength']"
+          >
+            code is must be more than 3 characters and numbers
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <input
+            id="percent"
+            type="number"
+            [required]="true"
+            [minlength]="4"
+            pInputText
+            formControlName="percent"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="percent" class="block mb-2">percent *</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            addDiscountForm.controls['percent'].touched &&
+            addDiscountForm.controls['percent'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addDiscountForm.controls['percent'].errors?.['required']"
+          >
+            percent is required
+          </small>
+
+          <small
+            class="block"
+            *ngIf="addDiscountForm.controls['percent'].errors?.['pattern']"
+          >
+            percent is must between 0 and 100
+          </small>
+        </div>
+      </div>
+      <div class="row col-12 md:col-12 mb-4 md:pr-3">
+        <label for="toogle" class="block mb-2">Status *</label>
+        <p-toggleButton
+          id="toggle"
+          [ngModel]="isActive"
+          [ngModelOptions]="{ standalone: true }"
+          [class]="getToggleButtonClass()"
+          onLabel="Active"
+          offLabel="Not Active"
+        ></p-toggleButton>
+      </div>
+
+      <button
+        type="submit"
+        class="primary-button w-5 mx-auto my-3"
+        [disabled]="addDiscountForm.invalid"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div>

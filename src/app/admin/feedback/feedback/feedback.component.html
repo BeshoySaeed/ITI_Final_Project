@@ -1,0 +1,127 @@
+<div class="users-container">
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Feedbacks</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="feedbacks"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'firstName',
+        'lastName',
+        'starRate',
+        'comment',
+        'created_at'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              First name
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Last name
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              star rate
+              <p-columnFilter
+                type="numeric"
+                field="starRate"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              comment
+              <p-columnFilter
+                type="text"
+                field="comment"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              created_at
+              <p-columnFilter
+                type="text"
+                field=" created_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-feedback>
+        <tr>
+          <td>
+            {{ feedback.firstName }}
+          </td>
+          <td>
+            {{ feedback.lastName }}
+          </td>
+          <td>
+            {{ feedback.starRate }}
+          </td>
+
+          <td>
+            {{ feedback.comment }}
+          </td>
+          <td>
+            {{ feedback.created_at }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No feedbacks found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

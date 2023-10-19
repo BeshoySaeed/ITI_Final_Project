@@ -1,0 +1,252 @@
+<div class="users-container">
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Employees</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="employees"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="[
+        'jobTitle',
+        'firstName',
+        'lastName',
+        'email',
+        'mobile',
+        'national_id',
+        'address',
+        'salary',
+        'joined_at',
+        'branch_name',
+        'created_at',
+        'updated_at'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              First name
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Last name
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Job Title
+              <p-columnFilter
+                type="text"
+                field="jobTitle"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Mobile
+              <p-columnFilter
+                type="numeric"
+                field="mobile"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 15rem">
+            <div class="flex align-items-center">
+              national_id
+              <p-columnFilter
+                type="text"
+                field="national_id"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Address
+              <p-columnFilter
+                type="text"
+                field="address"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              salary
+              <p-columnFilter
+                type="numeric"
+                field="salary"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              joined at
+              <p-columnFilter
+                type="text"
+                field="joined_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              branch name
+              <p-columnFilter
+                type="text"
+                field="branch_name"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              created at
+              <p-columnFilter
+                type="text"
+                field="created_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              updated at
+              <p-columnFilter
+                type="text"
+                field="updated_at"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-employee>
+        <tr>
+          <td>
+            {{ employee.firstName }}
+          </td>
+          <td>
+            {{ employee.lastName }}
+          </td>
+          <td>
+            {{ employee.jobTitle }}
+          </td>
+          <td>
+            {{ employee.email }}
+          </td>
+
+          <td>
+            {{ employee.mobile }}
+          </td>
+          <td>
+            {{ employee.national_id }}
+          </td>
+          <td>
+            {{ employee.address }}
+          </td>
+          <td>
+            {{ employee.salary | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            {{ employee.joined_at }}
+          </td>
+          <td>
+            {{ employee.branch_name }}
+          </td>
+          <td>
+            {{ employee.created_at }}
+          </td>
+          <td>
+            {{ employee.updated_at }}
+          </td>
+          <td class="flex">
+            <button
+              pButton
+              pRipple
+              pTooltip="Edit employee"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              routerLink="/admin/employees/edit/{{ employee.id }}"
+              class="p-button-success p-2 rounded mr-2"
+            >
+              <i class="pi pi-fw pi-user-edit"></i>
+            </button>
+
+            <button
+              pButton
+              pRipple
+              pTooltip="Delete employee"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              class="p-button-danger p-2 rounded"
+              (click)="deleteEmployee(employee.id)"
+            >
+              <i class="pi pi-fw pi-user-minus"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No employee found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="users-container">
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All discount codes</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="discounts"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="['code', 'percent', 'active']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              code
+              <p-columnFilter
+                type="text"
+                field="code"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Percent
+              <p-columnFilter
+                type="numeric"
+                field="percent"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-discount>
+        <tr>
+          <td>
+            {{ discount.code }}
+          </td>
+          <td>
+            {{ discount.percent }}
+          </td>
+
+          <td>
+            <p-tag
+              [value]="discount.active"
+              [severity]="status(discount.active)"
+            ></p-tag>
+          </td>
+
+          <td class="flex">
+            <button
+              pButton
+              pRipple
+              pTooltip="Edit discount"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              routerLink="/admin/discount-codes/edit/{{ discount.id }}"
+              class="p-button-success p-2 rounded mr-2"
+            >
+              <i class="pi pi-fw pi-file-edit"></i>
+            </button>
+
+            <button
+              pButton
+              pRipple
+              pTooltip="Delete discount"
+              tooltipPosition="top"
+              placeholder="Top"
+              [showDelay]="700"
+              class="p-button-danger p-2 rounded"
+              (click)="deleteDiscount(discount.id)"
+            >
+              <i class="pi pi-fw pi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No discount code found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

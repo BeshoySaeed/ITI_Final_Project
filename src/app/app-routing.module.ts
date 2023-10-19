@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    redirectTo: 'admin/users',
+    redirectTo: 'admin/orders',
     pathMatch: 'full'
   },
   {

@@ -1,0 +1,65 @@
+<div class="add-user-container">
+  <h3 class="admin-page-title">Edit Phone</h3>
+
+  <div class="card">
+    <form
+      [formGroup]="EditPhone"
+      (ngSubmit)="onSubmit()"
+      class="formgrid grid w-full mt-3 mx-auto form"
+    >
+    <div class="col-12 md:col-6 mb-4">
+      <div class="flex flex-column-reverse">
+        <p-inputMask
+          id="phone"
+          [autoClear]="false"
+          [required]="true"
+          formControlName="phone"
+          mask="+20-1999999999"
+          placeholder="+20-1999999999"
+          styleClass="input p-2 border-round outline-none w-full"
+          class="mask-button"
+        ></p-inputMask>
+        <label htmlFor="phone" class="block mb-2">Phone *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          EditPhone.controls['phone'].touched ||
+          EditPhone.controls['phone'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="EditPhone.controls['phone'].errors?.['required']"
+        >
+          Phone is required
+        </small>
+        <small
+          class="block"
+          *ngIf="EditPhone.controls['phone'].errors?.['pattern']"
+        >
+          It must be a valid phone number
+        </small>
+      </div>
+    </div>
+      <div  class="col-12 md:col-12 mb-4 md:pr-3">
+          <label for="toogle" class="block mb-2">Status *</label>
+          <p-toggleButton
+          id="toggle"
+          [ngModel]="isContacted"
+          [class]="getToggleButtonClass()"
+          onLabel="Active"
+          offLabel="In Active">
+        </p-toggleButton>
+        </div>
+      <button
+        type="submit"
+        class="primary-button w-5 mx-auto my-3"
+        [disabled]="EditPhone.invalid"
+      >
+        Edit
+      </button>
+    </form>
+  </div>
+</div>

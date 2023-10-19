@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ForgetPasswordComponent } from './user/forget-password/forget-password.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ForgetPasswordComponent } from './user/forget-password/forget-password.
     AppRoutingModule,
     AdminModule,
     UserModule,
-    BrowserModule
+    BrowserModule,
+    ToggleButtonModule,
+    TagModule
   ],
 
   providers: [],

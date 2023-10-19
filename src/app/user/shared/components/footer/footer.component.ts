@@ -13,11 +13,11 @@ export class FooterComponent {
 
   ngOnInit() {
     this.items = [
-      {
-        label: 'Saad',
-        icon: 'pi pi-send',
-        styleClass: 'send',
-      },
+      // {
+      //   label: 'Saad',
+      //   icon: 'pi pi-send',
+      //   styleClass: 'send',
+      // },
       {
         label: 'About Us',
         styleClass: 'links',

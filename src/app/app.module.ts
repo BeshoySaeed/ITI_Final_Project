@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { ForgetPasswordComponent } from './user/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ForgetPasswordComponent,
   ],
   
   imports: [

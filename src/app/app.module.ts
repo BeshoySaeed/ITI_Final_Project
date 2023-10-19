@@ -12,7 +12,7 @@ import { ForgetPasswordComponent } from './user/forget-password/forget-password.
     AppComponent,
     ForgetPasswordComponent,
   ],
-  
+
   imports: [
     CommonModule,
     AppRoutingModule,

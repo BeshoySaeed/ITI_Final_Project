@@ -27,6 +27,11 @@ import { MenuModuleModule } from './menu-module/menu-module.module';
 import { SharedModule } from './shared/shared.module';
 import { UserRoutingModule } from './user-routing.module';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserDataComponent } from './user-profile/user-data/user-data.component';
+import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
+import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,11 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
     BecomePartnerComponent,
     RegisterComponent,
     HomeComponent,
-    UserLayoutComponent
+    UserLayoutComponent,
+    UserProfileComponent,
+    UserDataComponent,
+    UserSubscriptionComponent,
+    UserHistoryComponent
   ],
   imports: [
     BrowserModule,

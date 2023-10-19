@@ -13,6 +13,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart-module/cart/cart.component';
 import { AllItemsComponent } from './menu-module/components/all-items/all-items.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserDataComponent } from './user-profile/user-data/user-data.component';
+import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
+import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
 
 const routes: Routes = [
   {
@@ -62,6 +66,24 @@ const routes: Routes = [
       {
         path: 'all-items',
         component: AllItemsComponent,
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent,
+        children: [
+          {
+            path: '',
+            component: UserDataComponent
+          },
+          {
+            path: 'history',
+            component: UserHistoryComponent
+          },
+          {
+            path: 'subscription',
+            component: UserSubscriptionComponent
+          }
+        ]
       },
       {
         path: '**',

@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="inputs-container flex gap-3 justify-content-center text-3xl ">
+    <a
+    routerLink="/profile"
+    class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+  >
+    User Data </a
+  >
+      <a
+      routerLink="/profile/subscription"
+      class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+    >
+      User Subscription </a
+    >
+    <a
+    routerLink="/profile/history"
+    class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+  >
+    User History </a
+  >
+  </div>
+
+
+  <router-outlet></router-outlet>
+</div>

@@ -156,27 +156,28 @@
             registerform.controls['confirmpassword'].invalid
           "
           class="form-text"
-  
+
         >
           <small *ngIf="registerform.controls['confirmpassword'].errors?.['required']"
             >This field is required</small>
             <small *ngIf="registerform.controls['confirmpassword'].errors?.['minlength']"
             >This field is minlength 8</small>
             <small *ngIf="registerform.controls['confirmpassword'].errors?.['pattern']"
-            >This field is must contain</small>        
+            >This field is must contain</small>
             <small *ngIf="registerform.controls['confirmpassword'].errors?.['checkpass']">
                 Password and Confirm Password do not match.
               </small>
         </div>
       </div>
       </div>
-  
+
       <!-- <button type="submit" class="btn button" [disabled]="registerform.invalid">
         Rejecter
       </button> -->
       <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
       <p-button  class="btn button" [disabled]="registerform.invalid"  routerLinkActive="active" routerLink="**"> <span>Register</span></p-button>
-  
+
     </div>
      </form>
   </div>
+

@@ -21,7 +21,7 @@ export class EditUserComponent {
 
   user = {
     id: 1,
-    role: 1,
+    role: 2,
     firstName: 'Martina',
     lastName: 'Magdi',
     email: 'martinamagdi@gmail.com',

@@ -7,6 +7,7 @@ import { LayoutService } from "./service/app.layout.service";
     templateUrl: './app.topbar.component.html'
 })
 export class AppTopBarComponent {
+    id:number = 2
 
     items!: MenuItem[];
 

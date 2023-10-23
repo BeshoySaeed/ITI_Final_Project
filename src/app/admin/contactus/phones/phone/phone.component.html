@@ -78,8 +78,8 @@
             </td>
             <td Style="text-transform: capitalize;">
               <p-tag
-              [value]=" phone.active"
-              [severity]="status( phone.active)"
+              [value]="(phone.active) == 0 ? 'In Active' : 'Active'"
+              [severity]="status(phone.active)"
             ></p-tag>
             </td>
             <td class="flex">

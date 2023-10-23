@@ -55,8 +55,8 @@ export class PhoneComponent {
       });
   }
 
-  status(active: string) {
-    let status = active == 'active' ? 'success' : 'danger';
+  status(active: number) {
+    let status = active == 1 ? 'success' : 'danger';
     return status;
   }
 }

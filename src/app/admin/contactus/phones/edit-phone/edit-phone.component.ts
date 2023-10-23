@@ -32,7 +32,6 @@ export class EditPhoneComponent {
       })
       .then(() => {
         this.EditPhone.controls['phone'].setValue(this.phone.phone);
-        this.EditPhone.controls['active'].setValue(this.phone.active);
         this.EditPhone.controls['active'].setValue(
           this.phone.active == 1 ? true : false
         );

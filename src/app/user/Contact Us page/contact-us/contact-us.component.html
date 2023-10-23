@@ -26,8 +26,8 @@
         <a
           class="text block my-2"
           *ngFor="let value of emails"
-          [href]="'mailto:' + value.email"
-          >{{ value.email }}</a
+          [href]="'mailto:' + value['email']"
+          >{{ value['email'] }}</a
         >
       </div>
       <div class="col-12 lg:col-3">

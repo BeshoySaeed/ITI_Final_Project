@@ -7,11 +7,12 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class CustomerServicePhonesService {
+  phonesApiRoute = 'customer-service-phones'
 
   constructor(private httpClient: HttpClient) { }
 
   getAllPhones(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}customer-service-phones`)
+    return this.httpClient.get<object>(`${environment.host}${this.phonesApiRoute}`)
   }
 
   getAllActivePhones(): Observable<object> {
@@ -19,18 +20,18 @@ export class CustomerServicePhonesService {
   }
 
   getPhoneById(id: number): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}customer-service-phones/${id}`)
+    return this.httpClient.get<object>(`${environment.host}${this.phonesApiRoute}/${id}`)
   }
 
   deletePhoneById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}customer-service-phones/${id}`)
+    return this.httpClient.delete<object>(`${environment.host}${this.phonesApiRoute}/${id}`)
   }
 
   updatePhone(id:number, phone: object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}customer-service-phones/${id}`, phone)
+    return this.httpClient.put<object>(`${environment.host}${this.phonesApiRoute}/${id}`, phone)
   }
 
   storePhone(phone: object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}customer-service-phones`, phone)
+    return this.httpClient.post<object>(`${environment.host}${this.phonesApiRoute}`, phone)
   }
 }

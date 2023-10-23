@@ -66,7 +66,7 @@ export class EditPhoneComponent {
   onSubmit() {
     this.loader = true;
     this.phonesService
-      .UpdatePhone(this.phoneId, this.EditPhone.value)
+      .updatePhone(this.phoneId, this.EditPhone.value)
       .subscribe((response: any) => {
         if (response.status == 'success') {
           this.messageService.add({

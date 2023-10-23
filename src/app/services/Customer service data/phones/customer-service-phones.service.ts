@@ -26,7 +26,11 @@ export class CustomerServicePhonesService {
     return this.httpClient.delete<object>(`${environment.host}customer-service-phones/${id}`)
   }
 
-  UpdatePhone(id:number, phone: object): Observable<object> {
+  updatePhone(id:number, phone: object): Observable<object> {
     return this.httpClient.put<object>(`${environment.host}customer-service-phones/${id}`, phone)
+  }
+
+  storePhone(phone: object): Observable<object> {
+    return this.httpClient.post<object>(`${environment.host}customer-service-phones`, phone)
   }
 }

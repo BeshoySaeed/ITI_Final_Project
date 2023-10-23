@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomerServicePhonesService } from 'src/app/service/customer-service-phones.service';
+import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -32,7 +32,7 @@ export class ContactUsComponent {
 
   getAllPhones() {
     this.phonesService
-      .getAllActiveCustomerServicePhones()
+      .getAllActivePhones()
       .subscribe((phones: any) => {
         this.phones = phones.data;
       });

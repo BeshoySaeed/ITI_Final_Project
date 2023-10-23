@@ -1,4 +1,4 @@
-import { CustomerServicePhonesService } from './../../../../service/customer-service-phones.service';
+import { CustomerServicePhonesService } from '../../../../services/Customer service data/phones/customer-service-phones.service';
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
@@ -24,7 +24,7 @@ export class PhoneComponent {
 
   getAllPhones() {
     this.phonesService
-      .getAllCustomerServicePhones()
+      .getAllPhones()
       .subscribe((phones: any) => {
         this.phones = phones.data;
         this.loading = false
@@ -41,7 +41,7 @@ export class PhoneComponent {
 
   deletePhone(id: number) {
     this.phonesService
-      .deleteCustomerServicePhoneById(id)
+      .deletePhoneById(id)
       .subscribe((response: any) => {
         this.loading = true;
         if (response.status == 'success') {

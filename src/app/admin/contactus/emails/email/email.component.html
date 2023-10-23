@@ -1,4 +1,5 @@
 <div class="users-container">
+  <p-toast></p-toast>
     <div class="flex justify-content-between flex-wrap mb-3">
       <h3 class="admin-page-title">All Emails</h3>
       <a routerLink="/admin/contact-us-info/emails/create">
@@ -12,7 +13,7 @@
     <div class="card">
       <p-table
         #dt1
-        [value]="Emails"
+        [value]="emails"
         dataKey="id"
         [rows]="10"
         [showCurrentPageReport]="true"
@@ -20,8 +21,8 @@
         [loading]="loading"
         [paginator]="true"
         [globalFilterFields]="[
-          'Email',
-          'status',
+          'email',
+          'active',
         ]"
       >
         <ng-template pTemplate="caption">
@@ -51,7 +52,7 @@
                 Email
                 <p-columnFilter
                   type="text"
-                  field="Email"
+                  field="email"
                   display="menu"
                 ></p-columnFilter>
               </div>
@@ -61,7 +62,7 @@
                 Status
                 <p-columnFilter
                   type="text"
-                  field="status"
+                  field="active"
                   display="menu"
                 ></p-columnFilter>
               </div>
@@ -69,15 +70,15 @@
             <th>Actions</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-Email>
+        <ng-template pTemplate="body" let-email>
           <tr>
             <td>
-              {{ Email.Email }}
+              {{ email.email }}
             </td>
             <td Style="text-transform: capitalize;">
               <p-tag
-              [value]="Email.status"
-              [severity]="status(Email.status)"
+              [value]="(email.active) == 0 ? 'In Active' : 'Active'"
+              [severity]="status(email.active)"
             ></p-tag>
             </td>
             <td class="flex">
@@ -88,7 +89,7 @@
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
-                routerLink= "/admin/contact-us-info/emails/edit/{{Email.id}}"
+                routerLink= "/admin/contact-us-info/emails/edit/{{email.id}}"
                 class="p-button-success p-2 rounded mr-2"
               >
                 <i class="pi pi-fw pi-user-edit"></i>
@@ -102,7 +103,7 @@
                 placeholder="Top"
                 [showDelay]="700"
                 class="p-button-danger p-2 rounded"
-                (click)="deleteEmail(Email.id)"
+                (click)="deleteEmail(email.id)"
               >
                 <i class="pi pi-fw pi-trash"></i>
               </button>

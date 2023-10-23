@@ -17,8 +17,8 @@
         <a
           class="text phone block my-2"
           *ngFor="let value of phones"
-          [href]="'tel:' + value.phone"
-          >{{ value.phone }}</a
+          [href]="'tel:' + value['phone']"
+          >{{ value['phone'] }}</a
         >
       </div>
       <div class="col-12 lg:col-4">

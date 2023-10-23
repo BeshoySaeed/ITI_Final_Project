@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ForgetPasswordComponent } from './user/forget-password/forget-password.component';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TagModule } from 'primeng/tag';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TagModule } from 'primeng/tag';
     UserModule,
     BrowserModule,
     ToggleButtonModule,
-    TagModule
+    TagModule,
+    HttpClientModule
   ],
 
   providers: [],

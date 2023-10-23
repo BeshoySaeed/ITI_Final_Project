@@ -1,4 +1,5 @@
 <div class="users-container">
+  <p-toast></p-toast>
     <div class="flex justify-content-between flex-wrap mb-3">
       <h3 class="admin-page-title">All Phones</h3>
       <a routerLink="/admin/contact-us-info/phones/create">
@@ -18,6 +19,7 @@
         [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading"
+        loadingIcon = "pi pi-spinner"
         [paginator]="true"
         [globalFilterFields]="[
           'phone',
@@ -72,12 +74,12 @@
         <ng-template pTemplate="body" let-phone>
           <tr>
             <td>
-              {{ phone.phone }}
+              <a class="phone" href="tel:{{ phone.phone }}">{{ phone.phone }}</a>
             </td>
             <td Style="text-transform: capitalize;">
               <p-tag
-              [value]=" phone.status"
-              [severity]="status( phone.status)"
+              [value]=" phone.active"
+              [severity]="status( phone.active)"
             ></p-tag>
             </td>
             <td class="flex">

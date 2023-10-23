@@ -57,6 +57,8 @@ import { AddBranchesComponent } from './branches/add-branches/add-branches.compo
 import { AddSubscribeComponent } from './subscribe/add-subscribe/add-subscribe.component';
 import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscribe.component';
 import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
+import { ToastModule } from 'primeng/toast';
+
 @NgModule({
   declarations: [
     UsersComponent,
@@ -119,7 +121,8 @@ import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
     ToggleButtonModule,
     InputNumberModule,
     MultiSelectModule,
-    TagModule
+    TagModule,
+    ToastModule
   ],
 })
 export class AdminModule {}

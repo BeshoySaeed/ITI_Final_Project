@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerServicePhonesService } from 'src/app/service/customer-service-phones.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,20 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class ContactUsComponent {
-  phones = [
-    {
-      id: 0,
-      phone: "+01243342421"
-    },
-    {
-      id: 1,
-      phone: "+01244234421"
-    },
-    {
-      id: 2,
-      phone: "+01246554421"
-    },
-  ]
+  constructor(private phonesService: CustomerServicePhonesService) {}
+  phones = [];
 
   emails = [
     {
@@ -36,4 +25,16 @@ export class ContactUsComponent {
       email: "m@gmail.com"
     },
   ]
+
+  ngOnInit() {
+    this.getAllPhones();
+  }
+
+  getAllPhones() {
+    this.phonesService
+      .getAllActiveCustomerServicePhones()
+      .subscribe((phones: any) => {
+        this.phones = phones.data;
+      });
+  }
 }

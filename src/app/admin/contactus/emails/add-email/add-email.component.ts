@@ -1,71 +1,56 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 
 @Component({
   selector: 'app-add-email',
   templateUrl: './add-email.component.html',
-  styleUrls: ['./add-email.component.scss']
+  styleUrls: ['./add-email.component.scss'],
+  providers: [MessageService],
 })
 export class AddEmailComponent {
-  isContacted: boolean = false;
-
-  Emails = [
-    {
-      id: 1,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-    {
-      id: 2,
-      Email:"Example@gmail.com",
-      status:"inactive",
-    },
-    {
-      id: 3,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-    {
-      id: 4,
-      Email:"Example@gmail.com",
-      status:"inactive",
-    },
-    {
-      id: 5,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-  
-    
-  ];
   AddEmail!: FormGroup;
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() {
-    this.AddEmail = this.fb.group(
-      {
-        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        email: [
-          '',
-          Validators.pattern(
-            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          ),
-        ],
-      },
-    );
-  }
-  toggleContacted(feedback: any) {
-    this.isContacted = feedback;
+  loader = false;
 
-    if (feedback) {
-      console.log(feedback.id);
-    } else {
-      console.log(feedback.id);
-    }
+  constructor(
+    private fb: FormBuilder,
+    private emailsService: CustomerServiceEmailsService,
+    private messageService: MessageService
+  ) {}
+
+  ngOnInit() {
+    this.AddEmail = this.fb.group({
+      email: [
+        '',
+        Validators.pattern(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        ),
+      ],
+      active: [true],
+    });
   }
-  getToggleButtonClass() {
-    return this.isContacted ? 'contacted' : 'not-contacted';
+
+  resetForm() {
+    this.AddEmail.controls['email'].setValue('');
+    this.AddEmail.controls['active'].setValue(true);
   }
+
   onSubmit() {
-    console.log(this.AddEmail);
+    this.loader = true;
+
+    this.emailsService
+      .storeEmail(this.AddEmail.value)
+      .subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Email is added',
+          });
+          this.resetForm();
+          this.loader = false;
+        }
+      });
   }
 }

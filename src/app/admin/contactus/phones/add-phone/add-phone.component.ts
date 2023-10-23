@@ -22,8 +22,13 @@ export class AddPhoneComponent {
   ngOnInit() {
     this.AddPhone = this.fb.group({
       phone: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-      active: [''],
+      active: [true],
     });
+  }
+
+  resetForm() {
+    this.AddPhone.controls['phone'].setValue('');
+    this.AddPhone.controls['active'].setValue(true);
   }
 
   onSubmit() {
@@ -37,6 +42,7 @@ export class AddPhoneComponent {
             summary: 'Success',
             detail: 'Phone is added',
           });
+          this.resetForm();
           this.loader = false;
         }
       });

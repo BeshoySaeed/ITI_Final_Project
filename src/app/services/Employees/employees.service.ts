@@ -8,40 +8,40 @@ import { environment } from 'src/environments/environment.development';
 })
 export class EmployeesService {
 
-  ApiRoute = `${environment.host}/employees`;
+  apiRoute = `${environment.host}/employees`;
 
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<object> {
-    return this.httpClient.get<object>(`${this.ApiRoute}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   getById(id: number): Observable<object> {
-    return this.httpClient.get<object>(`${this.ApiRoute}/${id}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   delete(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${this.ApiRoute}/${id}`).pipe(
+    return this.httpClient.delete<object>(`${this.apiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   update(id:number, employee: object): Observable<object> {
-    return this.httpClient.put<object>(`${this.ApiRoute}/${id}`, employee).pipe(
+    return this.httpClient.put<object>(`${this.apiRoute}/${id}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   store(employee: object): Observable<object> {
-    return this.httpClient.post<object>(`${this.ApiRoute}`, employee).pipe(
+    return this.httpClient.post<object>(`${this.apiRoute}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

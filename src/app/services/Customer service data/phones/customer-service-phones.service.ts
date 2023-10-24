@@ -8,12 +8,12 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class CustomerServicePhonesService {
-  phonesApiRoute = `${environment.host}/customer-service-phones`
+  apiRoute = `${environment.host}/customer-service-phones`
 
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<object> {
-    return this.httpClient.get<object>(`${this.phonesApiRoute}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -27,28 +27,28 @@ export class CustomerServicePhonesService {
   }
 
   getById(id: number): Observable<object> {
-    return this.httpClient.get<object>(`${this.phonesApiRoute}/${id}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   delete(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${this.phonesApiRoute}/${id}`).pipe(
+    return this.httpClient.delete<object>(`${this.apiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   update(id:number, phone: object): Observable<object> {
-    return this.httpClient.put<object>(`${this.phonesApiRoute}/${id}`, phone).pipe(
+    return this.httpClient.put<object>(`${this.apiRoute}/${id}`, phone).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   store(phone: object): Observable<object> {
-    return this.httpClient.post<object>(`${this.phonesApiRoute}`, phone).pipe(
+    return this.httpClient.post<object>(`${this.apiRoute}`, phone).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

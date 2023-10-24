@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { AdditionsService } from 'src/app/services/additions.service';
+import { AdditionsService } from 'src/app/services/additions-service/additions.service'; 
 
 @Component({
   selector: 'app-additions',

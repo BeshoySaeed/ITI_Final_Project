@@ -27,7 +27,7 @@ export class ContactUsComponent {
   ]
 
   ngOnInit() {
-    this.getAllPhones();
+    // this.getAllPhones();
   }
 
   getAllPhones() {

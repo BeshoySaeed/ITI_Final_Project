@@ -26,8 +26,8 @@ export class SocialMediaAccountsService {
     );
   }
 
-  update(id:number, email: object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}${this.apiRoute}/${id}`, email).pipe(
+  update(id:number, social: object): Observable<object> {
+    return this.httpClient.put<object>(`${environment.host}${this.apiRoute}/${id}`, social).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

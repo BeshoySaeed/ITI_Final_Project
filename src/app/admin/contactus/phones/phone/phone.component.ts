@@ -24,7 +24,7 @@ export class PhoneComponent {
 
   getAllPhones() {
     this.phonesService
-      .getAllPhones()
+      .getAll()
       .subscribe((phones: any) => {
         this.phones = phones.data;
         this.loading = false
@@ -41,7 +41,7 @@ export class PhoneComponent {
 
   deletePhone(id: number) {
     this.phonesService
-      .deletePhoneById(id)
+      .delete(id)
       .subscribe((response: any) => {
         this.loading = true;
         if (response.status == 'success') {

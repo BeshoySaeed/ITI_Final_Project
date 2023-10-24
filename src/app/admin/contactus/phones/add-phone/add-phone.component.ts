@@ -34,7 +34,7 @@ export class AddPhoneComponent {
   onSubmit() {
     this.loader = true;
     this.phonesService
-      .storePhone(this.AddPhone.value)
+      .store(this.AddPhone.value)
       .subscribe((response: any) => {
         if (response.status == 'success') {
           this.messageService.add({

@@ -23,7 +23,7 @@ export class EmailComponent {
   }
 
   getAllEmails() {
-    this.emailsService.getAllEmails().subscribe((emails: any) => {
+    this.emailsService.getAll().subscribe((emails: any) => {
       this.emails = emails.data;
       this.loading = false;
     });
@@ -38,7 +38,7 @@ export class EmailComponent {
   }
 
   deleteEmail(id: number) {
-    this.emailsService.deleteEmailById(id).subscribe((response: any) => {
+    this.emailsService.delete(id).subscribe((response: any) => {
       this.loading = true;
       if (response.status == 'success') {
         this.getAllEmails();

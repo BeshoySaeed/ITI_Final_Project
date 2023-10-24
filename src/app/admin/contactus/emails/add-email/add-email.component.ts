@@ -40,7 +40,7 @@ export class AddEmailComponent {
     this.loader = true;
 
     this.emailsService
-      .storeEmail(this.AddEmail.value)
+      .store(this.AddEmail.value)
       .subscribe((response: any) => {
         if (response.status == 'success') {
           this.messageService.add({

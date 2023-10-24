@@ -51,7 +51,7 @@ export class EditPhoneComponent {
 
   getPhoneById(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.phonesService.getPhoneById(this.phoneId).subscribe(
+      this.phonesService.getById(this.phoneId).subscribe(
         (response) => {
           resolve(response);
         },
@@ -65,7 +65,7 @@ export class EditPhoneComponent {
   onSubmit() {
     this.loader = true;
     this.phonesService
-      .updatePhone(this.phoneId, this.EditPhone.value)
+      .update(this.phoneId, this.EditPhone.value)
       .subscribe((response: any) => {
         if (response.status == 'success') {
           this.messageService.add({

@@ -55,7 +55,7 @@ export class EditEmailComponent {
 
   getEmailById(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.phonesService.getEmailById(this.emailId).subscribe(
+      this.phonesService.getById(this.emailId).subscribe(
         (response) => {
           resolve(response);
         },
@@ -69,7 +69,7 @@ export class EditEmailComponent {
   onSubmit() {
     this.loader = true;
     this.phonesService
-      .updateEmail(this.emailId, this.EditEmail.value)
+      .update(this.emailId, this.EditEmail.value)
       .subscribe((response: any) => {
         if (response.status == 'success') {
           this.messageService.add({

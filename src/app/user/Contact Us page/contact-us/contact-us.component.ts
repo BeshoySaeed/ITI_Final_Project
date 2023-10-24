@@ -30,13 +30,13 @@ export class ContactUsComponent {
   }
 
   getAllPhones() {
-    this.phonesService.getAllActivePhones().subscribe((phones: any) => {
+    this.phonesService.getAllActive().subscribe((phones: any) => {
       this.phones = phones.data;
     });
   }
 
   getAllEmails() {
-    this.emailsService.getAllActiveEmails().subscribe((emails: any) => {
+    this.emailsService.getAllActive().subscribe((emails: any) => {
       this.emails = emails.data;
     });
   }

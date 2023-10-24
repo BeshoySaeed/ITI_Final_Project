@@ -1,55 +1,47 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { throwError } from 'rxjs/internal/observable/throwError';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerServiceEmailsService {
-  emailsApiRoute = `${environment.host}customer-service-emails`;
+export class EmployeesService {
 
-  constructor(private httpClient: HttpClient) {}
+  ApiRoute = `${environment.host}employees`;
+
+  constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<object> {
-    return this.httpClient.get<object>(`${this.emailsApiRoute}`).pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
-  }
-
-  getAllActive(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}customer-service-active-emails`).pipe(
+    return this.httpClient.get<object>(`${this.ApiRoute}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   getById(id: number): Observable<object> {
-    return this.httpClient.get<object>(`${this.emailsApiRoute}/${id}`).pipe(
+    return this.httpClient.get<object>(`${this.ApiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   delete(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${this.emailsApiRoute}/${id}`).pipe(
+    return this.httpClient.delete<object>(`${this.ApiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
-  update(id:number, email: object): Observable<object> {
-    return this.httpClient.put<object>(`${this.emailsApiRoute}/${id}`, email).pipe(
+  update(id:number, employee: object): Observable<object> {
+    return this.httpClient.put<object>(`${this.ApiRoute}/${id}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
-  store(email: object): Observable<object> {
-    return this.httpClient.post<object>(`${this.emailsApiRoute}`, email).pipe(
+  store(employee: object): Observable<object> {
+    return this.httpClient.post<object>(`${this.ApiRoute}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

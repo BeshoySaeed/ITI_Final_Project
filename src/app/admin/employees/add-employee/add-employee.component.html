@@ -1,7 +1,12 @@
-<div class="add-user-container">
+<div class="add-employee-container">
+  <p-toast></p-toast>
   <h3 class="admin-page-title">Add Employee</h3>
 
   <div class="card">
+    <div class="loader" *ngIf="loader">
+      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+    </div>
+
     <form
       [formGroup]="addEmployeeForm"
       (ngSubmit)="onSubmit()"
@@ -15,34 +20,34 @@
             pInputText
             [required]="true"
             [minlength]="4"
-            formControlName="firstName"
+            formControlName="first_name"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="first-name" class="block mb-2">First Name *</label>
+          <label for="first-name" class="block mb-2">First name *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['firstName'].touched &&
-            addEmployeeForm.controls['firstName'].invalid
+            addEmployeeForm.controls['first_name'].touched &&
+            addEmployeeForm.controls['first_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['required']"
           >
             First name is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['minlength']"
           >
             First name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['pattern']"
           >
             First name must contains only letters
           </small>
@@ -57,34 +62,34 @@
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="lastName"
+            formControlName="last_name"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="last-name" class="block mb-2">Last Name *</label>
+          <label for="last-name" class="block mb-2">Last name *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['lastName'].touched &&
-            addEmployeeForm.controls['lastName'].invalid
+            addEmployeeForm.controls['last_name'].touched &&
+            addEmployeeForm.controls['last_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['required']"
           >
             Last name is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['minlength']"
           >
             Last name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['pattern']"
           >
             Last name is must contains only letters
           </small>
@@ -171,34 +176,34 @@
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="jobTitle"
+            formControlName="job_title"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="job-title" class="block mb-2">job title *</label>
+          <label for="job-title" class="block mb-2">Job title *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['jobTitle'].touched &&
-            addEmployeeForm.controls['jobTitle'].invalid
+            addEmployeeForm.controls['job_title'].touched &&
+            addEmployeeForm.controls['job_title'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['required']"
           >
             Job title is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['minlength']"
           >
             Job title is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['pattern']"
           >
             Job title is must contains only letters
           </small>
@@ -207,18 +212,19 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <input
-            id="salary"
-            type="numeric"
-            [required]="true"
-            [minlength]="4"
-            pInputText
+          <p-inputNumber
+            [useGrouping]="false"
             formControlName="salary"
-            class="input p-2 border-round outline-none w-full"
-          />
-          <label for="salary" class="block mb-2">salary *</label>
+            [format]="false"
+            styleClass="w-full"
+            class="mask-button form-field"
+            [required]="true"
+            [min]="1"
+          >
+          </p-inputNumber>
+          <label for="salary" class="block mb-2">Salary *</label>
         </div>
-
+  
         <div
           class="error-message"
           *ngIf="
@@ -232,13 +238,6 @@
           >
             Salary is required
           </small>
-
-          <small
-            class="block"
-            *ngIf="addEmployeeForm.controls['salary'].errors?.['pattern']"
-          >
-            Salary is must be a number
-          </small>
         </div>
       </div>
 
@@ -249,11 +248,11 @@
             [autoClear]="false"
             [required]="true"
             formControlName="joined_at"
-            mask="99/99/9999"
+            mask="9999-99-99"
             styleClass="input p-2 border-round outline-none w-full"
             class="mask-button"
           ></p-inputMask>
-          <label htmlFor="joined_at" class="block mb-2">joined at *</label>
+          <label htmlFor="joined_at" class="block mb-2">Joined at *</label>
         </div>
 
         <div
@@ -284,9 +283,10 @@
             name="branch"
             styleClass="w-full"
             [options]="branches"
-            formControlName="branch"
+            formControlName="branch_id"
             optionLabel="name"
             optionValue="id"
+            class="form-field"
           ></p-dropdown>
           <label for="branch" class="block mb-2">Branch *</label>
         </div>
@@ -303,7 +303,7 @@
             styleClass="input p-2 border-round outline-none w-full"
             class="mask-button"
           ></p-inputMask>
-          <label htmlFor="national_id" class="block mb-2">national id *</label>
+          <label htmlFor="national_id" class="block mb-2">National id *</label>
         </div>
 
         <div

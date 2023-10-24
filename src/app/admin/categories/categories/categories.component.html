@@ -61,7 +61,7 @@
       <ng-template pTemplate="body" let-category>
         <tr>
           <td>
-            <img width="200" [src]="category.image" [alt]="category.name" />
+            <img width="200" [src]="category.img" [alt]="category.name" />
           </td>
           <td>
             {{ category.name }}
@@ -88,7 +88,7 @@
               placeholder="Top"
               [showDelay]="700"
               class="p-button-danger p-2 rounded"
-              (click)="deleteItem(category.id)"
+              (click)="deleteCategory(category.id)"
             >
               <i class="pi pi-fw pi-trash"></i>
             </button>

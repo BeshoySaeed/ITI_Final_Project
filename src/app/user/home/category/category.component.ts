@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
 })
 export class CategoryComponent {
   items: any[] = [];
+  constructor(){}
 
   ngOnInit() {
     this.items = [
-        
+
       {
         Name:'Meat',
         Image:'../../../assets/images/download.jpeg',
@@ -20,7 +21,8 @@ export class CategoryComponent {
         Name:'Pizza',
         Image:'../../../assets/images/download (1).jpeg',
         link:'#'
-      },     {
+      },
+      {
         Name:'Fish',
         Image:'../../../assets/images/images.jpeg',
         link:'#'

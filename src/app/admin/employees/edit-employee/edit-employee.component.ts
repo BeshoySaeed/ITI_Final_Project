@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { EmployeesService } from 'src/app/services/Employees/employees.service';
+import { BrancheServiceService } from 'src/app/services/branche-service.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -30,30 +31,20 @@ export class EditEmployeeComponent {
     'branch_id'
   ];
 
-  branches = [
-    {
-      id: 1,
-      name: 'branch 1',
-      address: 'cairo',
-      address_location: 'cairo',
-    },
-    {
-      id: 2,
-      name: 'branch 2',
-      address: 'cairo',
-      address_location: 'cairo',
-    },
-  ];
+  branches = [];
 
   constructor(
     private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
     private employeeService: EmployeesService,
+    private branchesService: BrancheServiceService,
     private messageService: MessageService
   ) {}
   
   ngOnInit() {
     this.initializeForm();
+    this.getAllBranches();
+    console.log(this.branches)
 
     this.getEmployee()
       .then((response) => {
@@ -107,6 +98,14 @@ export class EditEmployeeComponent {
         }
       );
     });
+  }
+
+  getAllBranches() {
+    this.branchesService
+      .getAllBranches()
+      .subscribe((branches: any) => {
+        this.branches = branches.data;
+      });
   }
 
   onSubmit() {

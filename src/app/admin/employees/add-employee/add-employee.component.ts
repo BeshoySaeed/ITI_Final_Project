@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EmployeesService } from 'src/app/services/Employees/employees.service';
+import { BrancheServiceService } from 'src/app/services/branche-service.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -26,25 +27,13 @@ export class AddEmployeeComponent {
     'joined_at',
   ];
 
-  branches = [
-    {
-      id: 1,
-      name: 'branch 1',
-      address: 'cairo',
-      address_location: 'cairo',
-    },
-    {
-      id: 2,
-      name: 'branch 2',
-      address: 'cairo',
-      address_location: 'cairo',
-    },
-  ];
+  branches = [];
 
   constructor(
     private fb: FormBuilder,
     private employeesService: EmployeesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private branchesService: BrancheServiceService,
   ) {}
 
   ngOnInit() {
@@ -67,6 +56,8 @@ export class AddEmployeeComponent {
       joined_at: ['', Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)],
       branch_id: [1],
     });
+    
+    this.getAllBranches();
   }
 
   resetForm() {
@@ -74,6 +65,14 @@ export class AddEmployeeComponent {
       this.addEmployeeForm.controls[control].setValue('');
     }
     this.addEmployeeForm.controls['branch_id'].setValue(1);
+  }
+
+  getAllBranches() {
+    this.branchesService
+      .getAllBranches()
+      .subscribe((branches: any) => {
+        this.branches = branches.data;
+      });
   }
 
   onSubmit() {

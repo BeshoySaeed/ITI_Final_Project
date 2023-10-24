@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 import { HttpErrorResponse,  } from '@angular/common/http';
 import { throwError } from 'rxjs'; 
 

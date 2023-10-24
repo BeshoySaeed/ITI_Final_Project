@@ -1,15 +1,12 @@
 export interface Item {
     id: string;
-    title: string;
-    description: string;
-    genre: string;
-    released?: string | Date;
-    ageRating: string;
-    price: number;
-    discountedPrice: number;
-    onSale: boolean;
+    name: string;
     image: string;
-    tags: Array<string>;
-    favorite: boolean;
+    price: number;
+    discount: number;
+    description: string;
+    category_id: string;
+    active: boolean;
+    created_at?: string | Date;
+    updated_at?: string;
   }
-  

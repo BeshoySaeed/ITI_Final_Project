@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class EmployeesService {
 
-  ApiRoute = `${environment.host}employees`;
+  ApiRoute = `${environment.host}/employees`;
 
   constructor(private httpClient: HttpClient) { }
 

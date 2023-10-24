@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class CustomerServicePhonesService {
-  phonesApiRoute = `${environment.host}customer-service-phones`
+  phonesApiRoute = `${environment.host}/customer-service-phones`
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class CustomerServicePhonesService {
   }
 
   getAllActive(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}customer-service-active-phones`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/customer-service-active-phones`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

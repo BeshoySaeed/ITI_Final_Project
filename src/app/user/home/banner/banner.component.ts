@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PhotoService } from '../service/photoservice.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { ItemService } from 'src/app/services/ItemService/item.service';
 
 
 
@@ -22,6 +23,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class BannerComponent {
       images: any[] | undefined;
+      items: any;
 
     responsiveOptions: any[] = [
         {
@@ -38,12 +40,17 @@ export class BannerComponent {
         }
     ];
 
-    constructor(private photoService: PhotoService) {}
+    constructor(private photoService: PhotoService, private itemHttp: ItemService) {}
 
     ngOnInit() {
         this.photoService.getData().then((images) => {
             this.images = images;
         });
+        this.itemHttp.getItems().subscribe(items =>{
+          this.items = items;
+          console.log(this.items, "hello")
+        });
+
     }
 
 }

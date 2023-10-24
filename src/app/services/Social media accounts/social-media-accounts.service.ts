@@ -8,26 +8,26 @@ import { environment } from 'src/environments/environment.development';
 })
 export class SocialMediaAccountsService {
 
-  apiRoute = 'social-media-accounts';
+  apiRoute = `${environment.host}/social-media-accounts`;
 
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}${this.apiRoute}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   getById(id: number): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}${this.apiRoute}/${id}`).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   update(id:number, social: object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}${this.apiRoute}/${id}`, social).pipe(
+    return this.httpClient.put<object>(`${this.apiRoute}/${id}`, social).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

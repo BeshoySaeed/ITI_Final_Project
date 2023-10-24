@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class CustomerServiceEmailsService {
-  emailsApiRoute = `${environment.host}customer-service-emails`;
+  emailsApiRoute = `${environment.host}/customer-service-emails`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class CustomerServiceEmailsService {
   }
 
   getAllActive(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}customer-service-active-emails`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/customer-service-active-emails`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

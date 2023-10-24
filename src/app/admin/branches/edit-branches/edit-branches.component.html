@@ -4,13 +4,13 @@
     <div class="card">
       <form
         [formGroup]="Editbranch"
-        (ngSubmit)="onSubmit()"
         class="formgrid grid w-full mt-3 mx-auto form"
       >
         <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
           <div class="flex flex-column-reverse">
             <input
               id="name"
+              [(ngModel)]="branch.name"
               type="text"
               pInputText
               [required]="true"
@@ -54,6 +54,8 @@
             <div class="flex flex-column-reverse">
               <input
                 id="address"
+                [(ngModel)]="branch.address"
+
                 type="text"
                 pInputText
                 [required]="true"
@@ -83,6 +85,7 @@
             <div class="flex flex-column-reverse">
               <input
                 id="location"
+                [(ngModel)]="branch.address_location"
                 type="text"
                 pInputText
                 [required]="true"

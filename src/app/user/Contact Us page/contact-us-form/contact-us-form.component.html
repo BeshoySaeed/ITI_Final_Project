@@ -9,6 +9,7 @@
     <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
       <div class="flex flex-column-reverse">
         <input
+        [(ngModel)]="contact.first_name"
           id="first-name"
           type="text"
           pInputText
@@ -46,6 +47,8 @@
     <div class="col-12 md:col-6 mb-4">
       <div class="flex flex-column-reverse">
         <input
+        [(ngModel)]="contact.last_name"
+
           id="last-name"
           type="text"
           [required]="true"
@@ -79,6 +82,8 @@
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <input
+        [(ngModel)]="contact.email"
+
           id="email"
           type="email"
           [required]="true"
@@ -108,6 +113,8 @@
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <p-inputMask
+        [(ngModel)]="contact.mobile"
+
           id="mobile"
           [required]="true"
           [autoClear]="false"
@@ -170,6 +177,8 @@
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <textarea
+        [(ngModel)]="contact.message"
+
           id="address"
           type="text"
           pInputText

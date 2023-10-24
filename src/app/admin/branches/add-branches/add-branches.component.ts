@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { BrancheServiceService } from 'src/app/services/branche-service.service';
+import { Branch } from 'src/app/interface/branches';
 @Component({
   selector: 'app-add-branches',
   templateUrl: './add-branches.component.html',
@@ -8,18 +9,32 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddBranchesComponent {
   Addbranch!: FormGroup;
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() {
+      
+  branch = new Branch();
+  branches:any;
+
+  constructor(private dataServices:BrancheServiceService , private fb: FormBuilder) { }
+
+  ngOnInit(){
+
     this.Addbranch = this.fb.group(
-      {
-        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        address: [''],
-        location: [''],
-       
-      },
-    );
-  }
-  onSubmit() {
-    console.log(this.Addbranch);
-  }
+    {
+      name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+      address: [''],
+      location: [''],     
+    },
+  );
+
 }
+
+insertBranchData(){
+  this.dataServices.insertBranches(this.branch).subscribe(res =>{
+    
+    console.log(res);
+  })
+}
+
+}
+
+
+

@@ -1,5 +1,5 @@
-import { CustomerServiceEmailsService } from './../../../services/Customer service data/emails/customer-service-emails.service';
 import { Component } from '@angular/core';
+import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
 

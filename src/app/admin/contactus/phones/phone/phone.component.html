@@ -1,88 +1,83 @@
 <div class="users-container">
   <p-toast></p-toast>
-    <div class="flex justify-content-between flex-wrap mb-3">
-      <h3 class="admin-page-title">All Phones</h3>
-      <a routerLink="/admin/contact-us-info/phones/create">
-        <button
-          pButton
-          class="p-button-primary"
-        >Add Phone</button>
-      </a>
-    </div>
-  
-    <div class="card">
-      <p-table
-        #dt1
-        [value]="phones"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [loading]="loading"
-        loadingIcon = "pi pi-spinner"
-        [paginator]="true"
-        [globalFilterFields]="[
-          'phone',
-          'status',
-        ]"
-      >
-        <ng-template pTemplate="caption">
-          <div class="flex">
-            <button
-              pButton
-              label="Clear"
-              class="p-button-outlined"
-              icon="pi pi-filter-slash"
-              (click)="clear(dt1)"
-            ></button>
-            <span class="p-input-icon-left ml-auto">
-              <i class="pi pi-search"></i>
-              <input
-                pInputText
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Phones</h3>
+    <a routerLink="/admin/contact-us-info/phones/create">
+      <button pButton class="p-button-primary">Add Phone</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="phones"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      loadingIcon="pi pi-spinner"
+      [paginator]="true"
+      [globalFilterFields]="['phone', 'status']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Phone
+              <p-columnFilter
                 type="text"
-                (input)="applyFilterGlobal($event, dt1, 'contains')"
-                placeholder="Search keyword"
-              />
-            </span>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Phone
-                <p-columnFilter
-                  type="text"
-                  field="phone"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Status
-                <p-columnFilter
-                  type="text"
-                  field="status"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th>Actions</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-phone>
-          <tr>
-            <td>
-              <a class="phone" href="tel:{{ phone.phone }}">{{ phone.phone }}</a>
-            </td>
-            <td Style="text-transform: capitalize;">
-              <p-tag
-              [value]="(phone.active) == 0 ? 'In Active' : 'Active'"
+                field="phone"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Status
+              <p-columnFilter
+                type="text"
+                field="status"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-phone>
+        <tr>
+          <td>
+            <a class="phone" href="tel:{{ phone.phone }}">{{ phone.phone }}</a>
+          </td>
+          <td Style="text-transform: capitalize;">
+            <p-tag
+              [value]="phone.active == 0 ? 'In Active' : 'Active'"
               [severity]="status(phone.active)"
             ></p-tag>
-            </td>
-            <td class="flex">
+          </td>
+          <td>
+            <div class="flex">
               <button
                 pButton
                 pRipple
@@ -90,12 +85,12 @@
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
-                routerLink= "/admin/contact-us-info/phones/edit/{{phone.id}}"
+                routerLink="/admin/contact-us-info/phones/edit/{{ phone.id }}"
                 class="p-button-success p-2 rounded mr-2"
               >
                 <i class="pi pi-fw pi-pencil"></i>
               </button>
-  
+
               <button
                 pButton
                 pRipple
@@ -108,15 +103,15 @@
               >
                 <i class="pi pi-fw pi-trash"></i>
               </button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="7">No Phones found.</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No Phones found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  
+</div>

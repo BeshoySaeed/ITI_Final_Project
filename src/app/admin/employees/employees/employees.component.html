@@ -3,10 +3,7 @@
   <div class="flex justify-content-between flex-wrap mb-3">
     <h3 class="admin-page-title">All Employees</h3>
     <a routerLink="/admin/employees/create">
-      <button
-        pButton
-        class="p-button-primary"
-      >Add Employee</button>
+      <button pButton class="p-button-primary">Add Employee</button>
     </a>
   </div>
 
@@ -30,7 +27,7 @@
         'address',
         'salary',
         'joined_at',
-        'branch_name',
+        'branch_name'
       ]"
     >
       <ng-template pTemplate="caption">
@@ -191,32 +188,34 @@
           <td>
             {{ employee.branch_name }}
           </td>
-          <td class="flex">
-            <button
-              pButton
-              pRipple
-              pTooltip="Edit employee"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              routerLink="/admin/employees/edit/{{ employee.id }}"
-              class="p-button-success p-2 rounded mr-2"
-            >
-              <i class="pi pi-fw pi-user-edit"></i>
-            </button>
+          <td>
+            <div class="flex">
+              <button
+                pButton
+                pRipple
+                pTooltip="Edit employee"
+                tooltipPosition="top"
+                placeholder="Top"
+                [showDelay]="700"
+                routerLink="/admin/employees/edit/{{ employee.id }}"
+                class="p-button-success p-2 rounded mr-2"
+              >
+                <i class="pi pi-fw pi-user-edit"></i>
+              </button>
 
-            <button
-              pButton
-              pRipple
-              pTooltip="Delete employee"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              class="p-button-danger p-2 rounded"
-              (click)="deleteEmployee(employee.id)"
-            >
-              <i class="pi pi-fw pi-user-minus"></i>
-            </button>
+              <button
+                pButton
+                pRipple
+                pTooltip="Delete employee"
+                tooltipPosition="top"
+                placeholder="Top"
+                [showDelay]="700"
+                class="p-button-danger p-2 rounded"
+                (click)="deleteEmployee(employee.id)"
+              >
+                <i class="pi pi-fw pi-user-minus"></i>
+              </button>
+            </div>
           </td>
         </tr>
       </ng-template>

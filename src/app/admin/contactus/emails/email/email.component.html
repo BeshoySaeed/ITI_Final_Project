@@ -1,87 +1,82 @@
 <div class="users-container">
   <p-toast></p-toast>
-    <div class="flex justify-content-between flex-wrap mb-3">
-      <h3 class="admin-page-title">All Emails</h3>
-      <a routerLink="/admin/contact-us-info/emails/create">
-        <button
-          pButton
-          class="p-button-primary"
-        >Add Email</button>
-      </a>
-    </div>
-  
-    <div class="card">
-      <p-table
-        #dt1
-        [value]="emails"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [loading]="loading"
-        [paginator]="true"
-        [globalFilterFields]="[
-          'email',
-          'active',
-        ]"
-      >
-        <ng-template pTemplate="caption">
-          <div class="flex">
-            <button
-              pButton
-              label="Clear"
-              class="p-button-outlined"
-              icon="pi pi-filter-slash"
-              (click)="clear(dt1)"
-            ></button>
-            <span class="p-input-icon-left ml-auto">
-              <i class="pi pi-search"></i>
-              <input
-                pInputText
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All Emails</h3>
+    <a routerLink="/admin/contact-us-info/emails/create">
+      <button pButton class="p-button-primary">Add Email</button>
+    </a>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="emails"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="['email', 'active']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Email
+              <p-columnFilter
                 type="text"
-                (input)="applyFilterGlobal($event, dt1, 'contains')"
-                placeholder="Search keyword"
-              />
-            </span>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Email
-                <p-columnFilter
-                  type="text"
-                  field="email"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Status
-                <p-columnFilter
-                  type="text"
-                  field="active"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th>Actions</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-email>
-          <tr>
-            <td>
-              {{ email.email }}
-            </td>
-            <td Style="text-transform: capitalize;">
-              <p-tag
-              [value]="(email.active) == 0 ? 'In Active' : 'Active'"
+                field="email"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Status
+              <p-columnFilter
+                type="text"
+                field="active"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-email>
+        <tr>
+          <td>
+            {{ email.email }}
+          </td>
+          <td Style="text-transform: capitalize;">
+            <p-tag
+              [value]="email.active == 0 ? 'In Active' : 'Active'"
               [severity]="status(email.active)"
             ></p-tag>
-            </td>
-            <td class="flex">
+          </td>
+          <td>
+            <div class="flex">
               <button
                 pButton
                 pRipple
@@ -89,12 +84,12 @@
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
-                routerLink= "/admin/contact-us-info/emails/edit/{{email.id}}"
+                routerLink="/admin/contact-us-info/emails/edit/{{ email.id }}"
                 class="p-button-success p-2 rounded mr-2"
               >
                 <i class="pi pi-fw pi-user-edit"></i>
               </button>
-  
+
               <button
                 pButton
                 pRipple
@@ -107,15 +102,15 @@
               >
                 <i class="pi pi-fw pi-trash"></i>
               </button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="7">No Emails found.</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No Emails found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  
+</div>

@@ -44,7 +44,6 @@ export class EditEmployeeComponent {
   ngOnInit() {
     this.initializeForm();
     this.getAllBranches();
-    console.log(this.branches)
 
     this.getEmployee()
       .then((response) => {

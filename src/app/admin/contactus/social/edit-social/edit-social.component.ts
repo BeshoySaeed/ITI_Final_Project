@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { SocialMediaAccount } from 'src/app/interface/social-media-account';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { SocialMediaAccountsService } from 'src/app/services/Social media accoun
 export class EditSocialComponent {
   EditSocial!: FormGroup;
   socialId = this.activeRoute.snapshot.params['id'];
-  socialAccount: any = {};
+  socialAccount!: SocialMediaAccount;
   loader = true;
 
   constructor(

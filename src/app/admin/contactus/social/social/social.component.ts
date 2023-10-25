@@ -1,5 +1,6 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
+import { SocialMediaAccount } from 'src/app/interface/social-media-account';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SocialMediaAccountsService } from 'src/app/services/Social media accoun
 })
 export class SocialComponent {
   loading: boolean = true;
-  socials = [];
+  socials: SocialMediaAccount[] = [];
 
   constructor(private socialsService: SocialMediaAccountsService) {}
 

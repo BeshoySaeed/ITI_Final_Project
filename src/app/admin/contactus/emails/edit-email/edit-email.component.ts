@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { CustomerServiceEmail } from 'src/app/interface/customer-service-email';
 import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { CustomerServiceEmailsService } from 'src/app/services/Customer service 
 })
 export class EditEmailComponent {
   emailId = this.activeRoute.snapshot.params['id'];
-  email: any = [];
+  email!:CustomerServiceEmail;
   EditEmail!: FormGroup;
   loader = true;
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CustomerServiceEmail } from 'src/app/interface/customer-service-email';
+import { CustomerServicePhone } from 'src/app/interface/customer-service-phone';
 import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
@@ -15,8 +17,8 @@ export class ContactUsComponent {
     private socialsService: SocialMediaAccountsService
   ) {}
 
-  phones = [];
-  emails = [];
+  phones: CustomerServicePhone[] = [];
+  emails: CustomerServiceEmail[] = [];
   socials = [];
   facebookLink!: string;
   instagramLink!: string;

@@ -2,6 +2,7 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
+import { CustomerServiceEmail } from 'src/app/interface/customer-service-email';
 
 @Component({
   selector: 'app-email',
@@ -10,7 +11,7 @@ import { CustomerServiceEmailsService } from 'src/app/services/Customer service 
   providers: [MessageService],
 })
 export class EmailComponent {
-  emails = [];
+  emails:CustomerServiceEmail[] = [];
   loading: boolean = true;
 
   constructor(

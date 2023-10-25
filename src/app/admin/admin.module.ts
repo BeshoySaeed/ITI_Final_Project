@@ -59,6 +59,7 @@ import { EditSubscribeComponent } from './subscribe/edit-subscribe/edit-subscrib
 import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { EditorModule } from 'primeng/editor';
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     MultiSelectModule,
     TagModule,
     ToastModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    EditorModule
   ],
 })
 export class AdminModule {}

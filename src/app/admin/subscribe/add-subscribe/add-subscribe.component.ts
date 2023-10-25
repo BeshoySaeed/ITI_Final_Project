@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-subscribe',
@@ -7,34 +8,28 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-subscribe.component.scss']
 })
 export class AddSubscribeComponent {
-  isContacted: boolean = false;
   AddSubscribe!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  editorColors = ["black", "white", "red", "blue", "green", "#fd702a", "yellow"]
+  
+  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) {}
+
   ngOnInit() {
     this.AddSubscribe = this.fb.group(
       {
-        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        benefits: [''],
-        location: [''],
+        name: [''],
+        benefit: [''],
+        active: [true],
         discount_value:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
         duration:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
         subscribe_value:['', [Validators.pattern(/^[0-9]+$/), Validators.required]],
-       
       },
     );
   }
-  toggleContacted(feedback: any) {
-    this.isContacted = feedback;
 
-    if (feedback) {
-      console.log(feedback.id);
-    } else {
-      console.log(feedback.id);
-    }
+  safeHTML(){
+    return this.sanitizer.bypassSecurityTrustHtml(this.AddSubscribe.controls['text'].value);
   }
-  getToggleButtonClass() {
-    return this.isContacted ? 'contacted' : 'not-contacted';
-  }
+
   onSubmit() {
     console.log(this.AddSubscribe);
   }

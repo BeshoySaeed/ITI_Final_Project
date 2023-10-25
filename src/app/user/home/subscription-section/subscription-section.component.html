@@ -15,9 +15,16 @@
             overflow: 'hidden'
           }"
         >
-          <h3 class="my-1">{{ plan.subscribe_value }} $</h3>
-          <h6 class="my-1">{{ plan.duration }} Month</h6>
-          <p class="font-bold">Discount Value: <span class="text-2xl">{{ plan.discount_value }}%</span></p>
+          <h3 class="my-1">{{ plan.subscribe_value }}$</h3>
+          <h6 class="my-1">
+            {{ plan.duration }}
+            <span *ngIf="plan.duration == 1; else more">Month</span
+            ><ng-template #more>Months</ng-template>
+          </h6>
+          <p class="font-bold">
+            Discount Value:
+            <span class="text-2xl">{{ plan.discount_value }}%</span>
+          </p>
 
           <div class="benefits">
             <div [innerHTML]="setHTML(plan.benefit)"></div>

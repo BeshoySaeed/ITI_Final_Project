@@ -1,18 +1,7 @@
 import { Component } from '@angular/core';
 import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
 import { DomSanitizer } from '@angular/platform-browser';
-
-interface Offer {
-  id: number;
-  name: string;
-  benefit: string;
-  discount_value: number;
-  duration: number;
-  subscribe_value: number;
-  active: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import { SubscriptionPlan } from 'src/app/interface/subscription-plan';
 
 @Component({
   selector: 'app-subscription-section',
@@ -25,7 +14,7 @@ export class SubscriptionSectionComponent {
     private sanitizer: DomSanitizer
   ) {}
 
-  subscriptions: Offer[] = [];
+  subscriptions: SubscriptionPlan[] = [];
 
   ngOnInit() {
     this.getAll();

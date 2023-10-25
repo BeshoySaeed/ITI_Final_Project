@@ -3,6 +3,7 @@ import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SubscriptionPlan } from 'src/app/interface/subscription-plan';
 
 @Component({
   selector: 'app-subscribe',
@@ -11,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   providers: [MessageService],
 })
 export class SubscribeComponent {
-  subscribes = [];
+  subscribes: SubscriptionPlan[] = [];
   loading: boolean = true;
 
   constructor(

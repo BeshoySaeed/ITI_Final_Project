@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { FeedbacksService } from 'src/app/services/Feedbacks/feedbacks.service';
 import { formatDate } from '@angular/common';
+import { Feedback } from 'src/app/interface/feedback';
 
 @Component({
   selector: 'app-feedback',
@@ -9,7 +10,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./feedback.component.scss'],
 })
 export class FeedbackComponent {
-  feedbacks = [];
+  feedbacks: Feedback[] = [];
   loading: boolean = true;
 
   constructor(private feedbacksService: FeedbacksService) {}

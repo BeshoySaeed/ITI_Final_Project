@@ -1,77 +1,64 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
+import { MessageService } from 'primeng/api';
+import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-subscribe',
   templateUrl: './subscribe.component.html',
-  styleUrls: ['./subscribe.component.scss']
+  styleUrls: ['./subscribe.component.scss'],
+  providers: [MessageService],
 })
 export class SubscribeComponent {
+  subscribes = [];
+  loading: boolean = true;
 
-
-  subscribes = [
-    {
-      id: 1,
-      name:"Plan 1",
-      benefits:"Desc",
-      discount_value:"50%",
-      duration:"3",
-      subscribe_value:"100",
-      status:"active",
-
-    },
-    {
-      id: 2,
-      name:"Plan 2",
-      benefits:"Desc",
-      discount_value:"20%",
-      duration:"1",
-      subscribe_value:"200",
-      status:"inactive",
-
-    },
-    {
-      id: 3,
-      name:"Plan 3",
-      benefits:"Desc",
-      discount_value:"50%",
-      duration:"3",
-      subscribe_value:"100",
-      status:"active",
-
-    },
-    {
-      id: 4,
-      name:"Plan 4",
-      benefits:"Desc",
-      discount_value:"50%",
-      duration:"5",
-      subscribe_value:"500",
-      status:"inactive",
-
-    },
- 
-
-    
-  ];
-
-  loading: boolean = false;
+  constructor(
+    private subscriptionsService: SubscriptionsService,
+    private messageService: MessageService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    this.subscriptionsService.getAll().subscribe((subscribes: any) => {
+      this.subscribes = subscribes.data;
+      this.loading = false;
+    });
   }
 
   clear(table: Table) {
-      table.clear();
+    table.clear();
   }
 
-  applyFilterGlobal($event:any, dt:any, stringVal:string) {
+  applyFilterGlobal($event: any, dt: any, stringVal: string) {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
-  deleteSubscribe(id:number) {
-    console.log(id)
+  deleteSubscribe(id: number) {
+    this.subscriptionsService.delete(id).subscribe((response: any) => {
+      this.loading = true;
+      if (response.status == 'success') {
+        this.getAll();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Subscribe plan is deleted',
+        });
+      }
+    });
   }
-  status(active: string) {
-    let status = active == 'active'? 'success' : 'danger';
+
+  status(active: number) {
+    let status = active == 1 ? 'success' : 'danger';
     return status;
+  }
+
+  setHTML(value: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(value);
   }
 }

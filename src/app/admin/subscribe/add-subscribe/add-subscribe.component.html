@@ -1,7 +1,12 @@
 <div class="add-user-container">
+  <p-toast></p-toast>
   <h3 class="admin-page-title">Add Subscribe</h3>
 
   <div class="card">
+    <div class="loader" *ngIf="loader">
+      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+    </div>
+    
     <form
       [formGroup]="AddSubscribe"
       (ngSubmit)="onSubmit()"

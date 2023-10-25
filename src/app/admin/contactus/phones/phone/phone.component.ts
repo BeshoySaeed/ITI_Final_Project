@@ -2,6 +2,7 @@ import { CustomerServicePhonesService } from '../../../../services/Customer serv
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
+import { CustomerServicePhone } from 'src/app/interface/customer-service-phone';
 
 @Component({
   selector: 'app-phone',
@@ -10,7 +11,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class PhoneComponent {
-  phones = [];
+  phones:CustomerServicePhone[] = [];
   loading: boolean = true;
 
   constructor(

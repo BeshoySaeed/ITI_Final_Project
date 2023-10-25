@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 import { MessageService } from 'primeng/api';
+import { CustomerServicePhone } from 'src/app/interface/customer-service-phone';
 
 @Component({
   selector: 'app-edit-phone',
@@ -13,7 +14,7 @@ import { MessageService } from 'primeng/api';
 export class EditPhoneComponent {
   EditPhone!: FormGroup;
   phoneId = this.activeRoute.snapshot.params['id'];
-  phone: any = {};
+  phone!: CustomerServicePhone;
   loader = true;
 
   constructor(

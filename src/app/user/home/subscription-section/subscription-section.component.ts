@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface Offer {
-  title: string;
-  available: string;
-  price: string;
-  stars: number;
+  id: number;
+  name: string;
+  benefit: string;
+  discount_value: number;
+  duration: number;
+  subscribe_value: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 @Component({
@@ -13,24 +20,24 @@ interface Offer {
   styleUrls: ['./subscription-section.component.scss'],
 })
 export class SubscriptionSectionComponent {
-  offers: Offer[] = [
-    {
-      title: '1000 EGP',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 3,
-    },
-    {
-      title: '1000 EGP',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 4,
-    },
-    {
-      title: '1000 EGP',
-      available: 'subscription data',
-      price: '20$',
-      stars: 5,
-    },
-  ];
+  constructor(
+    private subscriptionsService: SubscriptionsService,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  subscriptions: Offer[] = [];
+
+  ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    this.subscriptionsService.getAllActive().subscribe((subscriptions: any) => {
+      this.subscriptions = subscriptions.data;
+    });
+  }
+
+  setHTML(value: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
 }

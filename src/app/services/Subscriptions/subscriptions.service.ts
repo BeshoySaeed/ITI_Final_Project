@@ -18,6 +18,13 @@ export class SubscriptionsService {
       catchError(this.handleError) // then handle the error
     );
   }
+  
+  getAllActive(): Observable<object> {
+    return this.httpClient.get<object>(`${this.apiRoute}-active`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
 
   getById(id: number): Observable<object> {
     return this.httpClient.get<object>(`${this.apiRoute}/${id}`).pipe(

@@ -1,4 +1,4 @@
-<div class="users-container">
+<div class="feedbacks-container">
   <div class="flex justify-content-between flex-wrap mb-3">
     <h3 class="admin-page-title">All Feedbacks</h3>
   </div>
@@ -14,10 +14,10 @@
       [loading]="loading"
       [paginator]="true"
       [globalFilterFields]="[
-        'firstName',
-        'lastName',
-        'starRate',
-        'comment',
+        'first_name',
+        'last_name',
+        'rate_value',
+        'rate_comment',
         'created_at'
       ]"
     >
@@ -48,7 +48,7 @@
               First name
               <p-columnFilter
                 type="text"
-                field="firstName"
+                field="first_name"
                 display="menu"
               ></p-columnFilter>
             </div>
@@ -58,17 +58,17 @@
               Last name
               <p-columnFilter
                 type="text"
-                field="lastName"
+                field="last_name"
                 display="menu"
               ></p-columnFilter>
             </div>
           </th>
           <th style="min-width: 10rem">
             <div class="flex align-items-center">
-              star rate
+              Star rate
               <p-columnFilter
                 type="numeric"
-                field="starRate"
+                field="rate_value"
                 display="menu"
               ></p-columnFilter>
             </div>
@@ -76,10 +76,10 @@
 
           <th style="min-width: 10rem">
             <div class="flex align-items-center">
-              comment
+              Comment
               <p-columnFilter
                 type="text"
-                field="comment"
+                field="rate_comment"
                 display="menu"
               ></p-columnFilter>
             </div>
@@ -87,7 +87,7 @@
 
           <th style="min-width: 15rem">
             <div class="flex align-items-center">
-              created_at
+              Created at
               <p-columnFilter
                 type="text"
                 field=" created_at"
@@ -100,17 +100,16 @@
       <ng-template pTemplate="body" let-feedback>
         <tr>
           <td>
-            {{ feedback.firstName }}
+            {{ feedback.user_first_name }}
           </td>
           <td>
-            {{ feedback.lastName }}
+            {{ feedback.user_last_name }}
           </td>
           <td>
-            {{ feedback.starRate }}
+            {{ feedback.rate_value }} <i class="pi pi-star-fill rate"></i>
           </td>
-
           <td>
-            {{ feedback.comment }}
+            {{ feedback.rate_comment }}
           </td>
           <td>
             {{ feedback.created_at }}

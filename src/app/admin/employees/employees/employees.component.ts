@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { EmployeesService } from 'src/app/services/Employees/employees.service';
+import { Employee } from 'src/app/interface/employee';
 
 @Component({
   selector: 'app-employees',
@@ -10,7 +11,7 @@ import { EmployeesService } from 'src/app/services/Employees/employees.service';
   providers: [MessageService],
 })
 export class EmployeesComponent {
-  employees = []
+  employees: Employee[] = []
   loading: boolean = true;
 
   constructor(

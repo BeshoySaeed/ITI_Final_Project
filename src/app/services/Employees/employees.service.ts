@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
+import { Employee } from 'src/app/interface/employee';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -33,14 +34,14 @@ export class EmployeesService {
     );
   }
 
-  update(id:number, employee: object): Observable<object> {
+  update(id:number, employee: Employee): Observable<object> {
     return this.httpClient.put<object>(`${this.apiRoute}/${id}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
-  store(employee: object): Observable<object> {
+  store(employee: Employee): Observable<object> {
     return this.httpClient.post<object>(`${this.apiRoute}`, employee).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

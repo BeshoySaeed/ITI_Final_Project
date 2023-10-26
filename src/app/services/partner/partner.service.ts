@@ -25,11 +25,11 @@ export class PartnerService {
   constructor(private httpClient: HttpClient) { }
 
   getAllBartners(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}partners`)
+    return this.httpClient.get<object>(`${environment.host}/partners`)
   }
 
   insertBartners(data: any){
-    return this.httpClient.post<Bartner>(`${environment.host}partners`,data)
+    return this.httpClient.post<Bartner>(`${environment.host}/partners`,data)
   }
 
 }

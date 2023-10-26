@@ -26,11 +26,11 @@ export class ContactUsService {
   constructor(private httpClient: HttpClient) { }
 
   getAllContacts(): Observable<Contact> {
-    return this.httpClient.get<Contact>(`${environment.host}contact-us`)
+    return this.httpClient.get<Contact>(`${environment.host}/contact-us`)
   }
 
   insertContacts(data: any){
-    return this.httpClient.post<Contact>(`${environment.host}contact-us`, data)
+    return this.httpClient.post<Contact>(`${environment.host}/contact-us`, data)
   }
 
 }

@@ -25,11 +25,11 @@ export class ApplicantsService {
   constructor(private httpClient: HttpClient) { }
 
   getAllApplicantss(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}jobApplicants`)
+    return this.httpClient.get<object>(`${environment.host}/jobApplicants`)
   }
 
   insertApplicant(data: any){
-    return this.httpClient.post<object>(`${environment.host}jobApplicants`,data);
+    return this.httpClient.post<object>(`${environment.host}/jobApplicants`,data);
   }
   
 }

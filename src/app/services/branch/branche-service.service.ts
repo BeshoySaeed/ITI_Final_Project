@@ -25,23 +25,23 @@ export class BrancheServiceService {
   constructor(private httpClient: HttpClient) { }
 
   getAllBranches(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}branches`)
+    return this.httpClient.get<object>(`${environment.host}/branches`)
   }
   
   getBranchById(id:number ): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}branches/${id}`);
+    return this.httpClient.get<object>(`${environment.host}/branches/${id}`);
   }
 
   insertBranches(data: any){
-    return this.httpClient.post(`${environment.host}branches/`,data);
+    return this.httpClient.post(`${environment.host}/branches/`,data);
   }
 
   updateBranches(id:any,data: any){
-    return this.httpClient.put(`${environment.host}branches/${id}`,data);
+    return this.httpClient.put(`${environment.host}/branches/${id}`,data);
   }
 
   deleteBranchById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}branches/${id}`)
+    return this.httpClient.delete<object>(`${environment.host}/branches/${id}`)
   }
 }
 

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Contact } from 'src/app/interface/contact-us';
+import { ContactUsService } from 'src/app/services/contact-us.service';
 
 @Component({
   selector: 'app-contact-us-form',
@@ -8,8 +10,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactUsFormComponent {
   contactUsForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
+  // contact=new Contact();
+contact={
+  first_name: '',
+  last_name:'',
+  email: '',
+  mobile: '',
+  message: ''
+};
+  constructor(private fb: FormBuilder ,private dataServies:ContactUsService) {}
 
   ngOnInit() {
     this.contactUsForm = this.fb.group(
@@ -30,6 +39,12 @@ export class ContactUsFormComponent {
   }
 
   onSubmit() {
-    console.log(this.contactUsForm);
+    this.dataServies.insertContacts(this.contact).subscribe((res: any) => {
+
+      console.log(res);
+    })
+  }
+  partner(partner: any) {
+    throw new Error('Method not implemented.');
   }
 }

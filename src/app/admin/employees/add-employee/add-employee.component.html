@@ -1,7 +1,12 @@
-<div class="add-user-container">
+<div class="add-employee-container">
+  <p-toast></p-toast>
   <h3 class="admin-page-title">Add Employee</h3>
 
   <div class="card">
+    <div class="loader" *ngIf="loader">
+      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+    </div>
+
     <form
       [formGroup]="addEmployeeForm"
       (ngSubmit)="onSubmit()"
@@ -15,34 +20,34 @@
             pInputText
             [required]="true"
             [minlength]="4"
-            formControlName="firstName"
+            formControlName="first_name"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="first-name" class="block mb-2">First Name *</label>
+          <label for="first-name" class="block mb-2">First name *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['firstName'].touched &&
-            addEmployeeForm.controls['firstName'].invalid
+            addEmployeeForm.controls['first_name'].touched &&
+            addEmployeeForm.controls['first_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['required']"
           >
             First name is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['minlength']"
           >
             First name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['firstName'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['first_name'].errors?.['pattern']"
           >
             First name must contains only letters
           </small>
@@ -57,34 +62,34 @@
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="lastName"
+            formControlName="last_name"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="last-name" class="block mb-2">Last Name *</label>
+          <label for="last-name" class="block mb-2">Last name *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['lastName'].touched &&
-            addEmployeeForm.controls['lastName'].invalid
+            addEmployeeForm.controls['last_name'].touched &&
+            addEmployeeForm.controls['last_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['required']"
           >
             Last name is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['minlength']"
           >
             Last name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['lastName'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['last_name'].errors?.['pattern']"
           >
             Last name is must contains only letters
           </small>
@@ -93,42 +98,37 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <input
-            id="job-title"
-            type="text"
+          <p-inputMask
+            id="phone"
+            [autoClear]="false"
             [required]="true"
-            [minlength]="4"
-            pInputText
-            formControlName="jobTitle"
-            class="input p-2 border-round outline-none w-full"
-          />
-          <label for="job-title" class="block mb-2">job title *</label>
+            formControlName="phone"
+            mask="+20-1999999999"
+            placeholder="+20-1999999999"
+            styleClass="input p-2 border-round outline-none w-full"
+            class="mask-button"
+          ></p-inputMask>
+          <label htmlFor="phone" class="block mb-2">Phone *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['jobTitle'].touched &&
-            addEmployeeForm.controls['jobTitle'].invalid
+            addEmployeeForm.controls['phone'].touched &&
+            addEmployeeForm.controls['phone'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['phone'].errors?.['required']"
           >
-            Job title is required
+            Phone is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['phone'].errors?.['pattern']"
           >
-            Job title is must be more than 3 characters
-          </small>
-          <small
-            class="block"
-            *ngIf="addEmployeeForm.controls['jobTitle'].errors?.['pattern']"
-          >
-            Job title is must contains only letters
+            It must be a valid phone number
           </small>
         </div>
       </div>
@@ -170,38 +170,125 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <p-inputMask
-            id="mobile"
-            [autoClear]="false"
+          <input
+            id="job-title"
+            type="text"
             [required]="true"
-            formControlName="mobile"
-            mask="+20-1999999999"
-            placeholder="+20-1999999999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
-          <label htmlFor="mobile" class="block mb-2">Phone *</label>
+            [minlength]="4"
+            pInputText
+            formControlName="job_title"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="job-title" class="block mb-2">Job title *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['mobile'].touched &&
-            addEmployeeForm.controls['mobile'].invalid
+            addEmployeeForm.controls['job_title'].touched &&
+            addEmployeeForm.controls['job_title'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['mobile'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['required']"
           >
-            Phone is required
+            Job title is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['mobile'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['minlength']"
           >
-            It must be a valid phone number
+            Job title is must be more than 3 characters
           </small>
+          <small
+            class="block"
+            *ngIf="addEmployeeForm.controls['job_title'].errors?.['pattern']"
+          >
+            Job title is must contains only letters
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-inputNumber
+            [useGrouping]="false"
+            formControlName="salary"
+            [format]="false"
+            styleClass="w-full"
+            class="mask-button form-field"
+            [required]="true"
+            [min]="1"
+          >
+          </p-inputNumber>
+          <label for="salary" class="block mb-2">Salary *</label>
+        </div>
+  
+        <div
+          class="error-message"
+          *ngIf="
+            addEmployeeForm.controls['salary'].touched &&
+            addEmployeeForm.controls['salary'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addEmployeeForm.controls['salary'].errors?.['required']"
+          >
+            Salary is required
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-inputMask
+            id="joined_at"
+            [autoClear]="false"
+            [required]="true"
+            formControlName="joined_at"
+            mask="9999-99-99"
+            styleClass="input p-2 border-round outline-none w-full"
+            class="mask-button"
+          ></p-inputMask>
+          <label htmlFor="joined_at" class="block mb-2">Joined at *</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            addEmployeeForm.controls['joined_at'].touched &&
+            addEmployeeForm.controls['joined_at'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addEmployeeForm.controls['joined_at'].errors?.['required']"
+          >
+            Joined at is required
+          </small>
+          <small
+            class="block"
+            *ngIf="addEmployeeForm.controls['joined_at'].errors?.['pattern']"
+          >
+            enter a valid date
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-dropdown
+            name="branch"
+            styleClass="w-full"
+            [options]="branches"
+            formControlName="branch_id"
+            optionLabel="name"
+            optionValue="id"
+            class="form-field"
+          ></p-dropdown>
+          <label for="branch" class="block mb-2">Branch *</label>
         </div>
       </div>
 
@@ -216,7 +303,7 @@
             styleClass="input p-2 border-round outline-none w-full"
             class="mask-button"
           ></p-inputMask>
-          <label htmlFor="national_id" class="block mb-2">national id *</label>
+          <label htmlFor="national_id" class="block mb-2">National id *</label>
         </div>
 
         <div
@@ -244,35 +331,35 @@
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
           <input
-            id="address"
+            id="street"
             type="text"
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="address"
+            formControlName="street"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="address" class="block mb-2">address *</label>
+          <label for="street" class="block mb-2">Street *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['address'].touched &&
-            addEmployeeForm.controls['address'].invalid
+            addEmployeeForm.controls['street'].touched &&
+            addEmployeeForm.controls['street'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['address'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['street'].errors?.['required']"
           >
-            Address is required
+            Street is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['address'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['street'].errors?.['minlength']"
           >
-            Address must be more than 3 characters
+            Street must be more than 3 characters
           </small>
         </div>
       </div>
@@ -280,108 +367,71 @@
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
           <input
-            id="salary"
-            type="numeric"
+            id="area"
+            type="text"
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="salary"
+            formControlName="area"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="salary" class="block mb-2">salary *</label>
+          <label for="area" class="block mb-2">Area *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['salary'].touched &&
-            addEmployeeForm.controls['salary'].invalid
+            addEmployeeForm.controls['area'].touched &&
+            addEmployeeForm.controls['area'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['salary'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['area'].errors?.['required']"
           >
-            Salary is required
+            Area is required
           </small>
-
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['salary'].errors?.['pattern']"
+            *ngIf="addEmployeeForm.controls['area'].errors?.['minlength']"
           >
-            Salary is must be a number
+            Area must be more than 3 characters
           </small>
         </div>
       </div>
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <p-inputMask
-            id="joined_at"
-            [autoClear]="false"
-            [required]="true"
-            formControlName="joined_at"
-            mask="99/99/9999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
-          <label htmlFor="joined_at" class="block mb-2">joined at *</label>
-        </div>
-
-        <div
-          class="error-message"
-          *ngIf="
-            addEmployeeForm.controls['joined_at'].touched &&
-            addEmployeeForm.controls['joined_at'].invalid
-          "
-        >
-          <small
-            class="block"
-            *ngIf="addEmployeeForm.controls['joined_at'].errors?.['required']"
-          >
-            Joined at is required
-          </small>
-          <small
-            class="block"
-            *ngIf="addEmployeeForm.controls['joined_at'].errors?.['pattern']"
-          >
-            enter a valid date
-          </small>
-        </div>
-      </div>
-
-      <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
-        <div class="flex flex-column-reverse">
           <input
-            id="branch_name"
+            id="city"
             type="text"
-            pInputText
             [required]="true"
             [minlength]="4"
-            formControlName="branch_name"
+            pInputText
+            formControlName="city"
             class="input p-2 border-round outline-none w-full"
           />
-          <label for="branch_name" class="block mb-2">Branch Name *</label>
+          <label for="city" class="block mb-2">City *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addEmployeeForm.controls['branch_name'].touched &&
-            addEmployeeForm.controls['branch_name'].invalid
+            addEmployeeForm.controls['city'].touched &&
+            addEmployeeForm.controls['city'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['branch_name'].errors?.['required']"
+            *ngIf="addEmployeeForm.controls['city'].errors?.['required']"
           >
-            Branch name is required
+            City is required
           </small>
           <small
             class="block"
-            *ngIf="addEmployeeForm.controls['branch_name'].errors?.['minlength']"
+            *ngIf="addEmployeeForm.controls['city'].errors?.['minlength']"
           >
-            Branch name is must be more than 3 characters
+            City must be more than 3 characters
           </small>
         </div>
       </div>

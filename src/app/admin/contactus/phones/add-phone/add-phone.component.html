@@ -1,13 +1,18 @@
 <div class="add-user-container">
-    <h3 class="admin-page-title">Add Phone</h3>
-  
-    <div class="card">
-      <form
-        [formGroup]="AddPhone"
-        (ngSubmit)="onSubmit()"
-        class="formgrid grid w-full mt-3 mx-auto form"
-      >
-      <div class="col-12 md:col-6 mb-4">
+  <p-toast></p-toast>
+  <h3 class="admin-page-title">Add Phone</h3>
+
+  <div class="card">
+    <div class="loader" *ngIf="loader">
+      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+    </div>
+    
+    <form
+      [formGroup]="AddPhone"
+      (ngSubmit)="onSubmit()"
+      class="formgrid grid w-full mt-3 mx-auto form"
+    >
+      <div class="col-12 md:col-9 mb-4">
         <div class="flex flex-column-reverse">
           <p-inputMask
             id="phone"
@@ -19,13 +24,13 @@
             styleClass="input p-2 border-round outline-none w-full"
             class="mask-button"
           ></p-inputMask>
-          <label htmlFor="phone" class="block mb-2">Phone  *</label>
+          <label htmlFor="phone" class="block mb-2">Phone *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            AddPhone.controls['phone'].touched ||
+            AddPhone.controls['phone'].touched &&
             AddPhone.controls['phone'].invalid
           "
         >
@@ -43,24 +48,23 @@
           </small>
         </div>
       </div>
-        <div  class="col-12 md:col-12 mb-4 md:pr-3">
-            <label for="toogle" class="block mb-2">Status *</label>
-            <p-toggleButton
-            id="toggle"
-            [ngModel]="isContacted"
-            [class]="getToggleButtonClass()"
-            onLabel="Active"
-            offLabel="In Active">
-          </p-toggleButton>
-          </div>
-        <button
-          type="submit"
-          class="primary-button w-5 mx-auto my-3"
-          [disabled]="AddPhone.invalid"
+      <div class="col-12 md:col-3">
+        <label for="toogle" class="block mb-2">Status *</label>
+        <p-toggleButton
+          id="toggle"
+          onLabel="Active"
+          formControlName="active"
+          offLabel="In Active"
         >
-          Add
-        </button>
-      </form>
-    </div>
+        </p-toggleButton>
+      </div>
+      <button
+        type="submit"
+        class="primary-button w-5 mx-auto my-3"
+        [disabled]="AddPhone.invalid"
+      >
+        Add
+      </button>
+    </form>
   </div>
-  
+</div>

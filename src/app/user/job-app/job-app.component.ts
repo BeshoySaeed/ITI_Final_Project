@@ -1,12 +1,13 @@
 import { Component , OnInit } from '@angular/core';
 import { AbstractControl, ValidationErrors ,ReactiveFormsModule } from '@angular/forms';  
-
+import { Applicant } from 'src/app/interface/applicants';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { ApplicantsService } from 'src/app/services/applicants.service';
 
 @Component({
   selector: 'app-job-app',
@@ -15,16 +16,27 @@ import {
 })
 export class JobAppComponent implements OnInit{
   jobForm!: FormGroup;
- 
-  
-  constructor(private fb: FormBuilder) {  
-   
-  }
+//  applicant=new Applicant();
+
+applicant={
+  title: '',
+  first_name:'',
+  last_name:'',
+  email: '',
+  mobile: '',
+  education:'',
+  cv: ''
+};
+ applicants:any;  
+
+ constructor(private fb: FormBuilder,private dataServices:ApplicantsService ) { }
+
+
 
   ngOnInit(): void {
     this.jobForm = this.fb.group({
-      name: ['', [Validators.required]],
-      l_name: ['', [Validators.required]],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
       education: ['', [Validators.required]],
       email: [
         '',
@@ -69,6 +81,42 @@ export class JobAppComponent implements OnInit{
 
 
   
+
+
+
+
+getBranchData(){
+this.dataServices.getAllBranches().subscribe(res =>{
+  this.applicants=res;
+  console.log(this.applicants);
+})
 }
+insertBranchData(){
+this.dataServices.insertBranches({
+  title:'ssss',  
+  first_name :'saad',
+    last_name:'hossam',
+    email:'saad@gmail.com',
+    mobile:'01111111111',
+    education:'saad',
+    cv:'ddddddddd'
+  }).subscribe(res =>{
+  
+  console.log(res);
+})
+}
+
+
+// insertBranch(): void {
+//   this.dataServices.insertBranch(this.branchData).subscribe((response) => {
+//     // handle the response if needed
+//     console.log(response);
+//   });
+// }
+
+}
+
+
+
 
 

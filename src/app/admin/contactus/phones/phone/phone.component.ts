@@ -1,75 +1,75 @@
+import { CustomerServicePhonesService } from '../../../../services/Customer service data/phones/customer-service-phones.service';
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
+import { MessageService } from 'primeng/api';
+import { CustomerServicePhone } from 'src/app/interface/customer-service-phone';
 
 @Component({
   selector: 'app-phone',
   templateUrl: './phone.component.html',
-  styleUrls: ['./phone.component.scss']
+  styleUrls: ['./phone.component.scss'],
+  providers: [MessageService],
 })
 export class PhoneComponent {
+  phones:CustomerServicePhone[] = [];
+  loading: boolean = true;
 
-  phones = [
-    {
-      id: 1,
-      phone:"+201012345678",
-      status:"active",
-    },
-    {
-      id: 2,
-      phone:"+201012345678",
-      status:"inactive",
-    },
-    {
-      id: 3,
-      phone:"+20101235585",
-      status:"active",
-    },
-    {
-      id: 4,
-      phone:"+201128445678",
-      status:"inactive",
-    },
-    {
-      id: 5,
-      phone:"+201287945678",
-      status:"active",
-    },
-
-    
-  ];
-
-  loading: boolean = false;
+  constructor(
+    private phonesService: CustomerServicePhonesService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
+    this.getAllPhones();
+  }
+
+  getAllPhones() {
+    this.phonesService
+      .getAll()
+      .subscribe((phones: any) => {
+        this.phones = phones.data;
+        this.loading = false
+      });
   }
 
   clear(table: Table) {
-      table.clear();
+    table.clear();
   }
 
-  applyFilterGlobal($event:any, dt:any, stringVal:string) {
+  applyFilterGlobal($event: any, dt: any, stringVal: string) {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
 
-  deletePhone(id:number) {
-    console.log(id)
-  }
-  status(active: string) {
-    let status = active == 'active'? 'success' : 'danger';
-    return status;
+  deletePhone(id: number) {
+    this.phonesService
+      .delete(id)
+      .subscribe((response: any) => {
+        this.loading = true;
+        if (response.status == 'success') {
+          this.getAllPhones();
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Phone is deleted',
+          });
+        }
+      });
   }
 
-  
+  status(active: number) {
+    let status = active == 1 ? 'success' : 'danger';
+    return status;
+  }
 }
 @Pipe({
-  name: 'Active'
+  name: 'Active',
 })
-export class Active implements PipeTransform{
+export class Active implements PipeTransform {
   transform(value: any, ...args: any[]): any {
-    if(value=="active"){
-      return 'green'
-    }else{
-      return 'red'
+    if (value == 'active') {
+      return 'green';
+    } else {
+      return 'red';
     }
   }
 }

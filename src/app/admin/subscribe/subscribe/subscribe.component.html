@@ -1,11 +1,9 @@
 <div class="users-container">
+  <p-toast></p-toast>
   <div class="flex justify-content-between flex-wrap mb-3">
     <h3 class="admin-page-title">All Subscribes</h3>
     <a routerLink="/admin/subscription-plans/create">
-      <button
-        pButton
-        class="p-button-primary"
-      >Add Subscribe</button>
+      <button pButton class="p-button-primary">Add Subscribe</button>
     </a>
   </div>
 
@@ -20,12 +18,12 @@
       [loading]="loading"
       [paginator]="true"
       [globalFilterFields]="[
-        'name',        
+        'name',
         'benefits',
         'discount_value',
         'duration',
         'subscribe_value',
-        'status',
+        'status'
       ]"
     >
       <ng-template pTemplate="caption">
@@ -61,55 +59,55 @@
             </div>
           </th>
           <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Benefits
-                <p-columnFilter
-                  type="text"
-                  field="status"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Discount
-                <p-columnFilter
-                  type="text"
-                  field="status"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Duration (Months)
-                <p-columnFilter
-                  type="text"
-                  field="Subscribe"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Costs
-                <p-columnFilter
-                  type="text"
-                  field="Subscribe"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Status
-                <p-columnFilter
-                  type="text"
-                  field="Subscribe"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
+            <div class="flex align-items-center">
+              Benefits
+              <p-columnFilter
+                type="text"
+                field="status"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Discount
+              <p-columnFilter
+                type="text"
+                field="status"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Duration (Months)
+              <p-columnFilter
+                type="text"
+                field="Subscribe"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Costs
+              <p-columnFilter
+                type="text"
+                field="Subscribe"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Status
+              <p-columnFilter
+                type="text"
+                field="Subscribe"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
           <th>Actions</th>
         </tr>
       </ng-template>
@@ -119,49 +117,49 @@
             {{ Subscribe.name }}
           </td>
           <td>
-              {{ Subscribe.benefits }}
-            </td>
-            <td>
-              {{ Subscribe.discount_value }}
-            </td>
-            <td>
-              {{ Subscribe.duration }} 
-            </td>
-            <td>
-              {{ Subscribe.subscribe_value }} L.E
-            </td>
-            <td Style="text-transform: capitalize;">
-              <p-tag
-              [value]=" Subscribe.status"
-              [severity]="status( Subscribe.status)"
+            <div [innerHTML]="setHTML(Subscribe.benefit)"></div>
+          </td>
+          <td>
+            {{ Subscribe.discount_value }}
+          </td>
+          <td>
+            {{ Subscribe.duration }}
+          </td>
+          <td>{{ Subscribe.subscribe_value }}$</td>
+          <td Style="text-transform: capitalize;">
+            <p-tag
+              [value]="Subscribe.active == 0 ? 'In Active' : 'Active'"
+              [severity]="status(Subscribe.active)"
             ></p-tag>
-            </td>
-          <td class="flex">
-            <button
-              pButton
-              pRipple
-              pTooltip="Edit Subscribe"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              routerLink= "/admin/subscription-plans/edit/{{Subscribe.id}}"
-              class="p-button-success p-2 rounded mr-2"
-            >
-              <i class="pi pi-fw pi-user-edit"></i>
-            </button>
+          </td>
+          <td>
+            <div class="flex">
+              <button
+                pButton
+                pRipple
+                pTooltip="Edit Subscribe"
+                tooltipPosition="top"
+                placeholder="Top"
+                [showDelay]="700"
+                routerLink="/admin/subscription-plans/edit/{{ Subscribe.id }}"
+                class="p-button-success p-2 rounded mr-2"
+              >
+                <i class="pi pi-fw pi-user-edit"></i>
+              </button>
 
-            <button
-              pButton
-              pRipple
-              pTooltip="Delete Subscribe"
-              tooltipPosition="top"
-              placeholder="Top"
-              [showDelay]="700"
-              class="p-button-danger p-2 rounded"
-              (click)="deleteSubscribe(Subscribe.id)"
-            >
-              <i class="pi pi-fw pi-trash"></i>
-            </button>
+              <button
+                pButton
+                pRipple
+                pTooltip="Delete Subscribe"
+                tooltipPosition="top"
+                placeholder="Top"
+                [showDelay]="700"
+                class="p-button-danger p-2 rounded"
+                (click)="deleteSubscribe(Subscribe.id)"
+              >
+                <i class="pi pi-fw pi-trash"></i>
+              </button>
+            </div>
           </td>
         </tr>
       </ng-template>

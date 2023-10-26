@@ -1,28 +1,52 @@
 .admin-container {
-    .admin-page-title {
-        color: $title-text-color;
-    }
+  .admin-page-title {
+    color: $title-text-color;
+  }
 
-    .error-message {
-        small {
-            color: red;
-            margin-top: 5px;
-        }
+  .error-message {
+    small {
+      color: red;
+      margin-top: 5px;
     }
+  }
 }
-:host ::ng-deep .p-highlight.p-togglebutton, 
-:host ::ng-deep .p-highlight.p-togglebutton:hover { 
-    background: green; 
-    border: none; 
-    color: white; 
-} 
-:host ::ng-deep .p-togglebutton, 
-:host ::ng-deep .p-togglebutton:hover { 
-    background: rgb(146, 19, 10); 
-    border: none; 
-    color: white; 
-} 
-  
-:host ::ng-deep .p-togglebutton:focus { 
-    box-shadow: 0 0 0 0; 
+
+:host ::ng-deep .p-highlight.p-togglebutton,
+:host ::ng-deep .p-highlight.p-togglebutton:hover {
+  background: green;
+  border: none;
+  color: white;
+}
+:host ::ng-deep .p-togglebutton:focus {
+  box-shadow: 0 0 0 0;
+}
+
+:host ::ng-deep .p-togglebutton,
+:host ::ng-deep .p-togglebutton:hover {
+  background: rgb(146, 19, 10);
+  border: none;
+  color: white;
+}
+
+:host
+  ::ng-deep
+  .p-togglebutton.p-button:not(.p-disabled):not(.p-highlight):hover {
+  background: rgb(146, 19, 10);
+  border: none;
+  color: white;
+}
+
+.card {
+  position: relative;
+  .loader {
+    position: absolute;
+    background-color: #00000047;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin: 0 30px 30px 0;
+  }
 }

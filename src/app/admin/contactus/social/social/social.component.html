@@ -1,79 +1,77 @@
 <div class="users-container">
-    <div class="flex justify-content-between flex-wrap mb-3">
-      <h3 class="admin-page-title">All Socials</h3>
-    </div>
-  
-    <div class="card">
-      <p-table
-        #dt1
-        [value]="Socials"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [loading]="loading"
-        [paginator]="true"
-        [globalFilterFields]="[
-          'name',
-          'link',
-        ]"
-      >
-        <ng-template pTemplate="caption">
-          <div class="flex">
-            <button
-              pButton
-              label="Clear"
-              class="p-button-outlined"
-              icon="pi pi-filter-slash"
-              (click)="clear(dt1)"
-            ></button>
-            <span class="p-input-icon-left ml-auto">
-              <i class="pi pi-search"></i>
-              <input
-                pInputText
+  <div class="flex justify-content-between flex-wrap mb-3">
+    <h3 class="admin-page-title">All social media accounts</h3>
+  </div>
+
+  <div class="card">
+    <p-table
+      #dt1
+      [value]="socials"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      [globalFilterFields]="['name', 'link']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt1)"
+          ></button>
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="applyFilterGlobal($event, dt1, 'contains')"
+              placeholder="Search keyword"
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Social
+              <p-columnFilter
                 type="text"
-                (input)="applyFilterGlobal($event, dt1, 'contains')"
-                placeholder="Search keyword"
-              />
-            </span>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Social
-                <p-columnFilter
-                  type="text"
-                  field="Social"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th style="min-width: 10rem">
-              <div class="flex align-items-center">
-                Link
-                <p-columnFilter
-                  type="text"
-                  field="status"
-                  display="menu"
-                ></p-columnFilter>
-              </div>
-            </th>
-            <th>Actions</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-Social>
-          <tr>
-            <td>
-              {{ Social.name }}
-            </td>
-            <td>
-              <a href="{{ Social.link }}" target="_blank">            
-                  {{ Social.link }}
-              </a>
-            </td>
-            <td class="flex">
+                field="Social"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">
+              Link
+              <p-columnFilter
+                type="text"
+                field="status"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-social>
+        <tr>
+          <td>
+            {{ social.name | titlecase }}
+          </td>
+          <td>
+            <a href="{{ social.link }}" target="_blank">
+              {{ social.link }}
+            </a>
+          </td>
+          <td>
+            <div class="flex">
               <button
                 pButton
                 pRipple
@@ -81,13 +79,13 @@
                 tooltipPosition="top"
                 placeholder="Top"
                 [showDelay]="700"
-                routerLink= "/admin/contact-us-info/social/edit/{{Social.id}}"
+                routerLink="/admin/contact-us-info/social/edit/{{ social.id }}"
                 class="p-button-success p-2 rounded mr-2"
               >
                 <i class="pi pi-fw pi-user-edit"></i>
               </button>
-  
-              <!-- <button
+            </div>
+            <!-- <button
                 pButton
                 pRipple
                 pTooltip="Delete Social"
@@ -99,14 +97,14 @@
               >
                 <i class="pi pi-fw pi-trash"></i>
               </button> -->
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="7">No Socials found.</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No social media accounts found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
+</div>

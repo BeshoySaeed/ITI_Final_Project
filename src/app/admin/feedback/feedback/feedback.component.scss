@@ -1,1 +1,8 @@
 @import url(../../adminStyle.scss);
+@import '/src/styles.scss';
+
+.feedbacks-container {
+    .rate {
+        color: $Button-orange-color;
+    }
+}

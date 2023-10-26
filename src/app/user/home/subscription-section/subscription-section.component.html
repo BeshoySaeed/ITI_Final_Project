@@ -1,36 +1,41 @@
 <div class="container mt-8">
   <p class="text-center mb-2 font-italic font-light text-3xl">Subscription</p>
   <p class="text-center mb-2 font-italic font-light text-3xl">
-    we have an amazing offer for this
+    we have an amazing plan for this
   </p>
   <div class="flex flex-wrap justify-content-center gap-2 mt-3 text-center">
-    <ng-container *ngFor="let offer of offers; let index = index">
+    <ng-container *ngFor="let plan of subscriptions; let index = index">
       <div class="card-container">
-        <p class="text-white discount">Super</p>
+        <p class="text-white discount">{{ plan.name }}</p>
 
         <p-card
-          [header]="offer.title"
-          [subheader]="offer.available"
           [style]="{
             width: '360px',
             'border-radius': '8%',
             overflow: 'hidden'
           }"
         >
-          <ul class="p-d-flex p-flex-column align-self-start">
-            <p><i class="pi pi-check"></i> {{ offer.available }}</p>
-            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
-            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
-            <p><i class="pi pi-check"></i>{{ offer.available }}</p>
-          </ul>
-          <ng-template pTemplate="header"> </ng-template>
+          <h3 class="my-1">{{ plan.subscribe_value }}$</h3>
+          <h6 class="my-1">
+            {{ plan.duration }}
+            <span *ngIf="plan.duration == 1; else more">Month</span
+            ><ng-template #more>Months</ng-template>
+          </h6>
+          <p class="font-bold">
+            Discount Value:
+            <span class="text-2xl">{{ plan.discount_value }}%</span>
+          </p>
+
+          <div class="benefits">
+            <div [innerHTML]="setHTML(plan.benefit)"></div>
+          </div>
+
           <div class="text-center">
-            <a href="">
+            <a href="" class="w-100">
               <p-button
-                label="Get Offer"
+                label="Get plan"
                 icon="pi pi-arrow-up-right"
-                styleClass="p-button-secondary"
-                [style]="{ 'margin-left': '.5em', 'margin-top': '40px' }"
+                styleClass="p-button-secondary w-100 plan-button"
               ></p-button>
             </a>
           </div>

@@ -1,61 +1,59 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Table } from 'primeng/table';
+import { MessageService } from 'primeng/api';
+import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
+import { CustomerServiceEmail } from 'src/app/interface/customer-service-email';
 
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
-  styleUrls: ['./email.component.scss']
+  styleUrls: ['./email.component.scss'],
+  providers: [MessageService],
 })
 export class EmailComponent {
-Emails = [
-  {
-    id: 1,
-    Email:"Example@gmail.com",
-    status:"active",
-  },
-  {
-    id: 2,
-    Email:"Example@gmail.com",
-    status:"inactive",
-  },
-  {
-    id: 3,
-    Email:"Example@gmail.com",
-    status:"active",
-  },
-  {
-    id: 4,
-    Email:"Example@gmail.com",
-    status:"inactive",
-  },
-  {
-    id: 5,
-    Email:"Example@gmail.com",
-    status:"active",
-  },
+  emails:CustomerServiceEmail[] = [];
+  loading: boolean = true;
 
-  
-];
+  constructor(
+    private emailsService: CustomerServiceEmailsService,
+    private messageService: MessageService
+  ) {}
 
-loading: boolean = false;
+  ngOnInit() {
+    this.getAllEmails();
+  }
 
-ngOnInit() {
-}
+  getAllEmails() {
+    this.emailsService.getAll().subscribe((emails: any) => {
+      this.emails = emails.data;
+      this.loading = false;
+    });
+  }
 
-clear(table: Table) {
+  clear(table: Table) {
     table.clear();
-}
+  }
 
-applyFilterGlobal($event:any, dt:any, stringVal:string) {
-  dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
-}
+  applyFilterGlobal($event: any, dt: any, stringVal: string) {
+    dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
 
-deleteEmail(id:number) {
-  console.log(id)
-}
-status(active: string) {
-  let status = active == 'active'? 'success' : 'danger';
-  return status;
-}
-}
+  deleteEmail(id: number) {
+    this.emailsService.delete(id).subscribe((response: any) => {
+      this.loading = true;
+      if (response.status == 'success') {
+        this.getAllEmails();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Email is deleted',
+        });
+      }
+    });
+  }
 
+  status(active: number) {
+    let status = active == 1 ? 'success' : 'danger';
+    return status;
+  }
+}

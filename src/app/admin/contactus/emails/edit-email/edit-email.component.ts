@@ -1,71 +1,85 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { CustomerServiceEmail } from 'src/app/interface/customer-service-email';
+import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 
 @Component({
   selector: 'app-edit-email',
   templateUrl: './edit-email.component.html',
-  styleUrls: ['./edit-email.component.scss']
+  styleUrls: ['./edit-email.component.scss'],
+  providers: [MessageService],
 })
 export class EditEmailComponent {
-  isContacted: boolean = false;
-
-  Emails = [
-    {
-      id: 1,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-    {
-      id: 2,
-      Email:"Example@gmail.com",
-      status:"inactive",
-    },
-    {
-      id: 3,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-    {
-      id: 4,
-      Email:"Example@gmail.com",
-      status:"inactive",
-    },
-    {
-      id: 5,
-      Email:"Example@gmail.com",
-      status:"active",
-    },
-  
-    
-  ];
+  emailId = this.activeRoute.snapshot.params['id'];
+  email!:CustomerServiceEmail;
   EditEmail!: FormGroup;
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() {
-    this.EditEmail = this.fb.group(
-      {
-        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        email: [
-          '',
-          Validators.pattern(
-            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          ),
-        ],
-      },
-    );
-  }
-  toggleContacted(feedback: any) {
-    this.isContacted = feedback;
+  loader = true;
 
-    if (feedback) {
-      console.log(feedback.id);
-    } else {
-      console.log(feedback.id);
-    }
+  constructor(
+    private fb: FormBuilder,
+    private activeRoute: ActivatedRoute,
+    private phonesService: CustomerServiceEmailsService,
+    private messageService: MessageService
+  ) {}
+  ngOnInit() {
+    this.initializeForm();
+
+    this.getEmailById()
+      .then((response) => {
+        this.email = response.data;
+      })
+      .then(() => {
+        this.EditEmail.controls['email'].setValue(this.email.email);
+        this.EditEmail.controls['active'].setValue(
+          this.email.active == 1 ? true : false
+        );
+        this.loader = false;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
-  getToggleButtonClass() {
-    return this.isContacted ? 'contacted' : 'not-contacted';
+
+  initializeForm() {
+    this.EditEmail = this.fb.group({
+      email: [
+        '',
+        Validators.pattern(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        ),
+      ],
+      active: [''],
+    });
   }
+
+  getEmailById(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.phonesService.getById(this.emailId).subscribe(
+        (response) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   onSubmit() {
-    console.log(this.EditEmail);
+    this.loader = true;
+    this.phonesService
+      .update(this.emailId, this.EditEmail.value)
+      .subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Email is updated',
+          });
+          this.loader = false;
+        }
+      });
   }
 }

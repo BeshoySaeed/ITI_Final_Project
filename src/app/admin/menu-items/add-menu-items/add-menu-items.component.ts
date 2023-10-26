@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Item } from 'src/app/interface/items';
+import { ItemService } from 'src/app/services/ItemService/item.service';
+
 
 @Component({
   selector: 'app-add-menu-items',
@@ -27,8 +32,17 @@ export class AddMenuItemsComponent {
     { id: 5, name: 'Addition 5' }
 ];
 
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() {
+    item : Item = {
+      id : 0,
+      name : "",
+      img : '',
+      price : '',
+      description: '',
+      discount: '',
+      active: false,
+      category_id: '1'
+    }
+  constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
@@ -40,12 +54,20 @@ export class AddMenuItemsComponent {
       image: [null, Validators.required],
     });
   }
+  ngOnInit() {
+  }
+
+
+
 
   onSubmit() {
-    console.log(this.form);
+    // console.log(this.item);
+    this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
+    this.route.navigate(['/admin/menu-items'])
   }
 
   onSelect(event: any) {
+    this.item.img = event.files[0].name;
     const file = event.files[0];
     this.form.patchValue({
       image: file,

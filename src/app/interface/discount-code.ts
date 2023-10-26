@@ -1,5 +1,5 @@
 export interface DiscountCode {
-  id: string;
+  id : any;
   code: string;
   percent: string;
   active: boolean;

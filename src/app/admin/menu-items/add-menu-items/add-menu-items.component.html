@@ -17,6 +17,7 @@
             [minlength]="4"
             formControlName="name"
             class="input p-2 border-round outline-none w-full"
+            [(ngModel)]="item.name"
           />
           <label for="name" class="block mb-2">Name *</label>
         </div>
@@ -79,6 +80,7 @@
             class="mask-button w-full"
             [required]="true"
             [min]="1"
+            [(ngModel)]="item.price"
           >
           </p-inputNumber>
           <label for="price" class="block mb-2">Price *</label>
@@ -108,6 +110,7 @@
             styleClass="w-full"
             class="mask-button w-full"
             [min]="1"
+            [(ngModel)]="item.discount"
           >
           </p-inputNumber>
           <label for="discount" class="block mb-2">Discount</label>
@@ -137,6 +140,7 @@
             onLabel="Active"
             offLabel="In Active"
             formControlName="active"
+            [(ngModel)]="item.active"
           ></p-toggleButton>
           <label for="active" class="block mb-2">Status</label>
         </div>
@@ -149,6 +153,7 @@
             cols="30"
             pInputTextarea
             formControlName="description"
+            [(ngModel)]="item.description"
           ></textarea>
           <label for="description" class="block mb-2">Description</label>
         </div>
@@ -164,7 +169,7 @@
             (onRemove)="onRemove()"
             [showUploadButton]="false"
             [showCancelButton]="false"
-          ></p-fileUpload>
+            ></p-fileUpload>
           <label for="image" class="block mb-2">Image *</label>
         </div>
 
@@ -186,7 +191,7 @@
       <button
         type="submit"
         class="primary-button w-5 mx-auto my-3"
-        [disabled]="form.invalid"
+
       >
         Add
       </button>

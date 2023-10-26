@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Item } from 'src/app/interface/items';
+import { ItemService } from 'src/app/services/ItemService/item.service';
 
 @Component({
   selector: 'app-edit-menu-items',
@@ -8,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditMenuItemsComponent {
   form!: FormGroup;
+  itemId!: number;
   categories = [
     {
       id: 1,
@@ -27,39 +31,52 @@ export class EditMenuItemsComponent {
     { id: 5, name: 'Addition 5' },
   ];
 
-  item = {
-    id: 1,
-    name: 'Menu item 1',
-    category: 2,
-    price: 10,
-    discount: 5,
-    description: 'Menu item 1 description',
+  item : Item = {
+    id : 0,
+    name : "",
+    img : '',
+    price : '',
+    description: '',
+    discount: '',
     active: false,
-    additions: [
-      { id: 2, name: 'Addition 2' },
-      { id: 3, name: 'Addition 3' },
-    ],
-  };
+    category_id: '1'
+  }
 
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private httpItem: ItemService, private activatedRoute: ActivatedRoute, private route : Router)
+  {
     this.form = this.fb.group({
       name: [this.item.name],
       price: [this.item.price],
       discount: [this.item.discount],
-      category: [this.item.category],
+      category: [this.item.description],
       description: [this.item.description],
-      additions: [this.item.additions],
+      additions: [this.item.description],
       active: [this.item.active],
       image: [null],
+    });
+
+  }
+  ngOnInit() {
+
+
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.itemId = Number(paramMap.get('id'));
+      // console.log(this.itemId)
+      this.httpItem.getItemById(this.itemId).subscribe((object) => {
+        this.item = object;
+        // console.log(this.item)
+      })
     });
   }
 
   onSubmit() {
-    console.log(this.form);
+    this.httpItem.editItem(this.itemId,this.item).subscribe((x) => console.log(x))
+    this.route.navigate(['/admin/menu-items/'])
   }
 
   onSelect(event: any) {
+    this.item.img = event.files[0].name;
+
     const file = event.files[0];
     this.form.patchValue({
       image: file,

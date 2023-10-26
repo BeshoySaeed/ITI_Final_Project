@@ -17,6 +17,7 @@
             [minlength]="4"
             formControlName="code"
             class="input p-2 border-round outline-none w-full"
+            [(ngModel)]="DiscountCode.code"
           />
           <label for="code" class="block mb-2">code *</label>
         </div>
@@ -53,6 +54,8 @@
             pInputText
             formControlName="percent"
             class="input p-2 border-round outline-none w-full"
+            [(ngModel)]="DiscountCode.percent"
+
           />
           <label for="percent" class="block mb-2">percent *</label>
         </div>
@@ -88,6 +91,8 @@
           [class]="getToggleButtonClass()"
           onLabel="Active"
           offLabel="Not Active"
+          name="active"
+          [(ngModel)]="DiscountCode.active"
         ></p-toggleButton>
       </div>
 

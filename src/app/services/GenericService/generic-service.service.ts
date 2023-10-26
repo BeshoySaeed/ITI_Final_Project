@@ -47,8 +47,8 @@ export class GenericService {
       );
   }
 
-  post(route: string, object: any, header?: any): Observable<any> {
-    return this.http.post(`${environment.host}/${route}`, object, header)
+  post(route: string, object: any): Observable<any> {
+    return this.http.post(`${environment.host}/${route}`, object)
       .pipe(
         retry(2),
         catchError(this.handleError)

@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import { GenericService } from '../GenericService/generic-service.service';
 import { Observable, map } from 'rxjs';
 import { Item } from 'src/app/interface/items';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor(private genericService: GenericService) { }
+  constructor(private genericService: GenericService, private http : HttpClient) { }
+
+
 
   getItems() : Observable<Item[]>
   {
@@ -20,9 +24,9 @@ export class ItemService {
     )
   }
 
-  getItemById(id :number) : Observable<Item>
+  getItemById(id :number) : Observable<any>
   {
-    return this.genericService.getById('items', id)
+    return this.genericService.getById('item', id)
     .pipe(
       map((item: any) => {
         return item.data
@@ -30,7 +34,12 @@ export class ItemService {
     );
   }
 
-  addItem(object: Item): Observable<Item>
+  addNew(object : any) : Observable<any>
+  {
+    return this.http.post<any>(`${environment.host}/item`, object)
+  }
+
+  addItem(object: any): Observable<any>
   {
     return this.genericService.post('item', object)
     .pipe(

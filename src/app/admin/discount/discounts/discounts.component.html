@@ -74,7 +74,7 @@
 
           <td>
             <p-tag
-              [value]="discount.active"
+              [value]="discount.active ? 'Active' : 'Not Active'"
               [severity]="status(discount.active)"
             ></p-tag>
           </td>

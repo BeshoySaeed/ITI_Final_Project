@@ -152,7 +152,7 @@
           </td> -->
           <td>
             <p-tag
-              [value]="menuItem.active"
+              [value]="menuItem.active ? 'active' : 'Not active'"
               [severity]="status(menuItem.active)"
             ></p-tag>
           </td>
@@ -226,7 +226,7 @@
           </td>
         </tr>
       </ng-template>
-      
+
       <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="7">No menu items found.</td>

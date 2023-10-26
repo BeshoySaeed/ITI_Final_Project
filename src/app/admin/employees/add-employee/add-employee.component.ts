@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EmployeesService } from 'src/app/services/Employees/employees.service';
-import { BrancheServiceService } from 'src/app/services/branche-service.service';
+import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
 
 @Component({
   selector: 'app-add-employee',

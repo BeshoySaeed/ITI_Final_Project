@@ -1,43 +1,61 @@
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { AdditionsService } from 'src/app/services/additions-service/additions.service'; 
 
 @Component({
   selector: 'app-additions',
   templateUrl: './additions.component.html',
-  styleUrls: ['./additions.component.scss']
+  styleUrls: ['./additions.component.scss'],
+  providers: [MessageService],
+
 })
 export class AdditionsComponent {
-  additionItems = [
-    {
-      id: 1,
-      name: "Addition 1",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-      description: "This is the first item in our menu.",
-      price: 5,
-    },
-    {
-      id: 1,
-      name: "Addition 2",
-      image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
-      description: "This is the first item in our menu.",
-      price: 5,
-    },
-  ];
-
-  loading: boolean = false;
-
-  ngOnInit() {
-  }
-
-  clear(table: Table) {
+  additionItems = [];
+    loading: boolean = false;
+  
+    constructor(
+      private AdditionsService: AdditionsService,
+     private messageService: MessageService
+    ) {}
+  
+  
+    ngOnInit() {
+        this.getAllAddition();
+    }
+  
+    getAllAddition() {
+      this.AdditionsService
+        .getAllAddition()
+        .subscribe((Addition: any) => {
+          this.additionItems = Addition.data;
+          this.loading = false
+        });
+    }
+  
+    deleteAddition(id: number) {
+      this.AdditionsService
+        .deleteAdditionById(id)
+        .subscribe((response: any) => {
+          this.loading = true;
+          if (response.status == 'success') {
+            this.getAllAddition();
+            this.messageService.add({
+              detail: 'Addition is deleted',
+            });
+          }
+        });
+    }
+  
+    clear(table: Table) {
       table.clear();
-  }
-
-  applyFilterGlobal($event:any, dt:any, stringVal:string) {
-    dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
-  }
-
-  deleteItem(id:number) {
-    console.log(id)
-  }
+    }
+  
+    applyFilterGlobal($event:any, dt:any, stringVal:string) {
+      dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+    }
+  
+    deleteItem(id:number) {
+      console.log(id)
+    }
 }

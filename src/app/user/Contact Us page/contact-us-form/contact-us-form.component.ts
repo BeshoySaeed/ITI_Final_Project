@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Contact } from 'src/app/interface/contact-us';
-import { ContactUsService } from 'src/app/services/contact-us.service';
+import { ContactUsService } from 'src/app/services/contact-us/contact-us.service';
 
 @Component({
   selector: 'app-contact-us-form',
@@ -11,13 +10,14 @@ import { ContactUsService } from 'src/app/services/contact-us.service';
 export class ContactUsFormComponent {
   contactUsForm!: FormGroup;
   // contact=new Contact();
-contact={
-  first_name: '',
-  last_name:'',
-  email: '',
-  mobile: '',
-  message: ''
-};
+  contact={
+    first_name: '',
+    last_name:'',
+    email: '',
+    mobile: '',
+    message: ''
+  };
+  
   constructor(private fb: FormBuilder ,private dataServies:ContactUsService) {}
 
   ngOnInit() {
@@ -40,7 +40,6 @@ contact={
 
   onSubmit() {
     this.dataServies.insertContacts(this.contact).subscribe((res: any) => {
-
       console.log(res);
     })
   }

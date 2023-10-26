@@ -1,13 +1,12 @@
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Contact } from '../interface/contact-us';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactUsService {
+export class ApplicantsService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -25,12 +24,13 @@ export class ContactUsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllContacts(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}contact-us`)
+  getAllApplicantss(): Observable<object> {
+    return this.httpClient.get<object>(`${environment.host}jobApplicants`)
   }
 
-  insertContacts(data: any){
-    return this.httpClient.post<Contact>(`${environment.host}contact-us`, data)
+  insertApplicant(data: any){
+    return this.httpClient.post<object>(`${environment.host}jobApplicants`,data);
   }
-
+  
 }
+

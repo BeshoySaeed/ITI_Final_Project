@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Table } from 'primeng/table';
-import { Bartner } from 'src/app/interface/partners';
-import { PartnerService } from 'src/app/services/partner.service';
+import { PartnerService } from 'src/app/services/partner/partner.service';
 
 @Component({
   selector: 'app-become-partner',
@@ -15,27 +14,24 @@ export class BecomePartnerComponent implements OnInit {
   partnerForm!: FormGroup;
 
 
-id:any;
+  id:any;
 
-partner = {
-  first_name : '',
+  partner = {
+    first_name : '',
     last_name:'',
     email: '',
     subject:'',
-        mobile: '',
+    mobile: '',
     message: ''
-};
+  };
 
-loading: boolean = false;
-partners: any;
-constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataServices: PartnerService) { }
+  loading: boolean = false;
+  partners: any;
 
+  constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataServices: PartnerService) { }
 
   ngOnInit(): void {
-      // this.getBartnerData();
       
-      
-
     this.partnerForm = this.fb.group({
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
@@ -47,7 +43,6 @@ constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataSe
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
         ],
       ],
-      //  password: ['', [Validators.required,Validators.minLength(8)]] (?=.*?[!@#%^&*()_+-=[]{}|;':\",./<>?~`])
       mobile: [
         '',
         [
@@ -60,10 +55,6 @@ constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataSe
       message: ['', [Validators.required]],
     });
   }
-
-  // submitPartnerForm() {
-  //   console.log(this.partnerForm);
-  // }
 
   get first_name() {
     return this.partnerForm.get('first_name');
@@ -83,50 +74,27 @@ constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataSe
   get message() {
     return this.partnerForm.get('message');
   }
-// getBartnerData() {
-//   this.dataServices.getAllBartners().subscribe(res => {
-//     this.partners = res;
-//     console.log(this.partners);
-//   })
-// }
-// insertBartnerData() {
-  // console.log(this.partner);
-//   this.dataServices.insertBartners({
-//     first_name :'saad',
-//   last_name:'hossam',
-//   email:'saad@gmail.com',
-//   mobile:'01111111111',
-//   subject:'saad',
-//   message:'ddddddddd'
-// }
-// ).subscribe(res => {
 
-//     console.log(res);
-//   })
-// }
-// }
-
-insertBartnerData() {
-  console.log(this.partner);
-  this.dataServices.insertBartners(this.partner).subscribe(res => {
-
+  insertBartnerData() {
+    console.log(this.partner);
+    this.dataServices.insertBartners(this.partner).subscribe(res => {
     console.log(res);
-  })
-}
-
-clear(table: Table) {
-    table.clear();
-}
-
-applyFilterGlobal($event:any, dt:any, stringVal:string) {
-  dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
-}
-
-togglepartner(partner: any) {
-  if (partner.checked) {
-    console.log('fdsafa');
-  } else {
-    console.log('sadfas');
+    })
   }
-}
+
+  clear(table: Table) {
+    table.clear();
+  }
+
+  applyFilterGlobal($event:any, dt:any, stringVal:string) {
+    dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
+
+  togglepartner(partner: any) {
+    if (partner.checked) {
+    console.log('fdsafa');
+    } else {
+    console.log('sadfas');
+    }
+  }
 }

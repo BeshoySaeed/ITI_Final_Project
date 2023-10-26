@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BrancheServiceService } from 'src/app/services/branche-service.service';
 import { Branch } from 'src/app/interface/branches';
+import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
 @Component({
   selector: 'app-add-branches',
   templateUrl: './add-branches.component.html',

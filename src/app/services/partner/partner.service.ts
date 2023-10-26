@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Bartner } from '../interface/partners';
+import { Bartner } from '../../interface/partners';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,6 @@ export class PartnerService {
   }
 
   constructor(private httpClient: HttpClient) { }
-
 
   getAllBartners(): Observable<object> {
     return this.httpClient.get<object>(`${environment.host}partners`)

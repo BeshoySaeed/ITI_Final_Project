@@ -6,7 +6,7 @@
   <div class="card">
     <p-table
       #dt1
-      [value]="appliers"
+      [value]="applicants"
       dataKey="id"
       [rows]="10"
       [showCurrentPageReport]="true"
@@ -102,10 +102,10 @@
       <ng-template pTemplate="body" let-applier>
         <tr>
           <td>
-            {{ applier.firstName }}
+            {{ applier.first_name }}
           </td>
           <td>
-            {{ applier.lastName }}
+            {{ applier.last_name }}
           </td>
           <td>
             {{ applier.email }}

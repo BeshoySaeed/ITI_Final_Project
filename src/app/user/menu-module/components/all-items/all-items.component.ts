@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ItemsService } from '../../services/items.service';
 // import { Item } from 'src/app/interface/items';
-// import { ItemsService } from '../../services/items.service';
+import { ItemsService } from '../../services/items.service';
+import { ItemService } from 'src/app/services/ItemService/item.service';
 
 @Component({
   selector: 'app-all-items',
@@ -12,7 +12,7 @@ export class AllItemsComponent {
 
 // array to receieve data from api
 // products:any []=[
-  
+
 //     {
 //       id:'1',
 //       name: 'Pizza Pepperoni',
@@ -181,21 +181,27 @@ products:any []=[]
 categories:any[]=[]
 cartProduct:any[]=[]
 loading :boolean=false;
-constructor( private service:ItemsService){}
+constructor( private service:ItemsService, private httpItem: ItemService){}
   ngOnInit():void {
     this.getProducts();
     this.getCategories();
   }
+
   getProducts(){
- 
-    this.service.getAllproducts().subscribe((res:any)=>{
-      this.products=res;
-     
-  })  
+
+  //   this.service.getAllproducts().subscribe((res:any)=>{
+  //     this.products=res;
+  // })
+
+  this.httpItem.getItems().subscribe((data) =>
+  {
+    this.products = data;
+    console.log(this.products);
+  } )
    }
-  // console.log(res);      
-  
-  
+  // console.log(res);
+
+
 
   getCategories(){
     this.loading=true;
@@ -203,7 +209,7 @@ constructor( private service:ItemsService){}
       this.categories=res;
       this.loading=false;
 
-  // console.log(res);      
+  // console.log(res);
     })
   }
   filterCategory(event:any){

@@ -7,17 +7,17 @@
             <p  > NEW</p>
           </div>
       <img [src]="data.image"
-        alt="{{data.title}}"/>
+        alt="{{data.name}}"/>
 
-  </ng-template>  
-  <p class="count">Your perfect pack for everyday use and walks in the forest.</p>
+  </ng-template>
+  <p class="count">{{ data.description }}</p>
 
-  <p class="count">{{data.rating.count}}</p>
+  <p class="count">{{data.name}}</p>
 
   <p class="count">{{data.price | currency}}</p>
 
   <ng-template pTemplate="footer">
-    <a href="#"> 
+    <a href="#">
            <i class="pi pi-shopping-cart" style="color:#fd702a;font-size: 4rem; "></i></a>
   </ng-template>
   <ng-template pTemplate="">

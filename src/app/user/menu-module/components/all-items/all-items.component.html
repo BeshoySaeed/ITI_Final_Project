@@ -3,16 +3,16 @@
 </div>
 
 <div class='container-item'>
-  <ng-container *ngFor= "let product of products" >
-    <app-item [data]="product" ></app-item>       
-  </ng-container>
+  <!-- <ng-container *ngFor= "let product of products" >
+    <app-item [data]="product" ></app-item>
+  </ng-container> -->
 </div>
 
-   <div fxLayout="row wrap"  fxLayoutAlign="flex-center">    
+   <div fxLayout="row wrap"  fxLayoutAlign="flex-center">
     <ng-container *ngFor ="let item of products" >
-      <app-item [data]="item" ></app-item>       
+      <app-item [data]="item" ></app-item>
     </ng-container>
-</div> 
+</div>
 
 
 <div  >

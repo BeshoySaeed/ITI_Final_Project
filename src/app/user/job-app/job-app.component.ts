@@ -1,13 +1,12 @@
 import { Component , OnInit } from '@angular/core';
 import { AbstractControl, ValidationErrors ,ReactiveFormsModule } from '@angular/forms';  
-import { Applicant } from 'src/app/interface/applicants';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { ApplicantsService } from 'src/app/services/applicants.service';
+import { ApplicantsService } from 'src/app/services/applicant/applicants.service';
 
 @Component({
   selector: 'app-job-app',
@@ -16,22 +15,17 @@ import { ApplicantsService } from 'src/app/services/applicants.service';
 })
 export class JobAppComponent implements OnInit{
   jobForm!: FormGroup;
-//  applicant=new Applicant();
-
-applicant={
-  title: '',
-  first_name:'',
-  last_name:'',
-  email: '',
-  mobile: '',
-  education:'',
-  cv: ''
-};
- applicants:any;  
-
- constructor(private fb: FormBuilder,private dataServices:ApplicantsService ) { }
-
-
+  applicants:any;  
+  applicant = {
+    title:'',
+    first_name:'',
+    last_name:'',
+    email: '',
+    mobile: '',
+    education:'',
+    cv: ''
+  };
+  constructor(private fb: FormBuilder,private dataServices:ApplicantsService ) { }
 
   ngOnInit(): void {
     this.jobForm = this.fb.group({
@@ -46,25 +40,20 @@ applicant={
         ],
       ],
       mobile: ['', [Validators.required, Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]],
-      job: ['', [Validators.required]],
+      title: ['', [Validators.required]],
       cv: ['',Validators.required]
 
     });
   }
   
-
-  submitJobForm() {
-    console.log(this.jobForm);
+  get title(){
+    return this.jobForm.get('title');
   }
-
-  get job(){
-    return this.jobForm.get('job');
+  get first_name(){
+    return this.jobForm.get('firsr_name');
   }
-  get name(){
-    return this.jobForm.get('name');
-  }
-  get l_name(){
-    return this.jobForm.get('l_name');
+  get last_name(){
+    return this.jobForm.get('last_name');
   }
   get email(){
     return this.jobForm.get('email');
@@ -79,44 +68,12 @@ applicant={
     return this.jobForm.get('cv');
   }
 
+  onSubmit() {
 
-  
-
-
-
-
-getBranchData(){
-this.dataServices.getAllBranches().subscribe(res =>{
-  this.applicants=res;
-  console.log(this.applicants);
-})
+    this.dataServices.insertApplicant(this.applicant).subscribe((res: any) => {
+    console.log(res);
+    })
+  }
 }
-insertBranchData(){
-this.dataServices.insertBranches({
-  title:'ssss',  
-  first_name :'saad',
-    last_name:'hossam',
-    email:'saad@gmail.com',
-    mobile:'01111111111',
-    education:'saad',
-    cv:'ddddddddd'
-  }).subscribe(res =>{
-  
-  console.log(res);
-})
-}
-
-
-// insertBranch(): void {
-//   this.dataServices.insertBranch(this.branchData).subscribe((response) => {
-//     // handle the response if needed
-//     console.log(response);
-//   });
-// }
-
-}
-
-
-
 
 

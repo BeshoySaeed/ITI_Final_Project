@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Table } from 'primeng/table';
+import { ApplicantsService } from 'src/app/services/applicant/applicants.service';
 
 @Component({
   selector: 'app-applicants',
@@ -7,38 +9,29 @@ import { Table } from 'primeng/table';
   styleUrls: ['./applicants.component.scss']
 })
 export class ApplicantsComponent {
-  applicants = [
-    {
-      id: 1,
-      jobTitle:'chief',
-      firstName: 'Gerges',
-      lastName: "Medhat",
-      email: "gergesmedhat@gmail.com",
-      mobile: "01288436939",
-      education:"test 1",
-      cv: "/images/myw3schoolsimage1.jpg",
 
-   
-    },
 
-    {
-      id: 2,
-      jobTitle:'waiter',
-      firstName: 'Seif',
-      lastName: "Hany",
-      email: "seifhany@gmail.com",
-      mobile: "01142648754",
-      education: "test 2",
-      cv: "/images/myw3schoolsimage2.jpg",
-    },
 
-  ];
+  id:any;
 
+  
   loading: boolean = false;
-
-  ngOnInit() {
+  applicants: any;
+  constructor(private route :ActivatedRoute,private dataServices: ApplicantsService) { }
+  ngOnInit():void {
+  
+    this.id = this.route.snapshot.params["id"] ;
+    this.getApplicantsData();
+  
   }
-
+  
+  getApplicantsData() {
+    this.dataServices.getAllApplicantss().subscribe(res => {
+      this.applicants = res;
+      console.log(this.applicants);
+    })
+  }
+  
   clear(table: Table) {
       table.clear();
   }

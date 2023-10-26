@@ -4,7 +4,7 @@
       <h1>Job Application</h1>
     </div>
 
-    <form [formGroup]="jobForm" (ngSubmit)="insertBranchData()">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
       <label for="job_input" class="form-label">Job Title</label>
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon">
@@ -12,16 +12,24 @@
         </span>
 
         <input
-        [(ngModel)]="applicant.title"
-
           pInputText
+          [(ngModel)]="applicant.title"
+
           placeholder="Enter your job title"
           type="text"
           class="form-control"
           id="job_input"
-          formControlName="job"
+          formControlName="title"
         />
-        
+        <div
+          id="job_input_help"
+          *ngIf="title!.invalid && (title!.touched || title!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="title!.errors?.['required']"
+            >This field is required</small
+          >
+        </div>
       </div>
       <br />
 
@@ -33,9 +41,9 @@
               <i class="pi pi-user"></i>
             </span>
             <input
-            [(ngModel)]="applicant.first_name"
-
               pInputText
+              [(ngModel)]="applicant.first_name"
+
               placeholder="Enter your first name"
               type="text"
               class="form-control"
@@ -44,7 +52,7 @@
               formControlName="first_name"
             />
           </div>
-          
+   
         </div>
         <br />
         <div class="column lcolumn">
@@ -65,7 +73,17 @@
               formControlName="last_name"
             />
           </div>
-         
+          <div
+            id="l_name_input_help"
+            *ngIf="last_name!.invalid && (last_name!.touched || last_name!.dirty)"
+            class="text_danger"
+          >
+            <small
+              class="block"
+              *ngIf="jobForm!.controls['last_name'].errors?.['required']"
+              >This field is required
+            </small>
+          </div>
         </div>
       </div>
 
@@ -86,7 +104,18 @@
           id="email_input"
           formControlName="email"
         />
-        
+        <div
+          id="email_input_help"
+          *ngIf="email!.invalid && (email!.touched || email!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="email!.errors?.['required']"
+            >This field is required</small
+          >
+          <small *ngIf="email!.errors?.['pattern']"
+            >please enter a valid email</small
+          >
+        </div>
       </div>
       <br />
       <label for="mobile_input" class="form-label">Mobile</label>
@@ -105,7 +134,18 @@
           id="mobile_input"
           formControlName="mobile"
         />
-       
+        <div
+          id="mobile_input_help"
+          *ngIf="mobile!.invalid && (mobile!.touched || mobile!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="mobile!.errors?.['required']"
+            >This field is required</small
+          >
+          <small *ngIf="mobile!.errors?.['pattern']"
+            >please enter a valid phone number</small
+          >
+        </div>
       </div>
       <br />
 
@@ -125,7 +165,15 @@
           id="education_input"
           formControlName="education"
         />
-        
+        <div
+          id="education_input_help"
+          *ngIf="education!.invalid && (education!.touched || education!.dirty)"
+          class="text_danger"
+        >
+          <small *ngIf="education!.errors?.['required']"
+            >This field is required</small
+          >
+        </div>
       </div>
       <br />
 
@@ -137,7 +185,6 @@
         <div class="fileDiv">
           <input
           [(ngModel)]="applicant.cv"
-
             type="file"
             id="docpicker"
             class="form-control"

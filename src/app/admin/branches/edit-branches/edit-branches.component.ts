@@ -1,9 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BrancheServiceService } from 'src/app/services/branche-service.service';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Table } from 'primeng/table';
-import { Branch } from 'src/app/interface/branches';
+import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
 @Component({
   selector: 'app-edit-branches',
   templateUrl: './edit-branches.component.html',
@@ -33,16 +31,12 @@ export class EditBranchesComponent {
     );
   //  this.route.params.subscribe((value)=>{
     // this.id=value['id'];
-  // })
+
   // console.log(this.route.snapshot.params['id']);
 this.id=this.route.snapshot.params['id'];
   this.getBranchData();
-  // this.updateteBranch();
-  // console.log(this.branches);
-  // console.log(this.branch);
 
 }
-
 
 getBranchData() {
   this.dataServices.getBranchById(this.id).subscribe(res => {

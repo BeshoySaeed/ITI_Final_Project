@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Table } from 'primeng/table';
+import { ContactUsService } from 'src/app/services/contact-us/contact-us.service';
 
 @Component({
   selector: 'app-appliers',
@@ -7,32 +9,36 @@ import { Table } from 'primeng/table';
   styleUrls: ['./appliers.component.scss']
 })
 export class AppliersComponent {
-  appliers = [
+  appliers = 
     {
-      id: 1,
-      firstName: 'Gerges',
-      lastName: "Medhat",
-      email: "gergesmedhat@gmail.com",
-      mobile: "01288436939",
-      message: "this is a message 1",
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      message: "",
    
-    },
+    };
 
-    {
-      id: 2,
-      firstName: 'Seif',
-      lastName: "Hany",
-      email: "seifhany@gmail.com",
-      mobile: "01142648754",
-      message: "this is a message 2",
-    },
+  
 
-  ];
+
 
   loading: boolean = false;
-
-  ngOnInit() {
+  applicants: any;
+  constructor(private route :ActivatedRoute,private dataServices: ContactUsService) { }
+  ngOnInit():void {
+  
+    this.getApplicantsData();
+  
   }
+  
+  getApplicantsData() {
+    this.dataServices.getAllContacts().subscribe(res => {
+      this.applicants = res;
+      console.log(this.applicants);
+    })
+  }
+  
 
   clear(table: Table) {
       table.clear();

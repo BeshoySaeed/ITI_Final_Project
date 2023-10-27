@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/interface/items';
 import { ItemService } from 'src/app/services/ItemService/item.service';
+import { AdditionsService } from 'src/app/services/additions-service/additions.service';
+import { CategoriesService } from 'src/app/services/category-service/categories.service';
 
 
 @Component({
@@ -13,24 +15,9 @@ import { ItemService } from 'src/app/services/ItemService/item.service';
 })
 export class AddMenuItemsComponent {
   form!: FormGroup;
-  categories= [
-    {
-      id: 1,
-      name: "Category 1"
-    },
-    {
-      id: 2,
-      name: "Category 2"
-    },
-  ];
+  categories : any = [];
 
-  additions = [
-    { id: 1, name: 'Addition 1' },
-    { id: 2, name: 'Addition 2' },
-    { id: 3, name: 'Addition 3' },
-    { id: 4, name: 'Addition 4' },
-    { id: 5, name: 'Addition 5' }
-];
+  additions : any = [];
 
     item : Item = {
       id : 0,
@@ -42,7 +29,7 @@ export class AddMenuItemsComponent {
       active: false,
       category_id: '1'
     }
-  constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router) {
+  constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router, private httpCategory : CategoriesService, private httpAddition: AdditionsService) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
@@ -55,6 +42,18 @@ export class AddMenuItemsComponent {
     });
   }
   ngOnInit() {
+    this.httpCategory.getAllCategory().subscribe(data =>
+      {
+        this.categories = data.data
+        console.log(this.categories)
+      })
+
+      this.httpAddition.getAllAddition().subscribe((data) =>
+      {
+        this.additions = data.data;
+        console.log(this.additions)
+      }
+      )
   }
 
 

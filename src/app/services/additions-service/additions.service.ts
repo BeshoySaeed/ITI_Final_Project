@@ -9,8 +9,8 @@ import { catchError, retry, throwError } from 'rxjs';
 export class AdditionsService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllAddition(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/addition`).pipe(
+  getAllAddition(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.host}/addition`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -22,7 +22,7 @@ export class AdditionsService {
     );
   }
 
-  
+
   storeAddition(addition:object): Observable<object> {
     return this.httpClient.post<object>(`${environment.host}/addition`, addition).pipe(
       retry(3), // retry a failed request up to 3 times
@@ -30,14 +30,14 @@ export class AdditionsService {
     );
   }
 
-  
+
   updateAddition(id:number, addition:object): Observable<object> {
     return this.httpClient.put<object>(`${environment.host}/addition/${id}`, addition).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
-  
+
 
   deleteAdditionById(id: number): Observable<object> {
     return this.httpClient.delete<object>(`${environment.host}/addition/${id}`).pipe(

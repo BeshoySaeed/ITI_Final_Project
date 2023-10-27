@@ -229,27 +229,27 @@
               [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
             ></button>
           </td>
-          <td>{{ order.userName }}</td>
+          <td>{{ order.user.first_name }} </td>
           <td>{{ order.createdAt }}</td>
-          <td>{{ order.phone1 }}</td>
-          <td>{{ order.phone2 }}</td>
+          <td>{{ order.user.phones[0].phone }}</td>
+          <td>{{ order.user.phones[1].phone }}</td>
           <td>{{ order.street }}</td>
           <td>{{ order.area }}</td>
           <td>{{ order.city }}</td>
           <td>{{ order.building_name }}</td>
           <td>{{ order.floor_number }}</td>
           <td>{{ order.flat_number }}</td>
-          <td>{{ order.gps_location }}</td>
+          <td>{{ order.GPS_location }}</td>
           <td>{{ order.note }}</td>
           <td>
-            {{ order.totalPrice | currency : "USD" : "symbol" }}
+            {{ totalPrice(order.items) }}
           </td>
-          <td>{{ order.paymentMethod }}</td>
-          <td>{{ order.discountCode }}</td>
+          <td>{{ order.payment_method}}</td>
+          <td>{{ order.discount_code}}</td>
           <td>
             <p-tag
               [value]="order.confirmInstruction"
-              [severity]="confirmInstructionStatus(order.confirmInstruction)"
+              [severity]="confirmInstructionStatus(order.confirm_instructions)"
             ></p-tag>
           </td>
         </tr>

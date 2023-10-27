@@ -9,8 +9,8 @@ import { catchError, retry, throwError } from 'rxjs';
 export class CategoriesService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllCategory(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/categories`).pipe(
+  getAllCategory(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.host}/categories`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -22,7 +22,7 @@ export class CategoriesService {
     );
   }
 
-  
+
   storeCategory(category: object): Observable<object> {
     return this.httpClient.post<object>(`${environment.host}/categories`, category).pipe(
       retry(3), // retry a failed request up to 3 times
@@ -30,14 +30,14 @@ export class CategoriesService {
     );
   }
 
-  
+
   updateCategory(id:number, category: object): Observable<object> {
     return this.httpClient.put<object>(`${environment.host}/categories/${id}`, category).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
-  
+
 
   deleteCategoryById(id: number): Observable<object> {
     return this.httpClient.delete<object>(`${environment.host}/categories/${id}`).pipe(

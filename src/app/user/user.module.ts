@@ -31,6 +31,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDataComponent } from './user-profile/user-data/user-data.component';
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { UserHistoryComponent } from './user-profile/user-history/user-history.c
     UserProfileComponent,
     UserDataComponent,
     UserSubscriptionComponent,
-    UserHistoryComponent
+    UserHistoryComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

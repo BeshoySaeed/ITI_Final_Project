@@ -13,10 +13,7 @@ export class ForgetPasswordComponent {
     this.formGroup = new FormGroup({
       emailControl : new FormControl('',[Validators.required,
         Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]),
-      passControl : new FormControl('', [
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@%$#])[a-zA-Z\\d@%$#]+$')
-      ]),
+ 
         checkControl : new FormControl('',[Validators.required])
 
     })

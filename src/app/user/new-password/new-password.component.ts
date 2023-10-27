@@ -8,9 +8,9 @@ import { checkpass } from '../register/confirmpass';
   styleUrls: ['./new-password.component.scss']
 })
 export class NewPasswordComponent {
-  newPasswordform: FormGroup;
+  newPasswordForm: FormGroup;
   constructor(private fb: FormBuilder){
-    this.newPasswordform = this.fb.group({
+    this.newPasswordForm = this.fb.group({
     password: ['', [
       Validators.required,
       Validators.minLength(8),
@@ -25,4 +25,8 @@ export class NewPasswordComponent {
   )
     
   }
+  submitNewPasswordFormForm() {
+    console.log(this.newPasswordForm);
+  }
+
 }

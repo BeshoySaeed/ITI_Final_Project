@@ -30,6 +30,12 @@ export class AuthService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
+  }  
+  resetPassword(data: object): Observable<object> {
+    return this.httpClient.post<object>(`${environment.host}/change-password`, data).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -10,6 +10,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TagModule } from 'primeng/tag';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     ToggleButtonModule,
     TagModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    PaginatorModule
   ],
 
   providers: [],

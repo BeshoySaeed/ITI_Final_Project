@@ -15,8 +15,8 @@ export class CategoriesService {
       catchError(this.handleError) // then handle the error
     );
   }
-  getCategoryByID(id: number): Observable<object>{
-    return this.httpClient.get<object>(`${environment.host}/categories/${id}`).pipe(
+  getCategoryByID(id: number): Observable<any>{
+    return this.httpClient.get<any>(`${environment.host}/categories/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -45,6 +45,16 @@ export class CategoriesService {
       catchError(this.handleError) // then handle the error
     );
   }
+
+
+  getProductsByCategory(categoryId: string) {
+    return this.httpClient.get(`${environment.host}/item?category=${categoryId}`);
+  }
+//   getitemByCategory(keyword:any): Observable<any>{
+//     return this.httpClient.get<any>(`${environment.host}/categories/`+keyword);
+
+// }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

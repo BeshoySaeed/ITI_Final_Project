@@ -3,18 +3,25 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 import { catchError, retry, throwError } from 'rxjs';
+import { Addition } from 'src/app/interface/addition';
 @Injectable({
   providedIn: 'root'
 })
 export class AdditionsService {
   constructor(private httpClient: HttpClient) {}
 
+  insertAddition(data: any): Observable<object>{
+    return this.httpClient.post<object>(`${environment.host}/addition/`,data);
+  }
+
   getAllAddition(): Observable<any> {
     return this.httpClient.get<any>(`${environment.host}/addition`).pipe(
+
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
+  
   getAdditionByID(id: number): Observable<object>{
     return this.httpClient.get<object>(`${environment.host}/addition/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
@@ -59,5 +66,5 @@ export class AdditionsService {
     // Return an observable with a Addition-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-
+    
 }

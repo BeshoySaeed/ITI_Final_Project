@@ -68,5 +68,13 @@ export class ItemService {
       })
     );
   }
+  // getProductsByCategoryId(categoryId: any): Observable<any> {
+  //   return this.http.get<any>(`${environment.host}/item/category/`+categoryId);
+  // }
+
+  getProductsByCategory(keyword:string){
+    return this.http.get(`${environment.host}/item/category/`+ keyword);
+
+  }
 
 }

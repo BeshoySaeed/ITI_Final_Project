@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryComponent } from './category/category.component';
 import { PartnerComponent } from './partner/partner.component';
 import { CarouselModule } from 'primeng/carousel';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,9 @@ import { CarouselModule } from 'primeng/carousel';
     RouterLink,
     RouterModule,
     CarouselModule,
+    PaginatorModule, 
+    TableModule
+    
   ],
   exports: [
     BannerComponent,

@@ -1,12 +1,13 @@
 <div class="container">
   <p class="text-center mb-2 font-italic font-light text-3xl">Our Menu</p>
   <div class="flex gap-4 justify-content-center flex-wrap">
-    <ng-container *ngFor="let item of items, let index = index">
+    <ng-container *ngFor="let category of categories, let index = index">
         <a
           routerlink=""
+          
           class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
         >
-          {{ item }}</a
+          {{ category.name }}</a
         >
     </ng-container>
     <a
@@ -17,7 +18,7 @@
   >
   </div>
   <div class="flex flex-wrap justify-content-center gap-2 mt-3">
-    <ng-container  *ngFor="let offer of offers, let index = index ">
+    <ng-container  *ngFor="let offer of displayeditems, let index = index ">
         <p-card [header]="offer.title" [subheader]="offer.available" [style]="{ width: '300px', 'border-radius': '8%', 'position': 'relative' }">
             <ng-template pTemplate="header">
                 <div class="flex justify-content-center align-content-center">
@@ -39,4 +40,6 @@
         </p-card>
     </ng-container>
   </div>
+  <p-paginator  [rows]="4" [totalRecords]="categories?.length" (onPageChange)="onItemChange($event)"></p-paginator>
+
 </div>

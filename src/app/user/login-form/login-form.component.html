@@ -10,6 +10,7 @@
         class="flex align-items-center gap-1"
         [formGroup]="formGroup"
         #loginForm="ngForm"
+        (ngSubmit)="onSubmit()"
       >
         <div class="box">
           <label htmlFor="username">Email</label>
@@ -19,7 +20,7 @@
               type="text"
               pInputText
               placeholder="Email.."
-              formControlName="emailControl"
+              formControlName="email"
             />
           </span>
         </div>
@@ -32,7 +33,7 @@
               type="password"
               pInputText
               placeholder="password"
-              formControlName="passControl"
+              formControlName="password"
             />
           </span>
         </div>
@@ -52,6 +53,7 @@
           label="Login"
           styleClass="p-button-danger px-4 py-2 mt-4"
           [disabled]="loginForm.invalid ? true : false"
+          type="submit"
         ></p-button>
         <div
           class="errors"

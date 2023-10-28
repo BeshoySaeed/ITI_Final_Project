@@ -1,6 +1,6 @@
 <div class="register-container">
     <h3 class="page-title mt-4">Register</h3>
-    <form [formGroup]="registerform" class="form">
+    <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="form">
       <div class="row">
       <div class="multi">
         <div class=" w-50 mb-3">
@@ -9,17 +9,17 @@
             type="text"
             id="name_input"
             pInputText
-            formControlName="name"
+            formControlName="first_name"
           />
           <div
             id="name_input_help"
             *ngIf="
-              registerform.controls['name'].touched &&
-              registerform.controls['name'].invalid
+              registerform.controls['first_name'].touched &&
+              registerform.controls['first_name'].invalid
             "
             class="form-text"
           >
-            <small *ngIf="registerform.controls['name'].errors?.['required']"
+            <small *ngIf="registerform.controls['first_name'].errors?.['required']"
               >This field is required</small
             >
           </div>
@@ -30,17 +30,17 @@
             type="text"
             id="name_input"
             pInputText
-            formControlName="name"
+            formControlName="last_name"
           />
           <div
             id="name_input_help"
             *ngIf="
-              registerform.controls['name'].touched &&
-              registerform.controls['name'].invalid
+              registerform.controls['last_name'].touched &&
+              registerform.controls['last_name'].invalid
             "
             class="form-text"
           >
-            <small *ngIf="registerform.controls['name'].errors?.['required']"
+            <small *ngIf="registerform.controls['last_name'].errors?.['required']"
               >This field is required</small
             >
           </div>
@@ -79,19 +79,19 @@
         type="text"
         pInputText
         id="Phone_input"
-        formControlName="Phone"
+        formControlName="phone1"
       />
       <div
         id="Phone_input_help"
         *ngIf="
-          registerform.controls['Phone'].touched &&
-          registerform.controls['Phone'].invalid
+          registerform.controls['phone1'].touched &&
+          registerform.controls['phone1'].invalid
         "
         class="form-text"
       >
-        <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+        <small *ngIf="registerform.controls['phone1'].errors?.['required']"
           >This field is required</small>
-        <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
+        <small *ngIf="registerform.controls['phone1'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
       </div>
     </div>
     <div class="mb-3 w-50">
@@ -100,19 +100,19 @@
         type="text"
         id="Phone_input"
         pInputText
-        formControlName="Phone"
+        formControlName="phone2"
       />
       <div
         id="Phone_input_help"
         *ngIf="
-          registerform.controls['Phone'].touched &&
-          registerform.controls['Phone'].invalid
+          registerform.controls['phone2'].touched &&
+          registerform.controls['phone2'].invalid
         "
         class="form-text"
       >
-        <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+        <small *ngIf="registerform.controls['phone2'].errors?.['required']"
           >This field is required</small>
-          <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
+          <small *ngIf="registerform.controls['phone2'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
         </div>
     </div>
   </div>
@@ -147,24 +147,24 @@
           type="password"
           pInputText
           id="confirmpassword_input"
-          formControlName="confirmpassword"
+          formControlName="password_confirmation"
         />
         <div
           id="confirmpassword_input_help"
           *ngIf="
-            registerform.controls['confirmpassword'].touched &&
-            registerform.controls['confirmpassword'].invalid
+            registerform.controls['password_confirmation'].touched &&
+            registerform.controls['password_confirmation'].invalid
           "
           class="form-text"
 
         >
-          <small *ngIf="registerform.controls['confirmpassword'].errors?.['required']"
+          <small *ngIf="registerform.controls['password_confirmation'].errors?.['required']"
             >This field is required</small>
-            <small *ngIf="registerform.controls['confirmpassword'].errors?.['minlength']"
+            <small *ngIf="registerform.controls['password_confirmation'].errors?.['minlength']"
             >This field is minlength 8</small>
-            <small *ngIf="registerform.controls['confirmpassword'].errors?.['pattern']"
+            <small *ngIf="registerform.controls['password_confirmation'].errors?.['pattern']"
             >This field is must contain</small>
-            <small *ngIf="registerform.controls['confirmpassword'].errors?.['checkpass']">
+            <small *ngIf="registerform.controls['password_confirmation'].errors?.['checkpass']">
                 Password and Confirm Password do not match.
               </small>
         </div>
@@ -175,7 +175,7 @@
         Rejecter
       </button> -->
       <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
-      <p-button  class="btn button" [disabled]="registerform.invalid"  routerLinkActive="active" routerLink="**"> <span>Register</span></p-button>
+      <p-button (click)="onSubmit()" class="btn button" [disabled]="registerform.invalid"> <span>Register</span></p-button>
 
     </div>
      </form>

@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { UserService } from 'src/app/services/user-service/user.service';
-import { UserPhoneService } from 'src/app/services/userPhone-service/user-phone.service';
+import { User } from 'src/app/interface/user';
 
-import { HttpErrorResponse,  } from '@angular/common/http';
-import { throwError } from 'rxjs'; 
 
 @Component({
   selector: 'app-users',
@@ -15,14 +13,13 @@ import { throwError } from 'rxjs';
 })
 export class UsersComponent {
 
-  users = [];
-  phones = [];
+  users : User[] = [];
+
 
   loading: boolean = true;
 
   constructor(
     private userService: UserService,
-    private userPhoneService: UserPhoneService,
 
     private messageService: MessageService
   ) {}
@@ -30,7 +27,6 @@ export class UsersComponent {
 
   ngOnInit() {
       this.getAllUsers();
-      this.getAllphones();
   }
 
   getAllUsers() {
@@ -41,14 +37,7 @@ export class UsersComponent {
         this.loading = false
       });
   }
-  getAllphones() {
-    this.userPhoneService
-      .getAllPhones()
-      .subscribe((phone: any) => {
-        this.phones = phone.data;
-        this.loading = false
-      });
-  }
+ 
 
   deleteUser(id: number) {
     this.userService

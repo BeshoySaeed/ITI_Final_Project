@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 import { catchError, retry, throwError } from 'rxjs';
@@ -9,11 +9,14 @@ import { catchError, retry, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserPhoneService {
-
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   constructor(private httpClient: HttpClient) {}
 
   getAllPhones(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/userPhone`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/userPhone`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -21,7 +24,7 @@ export class UserPhoneService {
 
 
   getPhoneByID(id: number): Observable<object>{
-    return this.httpClient.get<object>(`${environment.host}/userPhone/${id}`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/userPhone/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -29,7 +32,7 @@ export class UserPhoneService {
   
 
   storePhone(phone: object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}/userPhone`, phone).pipe(
+    return this.httpClient.post<object>(`${environment.host}/userPhone`, phone, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -37,7 +40,7 @@ export class UserPhoneService {
 
 
   updatePhone(id:number, phone: object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}/userPhone/${id}`, phone).pipe(
+    return this.httpClient.put<object>(`${environment.host}/userPhone/${id}`, phone, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -45,7 +48,7 @@ export class UserPhoneService {
   
 
   deletePhoneById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}/userPhone/${id}`).pipe(
+    return this.httpClient.delete<object>(`${environment.host}/userPhone/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

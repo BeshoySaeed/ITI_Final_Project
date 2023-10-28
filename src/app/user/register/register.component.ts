@@ -33,8 +33,8 @@ export class RegisterComponent {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      phone1: ['', [Validators.required, Validators.pattern( /^(\+20-1)[0-9]{9}$/)]],   
-      phone2: ['', [Validators.required, Validators.pattern( /^(\+20-1)[0-9]{9}$/)]],   
+      phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],   
+      phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],   
       password: ['', [
       Validators.required,
       Validators.minLength(8),

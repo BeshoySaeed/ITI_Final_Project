@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, retry, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 
@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AuthService {
   apiRoute = `${environment.host}`;
+
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -37,6 +39,11 @@ export class AuthService {
       catchError(this.handleError) // then handle the error
     );
   }
+ 
+  isLoggedIn(){
+    return !!localStorage.getItem("token");
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

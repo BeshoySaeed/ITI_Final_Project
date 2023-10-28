@@ -4,17 +4,20 @@
 
   <ng-template pTemplate="header">
     <div class="rotating">
-            <p  > NEW</p>
+            <p  > {{data.active}}</p>
           </div>
-      <img [src]="data.image"
+      <img [src]="data.img"
         alt="{{data.name}}"/>
 
   </ng-template>
-  <p class="count">{{ data.description }}</p>
-
   <p class="count">{{data.name}}</p>
 
+  <p class="count">{{ data.description }}</p>
+
+
   <p class="count">{{data.price | currency}}</p>
+  <p class="count">{{data.discount }} %</p>
+
 
   <ng-template pTemplate="footer">
     <a href="#">

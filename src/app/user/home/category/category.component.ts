@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoriesService } from 'src/app/services/category-service/categories.service';
 
 @Component({
   selector: 'app-category',
@@ -7,30 +8,30 @@ import { Component } from '@angular/core';
 })
 export class CategoryComponent {
   items: any[] = [];
-  constructor(){}
+  ownedProducts: any[] = [];
+  ownedProductsChunk: any[] = [];
+  constructor(private dataServices:CategoriesService) { }
 
-  ngOnInit() {
-    this.items = [
+    categories:any;
+    displayedCategories:any;
+  ngOnInit(){
+    this.getBranchData();
+  
+  }
 
-      {
-        Name:'Meat',
-        Image:'../../../assets/images/download.jpeg',
-        link:'#'
-      },
-      {
-        Name:'Pizza',
-        Image:'../../../assets/images/download (1).jpeg',
-        link:'#'
-      },
-      {
-        Name:'Fish',
-        Image:'../../../assets/images/images.jpeg',
-        link:'#'
-      },     {
-        Name:'Salat',
-        Image:'../../../assets/images/images (1).jpeg',
-        link:'#'
-      },
-      ];
-    }
+  onPageChange(event:any) {
+    const startIndex = event.first; // Get the index of the first category to be displayed
+    const endIndex = startIndex + event.rows; // Calculate the index of the last category to be displayed
+    this.displayedCategories = this.categories.slice(startIndex, endIndex);
+  }
+
+  getBranchData(){
+    this.dataServices.getAllCategory().subscribe(res =>{
+    this.categories=res.data;
+    this.displayedCategories = this.categories.slice(0, 4); // Display only 4 categories initially
+    // console.log(this.categories);
+   })
+  }
 }
+
+

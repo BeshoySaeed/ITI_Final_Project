@@ -2,7 +2,6 @@
 <label for="" class="">Select {{title}}</label>
 <select class=" " (change)="detectCategory($event)">
     <option value="all" selected>All</option>
-    <option value="{{option}}" *ngFor= "let option of data ">{{option}}</option>
-</select>
+    <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option></select>
 <img src="https://cdn-icons-png.flaticon.com/512/184/184514.png" width="150px" style="margin-left: 30px;" height="60px" alt="">
 </div>

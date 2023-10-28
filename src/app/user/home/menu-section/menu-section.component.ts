@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemService } from 'src/app/services/ItemService/item.service';
+import { CategoriesService } from 'src/app/services/category-service/categories.service';
 // import {}  from
 
 interface Offer {
@@ -15,41 +17,47 @@ interface Offer {
   styleUrls: ['./menu-section.component.scss'],
 })
 export class MenuSectionComponent {
-  items: string[] = ['Pizza', 'Meat', 'Fish', 'Extra'];
 
-  offers: Offer[] = [
-    {
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 3,
-    },
-    {
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 4,
-    },
-    {
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 5,
-    },
-    {
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Avaliable',
-      price: '20$',
-      stars: 4,
-    },
-  ];
-  constructor() {}
+  categories: any;
+  items:any;
+  displayeditems: any;
+  displayedCategories:any;
+  constructor(private dataServices:ItemService ,private dataService:CategoriesService ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getitemschData();
+    this.getCategoriesData();
+  }
+
+  onItemChange(event:any) {
+    const startIndex = event.first; // Get the index of the first category to be displayed
+    const endIndex = startIndex + event.rows; // Calculate the index of the last category to be displayed
+    this.displayeditems = this.items.slice(startIndex, endIndex);
+  }
+
+
+  getitemschData(){
+    this.dataServices.getItems().subscribe(res =>{
+    this.items=res;
+    this.displayeditems = this.items.slice(0, 4); // Display only 4 categories initially
+    // console.log(this.displayeditems);
+   })
+  }
+  getCategoriesData(){
+    this.dataService.getAllCategory().subscribe(res =>{
+    this.categories=res.data;
+    this.displayeditems = this.categories.slice(0, 4); // Display only 4 categories initially
+    // console.log(this.displayeditems);
+   })
+  }
+
+  filteredProducts:any;
+
+  filterProducts(category: string) {
+    this.filteredProducts = this.items.filter((product: { category: string; }) => {
+      return product.category === category;
+    });
+  }
 
   getStarsCount(stars: number) {
     let starsArr = [];

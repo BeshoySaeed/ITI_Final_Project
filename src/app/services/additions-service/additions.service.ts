@@ -3,11 +3,16 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 import { catchError, retry, throwError } from 'rxjs';
+import { Addition } from 'src/app/interface/addition';
 @Injectable({
   providedIn: 'root'
 })
 export class AdditionsService {
   constructor(private httpClient: HttpClient) {}
+
+  insertAddition(data: any): Observable<object>{
+    return this.httpClient.post<object>(`${environment.host}/addition/`,data);
+  }
 
   getAllAddition(): Observable<object> {
     return this.httpClient.get<object>(`${environment.host}/addition`).pipe(

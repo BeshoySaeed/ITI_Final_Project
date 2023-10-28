@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component , inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth/auth.service';
@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/services/Auth/auth.service';
 })
 export class LoginFormComponent {
   value : any ;
+  authService = inject(AuthService);
+
   formGroup : FormGroup;
   constructor(private http: HttpClient, private router: Router ,private login: AuthService){
     this.formGroup = new FormGroup({
@@ -37,6 +39,7 @@ export class LoginFormComponent {
     this.http.post(apiUrl, formData).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
+        this.authService.isLoggedIn$.next(true);
         this.router.navigate(['/home']); // Redirect to the dashboard page
       },
       (error) => {

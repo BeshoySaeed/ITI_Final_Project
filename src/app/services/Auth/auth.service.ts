@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AuthService {
   apiRoute = `${environment.host}`;
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
 
   isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
@@ -42,8 +45,8 @@ export class AuthService {
   sendResetPasswordLink(data:object) {
     return this.httpClient.post('http://127.0.0.1:8000/api/forget-password', data)
 }
-  logout(user: object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}/logout`, user).pipe(
+  logout(data: object): Observable<object> {
+    return this.httpClient.post<object>(`${environment.host}/logout`, data, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

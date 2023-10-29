@@ -35,7 +35,6 @@ export class LoginFormComponent {
       email: formData.email,
       password: formData.password,
     }
-    console.log(data)
     this.http.post(apiUrl, formData).subscribe(
       (response: any) => {
         if(response.role_id == 2){

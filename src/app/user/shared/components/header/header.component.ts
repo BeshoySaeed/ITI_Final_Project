@@ -26,22 +26,20 @@ ngOnInit(): void {
 }
 
   logout(){
-    const apiUrl = 'http://localhost:8000/api/logout'; 
-    const token= localStorage.getItem("token");
-    console.log(token)
-    this.http.post(apiUrl,token).subscribe(
-    (response: any) => {
-    //   localStorage.removeItem("token");
-    //  // this.authService.isLoggedIn$.next(false);    
-    //   this.router.navigate(['/login']); // Redirect to the dashboard page
-      },
-    (error) => {
-        console.error('Login failed:', error);
-      }
-    );
-    
+    const data = {
+      "token": localStorage.getItem("token")
+    }
 
+    this.authService
+      .logout(data)
+      .subscribe((response: any) => {
+        if (response.status == 'success') {
+          localStorage.removeItem("token");
+          localStorage.removeItem("role_id");
+        }
+      });
   }
+
   onSubmit() {
  
   }

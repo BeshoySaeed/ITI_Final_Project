@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -7,7 +7,10 @@ import { Bartner } from '../../interface/partners';
   providedIn: 'root'
 })
 export class PartnerService {
-
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -25,7 +28,7 @@ export class PartnerService {
   constructor(private httpClient: HttpClient) { }
 
   getAllBartners(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/partners`)
+    return this.httpClient.get<object>(`${environment.host}/partners`, {headers: this.headers})
   }
 
   insertBartners(data: any){

@@ -2,30 +2,33 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { DiscountCode } from 'src/app/interface/discount-code';
 import { GenericService } from '../GenericService/generic-service.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscountCodeService {
-
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   constructor(private httpDiscountCode: GenericService, private http : HttpClient) { }
 
 
   addDisc(object : DiscountCode) :Observable <DiscountCode>
   {
-    return this.http.post<DiscountCode>(`${environment.host}/discountCode`, object)
+    return this.http.post<DiscountCode>(`${environment.host}/discountCode`, object, {headers: this.headers})
   }
 
   getId(id : number) : Observable<any>
   {
-    return this.http.get<DiscountCode>(`${environment.host}/discountCode/${id}`)
+    return this.http.get<DiscountCode>(`${environment.host}/discountCode/${id}`, {headers: this.headers})
   }
 
   delete(id: number) : Observable<any>
   {
-    return this.http.delete(`${environment.host}/discountCode/${id}`)
+    return this.http.delete(`${environment.host}/discountCode/${id}`, {headers: this.headers})
   }
 
   getDiscountCodes(): Observable<DiscountCode[]>

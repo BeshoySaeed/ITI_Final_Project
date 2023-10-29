@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GenericService {
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
 
   private handleError(error: HttpErrorResponse) {
   if (error.status === 0) {
@@ -32,7 +35,7 @@ export class GenericService {
   }
 
   getAll(route: string): Observable<any> {
-    return this.http.get(`${environment.host}/${route}`)
+    return this.http.get(`${environment.host}/${route}`, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -40,7 +43,7 @@ export class GenericService {
   }
 
   getById(route: string, id: number): Observable<any> {
-    return this.http.get(`${environment.host}/${route}/${id}`)
+    return this.http.get(`${environment.host}/${route}/${id}`, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -48,7 +51,7 @@ export class GenericService {
   }
 
   post(route: string, object: any): Observable<any> {
-    return this.http.post(`${environment.host}/${route}`, object)
+    return this.http.post(`${environment.host}/${route}`, object, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -56,7 +59,7 @@ export class GenericService {
   }
 
   delete(route: string, id: number): Observable<any> {
-    return this.http.delete(`${environment.host}/${route}/${id}`)
+    return this.http.delete(`${environment.host}/${route}/${id}`, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -64,7 +67,7 @@ export class GenericService {
   }
 
   update(route: string, id: number, object: any): Observable<any> {
-    return this.http.put(`${environment.host}/${route}/${id}`, object)
+    return this.http.put(`${environment.host}/${route}/${id}`, object, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)

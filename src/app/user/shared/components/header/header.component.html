@@ -14,7 +14,7 @@
   </ng-template>
 
   <ng-template pTemplate="end" *ngIf="isLoggedIn">
-    <button (click)="logout()" class="login">Logout</button>
+    <a (click)="logout()" class="login cursor-pointer">Logout</a>
     <span class="stick"> | </span>
     <a href="" routerLink="profile" class="register">Profile</a>
     <i class="pi pi-facebook facebook"></i>

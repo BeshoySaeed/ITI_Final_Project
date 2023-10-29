@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 import { catchError, retry, throwError } from 'rxjs';
@@ -8,11 +8,14 @@ import { catchError, retry, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserAddressService {
-
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   constructor(private httpClient: HttpClient) {}
 
   getAllAddresses(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/userAddress`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/userAddress`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -20,7 +23,7 @@ export class UserAddressService {
 
 
   getAddressByID(id: number): Observable<object>{
-    return this.httpClient.get<object>(`${environment.host}/userAddress/${id}`).pipe(
+    return this.httpClient.get<object>(`${environment.host}/userAddress/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -28,7 +31,7 @@ export class UserAddressService {
 
 
   storeAddress(address: object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}/userAddress`, address).pipe(
+    return this.httpClient.post<object>(`${environment.host}/userAddress`, address, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -36,7 +39,7 @@ export class UserAddressService {
 
 
   updateAddress(id:number, address: object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}/userAddress/${id}`, address).pipe(
+    return this.httpClient.put<object>(`${environment.host}/userAddress/${id}`, address, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -44,7 +47,7 @@ export class UserAddressService {
   
 
   deleteAddressById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}/userAddress/${id}`).pipe(
+    return this.httpClient.delete<object>(`${environment.host}/userAddress/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

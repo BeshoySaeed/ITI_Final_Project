@@ -19,6 +19,7 @@ import { UserHistoryComponent } from './user-profile/user-history/user-history.c
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { AuthGuardService } from '../Guards/Auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -40,9 +41,12 @@ const routes: Routes = [
       {
         path: 'forgetpass',
         component: ForgetPasswordComponent,
-      },      {
+        canActivate: [AuthGuardService]
+      },      
+      {
         path: 'newpass',
         component: NewPasswordComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'register',
@@ -51,6 +55,7 @@ const routes: Routes = [
       {
         path: 'payment',
         component: PaymentComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'about-us',
@@ -71,6 +76,7 @@ const routes: Routes = [
       {
         path: 'cart',
         component: CartComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'all-items',
@@ -80,6 +86,7 @@ const routes: Routes = [
       {
         path: 'profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',

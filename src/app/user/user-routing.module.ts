@@ -17,6 +17,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDataComponent } from './user-profile/user-data/user-data.component';
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,13 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginFormComponent,
+      },
+      {
+        path: 'forgetpass',
+        component: ForgetPasswordComponent,
+      },      {
+        path: 'newpass',
+        component: NewPasswordComponent,
       },
       {
         path: 'register',
@@ -66,7 +75,8 @@ const routes: Routes = [
       {
         path: 'all-items',
         component: AllItemsComponent,
-      },
+      },      
+
       {
         path: 'profile',
         component: UserProfileComponent,

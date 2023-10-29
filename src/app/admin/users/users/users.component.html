@@ -186,13 +186,15 @@
             <span
               class="surface-600 text-white px-2 py-1 border-round m-1"
               *ngFor="let phone of user.phones"
-              >{{ phone.value }}</span
+              >{{ phone.phone }}</span
             >
           </td>
           <td>
-            <span class="surface-600 text-white px-2 py-1 border-round m-1">{{
-              user.address
-            }}</span>
+            <span
+              class="surface-600 text-white px-2 py-1 border-round m-1"
+              *ngFor="let address of user.addresses"
+              >{{ address.city }}</span
+            >
           </td>
           <td class="flex">
             <button

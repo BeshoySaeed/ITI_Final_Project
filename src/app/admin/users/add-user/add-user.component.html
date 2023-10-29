@@ -15,7 +15,7 @@
             pInputText
             [required]="true"
             [minlength]="4"
-            formControlName="firstName"
+            formControlName="first_name"
             class="input p-2 border-round outline-none w-full"
           />
           <label for="first-name" class="block mb-2">First Name *</label>
@@ -24,25 +24,25 @@
         <div
           class="error-message"
           *ngIf="
-            addUserForm.controls['firstName'].touched &&
-            addUserForm.controls['firstName'].invalid
+            addUserForm.controls['first_name'].touched &&
+            addUserForm.controls['first_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addUserForm.controls['firstName'].errors?.['required']"
+            *ngIf="addUserForm.controls['first_name'].errors?.['required']"
           >
             First name is required
           </small>
           <small
             class="block"
-            *ngIf="addUserForm.controls['firstName'].errors?.['minlength']"
+            *ngIf="addUserForm.controls['first_name'].errors?.['minlength']"
           >
             First name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addUserForm.controls['firstName'].errors?.['pattern']"
+            *ngIf="addUserForm.controls['first_name'].errors?.['pattern']"
           >
             First name must contains only letters
           </small>
@@ -57,7 +57,7 @@
             [required]="true"
             [minlength]="4"
             pInputText
-            formControlName="lastName"
+            formControlName="last_name"
             class="input p-2 border-round outline-none w-full"
           />
           <label for="last-name" class="block mb-2">Last Name *</label>
@@ -66,25 +66,25 @@
         <div
           class="error-message"
           *ngIf="
-            addUserForm.controls['lastName'].touched &&
-            addUserForm.controls['lastName'].invalid
+            addUserForm.controls['last_name'].touched &&
+            addUserForm.controls['last_name'].invalid
           "
         >
           <small
             class="block"
-            *ngIf="addUserForm.controls['lastName'].errors?.['required']"
+            *ngIf="addUserForm.controls['last_name'].errors?.['required']"
           >
             Last name is required
           </small>
           <small
             class="block"
-            *ngIf="addUserForm.controls['lastName'].errors?.['minlength']"
+            *ngIf="addUserForm.controls['last_name'].errors?.['minlength']"
           >
             Last name is must be more than 3 characters
           </small>
           <small
             class="block"
-            *ngIf="addUserForm.controls['lastName'].errors?.['pattern']"
+            *ngIf="addUserForm.controls['last_name'].errors?.['pattern']"
           >
             Last name is must contains only letters
           </small>
@@ -97,11 +97,11 @@
             name="role"
             styleClass="w-full"
             [options]="roles"
-            formControlName="role"
+            formControlName="role_id"
             optionLabel="name"
             optionValue="id"
           ></p-dropdown>
-          <label for="role" class="block mb-2">Role *</label>
+          <label for="role_id" class="block mb-2">Role *</label>
         </div>
       </div>
 
@@ -220,71 +220,27 @@
         </div>
       </div>
 
-      <div class="col-12 md:col-6 mb-4">
+      <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
         <div class="flex flex-column-reverse">
-          <p-inputMask
-            id="phone1"
-            [autoClear]="false"
+          <input
+            id="balance"
+            type="number"
+            pInputText
             [required]="true"
-            formControlName="phone1"
-            mask="+20-1999999999"
-            placeholder="+20-1999999999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
-          <label htmlFor="phone1" class="block mb-2">Phone 1 *</label>
+            [minlength]="4"
+            formControlName="balance"
+            class="input p-2 border-round outline-none w-full"
+          />
+          <label for="balance" class="block mb-2">balance *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addUserForm.controls['phone1'].touched &&
-            addUserForm.controls['phone1'].invalid
+            addUserForm.controls['balance'].touched &&
+            addUserForm.controls['balance'].invalid
           "
-        >
-          <small
-            class="block"
-            *ngIf="addUserForm.controls['phone1'].errors?.['required']"
-          >
-            Phone is required
-          </small>
-          <small
-            class="block"
-            *ngIf="addUserForm.controls['phone1'].errors?.['pattern']"
-          >
-            It must be a valid phone number
-          </small>
-        </div>
-      </div>
-
-      <div class="col-12 md:col-6 mb-4">
-        <div class="flex flex-column-reverse">
-          <p-inputMask
-            id="phone2"
-            [autoClear]="false"
-            formControlName="phone2"
-            mask="+20-1999999999"
-            placeholder="+20-1999999999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
-          <label htmlFor="phone2" class="block mb-2">Phone 2</label>
-        </div>
-
-        <div
-          class="error-message"
-          *ngIf="
-            addUserForm.controls['phone2'].touched &&
-            addUserForm.controls['phone2'].invalid
-          "
-        >
-          <small
-            class="block"
-            *ngIf="addUserForm.controls['phone2'].errors?.['pattern']"
-          >
-            It must be a valid phone number
-          </small>
-        </div>
+        ></div>
       </div>
 
       <button

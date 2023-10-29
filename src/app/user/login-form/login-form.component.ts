@@ -38,6 +38,9 @@ export class LoginFormComponent {
     console.log(data)
     this.http.post(apiUrl, formData).subscribe(
       (response: any) => {
+        if(response.role_id == 2){
+          localStorage.setItem('role_id', response.role_id);
+        }
         localStorage.setItem('token', response.token);
         this.authService.isLoggedIn$.next(true);
         this.router.navigate(['/home']); // Redirect to the dashboard page

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/Auth/auth.service';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -9,16 +10,21 @@ export class ForgetPasswordComponent {
 
   email:string="";
   formGroup : FormGroup;
-  constructor(){
+  errors = null;
+  successMsg : any;
+  constructor(    public authService: AuthService
+    ){
     this.formGroup = new FormGroup({
-      emailControl : new FormControl('',[Validators.required,
+      email : new FormControl('',[Validators.required,
         Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]),
-      passControl : new FormControl('', [
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@%$#])[a-zA-Z\\d@%$#]+$')
-      ]),
-        checkControl : new FormControl('',[Validators.required])
-
     })
+  }
+  onSubmit(){
+    this.authService.sendResetPasswordLink(this.formGroup.value).subscribe(
+      (result) => {
+        this.successMsg = result;
+      },(error) => {
+        this.errors = error.error.message;
+      })
   }
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { UserService } from 'src/app/services/user-service/user.service';
-import { HttpErrorResponse,  } from '@angular/common/http';
-import { throwError } from 'rxjs'; 
+import { User } from 'src/app/interface/user';
+
 
 @Component({
   selector: 'app-users',
@@ -13,11 +13,14 @@ import { throwError } from 'rxjs';
 })
 export class UsersComponent {
 
-  users = [];
+  users : User[] = [];
+
+
   loading: boolean = true;
 
   constructor(
     private userService: UserService,
+
     private messageService: MessageService
   ) {}
 
@@ -34,6 +37,7 @@ export class UsersComponent {
         this.loading = false
       });
   }
+ 
 
   deleteUser(id: number) {
     this.userService

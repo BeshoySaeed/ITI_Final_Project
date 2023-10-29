@@ -39,6 +39,9 @@ export class AuthService {
       catchError(this.handleError) // then handle the error
     );
   }
+  sendResetPasswordLink(data:object) {
+    return this.httpClient.post('http://127.0.0.1:8000/api/forget-password', data)
+}
  
   isLoggedIn(){
     return !!localStorage.getItem("token");

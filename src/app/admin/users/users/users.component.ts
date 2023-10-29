@@ -52,6 +52,7 @@ export class UsersComponent {
           });
         }
       });
+      this.users=this.users.filter(user=> user.id != id );
   }
 
   clear(table: Table) {

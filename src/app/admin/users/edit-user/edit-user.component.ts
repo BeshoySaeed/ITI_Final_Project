@@ -4,6 +4,7 @@ import { User } from 'src/app/interface/user';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { UserPhoneService } from 'src/app/services/userPhone-service/user-phone.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,9 +15,19 @@ import { MessageService } from 'primeng/api';
 export class EditUserComponent {
   editUserForm!: FormGroup;
   userId = this.activeRoute.snapshot.params['id'];
+  phoneID : any;
+  phoneID2: any;
   loader = true;
   user: any = {};
-  
+   
+  userPhone: any ={
+      user_id : this.userId ,
+      phone : ''
+  };
+  userPhone2: any ={
+    user_id : this.userId ,
+    phone : ''
+};
 
   roles = [
     {
@@ -41,7 +52,7 @@ export class EditUserComponent {
   
 
   constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute,private userService: UserService, 
-    private messageService: MessageService
+    private messageService: MessageService, private userPhoneService: UserPhoneService
     ) {}
 
 
@@ -50,6 +61,7 @@ export class EditUserComponent {
     
     this.getUser()
     .then((response) => {
+      
       this.user = response.data;
     })
     .then(() => {
@@ -61,6 +73,7 @@ export class EditUserComponent {
     });
  
   }
+
 
   initializeForm () {
     this.editUserForm = this.fb.group({
@@ -75,7 +88,7 @@ export class EditUserComponent {
       role_id:[''],
       phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
       phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-
+      
 
     });
   }
@@ -101,9 +114,14 @@ export class EditUserComponent {
   }
 
 
+
   onSubmit() {
     this.loader = true;
-
+    this.phoneID =this.user.phones[0].id;
+    this.phoneID2 =this.user.phones[1].id;
+    this.userPhoneService.updatePhone(this.phoneID,this.userPhone).subscribe();
+    this.userPhoneService.updatePhone(this.phoneID2,this.userPhone2).subscribe();
+ 
     this.userService
       .updateUser(this.userId, this.editUserForm.value)
       .subscribe((response: any) => {

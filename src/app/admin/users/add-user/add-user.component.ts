@@ -17,6 +17,15 @@ import { MessageService } from 'primeng/api';
 export class AddUserComponent {
   addUserForm!: FormGroup;
   loader = false;
+  userID = 12;
+  userPhone: any ={
+    user_id : this.userID,
+    phone : ''
+};
+   userPhone2: any ={
+    user_id : this.userID,
+    phone : ''
+  };
 
   formControllers = [
     'first_name',
@@ -25,7 +34,8 @@ export class AddUserComponent {
     'email',
     'password',
     'confirmPassword',
-     'balance',
+     'phone1',
+     'phone2'
 
 
   ];
@@ -57,7 +67,8 @@ export class AddUserComponent {
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
           ),
         ],
-        balance:[''],
+        phone1:[''],
+        phone2:[''],
         password: [
           '',
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
@@ -74,10 +85,11 @@ export class AddUserComponent {
     }
   
   }
-
+/*
   storePhone() {
     this.loader = true;
-
+    this.userPhoneService.storePhone(this.userPhone).subscribe();
+    this.userPhoneService.storePhone(this.userPhone2).subscribe();
      this.userService
     .storeUser(this.addUserForm.value)
     .subscribe((response: any) => {
@@ -92,11 +104,12 @@ export class AddUserComponent {
       }
     });
   }
-
+*/
 
 onSubmit() {
   this.loader = true;
-
+  this.userPhoneService.storePhone(this.userPhone).subscribe();
+  this.userPhoneService.storePhone(this.userPhone2).subscribe();
   this.userService
     .storeUser(this.addUserForm.value)
     .subscribe((response: any) => {

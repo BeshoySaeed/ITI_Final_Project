@@ -220,27 +220,73 @@
         </div>
       </div>
 
-      <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
+      <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <input
-            id="balance"
-            type="number"
-            pInputText
+          <p-inputMask
+            id="phone1"
+            [autoClear]="false"
             [required]="true"
-            [minlength]="4"
-            formControlName="balance"
-            class="input p-2 border-round outline-none w-full"
-          />
-          <label for="balance" class="block mb-2">balance *</label>
+            [(ngModel)]="userPhone.phone"
+            formControlName="phone1"
+            mask="+20-1999999999"
+            placeholder="+20-1999999999"
+            styleClass="input p-2 border-round outline-none w-full"
+            class="mask-button"
+          ></p-inputMask>
+          <label htmlFor="phone1" class="block mb-2">Phone 1 *</label>
         </div>
 
         <div
           class="error-message"
           *ngIf="
-            addUserForm.controls['balance'].touched &&
-            addUserForm.controls['balance'].invalid
+            addUserForm.controls['phone1'].touched &&
+            addUserForm.controls['phone1'].invalid
           "
-        ></div>
+        >
+          <small
+            class="block"
+            *ngIf="addUserForm.controls['phone1'].errors?.['required']"
+          >
+            Phone is required
+          </small>
+          <small
+            class="block"
+            *ngIf="addUserForm.controls['phone1'].errors?.['pattern']"
+          >
+            It must be a valid phone number
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-inputMask
+            id="phone2"
+            [autoClear]="false"
+            formControlName="phone2"
+            [(ngModel)]="userPhone2.phone"
+            mask="+20-1999999999"
+            placeholder="+20-1999999999"
+            styleClass="input p-2 border-round outline-none w-full"
+            class="mask-button"
+          ></p-inputMask>
+          <label htmlFor="phone2" class="block mb-2">Phone 2</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            addUserForm.controls['phone2'].touched &&
+            addUserForm.controls['phone2'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addUserForm.controls['phone2'].errors?.['pattern']"
+          >
+            It must be a valid phone number
+          </small>
+        </div>
       </div>
 
       <button

@@ -17,6 +17,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDataComponent } from './user-profile/user-data/user-data.component';
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
+import { AuthGuardService } from '../services/Guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
       {
         path: 'payment',
         component: PaymentComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'about-us',
@@ -62,6 +64,7 @@ const routes: Routes = [
       {
         path: 'cart',
         component: CartComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'all-items',
@@ -70,6 +73,7 @@ const routes: Routes = [
       {
         path: 'profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',

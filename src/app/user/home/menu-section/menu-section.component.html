@@ -1,21 +1,31 @@
 <div class="container">
   <p class="text-center mb-2 font-italic font-light text-3xl">Our Menu</p>
   <div class="flex gap-4 justify-content-center flex-wrap">
-    <ng-container *ngFor="let category of categories, let index = index">
-        <a
-          routerlink=""
+    <ng-container > 
+        <!-- <p-button
+          (onClick)="filterCategory($event)"
           
           class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
         >
-          {{ category.name }}</a
-        >
+          {{ category.name }}</p-button
+        > -->
+
+        <p-button *ngFor="let category of categories" routerLink="/all-items/{{category.id}}" >
+          
+          {{ category.name }}
+        </p-button>
     </ng-container>
-    <a
-    routerlink=""
-    class="no-underline transition-colors transition-duration-500 border-round-3xl bg-purple-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center font-bold border-white cursor-pointer m-2 px-5 py-3"
+    <!-- <p-button -->
+    <!-- name="menu" -->
+  <!-- > -->
+  <a      href="/all-items/all"
+  class="no-underline transition-duration-500  bg-blue-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center  border-white cursor-pointer  px-5 "
+
   >
-    Menu</a
-  >
+
+    Menu
+  </a>
+  <!-- </p-button> -->
   </div>
   <div class="flex flex-wrap justify-content-center gap-2 mt-3">
     <ng-container  *ngFor="let offer of displayeditems, let index = index ">
@@ -32,14 +42,31 @@
             </div>
       
             <p class="mt-2 text-xl font-bold">{{ offer.price }}</p>
-            <a routerLink="/cart">
+            <!-- <a routerLink="/cart"> -->
             <div class="cartIcon">
-                <i class="pi pi-shopping-cart text-4xl font-bold transition-duration-500  hover:text-orange-900 cursor-pointer"></i>
-            </div>
-          </a>
+                <i (click)="showBasicDialog()" class="pi pi-shopping-cart text-4xl font-bold transition-duration-500  hover:text-orange-900 cursor-pointer"></i>
+              </div>
+          <!-- </a> -->
         </p-card>
     </ng-container>
   </div>
   <p-paginator  [rows]="4" [totalRecords]="categories?.length" (onPageChange)="onItemChange($event)"></p-paginator>
 
 </div>
+
+
+
+        <p-dialog
+        header="Header"
+        class="ppp"
+        [(visible)]="displayBasic" 
+        [style]="{ width: '60vw' }" 
+        [baseZIndex]="10000" 
+        [transitionOptions]="'3000ms'" 
+        > 
+        <p>GeeksforGeeks is a computer science portal for geeks</p> 
+        <ng-template pTemplate="footer"> 
+          <p-button (click)="displayBasic = false" 
+          label="ok"></p-button> 
+        </ng-template> 
+        </p-dialog> 

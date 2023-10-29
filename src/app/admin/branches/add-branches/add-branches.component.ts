@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Branch } from 'src/app/interface/branches';
 import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
 @Component({
@@ -13,7 +14,10 @@ export class AddBranchesComponent {
   branch = new Branch();
   branches:any;
 
-  constructor(private dataServices:BrancheServiceService , private fb: FormBuilder) { }
+  constructor(private dataServices:BrancheServiceService ,
+             private fb: FormBuilder,
+             private route:Router
+             ) { }
 
   ngOnInit(){
 
@@ -29,7 +33,8 @@ export class AddBranchesComponent {
 
 insertBranchData(){
   this.dataServices.insertBranches(this.branch).subscribe(res =>{
-    
+   this.route.navigate(['/admin/branches/'])
+   
     console.log(res);
   })
 }

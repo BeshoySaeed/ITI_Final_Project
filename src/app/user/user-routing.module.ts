@@ -64,7 +64,7 @@ const routes: Routes = [
         component: CartComponent,
       },
       {
-        path: 'all-items',
+        path: 'all-items/:id',
         component: AllItemsComponent,
       },
       {

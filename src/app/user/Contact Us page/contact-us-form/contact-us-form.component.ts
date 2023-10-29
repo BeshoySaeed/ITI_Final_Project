@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ContactUsService } from 'src/app/services/contact-us/contact-us.service';
 
 @Component({
@@ -18,7 +19,10 @@ export class ContactUsFormComponent {
     message: ''
   };
   
-  constructor(private fb: FormBuilder ,private dataServies:ContactUsService) {}
+  constructor(private fb: FormBuilder ,
+              private dataServies:ContactUsService,
+              private route :Router) 
+              {}
 
   ngOnInit() {
     this.contactUsForm = this.fb.group(
@@ -40,6 +44,8 @@ export class ContactUsFormComponent {
 
   onSubmit() {
     this.dataServies.insertContacts(this.contact).subscribe((res: any) => {
+      this.route.navigate(['/home/'])
+
       console.log(res);
     })
   }

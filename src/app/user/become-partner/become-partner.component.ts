@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { PartnerService } from 'src/app/services/partner/partner.service';
 
@@ -28,7 +28,10 @@ export class BecomePartnerComponent implements OnInit {
   loading: boolean = false;
   partners: any;
 
-  constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataServices: PartnerService) { }
+  constructor(private fb: FormBuilder,
+              private route :Router,
+              private dataServices: PartnerService)
+              { }
 
   ngOnInit(): void {
       
@@ -78,7 +81,7 @@ export class BecomePartnerComponent implements OnInit {
   insertBartnerData() {
     console.log(this.partner);
     this.dataServices.insertBartners(this.partner).subscribe(res => {
-    console.log(res);
+      this.route.navigate(['/home/'])
     })
   }
 

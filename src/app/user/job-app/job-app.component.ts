@@ -6,6 +6,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApplicantsService } from 'src/app/services/applicant/applicants.service';
 
 @Component({
@@ -25,7 +26,9 @@ export class JobAppComponent implements OnInit{
     education:'',
     cv: ''
   };
-  constructor(private fb: FormBuilder,private dataServices:ApplicantsService ) { }
+  constructor(private fb: FormBuilder,
+              private dataServices:ApplicantsService ,
+              private route :Router ) { }
 
   ngOnInit(): void {
     this.jobForm = this.fb.group({
@@ -44,6 +47,16 @@ export class JobAppComponent implements OnInit{
       cv: ['',Validators.required]
 
     });
+  }
+
+
+  onSubmit() {
+
+    this.dataServices.insertApplicant(this.applicant).subscribe((res: any) => {
+      this.route.navigate(['/home/'])
+
+      console.log(res);
+    })
   }
   
   get title(){
@@ -68,12 +81,7 @@ export class JobAppComponent implements OnInit{
     return this.jobForm.get('cv');
   }
 
-  onSubmit() {
 
-    this.dataServices.insertApplicant(this.applicant).subscribe((res: any) => {
-    console.log(res);
-    })
-  }
 }
 
 

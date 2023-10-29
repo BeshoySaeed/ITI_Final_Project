@@ -12,7 +12,6 @@
     border: 1px solid $Violet-Button-color;
 }
 @media (min-width: 768px) and (max-width: 991px) {
-
     :host ::ng-deep .p-card {
 
         width: 300px;
@@ -87,3 +86,45 @@
     color: #000000c3;
 
   }
+  :host ::ng-deep .p-button { 
+    margin: 0 .5rem 0 0; 
+    min-width: 10rem; 
+} 
+
+p { 
+    margin: 0; 
+} 
+
+.confirmation-content { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+
+:host ::ng-deep .p-dialog .p-button { 
+    min-width: 6rem; 
+} 
+
+// pupop
+
+.cardData{
+    margin: 20px 0;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    .data{
+        display: flex;
+        gap: 10%;
+    }
+    img{
+        height: 100px;
+        width: auto;
+        border-radius: 0;
+    }
+    .actions{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 10px ;
+    }
+}

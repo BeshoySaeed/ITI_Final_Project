@@ -31,6 +31,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDataComponent } from './user-profile/user-data/user-data.component';
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
+import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { UserHistoryComponent } from './user-profile/user-history/user-history.c
     UserProfileComponent,
     UserDataComponent,
     UserSubscriptionComponent,
-    UserHistoryComponent
+    UserHistoryComponent,
+    UserFavComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { UserHistoryComponent } from './user-profile/user-history/user-history.c
     TableModule,
     SharedModule,
     UserRoutingModule,
+    MessagesModule
   ]
 })
 export class UserModule { }

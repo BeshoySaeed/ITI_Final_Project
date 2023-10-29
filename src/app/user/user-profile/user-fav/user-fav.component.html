@@ -1,0 +1,17 @@
+<div class="grid gap-4 my-5 mx-5">
+
+    <ng-container *ngFor="let item of items">
+        <div class="card lg:col-4 md:col-6 sm:col-12" style="height: 400px;">
+            <p class="favorite" (click)="unFavourite(item.id)">Favorite</p>
+            <img src="../../../../assets/food-1.jpg" alt="Product Image">
+            <div class="card-title">{{ item.item.name }}</div>
+            <div class="card-description">{{ item.item.description }}</div>
+            <div class="card-price">{{ item.item.price | currency }}</div>
+            <button class="button-77" role="button">Add to Cart</button>
+
+
+
+
+        </div>
+    </ng-container>
+</div>

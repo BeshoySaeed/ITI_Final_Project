@@ -17,6 +17,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDataComponent } from './user-profile/user-data/user-data.component';
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
 import { UserSubscriptionComponent } from './user-profile/user-subscription/user-subscription.component';
+import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
           {
             path: 'subscription',
             component: UserSubscriptionComponent
+          },
+          {
+            path: 'favourites',
+            component: UserFavComponent
           }
         ]
       },

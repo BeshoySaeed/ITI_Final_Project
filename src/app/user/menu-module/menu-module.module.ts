@@ -7,6 +7,9 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { SelectComponent } from './components/select/select.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -19,7 +22,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     
   ],
   imports: [
-    CommonModule,CardModule,ButtonModule
+    CommonModule,CardModule,ButtonModule,DialogModule,FormsModule,InputTextModule
   ]
 })
 export class MenuModuleModule { }

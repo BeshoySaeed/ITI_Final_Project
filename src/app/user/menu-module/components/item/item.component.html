@@ -1,4 +1,4 @@
-<a href="#">
+<!-- <a href="#"> -->
 <p-card >
   <h3  > {{data.title}}</h3>
 
@@ -20,8 +20,46 @@
 
 
   <ng-template pTemplate="footer">
-    <a href="#">
-           <i class="pi pi-shopping-cart" style="color:#fd702a;font-size: 4rem; "></i></a>
+           <i (click)="showPositionDialog('left')" class="pi pi-shopping-cart" style="color:#fd702a;font-size: 4rem; "></i>
+           <p-dialog
+           [transitionOptions]="'3000ms'" 
+           header="Extra"
+           [(visible)]="displayPosition" 
+           [modal]="true" 
+           [style]="{ width: '50vw' }" 
+           [baseZIndex]="10000" 
+           [draggable]="false" 
+           [resizable]="false" 
+         > 
+           <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText [(ngModel)]="value" />
+          </span>
+          <ng-container *ngFor="let addition of data.itemAdditions" >
+            <div class="cardData">
+              <div class="data">
+                <img src="../../../../../assets/food-5.jpg" alt="">
+                <div class="info-data">
+                  <p class="title">{{ addition.name }}</p>
+                  <p class="desc">{{ addition.description }}</p>
+                </div>
+
+              </div>
+              <div class="actions">
+                <a class="add" (click)="addAddition(addition.id)" >+</a>
+                <p class="price">{{ addition.price | currency }}</p>
+              </div>
+            </div>
+          </ng-container>
+           <ng-template pTemplate="footer"> 
+             <p-button
+               icon="pi pi-check"
+               (click)="submittAdditions(data.id)" 
+               label="ok"
+               class="p-button-text"
+             ></p-button> 
+           </ng-template> 
+         </p-dialog> 
   </ng-template>
   <ng-template pTemplate="">
 
@@ -29,6 +67,9 @@
   <span *ngFor="let rate of generateRatingStars()" [class]="rate">&#9733;</span>
 </div>
 
+
+  <i  (click)="addFav(data)" [ngClass]="isFavourite ? 'pi pi-heart-fill' : 'pi pi-heart' " style="font-size: 2rem; color: orange;"></i>
+
 </ng-template>
 </p-card>
-</a>
+<!-- </a> -->

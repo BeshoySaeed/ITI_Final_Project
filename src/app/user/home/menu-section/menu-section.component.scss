@@ -15,3 +15,25 @@
  .p-paginator p-component{
     margin-top: 20px;
 }
+
+
+
+/********* popup ************/
+:host ::ng-deep .p-button { 
+    margin: 0 .5rem 0 0; 
+    min-width: 10rem; 
+} 
+
+p { 
+    margin: 0; 
+} 
+
+.confirmation-content { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+
+:host ::ng-deep .p-dialog .p-button { 
+    min-width: 6rem; 
+} 

@@ -15,6 +15,7 @@ import { PartnerComponent } from './partner/partner.component';
 import { CarouselModule } from 'primeng/carousel';
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { TableModule } from 'primeng/table';
     RouterModule,
     CarouselModule,
     PaginatorModule, 
-    TableModule
+    TableModule,
+    DialogModule
+    
     
   ],
   exports: [

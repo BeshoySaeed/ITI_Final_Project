@@ -72,9 +72,13 @@ export class ItemService {
   //   return this.http.get<any>(`${environment.host}/item/category/`+categoryId);
   // }
 
-  getProductsByCategory(keyword:string){
-    return this.http.get(`${environment.host}/item/category/`+ keyword);
-
+  getProductsByCategory(categoryId: string) {
+    return this.http.get(`${environment.host}/item/category=${categoryId}`);
   }
+
+  // getProductsByCategory(keyword:string){
+  //   return this.http.get(`${environment.host}/item/category/`+ keyword);
+
+  // }
 
 }

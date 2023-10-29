@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { Branch } from 'src/app/interface/branches';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class BrancheServiceService {
   
   getBranchById(id:number ): Observable<object> {
     return this.httpClient.get<object>(`${environment.host}/branches/${id}`);
+  }
+  getId(id : number) : Observable<any>
+  {
+    return this.httpClient.get<any>(`${environment.host}/branches/${id}`)
   }
 
   insertBranches(data: any){

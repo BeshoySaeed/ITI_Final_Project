@@ -28,7 +28,8 @@ import { PaginatorModule } from 'primeng/paginator';
     TagModule,
     HttpClientModule,
     FormsModule,
-    PaginatorModule
+    PaginatorModule,
+    
   ],
 
   providers: [],

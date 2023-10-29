@@ -20,7 +20,7 @@ export class MenuItemsComponent {
     this.httpItem.getItems().subscribe((data) =>
     {
       this.menuItems = data;
-      // console.log(this.menuItems)
+      console.log(this.menuItems)
     } )
   }
 

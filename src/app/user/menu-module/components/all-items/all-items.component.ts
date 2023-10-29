@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ItemsService } from '../../services/items.service';
 import { ItemService } from 'src/app/services/ItemService/item.service';
 import { CategoriesService } from 'src/app/services/category-service/categories.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-all-items',
@@ -14,15 +15,28 @@ export class AllItemsComponent {
 
 // array to receieve data from api
 products:any []=[]
+
 categories:any[]=[]
-cartProduct:any[]=[]
+
 loading :boolean=false;
 category_id:any;
 originalProducts: any;
-constructor( private service:ItemsService ,private service1 :CategoriesService, private httpItem: ItemService){}
+/** category id from URL */
+categoryId:any;
+
+constructor( private service:ItemsService ,
+             private service1 :CategoriesService,
+             private httpItem: ItemService,
+             private route:ActivatedRoute)
+             {}
   ngOnInit():void {
+    this.categoryId=this.route.snapshot.params['id'];
+
     this.getProducts();
     this.getCategories();
+
+    console.log(this.categoryId);
+
   }
 
   getProducts(){
@@ -31,6 +45,17 @@ constructor( private service:ItemsService ,private service1 :CategoriesService, 
   {
     this.products = data;
     this.originalProducts = data;
+
+    if (this.categoryId === 'all') {
+      this.products = this.originalProducts;
+    } else {
+      this.products = this.originalProducts.filter((x: any) => {
+        return x.category_id == this.categoryId;
+      });
+    }
+
+    
+   
     // console.log(this.products);
   } )
    }
@@ -45,18 +70,22 @@ constructor( private service:ItemsService ,private service1 :CategoriesService, 
     })
   }
 
+
+
   filterCategory(event: any) {
-    const categoryId = event.target.value;
+     this.categoryId = event.target.value;
     
-    if (categoryId === 'all') {
+    if (this.categoryId === 'all') {
       this.products = this.originalProducts;
     } else {
       this.products = this.originalProducts.filter((x: any) => {
-        return x.category_id == categoryId;
+        return x.category_id == this.categoryId;
       });
     }
     console.log(this.products);
   }
+
+  
 
   getProductCategory(keyword:any){
     this.loading=true;

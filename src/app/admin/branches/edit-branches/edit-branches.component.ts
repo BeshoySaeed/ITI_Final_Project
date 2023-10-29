@@ -1,7 +1,8 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
+import { Branch } from 'src/app/interface/branches';
 @Component({
   selector: 'app-edit-branches',
   templateUrl: './edit-branches.component.html',
@@ -9,43 +10,83 @@ import { BrancheServiceService } from 'src/app/services/branch/branche-service.s
 })
 export class EditBranchesComponent {
   Editbranch!: FormGroup;
-  id:any;
   // branch=new Branch();
-  branch = {
-    name : '',
-    address: '',
-    address_location:'',
-  };
-
+  branchId : any;
   loading: boolean = false;
-  data: any;
-  constructor(private fb: FormBuilder,private route :ActivatedRoute,private dataServices: BrancheServiceService) { }
+  branches: any;
+  constructor(private fb: FormBuilder,
+              private ActivatedRoute :ActivatedRoute,
+              private dataServices: BrancheServiceService,
+              private route:Router
+              ) { }
   ngOnInit() {
 
     this.Editbranch = this.fb.group(
       {
-        name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        address: [''],
-        location: [''],
+        name: ["", Validators.pattern(/^[a-zA-Z]+$/)],
+        address: [""],
+        address_location: [""],
       },
     );
-  //  this.route.params.subscribe((value)=>{
-    // this.id=value['id'];
+    this.ActivatedRoute.paramMap.subscribe((paramMap) => {
+      this.branchId = Number(paramMap.get('id'));
+      console.log(this.branchId)
+      this.dataServices.getId(this.branchId).subscribe((object) => {
+        this.branches = object.data;
+        console.log(this.branches)
+      })
+    });
+  }
 
-  // console.log(this.route.snapshot.params['id']);
-this.id=this.route.snapshot.params['id'];
-  this.getBranchData();
+
+
+onSubmit() {
+  this.dataServices.updateBranches(this.branchId,this.Editbranch.value).subscribe((data) =>{})
+  this.route.navigate(['/admin/branches/'])
 
 }
 
-getBranchData() {
-  this.dataServices.getBranchById(this.id).subscribe(res => {
-    // console.log(res);
-    this.data = res;
-    this.branch=this.data;
-    console.log(this.branch);
-  })
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// getBranchData() {
+//   this.dataServices.getBranchById(this.id).subscribe(res => {
+//     // console.log(res);
+//     this.data = res;
+//     this.branch=this.data;
+//     console.log(this.branch);
+//   })
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // updateteBranch() {
   //   this.dataServices.getBranchById(this.id).subscribe(res => {

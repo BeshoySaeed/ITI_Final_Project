@@ -38,7 +38,7 @@ export class NavbarComponent {
         label: 'Menu',
         icon: 'pi pi-fw pi-list',
         styleClass: 'links & link2',
-        routerLink: 'all-items',
+        routerLink: 'all-items/all',
       },
 
       {

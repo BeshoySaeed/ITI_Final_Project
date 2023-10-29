@@ -16,6 +16,7 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
 export class AddMenuItemsComponent {
   form!: FormGroup;
   categories : any = [];
+  additionSelected: any;
 
   additions : any = [];
 
@@ -27,14 +28,18 @@ export class AddMenuItemsComponent {
       description: '',
       discount: '',
       active: false,
-      category_id: '1'
+      category_id: ""
+    }
+    itemAddition : object ={
+      item_id: this.item.id,
+      addition_id: ""
     }
   constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router, private httpCategory : CategoriesService, private httpAddition: AdditionsService) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
       discount: [''],
-      category: ['1'],
+      category: [''],
       description: [''],
       additions: [''],
       active: [true],
@@ -61,8 +66,10 @@ export class AddMenuItemsComponent {
 
   onSubmit() {
     // console.log(this.item);
-    this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
-    this.route.navigate(['/admin/menu-items'])
+    // this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
+    // this.route.navigate(['/admin/menu-items'])
+    console.log(this.additionSelected)
+
   }
 
   onSelect(event: any) {
@@ -78,4 +85,14 @@ export class AddMenuItemsComponent {
       image: null,
     });
   }
+
+
+  // loopAddition()
+  // {
+  //   for(let i = 0; i < this.additionSelected.length; i++)
+  //   {
+      
+  //   }
+  //   console.log(this.additionSelected)
+  // }
 }

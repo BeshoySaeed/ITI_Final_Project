@@ -54,4 +54,9 @@ import { DialogModule } from 'primeng/dialog';
     CarouselModule,
   ],
 })
-export class HomeModule {}
+export class HomeModule {
+  ngOnInit() {
+    location.reload();
+  }
+
+}

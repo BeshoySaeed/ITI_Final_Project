@@ -34,6 +34,7 @@ import { UserHistoryComponent } from './user-profile/user-history/user-history.c
 import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { NewPasswordComponent } from './new-password/new-password.component';
     UserSubscriptionComponent,
     UserHistoryComponent,
     UserFavComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

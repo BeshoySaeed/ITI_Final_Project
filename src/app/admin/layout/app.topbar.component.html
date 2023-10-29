@@ -42,12 +42,12 @@
     </button>
     <button
       class="p-link layout-topbar-button"
-      [routerLink]="'/admin'"
       pRipple
       pTooltip="Logout"
       tooltipPosition="bottom"
       placeholder="Bottom"
       [showDelay]="700"
+      (click)="logout()"
     >
       <i class="pi pi-sign-out"></i>
       <span>Logout</span>

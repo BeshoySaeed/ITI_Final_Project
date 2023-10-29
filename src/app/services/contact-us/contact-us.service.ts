@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -8,7 +8,10 @@ import { Contact } from '../../interface/contact-us';
   providedIn: 'root'
 })
 export class ContactUsService {
-
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -26,7 +29,7 @@ export class ContactUsService {
   constructor(private httpClient: HttpClient) { }
 
   getAllContacts(): Observable<Contact> {
-    return this.httpClient.get<Contact>(`${environment.host}/contact-us`)
+    return this.httpClient.get<Contact>(`${environment.host}/contact-us`, {headers: this.headers})
   }
 
   insertContacts(data: any){

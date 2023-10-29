@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class BrancheServiceService {
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -30,7 +34,7 @@ export class BrancheServiceService {
   }
   
   getBranchById(id:number ): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/branches/${id}`);
+    return this.httpClient.get<object>(`${environment.host}/branches/${id}`, {headers: this.headers});
   }
   getId(id : number) : Observable<any>
   {
@@ -38,15 +42,15 @@ export class BrancheServiceService {
   }
 
   insertBranches(data: any){
-    return this.httpClient.post(`${environment.host}/branches/`,data);
+    return this.httpClient.post(`${environment.host}/branches/`,data, {headers: this.headers});
   }
 
   updateBranches(id:any,data: any){
-    return this.httpClient.put(`${environment.host}/branches/${id}`,data);
+    return this.httpClient.put(`${environment.host}/branches/${id}`,data, {headers: this.headers});
   }
 
   deleteBranchById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}/branches/${id}`)
+    return this.httpClient.delete<object>(`${environment.host}/branches/${id}`, {headers: this.headers})
   }
 }
 

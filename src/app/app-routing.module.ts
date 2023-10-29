@@ -22,14 +22,6 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user-routing.module').then((m) => m.UserRoutingModule),
   },
-  { 
-    path: 'forget-password',
-    component:ForgetPasswordComponent
-  },
-  { 
-    path: 'reset-password',
-    component:NewPasswordComponent
-  },
 ];
 
 @NgModule({

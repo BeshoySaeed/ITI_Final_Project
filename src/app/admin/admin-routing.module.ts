@@ -39,12 +39,14 @@ import { EditDiscountComponent } from './discount/edit-discount/edit-discount.co
 import { EmployeesComponent } from './employees/employees/employees.component';
 import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { AdminGuardService } from '../Guards/Admin/admin-guard.service';
 
 const routes: Routes = [
   {
     path: 'admin',
     // This layout component will render in apps router-outlet
     component: AppLayoutComponent,
+    canActivate: [AdminGuardService],
     children: [
       {
         path: 'orders',

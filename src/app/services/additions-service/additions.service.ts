@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 import { catchError, retry, throwError } from 'rxjs';
@@ -8,6 +8,10 @@ import { Addition } from 'src/app/interface/addition';
   providedIn: 'root'
 })
 export class AdditionsService {
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+  
   constructor(private httpClient: HttpClient) {}
 
   insertAddition(data: any): Observable<object>{
@@ -17,13 +21,8 @@ export class AdditionsService {
   getAllAddition(): Observable<any> {
     return this.httpClient.get<any>(`${environment.host}/addition`).pipe(
 
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
-  }
+
   
-  getAdditionByID(id: number): Observable<object>{
-    return this.httpClient.get<object>(`${environment.host}/addition/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -31,7 +30,7 @@ export class AdditionsService {
 
 
   storeAddition(addition:object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}/addition`, addition).pipe(
+    return this.httpClient.post<object>(`${environment.host}/addition`, addition, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -39,7 +38,7 @@ export class AdditionsService {
 
 
   updateAddition(id:number, addition:object): Observable<object> {
-    return this.httpClient.put<object>(`${environment.host}/addition/${id}`, addition).pipe(
+    return this.httpClient.put<object>(`${environment.host}/addition/${id}`, addition, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
@@ -47,7 +46,7 @@ export class AdditionsService {
 
 
   deleteAdditionById(id: number): Observable<object> {
-    return this.httpClient.delete<object>(`${environment.host}/addition/${id}`).pipe(
+    return this.httpClient.delete<object>(`${environment.host}/addition/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

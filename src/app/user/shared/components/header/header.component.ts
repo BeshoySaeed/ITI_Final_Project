@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit{
 
   userName: string = "";
   constructor(private http: HttpClient, private router: Router ){}
+
 ngOnInit(): void {
   this.authService.isLoggedIn$.subscribe(res=>{
    this.isLoggedIn = this.authService.isLoggedIn();
@@ -36,6 +37,7 @@ ngOnInit(): void {
       });
 
       localStorage.removeItem("token");
+      this.authService.isLoggedIn$.next(false);
       localStorage.removeItem("role_id");
       this.router.navigate(['/home']);
   }

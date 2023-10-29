@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { checkpass } from './confirmpass';
 import { AuthService } from 'src/app/services/Auth/auth.service';
@@ -24,6 +24,7 @@ export class RegisterComponent {
   ];
 
   registerform: FormGroup;
+
   constructor(private fb: FormBuilder,
     private AuthService: AuthService,
     private messageService: MessageService,
@@ -65,8 +66,10 @@ export class RegisterComponent {
             summary: 'Success',
             detail: 'User is added',
           });
-          this.resetForm();
+          localStorage.setItem('token', response.token);
+          this.AuthService.isLoggedIn$.next(true);
           this.router.navigate(['/home']); // Redirect to the dashboard page
+          this.resetForm();
 
         }
       });

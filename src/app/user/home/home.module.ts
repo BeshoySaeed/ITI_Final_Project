@@ -46,4 +46,9 @@ import { CarouselModule } from 'primeng/carousel';
     CarouselModule,
   ],
 })
-export class HomeModule {}
+export class HomeModule {
+  ngOnInit() {
+    location.reload();
+  }
+
+}

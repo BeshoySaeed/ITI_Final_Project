@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { checkpass } from '../register/confirmpass'; 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth/auth.service';
 import { throwError } from 'rxjs';
 
@@ -12,15 +12,22 @@ import { throwError } from 'rxjs';
 })
 export class NewPasswordComponent {
   newPasswordForm: FormGroup;
-  constructor(private fb: FormBuilder ,route: ActivatedRoute, public authService: AuthService
+    errors = null;
+  successMsg : any;
+  constructor(private fb: FormBuilder ,private router: Router, public authService: AuthService
 ){
     this.newPasswordForm = this.fb.group({
-    password: ['', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@*%$#])[a-zA-Z\\d@*%$#]+$')
-      
-    ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@*%$#])[a-zA-Z\\d@*%$#]+$')
+        
+      ]],    
+      token: ['', [
+        Validators.required,        
+      ]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+
     confirmpassword: ['', [
       Validators.required,
       Validators.minLength(8),
@@ -29,11 +36,6 @@ export class NewPasswordComponent {
   }
    ,{validator: checkpass('password', 'confirmpassword')}
   )
-  route.queryParams.subscribe((params) => {
-    this.newPasswordForm.controls['passwordToken'].setValue(
-      params['token']
-    );
-  });
   }
   submitNewPasswordFormForm() {
     console.log(this.newPasswordForm);
@@ -42,28 +44,22 @@ export class NewPasswordComponent {
   onSubmit() {
     this.authService.resetPassword(this.newPasswordForm.value).subscribe(
       (result) => {
-        alert('Password has been updated');
+        this.successMsg = result;
+        if (this.successMsg.success) {
+          alert('Password has been updated');
+          this.router.navigate(['/login']); // Redirect to the dashboard page
+          setTimeout(() => {
+            location.reload();
+          }, 500);
+        }
         this.newPasswordForm.reset();
       },
       (error) => {
-        this.handleError(error);
+        console.error('Login failed:', error);
       }
     );
   }
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(() => {
-      errorMessage;
-    });
-  }
+
 
 
 }

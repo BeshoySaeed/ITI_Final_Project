@@ -13,7 +13,8 @@ import { AuthService } from 'src/app/services/Auth/auth.service';
 export class LoginFormComponent {
   value : any ;
   authService = inject(AuthService);
-
+  errors = null;
+  successMsg : any;
   formGroup : FormGroup;
   constructor(private http: HttpClient, private router: Router ,private login: AuthService){
     this.formGroup = new FormGroup({
@@ -30,20 +31,32 @@ export class LoginFormComponent {
   }
   onSubmit() {
     const apiUrl = 'http://localhost:8000/api/login'; // Replace with your actual API URL
-    const formData=this.formGroup.getRawValue();
-    const data={
+    const formData = this.formGroup.getRawValue();
+    const data = {
       email: formData.email,
       password: formData.password,
-    }
-    console.log(data)
+    };
+    console.log(data);
     this.http.post(apiUrl, formData).subscribe(
       (response: any) => {
-        if(response.role_id == 2){
+        if (response.role_id == 2) {
           localStorage.setItem('role_id', response.role_id);
         }
-        localStorage.setItem('token', response.token);
-        this.authService.isLoggedIn$.next(true);
-        this.router.navigate(['/home']); // Redirect to the dashboard page
+        this.successMsg = response;
+        if (this.successMsg.status=='success') {
+          localStorage.setItem('token', response.token);
+          this.authService.isLoggedIn$.next(true);
+          this.router.navigate(['/home']);// Redirect to the login page
+
+          setTimeout(() => {
+            location.reload();
+
+          }, 1);
+        }
+        else{
+          console.error(this.successMsg);
+
+        }
       },
       (error) => {
         console.error('Login failed:', error);

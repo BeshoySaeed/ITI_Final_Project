@@ -33,11 +33,11 @@ ngOnInit(): void {
     this.authService
       .logout(data)
       .subscribe((response: any) => {
-        if (response.status == 'success') {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role_id");
-        }
       });
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("role_id");
+      this.router.navigate(['/home']);
   }
 
   onSubmit() {

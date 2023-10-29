@@ -21,11 +21,11 @@ export class EditUserComponent {
   roles = [
     {
       id: 1,
-      name: 'User',
+      name: 'Admin',
     },
     {
       id: 2,
-      name: 'Admin',
+      name: 'User',
     },
   ];
   formControllers = [

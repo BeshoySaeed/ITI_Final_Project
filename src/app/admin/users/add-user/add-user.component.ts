@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { checkpass } from 'src/app/user/register/confirmpass';
 import { User } from 'src/app/interface/user';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { UserPhoneService } from 'src/app/services/userPhone-service/user-phone.service';
 import { MessageService } from 'primeng/api';
 
 
@@ -24,7 +25,8 @@ export class AddUserComponent {
     'email',
     'password',
     'confirmPassword',
-     'balance'
+     'balance',
+
 
   ];
   roles= [
@@ -37,7 +39,7 @@ export class AddUserComponent {
       name: "Admin"
     },
   ];
-  constructor(private fb: FormBuilder,private userService: UserService, 
+  constructor(private fb: FormBuilder,private userService: UserService, private userPhoneService :UserPhoneService,
     private messageService: MessageService
     ) {}
 
@@ -47,6 +49,8 @@ export class AddUserComponent {
         first_name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         last_name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
         role_id: ['1'],
+     //   phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+    //    phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         email: [
           '',
           Validators.pattern(
@@ -69,6 +73,24 @@ export class AddUserComponent {
       this.addUserForm.controls[control].setValue('');
     }
   
+  }
+
+  storePhone() {
+    this.loader = true;
+
+     this.userService
+    .storeUser(this.addUserForm.value)
+    .subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'user is added',
+        });
+        this.resetForm();
+        this.loader = false;
+      }
+    });
   }
 
 

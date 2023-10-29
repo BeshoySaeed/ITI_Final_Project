@@ -33,6 +33,12 @@ export class AuthService {
       catchError(this.handleError) // then handle the error
     );
   }
+  logout(user: object): Observable<object> {
+    return this.httpClient.post<object>(`${environment.host}/logout`, user).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
  
   isLoggedIn(){
     return !!localStorage.getItem("token");

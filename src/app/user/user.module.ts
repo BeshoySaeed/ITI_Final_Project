@@ -33,6 +33,7 @@ import { UserSubscriptionComponent } from './user-profile/user-subscription/user
 import { UserHistoryComponent } from './user-profile/user-history/user-history.component';
 import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { MessagesModule } from 'primeng/messages';
     UserDataComponent,
     UserSubscriptionComponent,
     UserHistoryComponent,
-    UserFavComponent
+    UserFavComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

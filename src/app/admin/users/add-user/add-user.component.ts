@@ -1,14 +1,44 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { checkpass } from 'src/app/user/register/confirmpass';
+import { User } from 'src/app/interface/user';
+import { UserService } from 'src/app/services/user-service/user.service';
+import { UserPhoneService } from 'src/app/services/userPhone-service/user-phone.service';
+import { MessageService } from 'primeng/api';
+
+
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss'],
+  providers: [MessageService],
 })
 export class AddUserComponent {
   addUserForm!: FormGroup;
+  loader = false;
+  userID = 12;
+  userPhone: any ={
+    user_id : this.userID,
+    phone : ''
+};
+   userPhone2: any ={
+    user_id : this.userID,
+    phone : ''
+  };
+
+  formControllers = [
+    'first_name',
+    'last_name',
+    'role_id',
+    'email',
+    'password',
+    'confirmPassword',
+     'phone1',
+     'phone2'
+
+
+  ];
   roles= [
     {
       id: 1,
@@ -19,22 +49,26 @@ export class AddUserComponent {
       name: "Admin"
     },
   ];
+  constructor(private fb: FormBuilder,private userService: UserService, private userPhoneService :UserPhoneService,
+    private messageService: MessageService
+    ) {}
 
-  constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.addUserForm = this.fb.group(
       {
-        firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        lastName: ['', Validators.pattern(/^[a-zA-Z]+$/)],
-        role: ['1'],
+        first_name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        last_name: ['', Validators.pattern(/^[a-zA-Z]+$/)],
+        role_id: ['1'],
+     //   phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+    //    phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
         email: [
           '',
           Validators.pattern(
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
           ),
         ],
-        phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
-        phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+        phone1:[''],
+        phone2:[''],
         password: [
           '',
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
@@ -45,7 +79,50 @@ export class AddUserComponent {
     );
   }
 
-  onSubmit() {
-    console.log(this.addUserForm);
+  resetForm() {
+    for (let control of this.formControllers) {
+      this.addUserForm.controls[control].setValue('');
+    }
+  
   }
+/*
+  storePhone() {
+    this.loader = true;
+    this.userPhoneService.storePhone(this.userPhone).subscribe();
+    this.userPhoneService.storePhone(this.userPhone2).subscribe();
+     this.userService
+    .storeUser(this.addUserForm.value)
+    .subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'user is added',
+        });
+        this.resetForm();
+        this.loader = false;
+      }
+    });
+  }
+*/
+
+onSubmit() {
+  this.loader = true;
+  this.userPhoneService.storePhone(this.userPhone).subscribe();
+  this.userPhoneService.storePhone(this.userPhone2).subscribe();
+  this.userService
+    .storeUser(this.addUserForm.value)
+    .subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'user is added',
+        });
+        this.resetForm();
+        this.loader = false;
+      }
+    });
+}
+ 
 }

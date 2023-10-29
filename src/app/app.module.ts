@@ -11,6 +11,8 @@ import { TagModule } from 'primeng/tag';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { PaginatorModule } from 'primeng/paginator';
     HttpClientModule,
     FormsModule,
     PaginatorModule,
-    
+    ButtonModule
   ],
 
   providers: [],

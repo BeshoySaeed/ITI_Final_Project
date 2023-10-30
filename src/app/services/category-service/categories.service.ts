@@ -7,6 +7,7 @@ import { catchError, retry, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriesService {
+  
   headers = new HttpHeaders({
     'Authorization': `Bearer ${localStorage.getItem('token')}`
   })
@@ -20,7 +21,7 @@ export class CategoriesService {
     );
   }
   getCategoryByID(id: number): Observable<any>{
-    return this.httpClient.get<any>(`${environment.host}/categories/${id}`).pipe(
+    return this.httpClient.get<any>(`${environment.host}/categories/${id}`, {headers : this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

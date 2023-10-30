@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GenericService } from '../GenericService/generic-service.service';
 import { Observable, map } from 'rxjs';
 import { Item } from 'src/app/interface/items';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,6 +12,9 @@ export class ItemService {
 
   constructor(private genericService: GenericService, private http : HttpClient) { }
 
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
 
 
   getItems() : Observable<Item[]>
@@ -36,7 +39,7 @@ export class ItemService {
 
   addNew(object : any) : Observable<any>
   {
-    return this.http.post<any>(`${environment.host}/item`, object)
+    return this.http.post<any>(`${environment.host}/item`, object, {headers: this.headers})
   }
 
   addItem(object: any): Observable<any>

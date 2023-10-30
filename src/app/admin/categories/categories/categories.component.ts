@@ -37,7 +37,7 @@ export class CategoriesComponent {
     this.CategoriesService
       .deleteCategoryById(id)
       .subscribe((response: any) => {
-        this.loading = true;
+        // this.loading = true;
         if (response.status == 'success') {
           this.getAllCategory();
           this.messageService.add({
@@ -45,6 +45,7 @@ export class CategoriesComponent {
           });
         }
       });
+      this.categories = this.categories.filter((x: any) => x.id != id);
   }
 
   clear(table: Table) {

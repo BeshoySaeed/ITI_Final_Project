@@ -136,7 +136,7 @@
             {{ menuItem.name }}
           </td>
           <td>
-            {{ menuItem.category }}
+            {{ categoryName(menuItem.category_id) }}
           </td>
           <td>
             {{ menuItem.price | currency : "USD" : "symbol" }}

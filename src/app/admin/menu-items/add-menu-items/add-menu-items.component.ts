@@ -50,13 +50,11 @@ export class AddMenuItemsComponent {
     this.httpCategory.getAllCategory().subscribe(data =>
       {
         this.categories = data.data
-        console.log(this.categories)
       })
 
       this.httpAddition.getAllAddition().subscribe((data) =>
       {
         this.additions = data.data;
-        console.log(this.additions)
       }
       )
   }
@@ -65,9 +63,9 @@ export class AddMenuItemsComponent {
 
 
   onSubmit() {
-    // console.log(this.item);
-    // this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
-    // this.route.navigate(['/admin/menu-items'])
+    console.log(this.item);
+    this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
+    this.route.navigate(['/admin/menu-items'])
     console.log(this.additionSelected)
 
   }

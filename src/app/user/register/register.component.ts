@@ -67,6 +67,7 @@ export class RegisterComponent {
             detail: 'User is added',
           });
           localStorage.setItem('token', response.token);
+          localStorage.setItem('user_id', response.user_id);
           this.AuthService.isLoggedIn$.next(true);
           this.router.navigate(['/home']); // Redirect to the dashboard page
           this.resetForm();

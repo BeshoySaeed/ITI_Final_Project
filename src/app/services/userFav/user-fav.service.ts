@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, retryWhen, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -20,11 +20,15 @@ export class UserFavService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  })
+
   constructor(private http: HttpClient) { }
 
   getAll(userId: number) : Observable<any>
   {
-    return this.http.get<any>(`${environment.host}/user-favourites/${userId}`)
+    return this.http.get<any>(`${environment.host}/user-favourites/${userId}`, {headers: this.headers})
     // .pipe(
     //   retry(2),
     //   catchError(this.handleError)
@@ -33,7 +37,7 @@ export class UserFavService {
 
   add( object: object ):Observable<object>
   {
-   return this.http.post<object>(`${environment.host}/user-favourites`, object)
+   return this.http.post<object>(`${environment.host}/user-favourites`, object, {headers: this.headers})
     // .pipe(
     //   retry(2),
     //   catchError(this.handleError)
@@ -42,7 +46,7 @@ export class UserFavService {
 
   delete(id: number)
   {
-    return this.http.delete(`${environment.host}/user-favourites/${id}`)
+    return this.http.delete(`${environment.host}/user-favourites/${id}`, {headers: this.headers})
     // .pipe(
     //   retry(2),
     //   catchError(this.handleError)

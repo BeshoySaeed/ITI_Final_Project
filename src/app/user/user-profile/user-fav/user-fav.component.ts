@@ -10,14 +10,16 @@ import { UserFavService } from 'src/app/services/userFav/user-fav.service';
 })
 export class UserFavComponent {
   items : any;
-  constructor(private httpFav: UserFavService){}
+  userId: any;
+  constructor(private httpFav: UserFavService){
+    this.userId = localStorage.getItem('user_id');
+  }
 
   ngOnInit()
   {
-    this.httpFav.getAll(1).subscribe((data) =>   // assume userid = 1
+    this.httpFav.getAll(this.userId).subscribe((data) =>   // assume userid = 1
       {
         this.items = data.data;
-        console.log(this.items)
       }
     )
   }

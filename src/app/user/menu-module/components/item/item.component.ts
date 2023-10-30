@@ -14,7 +14,7 @@ export class ItemComponent {
   addButton: boolean = false;
   amount: number = 0;
   isFavourite: boolean = false;
-  userId!: number;
+  userId!: any;
   favItems: any;
   existingItem: any;
   displayPosition !: boolean; 
@@ -23,11 +23,13 @@ export class ItemComponent {
   // pupop 
 
   value!: string;
-  constructor(private httpFav: UserFavService, private primengConfig: PrimeNGConfig) {}
+  constructor(private httpFav: UserFavService, private primengConfig: PrimeNGConfig) {
+    this.userId = localStorage.getItem('user_id');
+  }
 
   ngOnInit() {
     console.log(this.data)
-    this.httpFav.getAll(1).subscribe((data) => {
+    this.httpFav.getAll(this.userId).subscribe((data) => {
       this.favItems = data.data;
       this.existingItem = this.favItems.find(
         (favItem: any) => favItem.item_id === this.data.id
@@ -78,7 +80,7 @@ export class ItemComponent {
       this.httpFav
         .add({
           item_id: item.id,
-          user_id: 1,
+          user_id: this.userId,
           item: item,
         })
         .subscribe();

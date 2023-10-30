@@ -60,6 +60,7 @@ import { SubscribeComponent } from './subscribe/subscribe/subscribe.component';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { EditorModule } from 'primeng/editor';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { EditorModule } from 'primeng/editor';
     EmployeesComponent,
     AddEmployeeComponent,
     EditEmployeeComponent,
+    ProfileComponent,
   ],
 
   imports: [

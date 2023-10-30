@@ -15,14 +15,11 @@ export class AdditionsService {
   constructor(private httpClient: HttpClient) {}
 
   insertAddition(data: any): Observable<object>{
-    return this.httpClient.post<object>(`${environment.host}/addition/`,data);
+    return this.httpClient.post<object>(`${environment.host}/addition/`,data, {headers: this.headers});
   }
 
   getAllAddition(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.host}/addition`).pipe(
-
-
-  
+    return this.httpClient.get<any>(`${environment.host}/addition`,{headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

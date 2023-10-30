@@ -118,9 +118,14 @@ export class EditUserComponent {
   onSubmit() {
     this.loader = true;
     this.phoneID =this.user.phones[0].id;
-    this.phoneID2 =this.user.phones[1].id;
+    if(this.user.phones[1].id!=null){
+      this.phoneID2 =this.user.phones[1].id;
+      this.userPhoneService.updatePhone(this.phoneID2,this.userPhone2).subscribe();
+
+    }
+   // this.phoneID2 =this.user.phones[1].id;
     this.userPhoneService.updatePhone(this.phoneID,this.userPhone).subscribe();
-    this.userPhoneService.updatePhone(this.phoneID2,this.userPhone2).subscribe();
+   // this.userPhoneService.updatePhone(this.phoneID2,this.userPhone2).subscribe();
  
     this.userService
       .updateUser(this.userId, this.editUserForm.value)

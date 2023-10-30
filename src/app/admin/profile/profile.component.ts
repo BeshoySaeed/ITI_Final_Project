@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/Auth/auth.service';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { UserPhoneService } from 'src/app/services/userPhone-service/user-phone.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,16 @@ export class ProfileComponent {
   profileForm!: FormGroup;
   loader = true;
   disable = true;
+  phoneID: any;
+  phoneID2: any;
+  userPhone: any = {
+    user_id: '',
+    phone: '',
+  };
+  userPhone2: any = {
+    user_id: '',
+    phone: '',
+  };
   user!: any;
   token = {
     token: localStorage.getItem('token'),
@@ -41,7 +52,8 @@ export class ProfileComponent {
     private fb: FormBuilder,
     private messageService: MessageService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private userPhoneService: UserPhoneService
   ) {}
 
   ngOnInit() {
@@ -50,6 +62,8 @@ export class ProfileComponent {
     this.getProfile()
       .then((response) => {
         this.user = response.data;
+        this.userPhone.user_id = this.user.id;
+        this.userPhone2.user_id = this.user.id;
       })
       .then(() => {
         this.setFormValues();
@@ -86,14 +100,14 @@ export class ProfileComponent {
   }
 
   enableEditing() {
-    this.disable = !this.disable
+    this.disable = !this.disable;
     for (let control of this.formControllers) {
       this.profileForm.controls[control].enable();
     }
   }
 
   cancelEditing() {
-    this.disable = !this.disable
+    this.disable = !this.disable;
     this.setFormValues();
   }
 
@@ -112,18 +126,24 @@ export class ProfileComponent {
 
   onSubmit() {
     this.loader = true;
+    this.phoneID = this.user.phones[0].id;
+    this.phoneID2 = this.user.phones[1].id;
+    this.userPhoneService.updatePhone(this.phoneID, this.userPhone).subscribe();
+    this.userPhoneService
+      .updatePhone(this.phoneID2, this.userPhone2)
+      .subscribe();
 
     this.userService
       .updateUser(this.user.id, this.profileForm.value)
       .subscribe((response: any) => {
-        if (response.status == 'success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Profile is updated',
-          });
-          this.loader = false;
-        }
+        this.user = response.data;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Profile is updated',
+        });
+        this.loader = false;
+        this.disable = !this.disable;
       });
   }
 }

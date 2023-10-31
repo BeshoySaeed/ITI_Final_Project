@@ -37,7 +37,8 @@ export class ItemComponent {
     private httpFav: UserFavService,
     private primengConfig: PrimeNGConfig,
     private orderService: OrderService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -56,12 +57,16 @@ export class ItemComponent {
   }
 
   showPositionDialog(position: string, data: any) {
-    if (data.itemAdditions.length > 0) {
-      this.position = position;
-      this.displayPosition = true;
+    if(localStorage.getItem("token")) {
+      if (data.itemAdditions.length > 0) {
+        this.position = position;
+        this.displayPosition = true;
+      } else {
+        this.newItem.item.additions = [];
+        this.submitAdditions(data.id);
+      }
     } else {
-      this.newItem.item.additions = [];
-      this.submitAdditions(data.id);
+      this.router.navigate(['/login']);
     }
   }
 

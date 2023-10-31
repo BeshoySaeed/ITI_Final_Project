@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   providers: [MessageService],
-
 })
 export class RegisterComponent {
   formControllers = [
@@ -19,37 +18,62 @@ export class RegisterComponent {
     'email',
     'phone1',
     'phone2',
-    'password ',                           
-    'password_confirmation',     
+    'password ',
+    'password_confirmation',
   ];
 
   registerform: FormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private AuthService: AuthService,
     private messageService: MessageService,
     private router: Router
-){
-    this.registerform = this.fb.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],   
-      phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],   
-      password: ['', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
-    ]],
-    password_confirmation: ['', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
-    ]],}
-   ,{validator: checkpass('password', 'password_confirmation')}
-  )
-    
+  ) {
+    this.registerform = this.fb.group(
+      {
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          ],
+        ],
+        phone1: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+        phone2: ['', Validators.pattern(/^\+20-1\d{9}$/)],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+            ),
+          ],
+        ],
+        password_confirmation: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+            ),
+          ],
+        ],
+      },
+      { validator: checkpass('password', 'password_confirmation') }
+    );
   }
+
+  ngOnInit() {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['/home']);
+    }
+  }
+
   resetForm() {
     for (let control of this.formControllers) {
       this.registerform.controls[control].setValue('');
@@ -57,9 +81,8 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.AuthService
-      .store(this.registerform.value)
-      .subscribe((response: any) => {
+    this.AuthService.store(this.registerform.value).subscribe(
+      (response: any) => {
         if (response.status == 'success') {
           this.messageService.add({
             severity: 'success',
@@ -70,8 +93,8 @@ export class RegisterComponent {
           this.AuthService.isLoggedIn$.next(true);
           this.router.navigate(['/home']); // Redirect to the dashboard page
           this.resetForm();
-
         }
-      });
+      }
+    );
   }
 }

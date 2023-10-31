@@ -7,7 +7,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { SelectComponent } from './components/select/select.component';
 import { LoaderComponent } from './components/loader/loader.component';
-
+import { SubscriptionPipe } from 'src/app/pipe/subscription.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ItemDetailsComponent,
     SelectComponent,
     LoaderComponent,
-    
+    SubscriptionPipe
   ],
   imports: [
     CommonModule,CardModule,ButtonModule

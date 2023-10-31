@@ -124,7 +124,6 @@ export class ItemComponent {
   resetAdditionButton() {
     let addButtons = document.getElementsByClassName('add-button');
     let removeButtons = document.getElementsByClassName('remove-button');
-    console.log(addButtons.length);
 
     for (let i = 0; i < addButtons.length; i++) {
       addButtons[i].classList.remove('hidden');

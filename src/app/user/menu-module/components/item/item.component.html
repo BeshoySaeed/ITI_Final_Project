@@ -36,7 +36,7 @@
         <i class="pi pi-search"></i>
         <input type="text" pInputText [(ngModel)]="value" />
       </span>
-      <ng-container *ngFor="let addition of data.itemAdditions">
+      <ng-container *ngFor="let addition of data.itemAdditions; index as i">
         <div class="cardData">
           <div class="data">
             <img src="../../../../../assets/food-5.jpg" alt="" />
@@ -47,12 +47,20 @@
           </div>
           <div class="actions">
             <button
-              (click)="addAddition(addition.id)"
+              (click)="addAddition(addition.id, i)"
               pButton
               pRipple
-              class="p-button-success p-2 rounded min-w-0"
+              class="add-button p-button-success p-2 rounded min-w-0"
             >
               <i class="pi pi-fw pi-plus"></i>
+            </button>
+            <button
+              (click)="removeAddition(addition.id, i)"
+              pButton
+              pRipple
+              class="remove-button hidden p-button-danger p-2 rounded min-w-0"
+            >
+              <i class="pi pi-fw pi-times"></i>
             </button>
             <p class="price">{{ addition.price | currency }}</p>
           </div>
@@ -62,7 +70,7 @@
         <p-button
           icon="pi pi-check"
           (click)="submitAdditions(data.id)"
-          label="ok"
+          label="Add to cart"
           class="p-button-text"
         ></p-button>
       </ng-template>

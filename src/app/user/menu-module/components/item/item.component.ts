@@ -15,7 +15,6 @@ import { UserFavService } from 'src/app/services/userFav/user-fav.service';
 export class ItemComponent {
   @Input() data: any = {};
   @Output() item = new EventEmitter();
-  addButton: boolean = false;
   amount: number = 0;
   isFavourite: boolean = false;
   userId!: number;
@@ -42,7 +41,6 @@ export class ItemComponent {
   ) {}
 
   ngOnInit() {
-    console.log(this.data);
     this.httpFav.getAll(1).subscribe((data) => {
       this.favItems = data.data;
       this.existingItem = this.favItems.find(
@@ -57,8 +55,9 @@ export class ItemComponent {
   }
 
   showPositionDialog(position: string, data: any) {
-    if(localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       if (data.itemAdditions.length > 0) {
+        this.resetAdditionButton();
         this.position = position;
         this.displayPosition = true;
       } else {
@@ -83,27 +82,67 @@ export class ItemComponent {
     return stars;
   }
 
-  addAddition(id: number) {
+  addAddition(id: number, index: number) {
+    let addButton: any = document.getElementsByClassName('add-button')[index];
+    addButton.classList.add('hidden');
+
+    let removeButton: any =
+      document.getElementsByClassName('remove-button')[index];
+    removeButton.classList.remove('hidden');
+
     let addition = {
       addition_id: id,
     };
     this.newItem.item.additions.push(addition);
   }
 
+  removeAddition(id: number, index: number) {
+    let addButton: any = document.getElementsByClassName('add-button')[index];
+    addButton.classList.remove('hidden');
+
+    let removeButton: any =
+      document.getElementsByClassName('remove-button')[index];
+    removeButton.classList.add('hidden');
+
+    let addition = {
+      addition_id: id,
+    };
+    this.removeAdditionFromArray(addition, this.newItem.item.additions);
+  }
+
+  removeAdditionFromArray(addition: any, additions: any) {
+    const index = additions.findIndex(
+      (item: any) => item.addition_id === addition.addition_id
+    );
+    if (index !== -1) {
+      additions.splice(index, 1);
+    }
+  }
+
+  resetAdditionButton() {
+    let addButtons = document.querySelectorAll('.add-button');
+    let removeButtons = document.querySelectorAll('.remove-button');
+    
+    addButtons.forEach((button) => {
+      button.classList.remove('hidden');
+    });
+
+    removeButtons.forEach((button) => {
+      button.classList.add('hidden');
+    });
+  }
+
   submitAdditions(itemId: number) {
     this.displayPosition = false;
     this.newItem.item.item_id = itemId;
-    console.log('new', this.newItem);
 
     this.orderService.addOrder(this.newItem).subscribe((response: any) => {
-      // console.log(response);
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
         detail: 'Item is added to cart',
       });
       this.newItem.item.additions = [];
-    // console.log('new', this.newItem);
     });
   }
 

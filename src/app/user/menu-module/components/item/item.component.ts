@@ -23,6 +23,12 @@ export class ItemComponent {
   existingItem: any;
   displayPosition!: boolean;
   position!: string;
+  newItem: any = {
+    item: {
+      quantity: 1,
+      additions: [],
+    },
+  };
 
   // pupop
 
@@ -31,7 +37,7 @@ export class ItemComponent {
     private httpFav: UserFavService,
     private primengConfig: PrimeNGConfig,
     private orderService: OrderService,
-    private messageService: MessageService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -49,11 +55,12 @@ export class ItemComponent {
     this.primengConfig.ripple = true;
   }
 
-  showPositionDialog(position: string, data:any) {
-    if(data.itemAdditions.length > 0) {
+  showPositionDialog(position: string, data: any) {
+    if (data.itemAdditions.length > 0) {
       this.position = position;
       this.displayPosition = true;
     } else {
+      this.newItem.item.additions = [];
       this.submitAdditions(data.id);
     }
   }
@@ -72,34 +79,26 @@ export class ItemComponent {
   }
 
   addAddition(id: number) {
-    console.log(id)
+    let addition = {
+      addition_id: id,
+    };
+    this.newItem.item.additions.push(addition);
   }
 
   submitAdditions(itemId: number) {
     this.displayPosition = false;
-    console.log(itemId);
-    const item = {
-      item : {
-        item_id: itemId,
-        quantity: 1,
-        additions: [
-          {
-            addition_id: 2,
-          },
-          {
-            addition_id: 1,
-          },
-        ],
-      },
-    };
+    this.newItem.item.item_id = itemId;
+    console.log('new', this.newItem);
 
-    this.orderService.addOrder(item).subscribe((response: any) => {
-      console.log(response);
+    this.orderService.addOrder(this.newItem).subscribe((response: any) => {
+      // console.log(response);
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
         detail: 'Item is added to cart',
       });
+      this.newItem.item.additions = [];
+    // console.log('new', this.newItem);
     });
   }
 

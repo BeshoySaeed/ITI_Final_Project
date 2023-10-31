@@ -45,7 +45,7 @@ export class OrderService {
     return this.httpOrder.post('order', object)
     .pipe(
       map((item: any) => {
-        return item.data
+        return item
       })
     );
   }

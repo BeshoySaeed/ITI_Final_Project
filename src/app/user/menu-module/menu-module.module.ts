@@ -10,7 +10,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { InputTextModule } from 'primeng/inputtext';
     
   ],
   imports: [
-    CommonModule,CardModule,ButtonModule,DialogModule,FormsModule,InputTextModule
+    CommonModule,CardModule,ButtonModule,DialogModule,FormsModule,InputTextModule,
+    ToastModule
   ]
 })
 export class MenuModuleModule { }

@@ -40,7 +40,7 @@ export class OrderService {
     );
   }
 
-  addOrder(object: Order): Observable<Order>
+  addOrder(object: any): Observable<Order>
   {
     return this.httpOrder.post('order', object)
     .pipe(

@@ -62,12 +62,6 @@
          </p-dialog> 
   </ng-template>
   <ng-template pTemplate="">
-
-  <div class="rating-container">
-  <span *ngFor="let rate of generateRatingStars()" [class]="rate">&#9733;</span>
-</div>
-
-
   <i  (click)="addFav(data)" [ngClass]="isFavourite ? 'pi pi-heart-fill' : 'pi pi-heart' " style="font-size: 2rem; color: orange;"></i>
 
 </ng-template>

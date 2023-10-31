@@ -57,9 +57,11 @@ export class ItemComponent {
   showPositionDialog(position: string, data: any) {
     if (localStorage.getItem('token')) {
       if (data.itemAdditions.length > 0) {
-        this.resetAdditionButton();
         this.position = position;
         this.displayPosition = true;
+        setTimeout(() => {
+          this.resetAdditionButton();
+        }, 0);
       } else {
         this.newItem.item.additions = [];
         this.submitAdditions(data.id);
@@ -120,16 +122,17 @@ export class ItemComponent {
   }
 
   resetAdditionButton() {
-    let addButtons = document.querySelectorAll('.add-button');
-    let removeButtons = document.querySelectorAll('.remove-button');
-    
-    addButtons.forEach((button) => {
-      button.classList.remove('hidden');
-    });
+    let addButtons = document.getElementsByClassName('add-button');
+    let removeButtons = document.getElementsByClassName('remove-button');
+    console.log(addButtons.length);
 
-    removeButtons.forEach((button) => {
-      button.classList.add('hidden');
-    });
+    for (let i = 0; i < addButtons.length; i++) {
+      addButtons[i].classList.remove('hidden');
+    }
+
+    for (let i = 0; i < removeButtons.length; i++) {
+      removeButtons[i].classList.add('hidden');
+    }
   }
 
   submitAdditions(itemId: number) {

@@ -128,3 +128,17 @@ p {
         margin: 10px ;
     }
 }
+
+.cart-button {
+    background-color: unset;
+    border: unset;
+    &:disabled {
+        i {
+            cursor: not-allowed !important;
+        }
+    }
+}
+
+.inactive {
+    background-color: $light-red-color;
+}

@@ -4,8 +4,9 @@
   <h3>{{ data.title }}</h3>
 
   <ng-template pTemplate="header">
-    <div class="rotating">
-      <p>{{ data.active }}</p>
+    <div class="rotating" [ngClass]="data.active == 0 ? 'inactive' : ''">
+      <p *ngIf="data.active == 1; else inactive">Active</p>
+      <ng-template #inactive>Inactive</ng-template>
     </div>
     <img [src]="data.img" alt="{{ data.name }}" />
   </ng-template>
@@ -14,14 +15,22 @@
   <p class="count">{{ data.description }}</p>
 
   <p class="count">{{ data.price | currency }}</p>
-  <p class="count">{{ data.discount }} %</p>
+  <p class="count">
+    <span *ngIf="data.discount > 0; else noDiscount">{{ data.discount }}%</span>
+    <ng-template #noDiscount>No discount value</ng-template>
+  </p>
 
   <ng-template pTemplate="footer">
-    <i
+    <button
+      class="cart-button"
       (click)="showPositionDialog('left', data)"
-      class="pi pi-shopping-cart"
-      style="color: #fd702a; font-size: 4rem; cursor: pointer"
-    ></i>
+      [disabled]="data.active == 0"
+    >
+      <i
+        class="pi pi-shopping-cart"
+        style="color: #fd702a; font-size: 4rem; cursor: pointer"
+      ></i>
+    </button>
     <p-dialog
       [transitionOptions]="'3000ms'"
       header="Extra"
@@ -80,7 +89,7 @@
     <i
       (click)="addFav(data)"
       [ngClass]="isFavourite ? 'pi pi-heart-fill' : 'pi pi-heart'"
-      style="font-size: 2rem; color: orange"
+      style="font-size: 2rem; color: orange; cursor: pointer"
     ></i>
   </ng-template>
 </p-card>

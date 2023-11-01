@@ -21,7 +21,7 @@ export class SubscriptionPipe implements PipeTransform {
     this.httpSub.getById(this.subId).subscribe((subData: any) => {
       this.subscribeObject = subData.data;
       this.percentage=this.subscribeObject.discount_value;
-
+ 
     })
 
   }
@@ -32,7 +32,7 @@ export class SubscriptionPipe implements PipeTransform {
     if (this.subId) {
        // this.percentage = this.subscribeObject.discount_value;   
       this.percentage=  20;   
-      this.discount= value * (this.percentage/ 100);
+      this.discount= value * Number(this.percentage/ 100);
       return value - this.discount; 
     } else {
       // Handle the case when the condition is not met

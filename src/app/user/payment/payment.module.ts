@@ -14,6 +14,7 @@ import { CreditCardFormComponent } from './payment-sub-childs/credit-card-form/c
 import { PaymentUserBalanceComponent } from './payment-sub-childs/payment-user-balance/payment-user-balance.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/balance-details.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/ba
     InputNumberModule,
     InputTextareaModule,
     RadioButtonModule,
+    ProgressSpinnerModule
   ],
 })
 export class PaymentModule {}

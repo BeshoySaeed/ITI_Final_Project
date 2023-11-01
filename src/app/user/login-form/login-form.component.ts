@@ -29,6 +29,13 @@ export class LoginFormComponent {
 
     })
   }
+
+  ngOnInit() {
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/home']);
+    }
+  }
+
   onSubmit() {
     const apiUrl = 'http://localhost:8000/api/login'; // Replace with your actual API URL
     const formData = this.formGroup.getRawValue();

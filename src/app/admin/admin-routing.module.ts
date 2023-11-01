@@ -40,6 +40,7 @@ import { EmployeesComponent } from './employees/employees/employees.component';
 import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 import { AdminGuardService } from '../Guards/Admin/admin-guard.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -240,6 +241,10 @@ const routes: Routes = [
       {
         path: 'job-applicants',
         component: ApplicantsComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
         path: '**',

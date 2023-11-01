@@ -5,5 +5,7 @@ export interface User {
     roleID: number;
     email:string;
     password:string;
-    balance?:number
+    balance?:number;
+    phone1?: number;
+    phone2?: number
 }

@@ -1,101 +1,149 @@
-import { Component,OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { OrderService } from 'src/app/services/OrderService/order.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  providers: [MessageService],
 })
 export class CartComponent implements OnInit {
- 
- counter: number = 0;
- totalPrice: number = 0;
- itemPrice:number=0;
-  cartItems = [ 
-    {id: 1 , name:"Chicken burger",description:"one slide chicken with vegetables",price: 100, qnt:1},
-    {id: 2 , name:"Meat Soap",description:"chicken pieces with vegetables",price: 80, qnt:1},
-    {id: 3 , name:"Beef Pizza",description:"pizza with salami and beef",price: 120, qnt:1},
-    {id: 4 , name:"Beef Pizza",description:"pizza with salami and beef",price: 250, qnt:1},
-    {id: 5 , name:"Beef Pizza",description:"pizza with salami and beef",price: 250, qnt:1},
- 
+  totalPrice: number = 0;
+  loading: boolean = true;
+  changed: boolean = false;
+  showDataError: boolean = false;
+  cart: any = [];
 
-  ];
-  constructor() {
-   
-    this.calculateTotalPrice();
+  constructor(
+    private orderService: OrderService,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
+  ngOnInit() {
+    this.getCart();
   }
 
-  ngOnInit(){
-    
+  getCart() {
+    this.orderService.cart().subscribe((cart: any) => {
+      this.cart = cart.data;
+      this.calculateTotalPrice();
+      this.loading = false;
 
+      if (this.cart.items.length == 0) {
+        localStorage.setItem('cart', 'false');
+      }
+    });
   }
-  ngOnChange(){
-   
-  }
-/*
-  addtoCart(product:any){
-    const existingItemIndex = this.cartItems.findIndex((item) => item.id === product.id);
 
-    if (existingItemIndex !== -1) {
-      this.cartItems[existingItemIndex].qnt+=1;
-    } else {
-      this.cartItems.push({ ...product, qnt: 1 });
-    }
-    this.calculateTotalPrice();
-  }
-*/
   removeFromCart(product: any) {
-    const existingItemIndex = this.cartItems.findIndex((item) => item.id === product.id);
+    const existingItemIndex = this.cart.findIndex(
+      (item: any) => item.id === product.id
+    );
 
-        this.cartItems.splice(existingItemIndex, 1);
-     
-         this.calculateTotalPrice();
-    }
+    this.cart.splice(existingItemIndex, 1);
 
-
-  decreaseCounter(item:any) {
-    if( item.qnt>1){
-    
-      item.qnt-=1;
-    }else{
-      this.removeFromCart(item)
-    }
     this.calculateTotalPrice();
-    this.calculateItemPrice(item);
-
   }
-
-
-  increaseCounter(item:any) {
-
-    item.qnt+=1;
-    this.calculateTotalPrice();
-    this.calculateItemPrice(item);
-
-  } 
-  
-  
-  calculateItemPrice(item:any) {
-      
-      this.itemPrice=0;
-      this.itemPrice += item.price * item.qnt; 
-      
-  }
-
-
 
   calculateTotalPrice() {
-    this.totalPrice = 0; 
-
-    for (let item of this.cartItems) {
-      this.totalPrice += item.price * item.qnt; 
+    this.totalPrice = 0;
+    for (let item of this.cart.items) {
+      this.totalPrice += this.calculate(item);
     }
-  
   }
 
+  calculate(item: any) {
+    let totalPrice = 0;
+    if (item.additions.length > 0) {
+      for (let addition of item.additions) {
+        totalPrice += parseFloat(addition.addition.price);
+      }
+    }
 
+    if (item.item.discount > 0) {
+      totalPrice +=
+        (parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100;
+      totalPrice *= parseFloat(item['quantity']);
+    } else {
+      totalPrice += parseFloat(item.item['price']);
+      totalPrice *= parseFloat(item['quantity']);
+    }
 
+    return totalPrice;
+  }
 
+  InputClicked() {
+    this.changed = true;
+  }
 
+  editItem(action: string, item: any) {
+    this.loading = true;
+
+    let data = {
+      order_item_id: item.id,
+      quantity: 0,
+    };
+
+    if (action == 'edit') {
+      if (this.changed) {
+        data.quantity = item.quantity;
+      }
+    }
+
+    this.orderService.updateCart(data).subscribe((data: any) => {
+      if (data.status == 'success') {
+        this.getCart();
+        this.message();
+      }
+    });
+  }
+
+  removeAddition(id: number) {
+    this.loading = true;
+    this.orderService.updateAdditionCart(id).subscribe((data: any) => {
+      if (data.status == 'success') {
+        this.getCart();
+        this.message();
+      }
+    });
+  }
+
+  message() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Cart is updated',
+    });
+  }
+
+  completeOrder() {
+    let user = this.cart.user;
+    if (
+      user.street == null ||
+      user.street.length == 0 ||
+
+      user.area == null ||
+      user.area.length == 0 ||
+
+      user.city == null ||
+      user.city.length == 0 ||
+
+      user.building_name == null ||
+      user.building_name.length == 0 ||
+
+      user.floor_number == null ||
+      user.floor_number.length == 0
+    ) {
+      this.showDataError = true;
+    } else {
+      this.router.navigate(['/payment']);
+    }
+  }
+
+  toProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

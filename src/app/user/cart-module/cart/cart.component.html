@@ -1,77 +1,188 @@
-<div class="container">
+<div class="container my-6">
+  <p-toast></p-toast>
+
   <h1 class="cart text-center">Cart</h1>
   <div class="card">
     <p-table
-      [value]="cartItems"
-      [resizableColumns]="true"
-      responsiveLayout="stack"
-      columnResizeMode="expand"
-      [breakpoint]="'960px'"
-      [tableStyle]="{ 'min-width': '40rem' }"
+      #dt1
+      [value]="cart.items"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
     >
-      <ng-template pTemplate="header" let-columns>
+      <ng-template pTemplate="header">
         <tr>
-          <th pResizableColumn>image</th>
-          <th pResizableColumn>name</th>
-          <th pResizableColumn>quantity</th>
-          <th pResizableColumn>price</th>
-          <th pResizableColumn></th>
+          <th style="width: 4rem"></th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">Image</div>
+          </th>
+          <th style="min-width: 9rem">
+            <div class="flex align-items-center">Name</div>
+          </th>
+          <th style="min-width: 10rem">
+            <div class="flex align-items-center">Description</div>
+          </th>
+          <th style="min-width: 3rem">
+            <div class="flex align-items-center">Quantity</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Price</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Discount</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Total price</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center"></div>
+          </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-item let-columns="columns">
+      <ng-template pTemplate="body" let-menuItem let-expanded="expanded">
         <tr>
-          <td><span class="p-column-title">image</span></td>
-          <td>
-            <span class="p-column-title">name</span>
-            <div>
-              <h5>{{ item.name }}</h5>
-              <br />{{ item.description }}
-            </div>
-          </td>
-
-          <td>
-            <span class="p-column-title">quantity</span>
-            <div>
-              <button
-                type="button"
-                class="btn btn-outline-warning quantity"
-                (click)="decreaseCounter(item)"
-              >
-                -
-              </button>
-
-              {{ item.qnt }}
-
-              <button
-                type="button"
-                class="btn btn-outline-warning quantity"
-                (click)="increaseCounter(item)"
-              >
-                +
-              </button>
-            </div>
-          </td>
-
-          <td><span class="p-column-title">price</span>{{ itemPrice }}</td>
           <td>
             <button
-              value=""
-              name="delete"
-              class="del"
-              (click)="removeFromCart(item)"
+              type="button"
+              pButton
+              pRipple
+              [pRowToggler]="menuItem"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            ></button>
+          </td>
+          <td>
+            <img
+              width="150"
+              [src]="menuItem.item.image"
+              [alt]="menuItem.item.name"
+            />
+          </td>
+          <td>
+            {{ menuItem.item.name }}
+          </td>
+          <td>
+            {{ menuItem.item.description }}
+          </td>
+          <td>
+            <p-inputNumber
+              [useGrouping]="false"
+              [format]="false"
+              styleClass="w-0"
+              [allowEmpty]="false"
+              class="mask-button"
+              [min]="1"
+              [(ngModel)]="menuItem.quantity"
+              (onKeyDown)="InputClicked()"
+              (onBlur)="editItem('edit', menuItem)"
             >
-              <span class="pi pi-trash trash"></span>
+            </p-inputNumber>
+          </td>
+          <td>
+            {{ menuItem.item.price | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            <span *ngIf="menuItem.item.discount > 0; else noDiscount"
+              >{{ menuItem.item.discount }}%</span
+            >
+            <ng-template #noDiscount>No discount value</ng-template>
+          </td>
+          <td>
+            {{ calculate(menuItem) | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              class="p-button-danger p-2 rounded mr-2"
+              (click)="editItem('remove', menuItem)"
+            >
+              <i class="pi pi-fw pi-times"></i>
             </button>
           </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-menuItem>
+        <tr>
+          <td colspan="12">
+            <div class="p-3">
+              <p-table [value]="menuItem.additions" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>price</th>
+                    <th></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-addition>
+                  <tr>
+                    <td>
+                      <img
+                        width="100"
+                        [src]="addition.addition.image"
+                        [alt]="addition.addition.name"
+                      />
+                    </td>
+                    <td>{{ addition.addition.name }}</td>
+                    <td>{{ addition.addition.price | currency : "USD" }}</td>
+                    <td>
+                      <button
+                        pButton
+                        pRipple
+                        class="p-button-danger p-2 rounded mr-2"
+                        (click)="removeAddition(addition.id)"
+                      >
+                        <i class="pi pi-fw pi-times"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">
+                      You are not selected any addition for this item
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No items in the cart.</td>
         </tr>
       </ng-template>
     </p-table>
 
     <div class="total">
-      <span class="p-column-title"><h3>total price</h3></span><br />
+      <span class="p-column-title"><h3>Total price</h3></span><br />
       <span class="p-column-title"
-        ><h5>{{ totalPrice }}</h5></span
+        ><h5>{{ totalPrice | currency : "USD" : "symbol" }}</h5>
+      </span>
+      <button
+        type="submit"
+        class="primary-button w-50 mx-auto my-3"
+        (click)="completeOrder()"
+        *ngIf="cart.items.length > 0"
       >
+        Order now
+      </button>
+
+      <div class="text-red-500 mt-2" *ngIf="showDataError">
+        <p class="my-0">You should enter these fields in your profile first.</p>
+        <p class="my-0">
+          Required fields are 'street', 'area', 'city', 'building name or
+          number', 'floor number'
+        </p>
+        <button class="profile-button" (click)="toProfile()">Go to Profile</button>
+      </div>
     </div>
   </div>
 </div>

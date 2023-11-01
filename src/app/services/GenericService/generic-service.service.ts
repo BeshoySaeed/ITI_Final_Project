@@ -74,6 +74,12 @@ export class GenericService {
       );
   }
 
-
+  cart(route: string): Observable<any> {
+    return this.http.get(`${environment.host}/${route}`, {headers: this.headers})
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
 }
 

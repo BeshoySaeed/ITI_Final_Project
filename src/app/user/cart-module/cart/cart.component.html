@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container my-6">
   <h1 class="cart text-center">Cart</h1>
   <div class="card">
     <p-table
-      [value]="cartItems"
+      [value]="cart.items"
       [resizableColumns]="true"
       responsiveLayout="stack"
       columnResizeMode="expand"
+      [loading]="loading"
       [breakpoint]="'960px'"
       [tableStyle]="{ 'min-width': '40rem' }"
     >
@@ -22,37 +23,32 @@
         <tr>
           <td><span class="p-column-title">image</span></td>
           <td>
-            <span class="p-column-title">name</span>
-            <div>
-              <h5>{{ item.name }}</h5>
-              <br />{{ item.description }}
-            </div>
+            <h5>{{ item.item.name }}</h5>
+            <p>{{ item.item.description }}</p>
           </td>
 
           <td>
-            <span class="p-column-title">quantity</span>
-            <div>
-              <button
-                type="button"
-                class="btn btn-outline-warning quantity"
-                (click)="decreaseCounter(item)"
-              >
-                -
-              </button>
+            <button
+              type="button"
+              class="btn btn-outline-warning quantity"
+              (click)="decreaseCounter(item)"
+            >
+              -
+            </button>
 
-              {{ item.qnt }}
+            {{ item.quantity }}
 
-              <button
-                type="button"
-                class="btn btn-outline-warning quantity"
-                (click)="increaseCounter(item)"
-              >
-                +
-              </button>
-            </div>
+            <button
+              type="button"
+              class="btn btn-outline-warning quantity"
+              (click)="increaseCounter(item)"
+            >
+              +
+            </button>
           </td>
 
-          <td><span class="p-column-title">price</span>{{ itemPrice }}</td>
+          <td><span class="p-column-title">price</span>{{ item.item.price | currency }}</td>
+
           <td>
             <button
               value=""

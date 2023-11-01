@@ -7,7 +7,7 @@ import { Order } from 'src/app/interface/order';
   providedIn: 'root'
 })
 export class OrderService {
-
+  
   constructor(private httpOrder: GenericService) { }
 
   getOrders(): Observable<Order[]>
@@ -58,5 +58,15 @@ export class OrderService {
         return item.data
       })
     )
+  }
+  
+  cart(): Observable<Order[]>
+  {
+    return this.httpOrder.cart('cart')
+    .pipe(
+      map((item: any) => {
+        return item
+      })
+    );
   }
 }

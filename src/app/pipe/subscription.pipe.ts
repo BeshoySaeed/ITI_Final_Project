@@ -6,32 +6,38 @@ import { SubscriptionsService } from '../services/Subscriptions/subscriptions.se
 })
 export class SubscriptionPipe implements PipeTransform {
 
-  subId=1;
-  subscribeObject: any;
+  subId=1; //get subscribe id from local storage  
 
-  
+ // subId= localStorage.getItem('subscribe_id');
+ 
+ subscribeObject:any=[];
+ percentage: any;
+ discount:any;
+
   constructor(private httpSub: SubscriptionsService ){}
 
   ngOnInit()
   {
-    this.httpSub.getById(this.subId).subscribe((data) => 
-    {
-      this.subscribeObject = data;
-      console.log(this.subscribeObject);
-    }
-    )
+    this.httpSub.getById(this.subId).subscribe((subData: any) => {
+      this.subscribeObject = subData.data;
+    })
+
   }
 
-
-  percentage: number = 20;   // replace with discount value in subscription table
-
+     // replace with discount value in subscription table
+    
   transform(value: any): any {
     if (this.subId) {
-      return Number(value) * this.percentage/ 100;
+       // this.percentage = this.subscribeObject.discount_value;   
+      this.percentage=  50;   
+      this.discount= value * (this.percentage/ 100);
+      return value - this.discount; 
     } else {
       // Handle the case when the condition is not met
       return value ;
     }
   }
+
+
 
 }

@@ -41,7 +41,7 @@ export class UserSubscriptionComponent {
   currentDate : any ;
   endDate: any;
   checkDate: any;
-  todayDate:any
+  todayDate:any;
 
   constructor(private subService: SubscriptionsService) {}
   
@@ -87,7 +87,7 @@ export class UserSubscriptionComponent {
       
       this.todayDate =new Date();
       this.checkDate = localStorage.getItem('endDate');
-      if(this.todayDate==this.checkDate){
+      if(this.todayDate>=this.checkDate){
 
       localStorage.removeItem('subscribe_id');
 

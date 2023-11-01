@@ -43,38 +43,30 @@ export class CartComponent implements OnInit {
     this.calculateTotalPrice();
   }
 
-  calculateItemPrice(item:any) {
-    let totalPrice = 0;
-    if(item.item.discount > 0) {
-      totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100) * parseFloat(item['quantity']);
-    } else {
-      totalPrice += parseFloat(item.item['price']) * parseFloat(item['quantity']);
+  calculateTotalPrice() {
+    this.totalPrice = 0;
+    for (let item of this.cart.items) {
+      this.totalPrice += this.calculate(item);
     }
-
+  }
+  
+  calculate(item:any) {
+    let totalPrice = 0
     if(item.additions.length > 0) {
       for (let addition of item.additions){
         totalPrice += parseFloat(addition.addition.price);
       }
     }
 
-    return totalPrice;
-  }
-
-  calculateTotalPrice() {
-    this.totalPrice = 0;
-    for (let item of this.cart.items) {
-      if(item.item['discount'] > 0) {
-        this.totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item['discount'])) / 100) * parseFloat(item['quantity']);
-      } else {
-        this.totalPrice += parseFloat(item.item['price']) * parseFloat(item['quantity']);
-      }
-
-      if(item.additions.length > 0) {
-        for (let addition of item.additions){
-          this.totalPrice += parseFloat(addition.addition.price);
-        }
-      }
+    if(item.item.discount > 0) {
+      totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100);
+      totalPrice *= parseFloat(item['quantity'])
+    } else {
+      totalPrice += parseFloat(item.item['price']);
+      totalPrice *= parseFloat(item['quantity'])
     }
+
+    return totalPrice;
   }
 
   InputClicked() {
@@ -98,6 +90,11 @@ export class CartComponent implements OnInit {
     this.orderService.updateCart(data).subscribe((data: any) => {
       if(data.status == 'success'){
         this.getCart();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Cart is updated',
+        });
       }
     });
   }

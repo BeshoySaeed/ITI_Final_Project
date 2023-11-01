@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     ButtonModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ]
 })
 export class CartModuleModule { }

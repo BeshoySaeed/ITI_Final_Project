@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -9,9 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class PaymentComponent {
   paymentForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
+    let isCart = localStorage.getItem('cart')
+    if(isCart == 'false') {
+      this.router.navigate(['/all-items/all']);
+    }
+
     this.paymentForm = this.fb.group(
       {
         // firstName: ['', Validators.pattern(/^[a-zA-Z]+$/)],

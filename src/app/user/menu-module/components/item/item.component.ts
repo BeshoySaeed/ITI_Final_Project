@@ -145,6 +145,7 @@ export class ItemComponent {
         detail: 'Item is added to cart',
       });
       this.newItem.item.additions = [];
+      localStorage.setItem('cart', 'true');
     });
   }
 

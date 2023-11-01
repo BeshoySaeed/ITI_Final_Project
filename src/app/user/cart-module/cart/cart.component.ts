@@ -31,7 +31,11 @@ export class CartComponent implements OnInit {
     this.orderService.cart().subscribe((cart: any) => {
       this.cart = cart.data;
       this.calculateTotalPrice();
-      this.loading = false
+      this.loading = false;
+      
+      if (this.cart.items.length == 0) {
+        localStorage.setItem('cart', 'false');
+      }
     });
   }
 
@@ -51,56 +55,57 @@ export class CartComponent implements OnInit {
       this.totalPrice += this.calculate(item);
     }
   }
-  
-  calculate(item:any) {
-    let totalPrice = 0
-    if(item.additions.length > 0) {
-      for (let addition of item.additions){
+
+  calculate(item: any) {
+    let totalPrice = 0;
+    if (item.additions.length > 0) {
+      for (let addition of item.additions) {
         totalPrice += parseFloat(addition.addition.price);
       }
     }
 
-    if(item.item.discount > 0) {
-      totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100);
-      totalPrice *= parseFloat(item['quantity'])
+    if (item.item.discount > 0) {
+      totalPrice +=
+        (parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100;
+      totalPrice *= parseFloat(item['quantity']);
     } else {
       totalPrice += parseFloat(item.item['price']);
-      totalPrice *= parseFloat(item['quantity'])
+      totalPrice *= parseFloat(item['quantity']);
     }
 
     return totalPrice;
   }
 
   InputClicked() {
-    this.changed = true
+    this.changed = true;
   }
 
-  editItem(action:string, item:any) {
-    this.loading = true
+  editItem(action: string, item: any) {
+    this.loading = true;
 
     let data = {
       order_item_id: item.id,
-      quantity: 0
-    }
-    
-    if(action == 'edit') {
-      if(this.changed) {
-        data.quantity = item.quantity
+      quantity: 0,
+    };
+
+    if (action == 'edit') {
+      if (this.changed) {
+        data.quantity = item.quantity;
       }
     }
-    
+
     this.orderService.updateCart(data).subscribe((data: any) => {
-      if(data.status == 'success'){
+      if (data.status == 'success') {
         this.getCart();
         this.message();
       }
     });
   }
 
-  removeAddition(id:number) {
+  removeAddition(id: number) {
     this.loading = true;
     this.orderService.updateAdditionCart(id).subscribe((data: any) => {
-      if(data.status == 'success'){
+      if (data.status == 'success') {
         this.getCart();
         this.message();
       }

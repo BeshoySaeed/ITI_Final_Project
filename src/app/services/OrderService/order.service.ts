@@ -74,9 +74,19 @@ export class OrderService {
   {
     return this.httpOrder.updateCart('update-cart' ,object)
     .pipe(
-      map((item: any) => {
-        return item
+      map((data: any) => {
+        return data
       })
     )
+  }
+
+  updateAdditionCart(id: number) : Observable<Order>
+  {
+    return this.httpOrder.updateAdditionCart('update-cart', id)
+    .pipe(
+      map((data: any) => {
+        return data
+      })
+    );
   }
 }

@@ -85,17 +85,31 @@ export class CartComponent implements OnInit {
       if(this.changed) {
         data.quantity = item.quantity
       }
-    } 
+    }
     
     this.orderService.updateCart(data).subscribe((data: any) => {
       if(data.status == 'success'){
         this.getCart();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Cart is updated',
-        });
+        this.message();
       }
+    });
+  }
+
+  removeAddition(id:number) {
+    this.loading = true;
+    this.orderService.updateAdditionCart(id).subscribe((data: any) => {
+      if(data.status == 'success'){
+        this.getCart();
+        this.message();
+      }
+    });
+  }
+
+  message() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Cart is updated',
     });
   }
 }

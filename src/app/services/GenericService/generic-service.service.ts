@@ -89,5 +89,13 @@ export class GenericService {
         catchError(this.handleError)
       );
   }
+
+  updateAdditionCart(route: string, id: number): Observable<any> {
+    return this.http.delete(`${environment.host}/${route}/${id}`, {headers: this.headers})
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
 }
 

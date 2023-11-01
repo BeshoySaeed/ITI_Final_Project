@@ -19,13 +19,13 @@
           <th style="min-width: 4rem">
             <div class="flex align-items-center">Image</div>
           </th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 9rem">
             <div class="flex align-items-center">Name</div>
           </th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 10rem">
             <div class="flex align-items-center">Description</div>
           </th>
-          <th style="min-width: 8rem">
+          <th style="min-width: 3rem">
             <div class="flex align-items-center">Quantity</div>
           </th>
           <th style="min-width: 8rem">
@@ -86,7 +86,7 @@
           </td>
           <td>
             <span *ngIf="menuItem.item.discount > 0; else noDiscount">{{ menuItem.item.discount }}%</span>
-            <ng-template #noDiscount>have no discount value</ng-template>
+            <ng-template #noDiscount>No discount value</ng-template>
           </td>
           <td>
             {{ calculate(menuItem) | currency : "USD" : "symbol" }}
@@ -113,6 +113,7 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>price</th>
+                    <th></th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-addition>
@@ -126,6 +127,16 @@
                     </td>
                     <td>{{ addition.addition.name }}</td>
                     <td>{{ addition.addition.price | currency : "USD" }}</td>
+                    <td>
+                      <button
+                        pButton
+                        pRipple
+                        class="p-button-danger p-2 rounded mr-2"
+                        (click)="removeAddition(addition.id)"
+                      >
+                        <i class="pi pi-fw pi-times"></i>
+                      </button>
+                    </td>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">

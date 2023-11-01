@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   itemPrice: number = 0;
   loading: boolean = true;
+  changed: boolean = false;
   cart: any = [];
 
   constructor(
@@ -82,13 +83,32 @@ export class CartComponent implements OnInit {
       } else {
         this.totalPrice += parseFloat(item.item['price']) * parseFloat(item['quantity']);
       }
-      // console.log(this.totalPrice)
 
       if(item.additions.length > 0) {
         for (let addition of item.additions){
           this.totalPrice += parseFloat(addition.addition.price);
         }
       }
+    }
+  }
+
+  InputClicked() {
+    this.changed = true
+  }
+
+  editItem(action:string, item:any) {
+    let data = {
+      item_id: item.id,
+      quantity: 0
+    }
+    
+    if(action == 'edit') {
+      if(this.changed) {
+        data.quantity = item.quantity
+        console.log(data)
+      }
+    } else {
+      console.log(data)
     }
   }
 }

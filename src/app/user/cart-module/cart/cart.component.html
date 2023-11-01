@@ -66,7 +66,18 @@
             {{ menuItem.item.description }}
           </td>
           <td>
-            {{ menuItem.quantity }}
+            <p-inputNumber
+              [useGrouping]="false"
+              [format]="false"
+              styleClass="w-0"
+              [allowEmpty]="false"
+              class="mask-button"
+              [min]="1"
+              [(ngModel)]="menuItem.quantity"
+              (onKeyDown)="InputClicked()"
+              (onBlur)="editItem('edit', menuItem)"
+            >
+            </p-inputNumber>
           </td>
           <td>
             {{ menuItem.item.price | currency : "USD" : "symbol" }}
@@ -76,7 +87,12 @@
             {{ calculateItemPrice(menuItem) | currency : "USD" : "symbol" }}
           </td>
           <td>
-            <button pButton pRipple class="p-button-danger p-2 rounded mr-2">
+            <button
+              pButton
+              pRipple
+              class="p-button-danger p-2 rounded mr-2"
+              (click)="editItem('remove', menuItem)"
+            >
               <i class="pi pi-fw pi-times"></i>
             </button>
           </td>
@@ -130,8 +146,8 @@
     <div class="total">
       <span class="p-column-title"><h3>total price</h3></span><br />
       <span class="p-column-title"
-        ><h5>{{ totalPrice }}</h5></span
-      >
+        ><h5>{{ totalPrice }}</h5>
+      </span>
     </div>
   </div>
 </div>

@@ -2,63 +2,127 @@
   <h1 class="cart text-center">Cart</h1>
   <div class="card">
     <p-table
+      #dt1
       [value]="cart.items"
-      [resizableColumns]="true"
-      responsiveLayout="stack"
-      columnResizeMode="expand"
+      dataKey="name"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
-      [breakpoint]="'960px'"
-      [tableStyle]="{ 'min-width': '40rem' }"
+      [paginator]="true"
     >
-      <ng-template pTemplate="header" let-columns>
+      <ng-template pTemplate="header">
         <tr>
-          <th pResizableColumn>image</th>
-          <th pResizableColumn>name</th>
-          <th pResizableColumn>quantity</th>
-          <th pResizableColumn>price</th>
-          <th pResizableColumn></th>
+          <th style="width: 4rem"></th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">Image</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Name</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Description</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Quantity</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Price</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Discount</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center">Total price</div>
+          </th>
+          <th style="min-width: 8rem">
+            <div class="flex align-items-center"></div>
+          </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-item let-columns="columns">
+      <ng-template pTemplate="body" let-menuItem let-expanded="expanded">
         <tr>
-          <td><span class="p-column-title">image</span></td>
-          <td>
-            <h5>{{ item.item.name }}</h5>
-            <p>{{ item.item.description }}</p>
-          </td>
-
           <td>
             <button
               type="button"
-              class="btn btn-outline-warning quantity"
-              (click)="decreaseCounter(item)"
-            >
-              -
-            </button>
-
-            {{ item.quantity }}
-
-            <button
-              type="button"
-              class="btn btn-outline-warning quantity"
-              (click)="increaseCounter(item)"
-            >
-              +
-            </button>
+              pButton
+              pRipple
+              [pRowToggler]="menuItem"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            ></button>
           </td>
-
-          <td><span class="p-column-title">price</span>{{ item.item.price | currency }}</td>
-
           <td>
-            <button
-              value=""
-              name="delete"
-              class="del"
-              (click)="removeFromCart(item)"
-            >
-              <span class="pi pi-trash trash"></span>
+            <img
+              width="150"
+              [src]="menuItem.item.image"
+              [alt]="menuItem.item.name"
+            />
+          </td>
+          <td>
+            {{ menuItem.item.name }}
+          </td>
+          <td>
+            {{ menuItem.item.description }}
+          </td>
+          <td>
+            {{ menuItem.quantity }}
+          </td>
+          <td>
+            {{ menuItem.item.price | currency : "USD" : "symbol" }}
+          </td>
+          <td>{{ menuItem.item.discount }}%</td>
+          <td>
+            {{ calculateItemPrice(menuItem) | currency : "USD" : "symbol" }}
+          </td>
+          <td>
+            <button pButton pRipple class="p-button-danger p-2 rounded mr-2">
+              <i class="pi pi-fw pi-times"></i>
             </button>
           </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-menuItem>
+        <tr>
+          <td colspan="12">
+            <div class="p-3">
+              <p-table [value]="menuItem.additions" dataKey="id">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>price</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-addition>
+                  <tr>
+                    <td>
+                      <img
+                        width="100"
+                        [src]="addition.addition.image"
+                        [alt]="addition.addition.name"
+                      />
+                    </td>
+                    <td>{{ addition.addition.name }}</td>
+                    <td>{{ addition.addition.price | currency : "USD" }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">
+                      You are not selected any addition for this item
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No items in the cart.</td>
         </tr>
       </ng-template>
     </p-table>

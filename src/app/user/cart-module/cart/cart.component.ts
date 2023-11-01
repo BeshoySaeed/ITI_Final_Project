@@ -51,28 +51,42 @@ export class CartComponent implements OnInit {
       this.removeFromCart(item);
     }
     this.calculateTotalPrice();
-    this.calculateItemPrice();
   }
 
   increaseCounter(item: any) {
     item.qnt += 1;
     this.calculateTotalPrice();
-    this.calculateItemPrice();
   }
 
-  calculateItemPrice() {
-    // let items = this.cart.items
-    // for (let i = 0; i < items.length; i++) {
-    //   this.totalPrice+= items[i].quantity * items[i].item.price
-    // }
+  calculateItemPrice(item:any) {
+    let totalPrice = 0;
+    if(item.item.discount > 0) {
+      totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100) * parseFloat(item['quantity']);
+    } else {
+      totalPrice += parseFloat(item.item['price']) * parseFloat(item['quantity']);
+    }
+
+    if(item.additions.length > 0) {
+      for (let addition of item.additions){
+        totalPrice += parseFloat(addition.addition.price);
+      }
+    }
+
+    return totalPrice;
   }
 
   calculateTotalPrice() {
     for (let item of this.cart.items) {
-      this.totalPrice += item.item['price'] * item['quantity'];
+      if(item.item['discount'] > 0) {
+        this.totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item['discount'])) / 100) * parseFloat(item['quantity']);
+      } else {
+        this.totalPrice += parseFloat(item.item['price']) * parseFloat(item['quantity']);
+      }
+      // console.log(this.totalPrice)
+
       if(item.additions.length > 0) {
         for (let addition of item.additions){
-          this.totalPrice += parseInt(addition.addition.price);
+          this.totalPrice += parseFloat(addition.addition.price);
         }
       }
     }

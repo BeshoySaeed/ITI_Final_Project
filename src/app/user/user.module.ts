@@ -35,6 +35,9 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { LoginGoogleComponent } from './login-google/login-google.component';
 
 
 @NgModule({
@@ -56,7 +59,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     UserHistoryComponent,
     UserFavComponent,
     NewPasswordComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    LoginGoogleComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,9 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     TableModule,
     SharedModule,
     UserRoutingModule,
-    MessagesModule
+    MessagesModule,
+    HttpClientModule,
+    OAuthModule.forRoot()
   ]
 })
 export class UserModule { }

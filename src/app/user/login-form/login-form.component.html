@@ -39,7 +39,7 @@
         </div>
   
         <div class="check-box">
-          <div class="checkBox">
+          <!-- <div class="checkBox">
             <p-checkbox
               formControlName="city"
               value="New York"
@@ -47,8 +47,11 @@
               formControlName="checkControl"
             ></p-checkbox>
             <label for="ny">Remember me</label>
-          </div>
+          </div> -->
           <a routerLink="/forgetpass">Forget Password</a>        </div>
+
+          
+
         <p-button
           label="Login"
           styleClass="p-button-danger px-4 py-2 mt-4"
@@ -87,6 +90,12 @@
         >
       </a>
       </form>
+      <button
+          label="Login With google"
+          styleClass="p-button-danger px-4 py-2 mt-4"
+          routerLinkActive="active"
+          routerLink="login-google"
+          >Login With google</button>
     </div>
   </div>
   

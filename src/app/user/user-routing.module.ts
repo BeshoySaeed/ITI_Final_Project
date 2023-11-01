@@ -21,6 +21,7 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { AuthGuardService } from '../Guards/Auth/auth-guard.service';
+import { LoginGoogleComponent } from './login-google/login-google.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginFormComponent,
+      },
+      {
+        path: 'login/login-google',
+        component: LoginGoogleComponent,
       },
       {
         path: 'forgetpass',

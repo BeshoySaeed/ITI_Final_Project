@@ -16,7 +16,7 @@ export class LoginFormComponent {
   errors = null;
   successMsg : any;
   formGroup : FormGroup;
-  constructor(private http: HttpClient, private router: Router ,private login: AuthService){
+  constructor(private http: HttpClient, private router: Router ,private login: AuthService, ){
     this.formGroup = new FormGroup({
       email : new FormControl('',[Validators.required,
         // Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]
@@ -28,6 +28,7 @@ export class LoginFormComponent {
 
 
     })
+   
   }
   onSubmit() {
     const apiUrl = 'http://localhost:8000/api/login'; // Replace with your actual API URL
@@ -64,6 +65,7 @@ export class LoginFormComponent {
       }
     );
   }
+
 
 
 }

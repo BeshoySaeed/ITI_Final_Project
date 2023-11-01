@@ -81,5 +81,13 @@ export class GenericService {
         catchError(this.handleError)
       );
   }
+
+  updateCart(route: string, object: any): Observable<any> {
+    return this.http.put(`${environment.host}/${route}`, object, {headers: this.headers})
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
 }
 

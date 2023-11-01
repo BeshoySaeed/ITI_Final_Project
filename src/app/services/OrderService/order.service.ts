@@ -69,4 +69,14 @@ export class OrderService {
       })
     );
   }
+
+  updateCart(object:any): Observable<Order>
+  {
+    return this.httpOrder.updateCart('update-cart' ,object)
+    .pipe(
+      map((item: any) => {
+        return item
+      })
+    )
+  }
 }

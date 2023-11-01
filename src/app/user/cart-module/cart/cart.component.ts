@@ -33,8 +33,6 @@ export class CartComponent implements OnInit {
     });
   }
 
-  ngOnChange() {}
-
   removeFromCart(product: any) {
     const existingItemIndex = this.cart.findIndex(
       (item: any) => item.id === product.id
@@ -42,20 +40,6 @@ export class CartComponent implements OnInit {
 
     this.cart.splice(existingItemIndex, 1);
 
-    this.calculateTotalPrice();
-  }
-
-  decreaseCounter(item: any) {
-    if (item.qnt > 1) {
-      item.qnt -= 1;
-    } else {
-      this.removeFromCart(item);
-    }
-    this.calculateTotalPrice();
-  }
-
-  increaseCounter(item: any) {
-    item.qnt += 1;
     this.calculateTotalPrice();
   }
 
@@ -77,6 +61,7 @@ export class CartComponent implements OnInit {
   }
 
   calculateTotalPrice() {
+    this.totalPrice = 0;
     for (let item of this.cart.items) {
       if(item.item['discount'] > 0) {
         this.totalPrice += ((parseFloat(item.item['price']) * parseFloat(item.item['discount'])) / 100) * parseFloat(item['quantity']);
@@ -97,18 +82,23 @@ export class CartComponent implements OnInit {
   }
 
   editItem(action:string, item:any) {
+    this.loading = true
+
     let data = {
-      item_id: item.id,
+      order_item_id: item.id,
       quantity: 0
     }
     
     if(action == 'edit') {
       if(this.changed) {
         data.quantity = item.quantity
-        console.log(data)
       }
-    } else {
-      console.log(data)
-    }
+    } 
+    
+    this.orderService.updateCart(data).subscribe((data: any) => {
+      if(data.status == 'success'){
+        this.getCart();
+      }
+    });
   }
 }

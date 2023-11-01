@@ -40,7 +40,8 @@ export class UserSubscriptionComponent {
   subscribeObject:any=[];
   currentDate : any ;
   endDate: any;
-  
+  checkDate: any;
+  todayDate:any
 
   constructor(private subService: SubscriptionsService) {}
   
@@ -48,6 +49,7 @@ export class UserSubscriptionComponent {
     this.getSub();
     this.calculateDate();
     this.sumPrice();
+    this.checkEndDate();
   }
 
 
@@ -69,7 +71,8 @@ export class UserSubscriptionComponent {
     this.endDate.setDate(this.endDate.getDate() + 30);  // replace 30 with duration in months
     localStorage.setItem("endDate", this.endDate.getTime());
     
-
+  // this.currentDate=localStorage.getItem('startDate');
+  // this.endDate=localStorage.getItem('endDate');
  
   }
     sumPrice(){    
@@ -77,5 +80,20 @@ export class UserSubscriptionComponent {
          this.total+= this.orders[i].price;   
     }  
   }  
+
+  checkEndDate()
+  {
+    if(localStorage.getItem('subscribe_id')!=null){
+      
+      this.todayDate =new Date();
+      this.checkDate = localStorage.getItem('endDate');
+      if(this.todayDate==this.checkDate){
+
+      localStorage.removeItem('subscribe_id');
+
+      }
+    }
+    
+  }
 
 }

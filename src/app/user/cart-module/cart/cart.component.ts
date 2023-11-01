@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { OrderService } from 'src/app/services/OrderService/order.service';
 
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -111,5 +113,9 @@ export class CartComponent implements OnInit {
       summary: 'Success',
       detail: 'Cart is updated',
     });
+  }
+
+  completeOrder() {
+    this.router.navigate(['/payment']);
   }
 }

@@ -85,7 +85,9 @@
             {{ menuItem.item.price | currency : "USD" : "symbol" }}
           </td>
           <td>
-            <span *ngIf="menuItem.item.discount > 0; else noDiscount">{{ menuItem.item.discount }}%</span>
+            <span *ngIf="menuItem.item.discount > 0; else noDiscount"
+              >{{ menuItem.item.discount }}%</span
+            >
             <ng-template #noDiscount>No discount value</ng-template>
           </td>
           <td>
@@ -164,6 +166,14 @@
       <span class="p-column-title"
         ><h5>{{ totalPrice | currency : "USD" : "symbol" }}</h5>
       </span>
+      <button
+        type="submit"
+        class="primary-button w-50 mx-auto my-3"
+        (click)="completeOrder()"
+        *ngIf="cart.items.length > 0"
+      >
+        Order now
+      </button>
     </div>
   </div>
 </div>

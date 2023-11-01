@@ -23,7 +23,7 @@ export class SubscriptionPipe implements PipeTransform {
   }
 
 
-  percentage: number = 20;
+  percentage: number = 20;   // replace with discount value in subscription table
 
   transform(value: any): any {
     if (this.subId) {

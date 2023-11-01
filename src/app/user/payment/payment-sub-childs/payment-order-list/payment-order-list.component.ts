@@ -1,37 +1,45 @@
 import { Component } from '@angular/core';
+import { OrderService } from 'src/app/services/OrderService/order.service';
 
 @Component({
   selector: 'app-payment-order-list',
   templateUrl: './payment-order-list.component.html',
-  styleUrls: ['./payment-order-list.component.scss']
+  styleUrls: ['./payment-order-list.component.scss'],
 })
 export class PaymentOrderListComponent {
-  totalPrice:number = 0;
+  totalPrice: number = 0;
+  items!: any;
 
-  orderList= [
-    {
-      id: 0,
-      name: "item 1",
-      price: 10,
-      quantity: 2
-    },
-    
-    {
-      id: 1,
-      name: "item 2",
-      price: 5,
-      quantity: 1
-    },
-
-    {
-      id: 2,
-      name: "item 3",
-      price: 10,
-      quantity: 2
-    },
-  ]
+  constructor(private orderService: OrderService) {}
 
   ngOnInit() {
-    this.totalPrice = this.orderList.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    this.getItems();
+  }
+
+  getItems() {
+    this.orderService.cart().subscribe((cart: any) => {
+      this.items = cart.data.items;
+      this.calculate(this.items);
+    });
+  }
+
+  calculate(items: any) {
+    for (let item of items) {
+      if (item.additions.length > 0) {
+        for (let addition of item.additions) {
+          this.totalPrice += parseFloat(addition.addition.price);
+        }
+      }
+
+      if (item.item.discount > 0) {
+        this.totalPrice +=
+          (parseFloat(item.item['price']) * parseFloat(item.item.discount)) /
+          100;
+        this.totalPrice *= parseFloat(item['quantity']);
+      } else {
+        this.totalPrice += parseFloat(item.item['price']);
+        this.totalPrice *= parseFloat(item['quantity']);
+      }
+    }
   }
 }

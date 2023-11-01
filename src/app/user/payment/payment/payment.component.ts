@@ -19,7 +19,7 @@ export class PaymentComponent {
     'building_name',
     'floor_number',
     'flat_number',
-    'gps_location'
+    'gps_location',
   ];
 
   constructor(
@@ -35,7 +35,7 @@ export class PaymentComponent {
     }
 
     this.initializeForm();
-    
+
     this.getCart()
       .then((response) => {
         this.cart = response.data;
@@ -50,10 +50,12 @@ export class PaymentComponent {
   }
 
   setFormValues() {
-    console.log(this.cart.user)
-      this.paymentForm.controls['phone1'].setValue(this.cart.user.phones[0].phone);
-      this.paymentForm.controls['phone2'].setValue(this.cart.user.phones[1].phone);
-      console.log('phone1', this.paymentForm.controls['phone1'].value)
+    this.paymentForm.controls['phone1'].setValue(
+      this.cart.user.phones[0].phone
+    );
+    this.paymentForm.controls['phone2'].setValue(
+      this.cart.user.phones[1].phone
+    );
 
     for (let control of this.formControllers) {
       this.paymentForm.controls[control].setValue(this.cart.user[control]);

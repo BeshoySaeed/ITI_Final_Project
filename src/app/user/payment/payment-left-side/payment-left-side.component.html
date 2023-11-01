@@ -165,28 +165,28 @@
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <input
-          id="address"
+          id="street"
           type="text"
           [required]="true"
           pInputText
-          formControlName="address"
+          formControlName="street"
           class="input p-2 border-round outline-none w-full"
         />
-        <label for="address" class="block mb-2">Address *</label>
+        <label for="street" class="block mb-2">Street *</label>
       </div>
 
       <div
         class="error-message"
         *ngIf="
-          paymentForm.controls['address'].touched &&
-          paymentForm.controls['address'].invalid
+          paymentForm.controls['street'].touched &&
+          paymentForm.controls['street'].invalid
         "
       >
         <small
           class="block"
-          *ngIf="paymentForm.controls['address'].errors?.['required']"
+          *ngIf="paymentForm.controls['street'].errors?.['required']"
         >
-          Address is required
+          Street is required
         </small>
       </div>
     </div>
@@ -266,14 +266,14 @@
     <div class="col-12 md:col-4 mb-4 pr-0 md:pr-3">
       <div class="flex flex-column-reverse">
         <input
-          id="buildingNumber"
+          id="building_name"
           type="text"
           pInputText
           [required]="true"
-          formControlName="buildingNumber"
+          formControlName="building_name"
           class="input p-2 border-round outline-none w-full"
         />
-        <label for="buildingNumber" class="block mb-2"
+        <label for="building_name" class="block mb-2"
           >Building Name or Number *</label
         >
       </div>
@@ -281,13 +281,13 @@
       <div
         class="error-message"
         *ngIf="
-          paymentForm.controls['buildingNumber'].touched &&
-          paymentForm.controls['buildingNumber'].invalid
+          paymentForm.controls['building_name'].touched &&
+          paymentForm.controls['building_name'].invalid
         "
       >
         <small
           class="block"
-          *ngIf="paymentForm.controls['buildingNumber'].errors?.['required']"
+          *ngIf="paymentForm.controls['building_name'].errors?.['required']"
         >
           Building name or number is required
         </small>
@@ -298,26 +298,26 @@
       <div class="flex flex-column-reverse">
         <p-inputNumber
           [useGrouping]="false"
-          formControlName="floorNumber"
+          formControlName="floor_number"
           [format]="false"
           styleClass="w-full"
           class="mask-button"
           [required]="true"
         >
         </p-inputNumber>
-        <label for="floorNumber" class="block mb-2">Floor Number *</label>
+        <label for="floor_number" class="block mb-2">Floor Number *</label>
       </div>
 
       <div
         class="error-message"
         *ngIf="
-          paymentForm.controls['floorNumber'].touched &&
-          paymentForm.controls['floorNumber'].invalid
+          paymentForm.controls['floor_number'].touched &&
+          paymentForm.controls['floor_number'].invalid
         "
       >
         <small
           class="block"
-          *ngIf="paymentForm.controls['floorNumber'].errors?.['required']"
+          *ngIf="paymentForm.controls['floor_number'].errors?.['required']"
         >
           Floor number is required
         </small>
@@ -328,27 +328,27 @@
       <div class="flex flex-column-reverse">
         <p-inputNumber
           [useGrouping]="false"
-          formControlName="flatNumber"
+          formControlName="flat_number"
           [format]="false"
           styleClass="w-full"
           class="mask-button"
         >
         </p-inputNumber>
 
-        <label for="flatNumber" class="block mb-2">Flat Number</label>
+        <label for="flat_number" class="block mb-2">Flat Number</label>
       </div>
     </div>
 
     <div class="col-12 mb-4">
       <div class="flex flex-column-reverse">
         <input
-          id="locationOnGps"
+          id="gps_location"
           type="text"
           pInputText
-          formControlName="locationOnGps"
+          formControlName="gps_location"
           class="input p-2 border-round outline-none w-full"
         />
-        <label for="locationOnGps" class="block mb-2"
+        <label for="gps_location" class="block mb-2"
           >location On GPS (Optional)</label
         >
       </div>

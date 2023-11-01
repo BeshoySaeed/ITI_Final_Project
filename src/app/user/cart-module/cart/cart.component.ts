@@ -10,11 +10,10 @@ import { OrderService } from 'src/app/services/OrderService/order.service';
   providers: [MessageService],
 })
 export class CartComponent implements OnInit {
-  counter: number = 0;
   totalPrice: number = 0;
-  itemPrice: number = 0;
   loading: boolean = true;
   changed: boolean = false;
+  showDataError: boolean = false;
   cart: any = [];
 
   constructor(
@@ -32,7 +31,7 @@ export class CartComponent implements OnInit {
       this.cart = cart.data;
       this.calculateTotalPrice();
       this.loading = false;
-      
+
       if (this.cart.items.length == 0) {
         localStorage.setItem('cart', 'false');
       }
@@ -121,6 +120,30 @@ export class CartComponent implements OnInit {
   }
 
   completeOrder() {
-    this.router.navigate(['/payment']);
+    let user = this.cart.user;
+    if (
+      user.street == null ||
+      user.street.length == 0 ||
+
+      user.area == null ||
+      user.area.length == 0 ||
+
+      user.city == null ||
+      user.city.length == 0 ||
+
+      user.building_name == null ||
+      user.building_name.length == 0 ||
+
+      user.floor_number == null ||
+      user.floor_number.length == 0
+    ) {
+      this.showDataError = true;
+    } else {
+      this.router.navigate(['/payment']);
+    }
+  }
+
+  toProfile() {
+    this.router.navigate(['/profile']);
   }
 }

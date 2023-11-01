@@ -1,4 +1,8 @@
 <div class="payment-container px-5 py-6">
+  <div class="loader" *ngIf="loading">
+    <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+  </div>
+
   <h3 class="page-title py-3">Complete your order</h3>
 
   <div class="content-container">

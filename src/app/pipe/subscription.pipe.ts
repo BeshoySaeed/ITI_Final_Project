@@ -6,9 +6,9 @@ import { SubscriptionsService } from '../services/Subscriptions/subscriptions.se
 })
 export class SubscriptionPipe implements PipeTransform {
 
-  subId: any = localStorage.getItem('subscribe_id');
+  subId=1;
   subscribeObject: any;
-  precentage: any = '';
+
   
   constructor(private httpSub: SubscriptionsService ){}
 
@@ -30,7 +30,7 @@ export class SubscriptionPipe implements PipeTransform {
       return Number(value) * this.percentage/ 100;
     } else {
       // Handle the case when the condition is not met
-      return value + 66;
+      return value ;
     }
   }
 

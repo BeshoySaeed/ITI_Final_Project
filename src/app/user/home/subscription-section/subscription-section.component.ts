@@ -9,12 +9,17 @@ import { SubscriptionPlan } from 'src/app/interface/subscription-plan';
   styleUrls: ['./subscription-section.component.scss'],
 })
 export class SubscriptionSectionComponent {
+ 
+
   constructor(
     private subscriptionsService: SubscriptionsService,
     private sanitizer: DomSanitizer
   ) {}
 
   subscriptions: SubscriptionPlan[] = [];
+  currentDate : any ;
+  endDate: any;
+
 
   ngOnInit() {
     this.getAll();
@@ -29,4 +34,21 @@ export class SubscriptionSectionComponent {
   setHTML(value: string) {
     return this.sanitizer.bypassSecurityTrustHtml(value);
   }
+
+  
+   SubscribeButton() {
+
+   
+    this.currentDate = new Date();
+
+    localStorage.setItem("startDate", this.currentDate.getTime());  
+    this.endDate = new Date(Number(localStorage.getItem("startDate")));
+    this.endDate.setDate(this.endDate.getDate() + 30);  // replace 30 with duration in months
+    localStorage.setItem("endDate", this.endDate.getTime());
+
+ 
+  }
+  
+
+
 }

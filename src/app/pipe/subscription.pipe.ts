@@ -9,7 +9,7 @@ export class SubscriptionPipe implements PipeTransform {
   subId=1; //get subscribe id from local storage  
 
  // subId= localStorage.getItem('subscribe_id');
- 
+
  subscribeObject:any=[];
  percentage: any;
  discount:any;
@@ -20,6 +20,8 @@ export class SubscriptionPipe implements PipeTransform {
   {
     this.httpSub.getById(this.subId).subscribe((subData: any) => {
       this.subscribeObject = subData.data;
+      this.percentage=this.subscribeObject.discount_value;
+
     })
 
   }
@@ -29,7 +31,7 @@ export class SubscriptionPipe implements PipeTransform {
   transform(value: any): any {
     if (this.subId) {
        // this.percentage = this.subscribeObject.discount_value;   
-      this.percentage=  50;   
+      this.percentage=  20;   
       this.discount= value * (this.percentage/ 100);
       return value - this.discount; 
     } else {

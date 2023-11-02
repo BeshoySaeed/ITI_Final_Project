@@ -23,17 +23,13 @@ export class UserDataComponent {
     lname: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     Phone: ['', [Validators.required, Validators.pattern( /^(010|011|012|015)\d{8}$/)]],
-    password: ['', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@*%$#])[a-zA-Z\\d@*%$#]+$')
-    ]],
-    confirmpassword: ['', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@*%$#])[a-zA-Z\\d@*%$#]+$'),
-    ]],}
-   ,{validator: checkpass('password', 'confirmpassword')}
+    city : [''],
+    area: [''],
+    street: [''],
+    building: [''],
+    floor: [''],
+    flat : ['']
+    }
   )
 
   }
@@ -43,23 +39,18 @@ export class UserDataComponent {
     this.httpUser.getUserByID(this.userId).subscribe((data) => 
     {
       this.user = data.data;
-      console.log(this.user)
+      console.log(this.user.city)
+
     } 
     )
   }
 
   submitted()
   {
-    this.httpUser.updateUser(this.userId,
-      {
-        first_name : this.user.first_name,
-        last_name : this.user.last_name,
-        email : this.user.email
-      }
-      ).subscribe(
+    console.log(this.userId)
+    this.httpUser.updateUser(this.userId,this.user).subscribe(
         ()=> {
           window.location.reload();
-          console.log(this.user.last_name)
         }
 
       );

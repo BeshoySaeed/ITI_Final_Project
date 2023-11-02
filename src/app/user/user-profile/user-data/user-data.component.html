@@ -129,60 +129,75 @@
   </div>
 </div>
 <div class="multi">
-  <div class="mb-3 w-50">
-    <label for="password_input" class="form-label">Password</label>
+    <div class="mb-3 w-50">
+    <label for="city" class="form-label">City</label>
     <input
-      type="password"
+      type="text"
       pInputText
-      id="password_input"
-      formControlName="password"
-
+      id="city"
+      formControlName="city"
+      [(ngModel)]="user.city"
     />
-    <div
-      id="password_input_help"
-      *ngIf="
-        registerform.controls['password'].touched &&
-        registerform.controls['password'].invalid
-      "
-      class="form-text"
-    >
-      <small *ngIf="registerform.controls['password'].errors?.['required']"
-        >This field is required</small>
-        <small *ngIf="registerform.controls['password'].errors?.['minlength']"
-        >This field is minlength 8</small>
-        <small *ngIf="registerform.controls['password'].errors?.['pattern']"
-        >This field is must contain</small>
+
     </div>
+    <div class="mb-3 w-50">
+      <label for="area" class="form-label">Area</label>
+      <input
+        type="text"
+        pInputText
+        id="area"
+        formControlName="area"
+        [(ngModel)]="user.area"
+      />
+    </div>
+</div>
+<div class="multi">
+  <div class="mb-3 w-50">
+  <label for="city" class="form-label">Street</label>
+  <input
+    type="text"
+    pInputText
+    id="city"
+    formControlName="street"
+    [(ngModel)]="user.street"
+  />
+
   </div>
   <div class="mb-3 w-50">
-      <label for="confirmpassword_input" class="form-label">confirmPassword</label>
-      <input
-        type="password"
-        pInputText
-        id="confirmpassword_input"
-        formControlName="confirmpassword"
-      />
-      <div
-        id="confirmpassword_input_help"
-        *ngIf="
-          registerform.controls['confirmpassword'].touched &&
-          registerform.controls['confirmpassword'].invalid
-        "
-        class="form-text"
+    <label for="area" class="form-label">Building number</label>
+    <input
+      type="text"
+      pInputText
+      id="area"
+      formControlName="building"
+      [(ngModel)]="user.building_name"
+    />
+  </div>
+</div>
 
-      >
-        <small *ngIf="registerform.controls['confirmpassword'].errors?.['required']"
-          >This field is required</small>
-          <small *ngIf="registerform.controls['confirmpassword'].errors?.['minlength']"
-          >This field is minlength 8</small>
-          <small *ngIf="registerform.controls['confirmpassword'].errors?.['pattern']"
-          >This field is must contain</small>
-          <small *ngIf="registerform.controls['confirmpassword'].errors?.['checkpass']">
-              Password and Confirm Password do not match.
-            </small>
-      </div>
-    </div>
-    </div>
+<div class="multi">
+  <div class="mb-3 w-50">
+  <label for="city" class="form-label">floor</label>
+  <input
+    type="text"
+    pInputText
+    id="city"
+    formControlName="floor"
+    [(ngModel)]="user.floor_number"
+  />
+
+  </div>
+  <div class="mb-3 w-50">
+    <label for="area" class="form-label">flat</label>
+    <input
+      type="text"
+      pInputText
+      id="area"
+      formControlName="flat"
+      [(ngModel)]="user.flat_number"
+    />
+  </div>
+</div>
 
 
     <p-button [disabled]="this.registerform.valid"  class="btn button felx justify-content-center align-items-center"  (onClick)="submitted()"> <span>Update</span></p-button>

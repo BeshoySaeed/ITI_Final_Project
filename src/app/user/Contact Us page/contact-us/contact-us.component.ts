@@ -6,6 +6,9 @@ import { CustomerServiceEmailsService } from 'src/app/services/Customer service 
 import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
 
+declare var google: any; 
+
+
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',

@@ -35,6 +35,7 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { TooltipModule } from "primeng/tooltip"; 
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     TableModule,
     SharedModule,
     UserRoutingModule,
-    MessagesModule
+    MessagesModule,
+    TooltipModule
   ]
 })
 export class UserModule { }

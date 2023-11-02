@@ -1,10 +1,13 @@
-<div class="register-container">
+<div class="container">
+  <div class="container-form border-round-lg">
   <h3 class="page-title mt-4">Register</h3>
   <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="form">
     <div class="row">
       <div class="multi">
         <div class="w-50 mb-3">
           <label for="name_input" class="form-label">First Name</label>
+          <span class="">
+            <i class="pi pi-user"></i>
           <input
             type="text"
             id="name_input"
@@ -12,6 +15,7 @@
             placeholder="First name"
             formControlName="first_name"
           />
+          </span>
           <div
             id="name_input_help"
             *ngIf="
@@ -28,6 +32,8 @@
         </div>
         <div class="w-50 mb-3">
           <label for="name_input" class="form-label">Last Name</label>
+          <span class="">
+            <i class="pi pi-user"></i>
           <input
             type="text"
             id="name_input"
@@ -35,6 +41,8 @@
             placeholder="Last name"
             formControlName="last_name"
           />
+        </span>
+
           <div
             id="name_input_help"
             *ngIf="
@@ -53,6 +61,10 @@
       <div class="single">
         <div class="mb-3 w-100">
           <label for="email_input" class="form-label">Email</label>
+          <span class="">
+
+          <i class="pi pi-envelope"></i>
+
           <input
             type="email"
             pInputText
@@ -60,6 +72,9 @@
             id="email_input"
             formControlName="email"
           />
+          
+        </span>
+
           <div
             id="email_input"
             *ngIf="
@@ -74,22 +89,26 @@
             <small *ngIf="registerform.controls['email'].errors?.['pattern']"
               >the email must be like (example@example.com)</small
             >
+
           </div>
+
         </div>
+
       </div>
       <div class="multi">
         <div class="mb-3 w-50">
           <label for="Phone_input" class="form-label">Phone 1</label>
-          <p-inputMask
+          <span>
+            <i class="pi pi-phone"></i>
+  
+          <input
             id="phone"
-            [autoClear]="false"
-            [required]="true"
             formControlName="phone1"
-            mask="+20-1999999999"
             placeholder="+20-1999999999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
+            type="phone"
+            pInputText
+          >
+          </span>
           <div
             id="Phone_input_help"
             *ngIf="
@@ -109,16 +128,17 @@
         </div>
         <div class="mb-3 w-50">
           <label for="Phone_input" class="form-label">Phone 2</label>
-          <p-inputMask
+          <span>
+            <i class="pi pi-phone"></i>
+  
+          <input
             id="phone"
-            [autoClear]="false"
-            [required]="true"
             formControlName="phone2"
-            mask="+20-1999999999"
             placeholder="+20-1999999999"
-            styleClass="input p-2 border-round outline-none w-full"
-            class="mask-button"
-          ></p-inputMask>
+            type="phone"
+            pInputText
+          >
+          </span>
           <div
             id="Phone_input_help"
             *ngIf="
@@ -140,6 +160,9 @@
       <div class="multi">
         <div class="mb-3 w-50">
           <label for="password_input" class="form-label">Password</label>
+        <span>
+                  <i class="pi pi-lock"></i>
+
           <input
             type="password"
             pInputText
@@ -147,6 +170,7 @@
             placeholder="Password"
             formControlName="password"
           />
+        </span>
           <div
             id="password_input_help"
             *ngIf="
@@ -172,6 +196,9 @@
           <label for="confirmpassword_input" class="form-label"
             >confirmPassword</label
           >
+          <span>
+            <i class="pi pi-lock"></i>
+  
           <input
             type="password"
             pInputText
@@ -179,6 +206,7 @@
             placeholder="Confirm password"
             formControlName="password_confirmation"
           />
+         </span>
           <div
             id="confirmpassword_input_help"
             *ngIf="
@@ -212,13 +240,11 @@
         Rejecter
       </button> -->
       <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
-      <p-button
-        (click)="onSubmit()"
-        class="btn button"
-        [disabled]="registerform.invalid"
-      >
-        <span>Register</span></p-button
-      >
+      <button (click)="onSubmit()" class="primary-button w-5   my-5" [disabled]="registerform.invalid" > Register</button>
+
+      <!-- <button type="submit" label="Apply" class="primary-button w-5 mx-auto my-3" [disabled]="loginForm.invalid ? true : false" >Login</button> -->
+
     </div>
   </form>
+</div>
 </div>

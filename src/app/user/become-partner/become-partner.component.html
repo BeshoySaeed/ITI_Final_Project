@@ -1,5 +1,5 @@
-<div class="cent">
-  <div class="all">
+<div class="cent container">
+  <div class="all container-form">
     <div class="header">
       <h1>Become a Partner</h1>
     </div>
@@ -8,7 +8,7 @@
         <div class="column">
           <label for="name_input" class="form-label">First Name</label>
           <div class="p-inputgroup">
-            <span class="p-inputgroup-addon">
+            <span class="">
               <i class="pi pi-user"></i>
             </span>
             <input
@@ -16,11 +16,17 @@
               
               placeholder="Enter your first name"
               type="text"
-              class="form-control"
+              pInputText
               id="name_input"
               aria-describedby="name_input_help"
               formControlName="first_name"
             />
+            <button
+            tooltipPosition="top"
+            class="pi pi-question-circle d-flex  border-none "
+            style=" margin-left: -16px; background-color: white;width:0px;"
+            pTooltip="Click here to add the message"> 
+              </button> 
           </div>
        
         </div>
@@ -28,7 +34,7 @@
         <div class="column lcolumn">
           <label for="l_name_input" class="form-label">Last Name</label>
           <div class="p-inputgroup">
-            <span class="p-inputgroup-addon">
+            <span class="">
               <i class="pi pi-user"></i>
             </span>
             <input
@@ -36,12 +42,18 @@
               [(ngModel)]="partner.last_name"
               placeholder="Enter your Last name"
               type="text"
-              class="form-control"
+              pInputText
               id="l_name_input"
               aria-describedby="l_name_input_help"
               formControlName="last_name"
               
             />
+            <button
+            tooltipPosition="top"
+            class="pi pi-question-circle d-flex  border-none "
+            style=" margin-left: -16px; background-color: white;width:0px;"
+            pTooltip="Click here to add the message"> 
+              </button> 
           </div>
           
         </div>
@@ -49,7 +61,7 @@
       <br />
       <label for="email_input" class="form-label">Email</label>
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon">
+        <span class="">
           <i class="pi pi-envelope"></i>
         </span>
         <input
@@ -57,17 +69,23 @@
           [(ngModel)]="partner.email"
           placeholder="Enter your email"
           type="email"
-          class="form-control"
-          id="email_input"
+          pInputText
+                    id="email_input"
           formControlName="email"
         />
-  
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex  border-none "
+        style=" margin-left: -16px; background-color: white;width:0px;"
+        pTooltip="Click here to add the message"> 
+          </button> 
       </div>
       <br />
       <label for="mobile_input" class="form-label">Mobile</label>
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon">
+        <span class="">
           <i class="pi pi-phone"></i>
+          
         </span>
 
         <input
@@ -76,16 +94,21 @@
 
           placeholder="Enter your phone number"
           type="number"
-          class="form-control"
-          id="mobile_input"
+          pInputText          id="mobile_input"
           formControlName="mobile"
         />
-        
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex  border-none "
+        style=" margin-left: -16px; background-color: white;width:0px;"
+        pTooltip="Click here to add the message"> 
+          </button> 
       </div>
+     
       <br />
       <label for="subject_input" class="form-label">Subject</label>
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon icon">
+        <span class="">
           <i class="pi pi-book"></i>
         </span>
         <input
@@ -94,15 +117,21 @@
 
           placeholder="Enter your phone number"
           type="text"
-          class="form-control"
-          id="subject_input"
+          pInputText
+                    id="subject_input"
           formControlName="subject"
         />
-        
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex  border-none "
+        style=" margin-left: -16px; background-color: white;width:0px;"
+        pTooltip="Click here to add the message"> 
+          </button> 
       </div>
       <br />
       <label for="Message_input" class="form-label">Message</label>
       <div class="p-inputgroup">
+        <span class=""></span>
         <textarea
           area
           [(ngModel)]="partner.message"
@@ -110,20 +139,17 @@
           name="Message_input"
           id="Message_input"
           formControlName="message"
-          class="form-control"
+          pInputText
           cols="30"
           rows="10"
-        ></textarea>      
+        ></textarea>
+             
       </div>
       <br />
       <br />
 
-      <p-button
-        label="Apply"
-        styleClass="p-button-warning"
-        type="submit"
-        [disabled]="partnerForm.invalid"
-      ></p-button>
+      <!-- <p-button label="Apply" styleClass="primary-button w-5 mx-auto my-3" type="submit" [disabled]="partnerForm.invalid" ></p-button> -->
+      <button type="submit" label="Apply" class="primary-button w-5 mx-auto my-3" [disabled]="partnerForm.invalid" >Send</button>
     </form>
   </div>
 </div>

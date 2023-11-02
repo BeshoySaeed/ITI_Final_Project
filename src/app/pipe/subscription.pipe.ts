@@ -34,7 +34,7 @@ export class SubscriptionPipe implements PipeTransform {
     
     }
      else {
-      // Handle the case when the condition is not met
+
       return value ;
     }
   }

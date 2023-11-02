@@ -3,25 +3,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from 'src/app/interface/items';
 import { ItemService } from 'src/app/services/ItemService/item.service';
+import { CategoriesService } from 'src/app/services/category-service/categories.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-menu-items',
   templateUrl: './edit-menu-items.component.html',
   styleUrls: ['./edit-menu-items.component.scss'],
+  providers: [MessageService],
 })
 export class EditMenuItemsComponent {
   form!: FormGroup;
   itemId!: number;
-  categories = [
-    {
-      id: 1,
-      name: 'Category 1',
-    },
-    {
-      id: 2,
-      name: 'Category 2',
-    },
-  ];
+  categories = [];
+  loading: boolean = true;
 
   additions = [
     { id: 1, name: 'Addition 1' },
@@ -31,47 +26,69 @@ export class EditMenuItemsComponent {
     { id: 5, name: 'Addition 5' },
   ];
 
-  item : Item = {
-    id : 0,
-    name : "",
-    img : '',
-    price : '',
+  item: any = {
+    id: 0,
+    name: '',
+    img: '',
+    price: '',
     description: '',
     discount: '',
     active: false,
-    category_id: '1'
-  }
+    category_id: '1',
+  };
 
-  constructor(private fb: FormBuilder, private httpItem: ItemService, private activatedRoute: ActivatedRoute, private route : Router)
-  {
+  formControllers = [
+    'name',
+    'price',
+    'discount',
+    'category_id',
+    'description',
+    'additions',
+    'active'
+  ];
+
+  constructor(
+    private fb: FormBuilder,
+    private httpItem: ItemService,
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+    private CategoriesService: CategoriesService,
+   private messageService: MessageService
+  ) {
     this.form = this.fb.group({
       name: [this.item.name],
       price: [this.item.price],
       discount: [this.item.discount],
-      category: [this.item.description],
+      category_id: [this.item.category_id],
       description: [this.item.description],
       additions: [this.item.description],
       active: [this.item.active],
       image: [null],
     });
-
   }
   ngOnInit() {
-
-
+    this.getAllCategory();
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.itemId = Number(paramMap.get('id'));
-      // console.log(this.itemId)
       this.httpItem.getItemById(this.itemId).subscribe((object) => {
         this.item = object;
-        // console.log(this.item)
-      })
+        this.setFormValues()
+        this.loading = false
+      });
     });
   }
 
+  setFormValues() {
+    for (let control of this.formControllers) {
+      this.form.controls[control].setValue(this.item[control]);
+    }
+  }
+
   onSubmit() {
-    this.httpItem.editItem(this.itemId,this.item).subscribe((x) => console.log(x))
-    this.route.navigate(['/admin/menu-items/'])
+    this.httpItem
+      .editItem(this.itemId, this.form.value)
+      .subscribe((x) => console.log(x));
+    this.route.navigate(['/admin/menu-items/']);
   }
 
   onSelect(event: any) {
@@ -81,6 +98,14 @@ export class EditMenuItemsComponent {
     this.form.patchValue({
       image: file,
     });
+  }
+
+  getAllCategory() {
+    this.CategoriesService
+      .getAllCategory()
+      .subscribe((category: any) => {
+        this.categories = category.data;
+      });
   }
 
   onRemove() {

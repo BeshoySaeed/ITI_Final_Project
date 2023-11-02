@@ -13,9 +13,8 @@ export class MenuItemsComponent {
   menuItems : Item[] = [];
   categories: any;
   itemCategory: any;
-  // items : Item[] = []
 
-  loading: boolean = false;
+  loading: boolean = true;
 
   constructor(private httpItem: ItemService, private httpCat: CategoriesService){}
 
@@ -23,7 +22,7 @@ export class MenuItemsComponent {
     this.httpItem.getItems().subscribe((data) =>
     {
       this.menuItems = data;
-      console.log(this.menuItems)
+      this.loading = false;
     } )
     this.httpCat.getAllCategory().subscribe((data) => {
       this.categories = data.data;
@@ -44,7 +43,7 @@ export class MenuItemsComponent {
   }
 
   status(active: string) {
-    let status = active == 'active'? 'success' : 'danger';
+    let status = active == '1'? 'success' : 'danger';
     return status;
   }
 

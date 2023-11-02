@@ -30,11 +30,11 @@
             <div [innerHTML]="setHTML(plan.benefit)"></div>
           </div>
 
-          <div class="text-center">
+          <div class="text-center" *ngIf="check == null">
             <a href="" class="w-100">
               <p-button
                 label="Get plan"
-                onclick="SubscribeButton()"
+                (click)="SubscribeButton(index + 1)"
                 icon="pi pi-arrow-up-right"
                 styleClass="p-button-secondary w-100 plan-button"
               ></p-button>

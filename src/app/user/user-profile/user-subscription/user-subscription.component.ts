@@ -36,65 +36,89 @@ export class UserSubscriptionComponent {
    total =0 ;    
 
 
-  subId=1;    //get subscribe id from local storage 
+  subId:any;    //get subscribe id from local storage 
  // subId= localStorage.getItem('subscribe_id');
   subscribeObject:any=[];
   currentDate : any ;
   endDate: any;
   checkDate: any;
   todayDate:any;
+  duration: any;
+  check:any = null;
+
 
   constructor(private subService: SubscriptionsService) {}
   
   ngOnInit(){
     this.getSub();
-    this.calculateDate();
+    this.getDate();
     this.sumPrice();
     this.checkEndDate();
+    this.checkSub();
   }
 
 
   getSub(){
+    if(localStorage.getItem('subscribe_id')){
+     this.subId= localStorage.getItem('subscribe_id');
     this.subService.getById(this.subId).subscribe((subData: any) => {
       this.subscribeObject = subData.data;
     //  console.log(this.subscribeObject);
     })
+  }
+  else {
+    this.subscribeObject.name="None";
+    this.subscribeObject.subscribe_value=0;
+    this.subscribeObject.benefit="None";
+    this.subscribeObject.discount_value=0;
+    this.currentDate="None";
+    this.endDate="None";
+    this.total=0;
+    
 
   }
+  }
 
-  calculateDate() {
-
-   
-    this.currentDate = new Date();
-
-    localStorage.setItem("startDate", this.currentDate.getTime());  
-    this.endDate = new Date(Number(localStorage.getItem("startDate")));
-    this.endDate.setDate(this.endDate.getDate() + 30);  // replace 30 with duration in months
-    localStorage.setItem("endDate", this.endDate.getTime());
+  getDate() {
     
-  // this.currentDate=localStorage.getItem('startDate');
-  // this.endDate=localStorage.getItem('endDate');
+   this.currentDate=localStorage.getItem('startDate');
+   this.endDate=localStorage.getItem('endDate');
  
   }
-    sumPrice(){    
+
+
+
+  sumPrice(){    
+    if(localStorage.getItem('subscribe_id')){
     for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
          this.total+= this.orders[i].price;   
     }  
+  } 
+  else{
+    this.total=0;
+  }
   }  
 
   checkEndDate()
   {
-    if(localStorage.getItem('subscribe_id')!=null){
-      
+    if(localStorage.getItem('subscribe_id')){
+      console.log('check date')
       this.todayDate =new Date();
       this.checkDate = localStorage.getItem('endDate');
       if(this.todayDate>=this.checkDate){
 
       localStorage.removeItem('subscribe_id');
+      localStorage.removeItem('startDate');
+      localStorage.removeItem('endDate');
 
       }
     }
     
   }
 
+  checkSub(){
+    if(localStorage.getItem('subscribe_id')){
+      this.check=localStorage.getItem('subscribe_id');
+    }
+  }
 }

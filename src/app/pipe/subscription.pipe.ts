@@ -6,7 +6,7 @@ import { SubscriptionsService } from '../services/Subscriptions/subscriptions.se
 })
 export class SubscriptionPipe implements PipeTransform {
 
-  subId=1; //get subscribe id from local storage  
+  subId:any=null; //get subscribe id from local storage  
 
  // subId= localStorage.getItem('subscribe_id');
 
@@ -15,17 +15,11 @@ export class SubscriptionPipe implements PipeTransform {
  discount:any;
 
   constructor(private httpSub: SubscriptionsService ){}
-
-  /*
-  ngOnInit()
-  {
-    this.getSubByID();
-
-  }
-*/
     
+  
   transform(value: any): any {
-    if (this.subId) {
+    this.subId= localStorage.getItem('subscribe_id');
+    if (this.subId!=null) {
       this.getSubByID();
        this.percentage = sessionStorage.getItem('discount_value');   
 

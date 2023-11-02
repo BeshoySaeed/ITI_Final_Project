@@ -11,9 +11,10 @@ export class CategoryComponent {
   ownedProducts: any[] = [];
   ownedProductsChunk: any[] = [];
   constructor(private dataServices:CategoriesService) { }
-
     categories:any;
     displayedCategories:any;
+
+
   ngOnInit(){
     this.getBranchData();
   

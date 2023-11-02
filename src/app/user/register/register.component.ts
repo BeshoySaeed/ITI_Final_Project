@@ -68,6 +68,7 @@ export class RegisterComponent {
           });
           localStorage.setItem('token', response.token);
           localStorage.setItem('user_id', response.user_id);
+          // localStorage.setItem('subscribe_id',response.subscribe_id);
           this.AuthService.isLoggedIn$.next(true);
           this.router.navigate(['/home']); // Redirect to the dashboard page
           this.resetForm();

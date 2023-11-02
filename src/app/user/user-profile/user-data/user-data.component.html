@@ -1,7 +1,7 @@
 <div class="register-container px-4">
   <div class="user-image flex flex-column justify-content-center align-content-center">
     <img src="../../../../assets/images/sponser.png" alt="">
-    <input type="text" name="name" value="user-Name">
+    <input type="text" name="name" [value]="user.first_name" disabled>
   </div>
   <form [formGroup]="registerform" class="form">
     <div class="row">
@@ -13,6 +13,8 @@
           id="name_input"
           pInputText
           formControlName="name"
+          [(ngModel)]="user.first_name"
+
         />
         <div
           id="name_input_help"
@@ -33,7 +35,9 @@
           type="text"
           id="name_input"
           pInputText
-          formControlName="name"
+          formControlName="lname"
+          [(ngModel)]="user.last_name"
+
         />
         <div
           id="name_input_help"
@@ -58,6 +62,8 @@
           id="email_input"
           formControlName="email"
           class="emailInput"
+          [(ngModel)]="user.email"
+
         />
         <div
           id="email_input"
@@ -84,6 +90,7 @@
       pInputText
       id="Phone_input"
       formControlName="Phone"
+      [(ngModel)]="user.phones[0].phone"
     />
     <div
       id="Phone_input_help"
@@ -105,6 +112,7 @@
       id="Phone_input"
       pInputText
       formControlName="Phone"
+      [(ngModel)]="user.phones[1].phone"
     />
     <div
       id="Phone_input_help"
@@ -128,6 +136,7 @@
       pInputText
       id="password_input"
       formControlName="password"
+
     />
     <div
       id="password_input_help"
@@ -176,7 +185,7 @@
     </div>
 
 
-    <p-button  class="btn button felx justify-content-center align-items-center" [disabled]="registerform.invalid"  routerLinkActive="active" routerLink="**"> <span>Update</span></p-button>
+    <p-button [disabled]="this.registerform.valid"  class="btn button felx justify-content-center align-items-center"  (onClick)="submitted()"> <span>Update</span></p-button>
 
   </div>
    </form>

@@ -10,7 +10,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { SubscriptionPipe } from 'src/app/pipe/subscription.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ItemDetailsComponent,
     SelectComponent,
     LoaderComponent,
+    SubscriptionPipe
     
   ],
   imports: [

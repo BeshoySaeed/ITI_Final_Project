@@ -9,7 +9,8 @@ import { catchError, retry, throwError } from 'rxjs';
 export class CategoriesService {
   
   headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    "enctype" : "multipart/form-data"
   })
   
   constructor(private httpClient: HttpClient) {}

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ButtonModule } from 'primeng/button';
     HttpClientModule,
     FormsModule,
     PaginatorModule,
-    ButtonModule
+    ButtonModule,
+    RatingModule
   ],
 
   providers: [],

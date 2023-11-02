@@ -13,8 +13,10 @@ export class ItemService {
   constructor(private genericService: GenericService, private http : HttpClient) { }
 
   headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    "enctype" : "multipart/form-data"
   })
+  
 
 
   getItems() : Observable<Item[]>

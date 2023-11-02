@@ -6,7 +6,7 @@
     <div class="Card-container"  *ngFor="let item of displayedCategories " >
         <div class="box"></div>
         <div class="box overlay"></div>
-        <img class="circle overlay" src="{{item.img}}">
+        <img class="circle overlay" src='http://localhost:8000/images/category/{{item.img}}' >
         <p class="type">{{item.name}}</p>
         <a href="{{item.link}}"><i class="pi pi-arrow-right arrow" ></i></a>
 </div>

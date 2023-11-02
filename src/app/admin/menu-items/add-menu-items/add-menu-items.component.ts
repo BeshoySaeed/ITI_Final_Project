@@ -16,6 +16,7 @@ export class AddMenuItemsComponent {
   form!: FormGroup;
   categories: any = [];
   additions: any = [];
+  loading: boolean = true;
 
   item: Item = {
     id: 0,
@@ -54,6 +55,8 @@ export class AddMenuItemsComponent {
     this.httpAddition.getAllAddition().subscribe((data) => {
       this.additions = data.data;
     });
+
+    this.loading = false;
   }
 
   onSubmit() {

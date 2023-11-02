@@ -76,6 +76,7 @@ export class EditMenuItemsComponent {
     for (let control of this.formControllers) {
       this.form.controls[control].setValue(this.item[control]);
     }
+    this.form.controls['additions'].setValue(this.item.itemAdditions);
   }
 
   getAllAddition() {

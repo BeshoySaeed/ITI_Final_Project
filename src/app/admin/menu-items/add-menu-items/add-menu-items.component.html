@@ -58,24 +58,15 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <!-- <p-multiSelect
+          <p-multiSelect
             name="additions"
             styleClass="w-full"
             defaultLabel="Select an item additions"
             [options]="additions"
-            [(ngModel)]="additionSelected"
-            (onClick)="selectAddition()"
-
             display="chip"
             formControlName="additions"
             optionLabel="name"
-          ></p-multiSelect> -->
-
-          <select formControlName="additions" id="" [(ngModel)]="additionSelected" multiple>
-            <ng-container *ngFor="let option of additions; let index = index">
-              <option [value]="option.id">{{ option.name }}</option>
-            </ng-container>
-          </select>
+          ></p-multiSelect>
           <label for="additions" class="block mb-2">Additions</label>
         </div>
       </div>

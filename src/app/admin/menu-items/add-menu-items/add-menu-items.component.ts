@@ -7,7 +7,6 @@ import { ItemService } from 'src/app/services/ItemService/item.service';
 import { AdditionsService } from 'src/app/services/additions-service/additions.service';
 import { CategoriesService } from 'src/app/services/category-service/categories.service';
 
-
 @Component({
   selector: 'app-add-menu-items',
   templateUrl: './add-menu-items.component.html',
@@ -15,31 +14,35 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
 })
 export class AddMenuItemsComponent {
   form!: FormGroup;
-  categories : any = [];
-  additionSelected: any;
+  categories: any = [];
+  additions: any = [];
 
-  additions : any = [];
-
-    item : Item = {
-      id : 0,
-      name : "",
-      img : '',
-      price : '',
-      description: '',
-      discount: '',
-      active: false,
-      category_id: ""
-    }
-    itemAddition : object ={
-      item_id: this.item.id,
-      addition_id: ""
-    }
-  constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router, private httpCategory : CategoriesService, private httpAddition: AdditionsService) {
+  item: Item = {
+    id: 0,
+    name: '',
+    img: '',
+    price: '',
+    description: '',
+    discount: '',
+    active: false,
+    category_id: '',
+  };
+  itemAddition: object = {
+    item_id: this.item.id,
+    addition_id: '',
+  };
+  constructor(
+    private fb: FormBuilder,
+    private httpItem: ItemService,
+    private route: Router,
+    private httpCategory: CategoriesService,
+    private httpAddition: AdditionsService
+  ) {
     this.form = this.fb.group({
       name: [''],
       price: [''],
       discount: [''],
-      category: [''],
+      category_id: [''],
       description: [''],
       additions: [''],
       active: [true],
@@ -47,27 +50,19 @@ export class AddMenuItemsComponent {
     });
   }
   ngOnInit() {
-    this.httpCategory.getAllCategory().subscribe(data =>
-      {
-        this.categories = data.data
-      })
+    this.httpCategory.getAllCategory().subscribe((data) => {
+      this.categories = data.data;
+    });
 
-      this.httpAddition.getAllAddition().subscribe((data) =>
-      {
-        this.additions = data.data;
-      }
-      )
+    this.httpAddition.getAllAddition().subscribe((data) => {
+      this.additions = data.data;
+    });
   }
-
-
-
 
   onSubmit() {
     console.log(this.item);
-    this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
-    this.route.navigate(['/admin/menu-items'])
-    console.log(this.additionSelected)
-
+    this.httpItem.addNew(this.item).subscribe((e) => console.log(e));
+    this.route.navigate(['/admin/menu-items']);
   }
 
   onSelect(event: any) {
@@ -83,14 +78,4 @@ export class AddMenuItemsComponent {
       image: null,
     });
   }
-
-
-  // loopAddition()
-  // {
-  //   for(let i = 0; i < this.additionSelected.length; i++)
-  //   {
-      
-  //   }
-  //   console.log(this.additionSelected)
-  // }
 }

@@ -4,13 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from 'src/app/interface/items';
 import { ItemService } from 'src/app/services/ItemService/item.service';
 import { CategoriesService } from 'src/app/services/category-service/categories.service';
-import { MessageService } from 'primeng/api';
+import { AdditionsService } from 'src/app/services/additions-service/additions.service';
 
 @Component({
   selector: 'app-edit-menu-items',
   templateUrl: './edit-menu-items.component.html',
   styleUrls: ['./edit-menu-items.component.scss'],
-  providers: [MessageService],
 })
 export class EditMenuItemsComponent {
   form!: FormGroup;
@@ -18,13 +17,7 @@ export class EditMenuItemsComponent {
   categories = [];
   loading: boolean = true;
 
-  additions = [
-    { id: 1, name: 'Addition 1' },
-    { id: 2, name: 'Addition 2' },
-    { id: 3, name: 'Addition 3' },
-    { id: 4, name: 'Addition 4' },
-    { id: 5, name: 'Addition 5' },
-  ];
+  additions = [];
 
   item: any = {
     id: 0,
@@ -44,7 +37,7 @@ export class EditMenuItemsComponent {
     'category_id',
     'description',
     'additions',
-    'active'
+    'active',
   ];
 
   constructor(
@@ -53,7 +46,7 @@ export class EditMenuItemsComponent {
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private CategoriesService: CategoriesService,
-   private messageService: MessageService
+    private AdditionsService: AdditionsService
   ) {
     this.form = this.fb.group({
       name: [this.item.name],
@@ -68,12 +61,13 @@ export class EditMenuItemsComponent {
   }
   ngOnInit() {
     this.getAllCategory();
+    this.getAllAddition();
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.itemId = Number(paramMap.get('id'));
       this.httpItem.getItemById(this.itemId).subscribe((object) => {
         this.item = object;
-        this.setFormValues()
-        this.loading = false
+        this.setFormValues();
+        this.loading = false;
       });
     });
   }
@@ -82,6 +76,12 @@ export class EditMenuItemsComponent {
     for (let control of this.formControllers) {
       this.form.controls[control].setValue(this.item[control]);
     }
+  }
+
+  getAllAddition() {
+    this.AdditionsService.getAllAddition().subscribe((Addition: any) => {
+      this.additions = Addition.data;
+    });
   }
 
   onSubmit() {
@@ -101,11 +101,9 @@ export class EditMenuItemsComponent {
   }
 
   getAllCategory() {
-    this.CategoriesService
-      .getAllCategory()
-      .subscribe((category: any) => {
-        this.categories = category.data;
-      });
+    this.CategoriesService.getAllCategory().subscribe((category: any) => {
+      this.categories = category.data;
+    });
   }
 
   onRemove() {

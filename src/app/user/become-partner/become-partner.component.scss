@@ -5,14 +5,6 @@
 
 .cent {
   text-align: center;
-  background-color: $Background-orange-color;
-
-}
-
-input[type="file"]{
-  position: relative;
-  margin-top: 9px;
-  margin-left: 5px;
 }
 
 .all{
@@ -21,42 +13,16 @@ input[type="file"]{
   display: inline-block;
   width: 60%;
   height: 40%;
-}
-form {
-  display: inline-block;
-  position: relative;
-  margin-top: 70px;
+  grid-row: 20px;
 }
 
-
-
-.header{
-  position: relative;
-  //border: 2px solid $Button-orange-color;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  margin-top: 50px;
-}
 h1{
   color: $Button-orange-color;
 }
-.form-control{
-  border-radius: 4px;
-  width: 100%;
-}
-
-
-
-.form-control:focus {
-    outline: none;
-    transition: all 0.3s ease;
-    color:$Button-orange-color;
-  }
-
 
 input::placeholder{
     color: silver;
+    padding-left: 10px;
   }
 
 .text_danger{
@@ -70,14 +36,15 @@ input::placeholder{
   margin-bottom: 5px;
 }
 
-
-
 .column {
   float: left;
   width: 50%;
+  // gap: 15px;
 }
 .form-row{
   display: flex;
+  gap: 10px;
+
 }
 /* Clear floats after the columns */
 .form-row:after {
@@ -99,3 +66,75 @@ input::placeholder{
     display: block;
   }
 }
+
+
+.container {
+  // height: 580px;
+  width: 100%;
+  background-color: #f6e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .container-form {
+    background-color: white;
+    width: fit-content;
+    height: 90%;
+    text-align: center;
+    // padding-top: 25px;
+    padding: 25px 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @media (max-width: 400px) {
+        & {
+          width: 300px;
+        }
+      }
+    }}
+    p {
+      font-size: 20px;
+      padding: 10px 0 20px;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+        label {
+          align-self: flex-start;
+          margin-bottom: 4px;
+        }
+        span {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+          i {
+            position: absolute;
+            left: 5px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+          input {
+            padding: 10px 10px 10px 25px;
+            font-size: 18px;
+            width: 280px;
+            @media (max-width: 400px) {
+              & {
+                width: 230px;
+              }
+            }
+          }
+        

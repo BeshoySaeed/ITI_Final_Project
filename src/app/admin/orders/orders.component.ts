@@ -37,8 +37,18 @@ export class OrdersComponent {
     table.clear();
   }
 
-  applyFilterGlobal($event: any, dt: any, stringVal: string) {
-    dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  applyFilterGlobal($event: any) {
+    // dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+    let searchValue = $event.target.value;
+    if(!searchValue)
+    {
+      this.adminOrders = this.adminOrders;
+    }else
+    {
+      this.adminOrders = this.adminOrders.filter((order: any) => order.status == searchValue)
+    }
+
+    console.log(this.adminOrders)
   }
 
   deleteItem(id: number) {

@@ -1,5 +1,5 @@
 <div class="container">
-  <p class="text-center mb-2 font-italic font-light text-3xl">Our Menu</p>
+  <h1 class="text-center mb-2 font-italic fw-bold font-light ">Our Menu</h1>
   <div class="flex gap-4 justify-content-center flex-wrap">
     <ng-container > 
         <!-- <p-button
@@ -10,21 +10,15 @@
           {{ category.name }}</p-button
         > -->
 
-        <p-button *ngFor="let category of categories" routerLink="/all-items/{{category.id}}" >
+        <button class="btn btn1" *ngFor="let category of categories" routerLink="/all-items/{{category.id}}" >
           
           {{ category.name }}
-        </p-button>
+        </button>
     </ng-container>
     <!-- <p-button -->
     <!-- name="menu" -->
   <!-- > -->
-  <a      href="/all-items/all"
-  class="no-underline transition-duration-500  bg-blue-400 hover:bg-orange-300 text-white hover:text-gray-900 flex align-items-center justify-content-center  border-white cursor-pointer  px-5 "
-
-  >
-
-    Menu
-  </a>
+  <button  routerLink="/all-items/all" class="btn btn1" > Menu  </button>
   <!-- </p-button> -->
   </div>
   <div class="flex flex-wrap justify-content-center gap-2 mt-3">

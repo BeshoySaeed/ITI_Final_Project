@@ -30,7 +30,7 @@ export class NavbarComponent {
       {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
-        styleClass: 'links & link1',
+        styleClass: 'links & link1 & button',
         routerLink: '/',
       },
 

@@ -1,5 +1,52 @@
 @import "/src/styles.scss";
 
+.container {
+  width: 100%;
+  background-color: #f6e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;}
+
+.container-form {
+
+background-color: white;
+    width: fit-content;
+    height: 90%;
+    text-align: start;
+    // padding-top: 25px;
+    // padding: 25px 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    // @media (max-width: 400px) {
+    //     & {
+    //       width: 300px;
+    //     }
+      // }
+    }
+    span {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      i {
+        position: absolute;
+        left: 5px;
+        font-size: 18px;
+        // font-weight: bold;
+      }
+      input {
+        padding: 10px 10px 10px 30px;
+        font-size: 18px;
+        // width: 280px;
+        // @media (max-width: 400px) {
+        //   & {
+        //     width: 230px;
+        //   }
+        // }
+      }
+    
+    }
 .register-container{
   min-height: 100vh;
 }
@@ -48,7 +95,7 @@ input {
   form{
     display: flex;
     justify-content: center;
-align-items: center;
+    align-items: center;
   }
   .row{
     display: flex;
@@ -56,7 +103,7 @@ align-items: center;
     flex-wrap: wrap;
     width: 90%;
     position: relative;
-    top:100px;
+    top:40px;
 }
 .multi{
   display: flex;
@@ -79,9 +126,16 @@ align-items: center;
 }
 .form-label {
   margin-bottom: 0.5rem;
-}
+@media (max-width: 800px) {
+          & {
+            margin-bottom: 1.5rem;
+          }
+    }
+  }
+
 label {
   display: inline-block;
+  margin-top: 10px;
 }
 :host ::ng-deep .p-button {
   background: none;

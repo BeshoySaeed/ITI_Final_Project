@@ -35,9 +35,13 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+<<<<<<< HEAD
 import { RatingModule } from 'primeng/rating';
 import { RatingComponent } from './rating/rating.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+=======
+import { TooltipModule } from "primeng/tooltip"; 
+>>>>>>> origin/edit-front
 
 
 @NgModule({
@@ -82,9 +86,13 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     SharedModule,
     UserRoutingModule,
     MessagesModule,
+<<<<<<< HEAD
     RatingModule,
     InputTextareaModule
     
+=======
+    TooltipModule
+>>>>>>> origin/edit-front
   ]
 })
 export class UserModule { }

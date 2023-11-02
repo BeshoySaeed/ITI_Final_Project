@@ -1,16 +1,18 @@
  <div>
     <div>
-        <p class="text-center mb-2 font-italic font-light text-3xl">Partner Success</p>
+  <h1 class="text-center mb-2 font-italic  font-light text-3xl"> Partner Success</h1>
 
     </div>
-
-<div class="card">
+    
+<div class="card mt-5">
     <p-carousel #carousel [value]="items" [numVisible]="5" [numScroll]="5" [autoplayInterval]="2000" [circular]="true" (click)="startAutoplay()">
         <ng-template let-item pTemplate="item">
           <div class="product-item">
             <div class="product-item-content">
               <div class="mb-3">
-                <a href="{{item.link}}"><img class="partner-logo" src="{{item.Image}}" alt="{{item.Name}}"></a>
+                <a href="{{item.link}}">
+                    <img class="partner-logo" src="{{item.Image}}" alt="{{item.Name}}">
+                </a>
               </div>
             </div>
           </div>

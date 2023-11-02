@@ -1,4 +1,7 @@
-<div class="contact-us-form-container">
+<div class="container">
+  <div class="container-form">
+
+<!-- <div class="contact-us-form-container "> -->
   <h3 class="page-title">Send a message to us</h3>
 
   <form
@@ -6,19 +9,33 @@
     (ngSubmit)="onSubmit()"
     class="formgrid grid w-full md:w-10 lg:w-8 mx-auto form"
   >
-    <div class="col-12 md:col-6 mb-4 pr-0 md:pr-3">
-      <div class="flex flex-column-reverse">
+  
+      <div class="col-12 mb-4 mt-5">
+        <!-- <div class="flex flex-column-reverse"> -->
+        <label for="first-name" class="block mb-2">First Name *</label>
+
+        <span class="">
+
+        <i class="pi pi-user"></i>
+
         <input
         [(ngModel)]="contact.first_name"
           id="first-name"
           type="text"
+          placeholder="firstName"
           pInputText
           [required]="true"
           [minlength]="4"
           formControlName="firstName"
-          class="input p-2 border-round outline-none w-full"
         />
-        <label for="first-name" class="block mb-2">First Name *</label>
+        <button
+      tooltipPosition="top"
+      class="pi pi-question-circle d-flex bg-none border-none "
+      style=" margin-left: -16px;"
+      pTooltip="Click here to add the firstName"> 
+        </button> 
+      </span>
+
       </div>
 
       <div
@@ -42,22 +59,35 @@
           First name must contains only letters
         </small>
       </div>
-    </div>
+  
 
-    <div class="col-12 md:col-6 mb-4">
-      <div class="flex flex-column-reverse">
+    <div class="col-12 mb-4">
+      <!-- <div class="flex flex-column-reverse"> -->
+        <label for="last-name" class="block mb-2">Last Name *</label>
+
+        <span class="">
+
+          <i class="pi pi-user"></i>
+  
+      
         <input
         [(ngModel)]="contact.last_name"
 
           id="last-name"
           type="text"
+          placeholder="lastName"
           [required]="true"
           [minlength]="4"
           pInputText
           formControlName="lastName"
-          class="input p-2 border-round outline-none w-full"
         />
-        <label for="last-name" class="block mb-2">Last Name *</label>
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex bg-none border-none "
+        style=" margin-left: -16px;"
+        pTooltip="Click here to add the lastName"> 
+          </button> 
+        </span>
       </div>
 
       <div
@@ -77,10 +107,14 @@
           Last name is must contains only letters
         </small>
       </div>
-    </div>
 
     <div class="col-12 mb-4">
-      <div class="flex flex-column-reverse">
+      <!-- <div class="flex flex-column-reverse"> -->
+        <label for="email" class="block mb-2">Email *</label>
+
+        <span class="">
+
+          <i class="pi pi-envelope"></i>
         <input
         [(ngModel)]="contact.email"
 
@@ -89,9 +123,15 @@
           [required]="true"
           pInputText
           formControlName="email"
-          class="input p-2 border-round outline-none w-full"
+          placeholder="Email"
         />
-        <label for="email" class="block mb-2">Email *</label>
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex bg-none border-none "
+        style=" margin-left: -16px;"
+        pTooltip="Click here to add the email"> 
+          </button> 
+      </span>
       </div>
 
       <div
@@ -108,24 +148,28 @@
           It must be a valid email
         </small>
       </div>
-    </div>
 
     <div class="col-12 mb-4">
-      <div class="flex flex-column-reverse">
-        <p-inputMask
+      <!-- <div class="flex flex-column-reverse"> -->
+        <label htmlFor="mobile" class="block mb-2">Mobile *</label>
+      <span class="">
+        <i class="pi pi-phone" ></i>
+        <input
         [(ngModel)]="contact.mobile"
-
+        pInputText
           id="mobile"
           [required]="true"
-          [autoClear]="false"
           formControlName="mobile"
-          mask="+20-1999999999"
           placeholder="+20-1999999999"
-          styleClass="input p-2 border-round outline-none w-full"
-          class="mask-button"
-        ></p-inputMask>
-
-        <label htmlFor="mobile" class="block mb-2">Mobile *</label>
+          type="phone"
+        >
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex bg-none border-none "
+        style=" margin-left: -16px;"
+        pTooltip="Click here to add the phone"> 
+          </button> 
+      </span>
       </div>
 
       <div
@@ -142,40 +186,13 @@
           It must be a valid phone number
         </small>
       </div>
-    </div>
 
-    <!-- <div class="col-12 md:col-6 mb-4">
-      <div class="flex flex-column-reverse">
-        <p-inputMask
-          id="phone2"
-          [autoClear]="false"
-          formControlName="phone2"
-          mask="+20-1999999999"
-          placeholder="+20-1999999999"
-          styleClass="input p-2 border-round outline-none w-full"
-          class="mask-button"
-        ></p-inputMask>
-        <label htmlFor="phone2" class="block mb-2">Phone 2</label>
-      </div>
-
-      <div
-        class="error-message"
-        *ngIf="
-          contactUsForm.controls['phone2'].touched &&
-          contactUsForm.controls['phone2'].invalid
-        "
-      >
-        <small class="block" *ngIf="contactUsForm.controls['phone2'].errors?.['required']">
-          Phone is required
-        </small>
-        <small class="block" *ngIf="contactUsForm.controls['phone2'].errors?.['pattern']">
-          It must be a valid phone number
-        </small>
-      </div>
-    </div> -->
+    
 
     <div class="col-12 mb-4">
-      <div class="flex flex-column-reverse">
+      <!-- <div class="flex flex-column-reverse"> -->
+        <label for="message" class="block mb-2">Message *</label>
+<span class="">
         <textarea
         [(ngModel)]="contact.message"
 
@@ -186,9 +203,14 @@
           [minlength]="11"
           formControlName="message"
           rows="6"
-          class="input p-2 border-round outline-none w-full"
         ></textarea>
-        <label for="message" class="block mb-2">Message *</label>
+        <button
+        tooltipPosition="top"
+        class="pi pi-question-circle d-flex bg-none border-none "
+        style=" margin-top: -60px;margin-left: -16px;"
+        pTooltip="Click here to add the message"> 
+          </button> 
+      </span>
       </div>
 
       <div
@@ -208,8 +230,10 @@
           Message is must start with at least one letter
         </small>
       </div>
-    </div>
+    
 
     <button type="submit" class="primary-button w-5 mx-auto my-3" [disabled]="contactUsForm.invalid">Send</button>
   </form>
 </div>
+</div>
+<!-- </div> -->

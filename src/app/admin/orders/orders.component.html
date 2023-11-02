@@ -268,12 +268,14 @@
           <td>{{ order.discount_code}}</td>
           <td>{{ order.status }}</td>
           <td *ngIf="order.status != 'done'; else done">
-            <select name="status" (change)="updateStatus(order.id, $event)" >
+
+            <select name="status" (change)="updateStatus(order.id, $event)" class="py-2 px-4 border-round ">
               <option>{{ order.status }}</option>
               <ng-container *ngFor="let status of statusValue(order.status)">
                 <option [value]="status"> {{ status }} </option>
               </ng-container>
             </select>
+   
           </td>
           <ng-template #done>
             <td>

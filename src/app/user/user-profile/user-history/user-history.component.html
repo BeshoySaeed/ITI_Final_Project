@@ -1,43 +1,46 @@
-<div class="p-container my-8">
-  <table class="p-table p-component p-table-striped" style="width: 100%">
-    <thead>
-      <tr>
-        <th class="p-2">Order description</th>
-        <th class="p-2">Total price</th>
-        <th class="p-2">Status</th>
-        <th class="p-2">Delete Order</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <ng-container *ngFor="let item of userOrdersInHistory; let i = index">
-        <tr class="p-card">
-          <td>
-            <div class="p-d-flex flex-row p-ai-center">
-              <div class="p-ml-2">{{ item.note }}</div>
-              <i class="pi pi-fw pi-chevron-right p-cursor-pointer" (click)="item.expanded = !item.expanded"></i>
-            </div>
-            <div *ngIf="item.expanded">
-              <ul class="p-mt-2">
-                <li *ngFor="let orderItem of item.items">
-                  {{ orderItem.item.name }}
-                </li>
-              </ul>
-            </div>
-          </td>
-          <td class="p-text-xl p-text-orange-400">
-            {{ totalPrice(item.items) }}$
-          </td>
-          <td class="p-text-xl p-text-orange-400">
-            {{ item.status }}
-          </td>
-          <td class="text-center">
-            <a (click)="deleteOrder(item)" class="p-cursor-pointer" *ngIf="item.status == 'processing'">
-              <i class="pi pi-trash p-text-2xl"></i>
-            </a>
-          </td>
+<div class="container my-8">
+  <p-table [value]="userOrdersInHistory" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Order Description</th>
+            <th>Total price</th>
+            <th>Status</th>
+            <th>Delete Order</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>
+              <i  [ngClass]="product.expanded ?  'pi pi-chevron-down' : 'pi pi-chevron-right'"  (click)="product.expanded = !product.expanded"></i>
+              {{ product.note }}
+            </td>
+            <td> {{ totalPrice(product.items) }}$</td>
+            <td>{{ product.status }}</td>
+            <td>
+              <a (click)="deleteOrder(product)" class="p-cursor-pointer" *ngIf="product.status == 'processing'">
+                <i class="pi pi-trash p-text-2xl text-orange-600 font-bold cursor-pointer text-3xl"></i>
+              </a>
+            </td>
+        </tr>
+        <tr>
+          <div *ngIf="product.expanded" class="p-mt-2">
+            <ng-container  *ngFor="let orderItem of product.items">
+              
+              <p class="ml-5 mt-2 "> {{ orderItem.item.name }}
+                <i  [ngClass]="orderItem.expanded ?  'pi pi-chevron-down' : 'pi pi-chevron-right'"  (click)="orderItem.expanded = !orderItem.expanded"></i>
+            
+              </p>
+              <div *ngIf="orderItem.expanded" class="p-mt-2">
+                <ng-container *ngFor="let addition of orderItem.item.itemAdditions">
+                  <p class="ml-6"> {{ addition.name }}</p>
+                </ng-container>
+                
+              </div>
+            </ng-container>
+          </div>
+        </tr>
+    </ng-template>
+  </p-table>
 </div>
+
+

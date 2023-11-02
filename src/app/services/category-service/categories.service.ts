@@ -9,7 +9,7 @@ import { catchError, retry, throwError } from 'rxjs';
 export class CategoriesService {
   
   headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
   })
   
   constructor(private httpClient: HttpClient) {}

@@ -13,11 +13,12 @@ import { UserFavService } from 'src/app/services/userFav/user-fav.service';
   providers: [MessageService],
 })
 export class ItemComponent {
+
   @Input() data: any = {};
   @Output() item = new EventEmitter();
   amount: number = 0;
   isFavourite: boolean = false;
-  userId!: number;
+  userId: any = localStorage.getItem('user_id')
   favItems: any;
   existingItem: any;
   displayPosition!: boolean;
@@ -155,7 +156,7 @@ export class ItemComponent {
       this.httpFav
         .add({
           item_id: item.id,
-          user_id: 1,
+          user_id: this.userId,
           item: item,
         })
         .subscribe();

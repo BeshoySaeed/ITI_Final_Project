@@ -4,6 +4,7 @@ import { ItemsService } from '../../services/items.service';
 import { ItemService } from 'src/app/services/ItemService/item.service';
 import { CategoriesService } from 'src/app/services/category-service/categories.service';
 import { ActivatedRoute } from '@angular/router';
+import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
 
 @Component({
   selector: 'app-all-items',
@@ -15,6 +16,7 @@ export class AllItemsComponent {
 
 // array to receieve data from api
 products:any []=[]
+subscribeObject: any;
 
 categories:any[]=[]
 
@@ -27,7 +29,8 @@ categoryId:any;
 constructor( private service:ItemsService ,
              private service1 :CategoriesService,
              private httpItem: ItemService,
-             private route:ActivatedRoute)
+             private route:ActivatedRoute,
+             private httpSub: SubscriptionsService)
              {}
   ngOnInit():void {
     this.categoryId=this.route.snapshot.params['id'];
@@ -36,6 +39,13 @@ constructor( private service:ItemsService ,
     this.getCategories();
 
     console.log(this.categoryId);
+
+      this.httpSub.getById(1).subscribe((data) => 
+      {
+        this.subscribeObject = data;
+        console.log(this.subscribeObject);
+      }
+      )
 
   }
 

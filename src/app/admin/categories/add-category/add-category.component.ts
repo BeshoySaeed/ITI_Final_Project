@@ -10,6 +10,7 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
 })
 export class AddCategoryComponent {
   addCategoryForm!: FormGroup;
+  formData!: FormData;
   category: any = {
     name: "",
     img: ""
@@ -25,12 +26,15 @@ export class AddCategoryComponent {
   }
 
   onSubmit() {
-    this.httpCat.storeCategory(this.category).subscribe();
-    this.route.navigate(['/admin/categories'])
+    this.formData.append('name', this.addCategoryForm.get('name')?.value)
+    this.httpCat.storeCategory(this.formData).subscribe((res) => console.log(res));
+    // this.route.navigate(['/admin/categories'])
   }
 
   onSelect(event:any) {
+    this.formData = new FormData()
     const file = event.files[0];
+    this.formData.append('img', file);
     this.category.img = file.name;
     this.addCategoryForm.patchValue({
       image: file

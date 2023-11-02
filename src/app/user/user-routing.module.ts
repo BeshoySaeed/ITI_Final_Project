@@ -22,6 +22,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { AuthGuardService } from '../Guards/Auth/auth-guard.service';
 
+
+
 const routes: Routes = [
   {
     path: '',

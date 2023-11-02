@@ -15,7 +15,7 @@ export class FeedbacksService {
   
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<object> {
+  getAll(): Observable<any> {
     return this.httpClient.get<object>(`${this.apiRoute}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

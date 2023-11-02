@@ -1,0 +1,32 @@
+<div class="comment-rate mx-5">
+  <p>
+    Share your experience and let your voice be heard! <br />
+    We value your feedback and appreciate your contribution in helping us
+    improve.
+  </p>
+  <p-rating [(ngModel)]="commentObject.rate_value" [stars]="5">
+    <ng-template pTemplate="cancel">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/rating/cancel.png"
+        width="25px"
+        height="25px"
+      />
+    </ng-template>
+    <ng-template pTemplate="onicon">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon-active.png"
+        width="25px"
+        height="25px"
+      />
+    </ng-template>
+    <ng-template pTemplate="officon">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png"
+        width="25px"
+        height="25px"
+      />
+    </ng-template>
+  </p-rating>
+  <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="commentObject.rate_comment" required></textarea>
+  <button pButton pRipple label="Submit" class="p-button-success" type="submit" (click)="submitted()"></button>
+</div>

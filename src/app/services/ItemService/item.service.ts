@@ -13,8 +13,9 @@ export class ItemService {
   constructor(private genericService: GenericService, private http : HttpClient) { }
 
   headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
   })
+  
 
 
   getItems() : Observable<Item[]>

@@ -35,6 +35,9 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { MessagesModule } from 'primeng/messages';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { RatingModule } from 'primeng/rating';
+import { RatingComponent } from './rating/rating.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
@@ -56,7 +59,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     UserHistoryComponent,
     UserFavComponent,
     NewPasswordComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,10 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     TableModule,
     SharedModule,
     UserRoutingModule,
-    MessagesModule
+    MessagesModule,
+    RatingModule,
+    InputTextareaModule
+    
   ]
 })
 export class UserModule { }

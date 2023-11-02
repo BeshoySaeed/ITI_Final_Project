@@ -44,7 +44,7 @@ export class SubscriptionsService {
   }
 
   update(id:number, subscribe: SubscriptionPlan): Observable<object> {
-    return this.httpClient.put<object>(`${this.apiRoute}/${id}`, subscribe, {headers: this.headers}).pipe(
+    return this.httpClient.patch<object>(`${this.apiRoute}/${id}`, subscribe, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

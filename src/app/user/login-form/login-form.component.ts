@@ -49,6 +49,7 @@ export class LoginFormComponent {
         if (response.role_id == 2) {
           localStorage.setItem('role_id', response.role_id);
           localStorage.setItem('user_id', response.user_id);
+          localStorage.setItem('subscribe_id',response.subscribe_id)
         }
         this.successMsg = response;
         if (this.successMsg.status=='success') {

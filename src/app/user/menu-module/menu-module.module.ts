@@ -11,6 +11,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { SubscriptionPipe } from 'src/app/pipe/subscription.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ToastModule } from 'primeng/toast';
     ItemDetailsComponent,
     SelectComponent,
     LoaderComponent,
+    SubscriptionPipe
     
   ],
   imports: [

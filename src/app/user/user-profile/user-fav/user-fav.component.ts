@@ -17,9 +17,10 @@ export class UserFavComponent {
 
   ngOnInit()
   {
-    this.httpFav.getAll(this.userId).subscribe((data) =>   // assume userid = 1
+    this.httpFav.getAll(this.userId).subscribe((data) =>  
       {
         this.items = data.data;
+        console.log(this.items)
       }
     )
   }

@@ -40,14 +40,16 @@
             icon="pi pi-filter-slash"
             (click)="clear(dt1)"
           ></button>
-          <span class="p-input-icon-left ml-auto">
-            <i class="pi pi-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="applyFilterGlobal($event)"
-              placeholder="Search keyword"
-            />
+          <span class="p-input-icon-left ml-auto flex">
+              <i class="pi pi-search "></i>
+              <select name="status" (change)="searchOrder($event)"  class="py-2 px-4 border-round ">
+                <option value="all"> all </option>
+                <option value="processing"> processing </option>
+                <option value="on-deliver"> on deliver </option>
+                <option value="done"> done </option>
+
+            </select>
+
           </span>
         </div>
       </ng-template>

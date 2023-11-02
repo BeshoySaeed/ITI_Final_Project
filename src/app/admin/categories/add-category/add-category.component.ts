@@ -28,7 +28,7 @@ export class AddCategoryComponent {
   onSubmit() {
     this.formData.append('name', this.addCategoryForm.get('name')?.value)
     this.httpCat.storeCategory(this.formData).subscribe((res) => console.log(res));
-    // this.route.navigate(['/admin/categories'])
+    this.route.navigate(['/admin/categories'])
   }
 
   onSelect(event:any) {

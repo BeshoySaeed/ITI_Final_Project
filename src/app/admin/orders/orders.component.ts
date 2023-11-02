@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/services/OrderService/order.service';
 export class OrdersComponent {
   orders: any = [];
   adminOrders: any = [];
+  searchOrders: any;
   loading: boolean = false;
 
   status : string[] = [
@@ -25,12 +26,24 @@ export class OrdersComponent {
     this.httpOrder.getOrders().subscribe((orders) =>
     {
       this.orders = orders;
-      this.adminOrders = this.orders.filter((e:any) => e.status != 'cart')
-
-      console.log(this.orders)
-      console.log(this.adminOrders)
+      this.adminOrders = this.orders.filter((e:any) => e.status != 'cart');
+      this.searchOrders = this.orders.filter((e:any) => e.status != 'cart')
     }
     )
+  }
+
+  searchOrder($event: any) {
+    let orderStatus = $event.target.value;
+    if(orderStatus === 'all'){
+      this.adminOrders = this.searchOrders
+    }
+    else{
+      this.adminOrders = this.searchOrders.filter((order: any) => 
+      {
+        return order.status == orderStatus
+      }
+      );
+    }
   }
 
   clear(table: Table) {

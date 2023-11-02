@@ -1,31 +1,19 @@
-<div class="container">
+<div class="container my-8">
   <table class="w-full text-center">
     <tr>
-      <th class="text-2xl">Order Image</th>
       <th class="text-2xl">Order description</th>
-      <th class="text-2xl">Quantity</th>
       <th class="text-2xl">Total price</th>
       <th class="text-2xl">Delete Order</th>
     </tr>
 
-    <ng-container *ngFor="let item of offers; let i = index">
+    <ng-container *ngFor="let item of userOrdersInHistory; let i = index" >
       <tr class="card">
-        <td><img [src]="item.img" alt="" style="width: 200px;" /></td>
-        <td>{{ item.title }}</td>
-        <td class="text-2xl">
-          <a (click)="minusQuantity(item)">
-            <i class="pi pi-minus"></i>
-          </a>
-          {{ quantityFn() }}
-          <a (click)="plusQuantity(item)">
-            <i class="pi pi-plus"></i>
-          </a>
-        </td>
+        <td>{{ item.note }}</td>
         <td class="text-xl text-orange-400">
-          {{ setPrice(item) }}$
+          {{ totalPrice(item.items) }}$
         </td>
         <td>
-          <a (click)="deleteOrder(item)" class="cursor-pointer" >
+          <a (click)="deleteOrder(item)" class="cursor-pointer" *ngIf="item.status == 'processing'" >
             <i class="pi pi-trash text-2xl" ></i>
           </a>
         </td>

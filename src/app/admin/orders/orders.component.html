@@ -4,7 +4,7 @@
   <div class="card">
     <p-table
       #dt1
-      [value]="orders"
+      [value]="adminOrders"
       dataKey="userName"
       [rows]="10"
       [showCurrentPageReport]="true"
@@ -207,6 +207,26 @@
           </th>
           <th style="min-width: 4rem">
             <div class="flex align-items-center">
+              Status
+              <p-columnFilter
+                type="text"
+                field="confirmInstruction"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
+              Actions
+              <p-columnFilter
+                type="text"
+                field="confirmInstruction"
+                display="menu"
+              ></p-columnFilter>
+            </div>
+          </th>
+          <th style="min-width: 4rem">
+            <div class="flex align-items-center">
               Confirm instructions
               <p-columnFilter
                 type="text"
@@ -230,7 +250,7 @@
             ></button>
           </td>
           <td>{{ order.user.first_name }} </td>
-          <td>{{ order.createdAt }}</td>
+          <td>{{ order.created_at | date }}</td>
           <td>{{ order.user.phones[0].phone }}</td>
           <td>{{ order.user.phones[1].phone }}</td>
           <td>{{ order.street }}</td>
@@ -246,6 +266,20 @@
           </td>
           <td>{{ order.payment_method}}</td>
           <td>{{ order.discount_code}}</td>
+          <td>{{ order.status }}</td>
+          <td *ngIf="order.status != 'done'; else done">
+            <select name="status" (change)="updateStatus(order.id, $event)" >
+              <option>{{ order.status }}</option>
+              <ng-container *ngFor="let status of statusValue(order.status)">
+                <option [value]="status"> {{ status }} </option>
+              </ng-container>
+            </select>
+          </td>
+          <ng-template #done>
+            <td>
+              order is already done
+            </td>
+          </ng-template>
           <td>
             <p-tag
               [value]="order.confirmInstruction"
@@ -254,11 +288,11 @@
           </td>
         </tr>
       </ng-template>
-      <ng-template pTemplate="rowexpansion" let-item>
+      <ng-template pTemplate="rowexpansion" let-item >
         <tr>
           <td colspan="12">
             <div class="p-3">
-              <p-table [value]="item.orderItems" dataKey="id">
+              <p-table [value]="item.items" dataKey="id">
                 <ng-template pTemplate="header">
                   <tr>
                     <th>Image</th>
@@ -275,11 +309,11 @@
                     <td>
                       <img width="100" [src]="item.image" [alt]="item.name" />
                     </td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.price | currency : "USD" }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.category }}</td>
-                    <td>{{ item.discount }}</td>
+                    <td>{{ item.item.name }}</td>
+                    <td>{{ item.item.price | currency : "USD" }}</td>
+                    <td>{{ item.item.quantity }}</td>
+                    <td>{{ item.item.category }}</td>
+                    <td>{{ item.item.discount }}</td>
                     <td>
                       <span
                         class="surface-600 text-white px-2 py-1 border-round m-1"

@@ -9,15 +9,26 @@ import { OrderService } from 'src/app/services/OrderService/order.service';
 })
 export class OrdersComponent {
   orders: any = [];
+  adminOrders: any = [];
   loading: boolean = false;
 
+  status : string[] = [
+    'processing',
+    'on-deliver',
+    'done'
+  ]
+
   constructor(private httpOrder: OrderService){}
+
 
   ngOnInit() {
     this.httpOrder.getOrders().subscribe((orders) =>
     {
       this.orders = orders;
+      this.adminOrders = this.orders.filter((e:any) => e.status != 'cart')
+
       console.log(this.orders)
+      console.log(this.adminOrders)
     }
     )
   }
@@ -42,9 +53,26 @@ export class OrdersComponent {
   totalPrice(items: any){
     let totalPrice = 0;
     for(let i = 0; i < items.length; i ++){
-      let itemPrice = Number(items[i].price)
-      totalPrice = totalPrice + itemPrice;
+      totalPrice +=   Number(items[i].item.price)
     }
     return totalPrice;
   }
+
+  updateStatus(id : number, event: any)
+  {
+    let statusValue = event.target.value;
+    this.httpOrder.editOrder(id, {
+      note: 'new note',
+      status : statusValue,
+    }).subscribe((res) => {window.location.reload()});
+    console.log(event.target.value)
+  }
+
+  statusValue(status: string)
+  {
+    this.status = this.status.filter((s) => s != status);
+
+    return this.status
+  }
+
 }

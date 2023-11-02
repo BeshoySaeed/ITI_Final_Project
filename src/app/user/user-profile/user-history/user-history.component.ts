@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrderService } from 'src/app/services/OrderService/order.service';
 interface Offer {
   id: number;
   img: string;
@@ -14,41 +15,25 @@ interface Offer {
   styleUrls: ['./user-history.component.scss']
 })
 export class UserHistoryComponent {
+  userId: any = localStorage.getItem('user_id');
   quantity: number = 0
-  offers: Offer[] = [
+  userOrders: any ;
+  userOrdersInHistory: any;
+
+
+  constructor(private httpOrder: OrderService){}
+
+  ngOnInit()
+  {
+    this.httpOrder.getUserOrders(this.userId).subscribe((response) => 
     {
-      id: 1,
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Available',
-      price: 20,
-      stars: 3,
-    },
-    {
-      id: 2,
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Available',
-      price: 20,
-      stars: 4,
-    },
-    {
-      id: 3,
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Available',
-      price: 20,
-      stars: 5,
-    },
-    {
-      id: 4,
-      img: '../assets/images/home-images/burger.jpeg',
-      title: 'Burger king',
-      available: 'Available',
-      price: 20,
-      stars: 4,
-    },
-  ];
+      this.userOrders = response,
+      console.log(this.userOrders);
+      this.userOrdersInHistory = this.userOrders.filter((order: any) => order.status != 'cart')
+      console.log(this.userOrdersInHistory)
+    }
+    )
+  }
 
 
 
@@ -57,8 +42,19 @@ export class UserHistoryComponent {
     return salary;
   }
 
+  totalPrice(items: any){
+    let totalPrice = 0;
+    for(let i = 0; i < items.length; i ++){
+      totalPrice +=   Number(items[i].item.price)
+    }
+    return totalPrice;
+  }
+
   deleteOrder(item : Offer){
-    this.offers = this.offers.filter(x => x.id != item.id);
+
+    
+    this.httpOrder.deleteOrder(item.id).subscribe((res) => {});
+    this.userOrdersInHistory = this.userOrdersInHistory.filter((e:any) => e.id != item.id)
   }
 
   quantityFn(){
@@ -68,16 +64,16 @@ export class UserHistoryComponent {
 
   minusQuantity(item: Offer){
     if(this.quantity == 0){
-      this.offers = this.offers.filter(x => x.id != item.id);
+      // this.offers = this.offers.filter(x => x.id != item.id);
       alert('order deleted')
     }else{
       item.price = 20
     }
   }
   plusQuantity(item: Offer){
-    let currentItem = this.offers.filter(i => i.id == item.id)[0];
+    // let currentItem = this.offers.filter(i => i.id == item.id)[0];
     // console.log(currentItem);
-    item.price += currentItem.price;
+    // item.price += currentItem.price;
 
 
   }

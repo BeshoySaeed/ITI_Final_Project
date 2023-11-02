@@ -10,9 +10,18 @@ export class OrderService {
   
   constructor(private httpOrder: GenericService) { }
 
-  getOrders(): Observable<Order[]>
+  getOrders(): Observable<any>
   {
     return this.httpOrder.getAll('order')
+    .pipe(
+      map((item: any) => {
+        return item.data
+      })
+    );
+  }
+  getUserOrders(id: number): Observable<Order[]>
+  {
+    return this.httpOrder.getAll(`orders/${id}`)
     .pipe(
       map((item: any) => {
         return item.data

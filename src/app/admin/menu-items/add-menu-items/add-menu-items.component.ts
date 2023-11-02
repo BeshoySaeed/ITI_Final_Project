@@ -27,10 +27,7 @@ export class AddMenuItemsComponent {
     active: false,
     category_id: '',
   };
-  itemAddition: object = {
-    item_id: this.item.id,
-    addition_id: '',
-  };
+
   constructor(
     private fb: FormBuilder,
     private httpItem: ItemService,
@@ -60,8 +57,7 @@ export class AddMenuItemsComponent {
   }
 
   onSubmit() {
-    console.log(this.item);
-    this.httpItem.addNew(this.item).subscribe((e) => console.log(e));
+    this.httpItem.addNew(this.form.value).subscribe((e) => console.log(e));
     this.route.navigate(['/admin/menu-items']);
   }
 

@@ -26,6 +26,7 @@ export class HomeComponent {
       localStorage.removeItem('subscribe_id');
       localStorage.removeItem('startDate');
       localStorage.removeItem('endDate');
+      localStorage.removeItem('discount_value');
 
       }
     }

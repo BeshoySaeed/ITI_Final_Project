@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SubscriptionPlan } from 'src/app/interface/subscription-plan';
+import { UserService } from 'src/app/services/user-service/user.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-subscription-section',
@@ -13,6 +15,8 @@ export class SubscriptionSectionComponent {
 
   constructor(
     private subscriptionsService: SubscriptionsService,
+    private userService:UserService,
+    private messageService:MessageService,
     private sanitizer: DomSanitizer
   ) {}
 
@@ -20,6 +24,7 @@ export class SubscriptionSectionComponent {
   currentDate : any ;
   endDate: any;
   duration:any;
+  userId:any;
   check:any = null;
 
   ngOnInit() {
@@ -38,11 +43,19 @@ export class SubscriptionSectionComponent {
   }
 
   
-   SubscribeButton(id:any) {
-
-   
+   SubscribeButton(subId:any) {
+    /*
+    this.userService.setSubIdValue(this.userId,subId).subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'user is subscribed',
+        });
+      }
+    });*/
     this.currentDate = new Date();
-    localStorage.setItem('subscribe_id',id);  
+    localStorage.setItem('subscribe_id',subId);  
     this.duration=30;
     localStorage.setItem("startDate", this.currentDate.getTime());  
     this.endDate = new Date(Number(localStorage.getItem("startDate")));

@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class HeaderComponent implements OnInit{
   authService = inject(AuthService);
   isLoggedIn:boolean = false;
-
+  checked: boolean = false;
   userName: string = "";
   constructor(private http: HttpClient, private router: Router ){}
 
@@ -44,6 +44,24 @@ ngOnInit(): void {
 
   onSubmit() {
  
+  }
+
+  changeColor()
+  {
+    if(this.checked){
+      if(!document.body.classList.contains('dark'))
+      {
+        document.body.classList.add('dark')
+      }
+    }else
+    {
+      if(document.body.classList.contains('dark'))
+      {
+        document.body.classList.remove('dark')
+      }
+    }
+
+    console.log(this.checked)
   }
 
 

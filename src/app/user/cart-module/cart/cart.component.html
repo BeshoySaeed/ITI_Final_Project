@@ -3,6 +3,8 @@
 
   <h1 class="cart text-center">Cart</h1>
   <div class="card">
+    <p-messages [(value)]="messageBalance" [enableService]="false" [closable]="false"></p-messages>
+
     <p-table
       #dt1
       [value]="cart.items"
@@ -174,7 +176,6 @@
       >
         Order now
       </button>
-
       <div class="text-red-500 mt-2" *ngIf="showDataError">
         <p class="my-0">You should enter these fields in your profile first.</p>
         <p class="my-0">

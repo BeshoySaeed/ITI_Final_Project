@@ -23,7 +23,7 @@
     top: 0;
     left: 0;
     opacity: .7;
-    background:$Background-orange-color;
+    background: var(--category-item-card);
     text-align: center;
 
   }
@@ -57,5 +57,5 @@
     z-index: 9;
     margin: 0px;
     transform: rotate(349deg);
-    background:$Button-orange-color;
+    background: var(--overlay);
   }

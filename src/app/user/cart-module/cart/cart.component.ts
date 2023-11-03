@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { OrderService } from 'src/app/services/OrderService/order.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,18 +14,28 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   loading: boolean = true;
   changed: boolean = false;
+  userId : any = localStorage.getItem('user_id');
+  userBalance : any;
   showDataError: boolean = false;
+  messageBalance : any = "your balance not enough"
   cart: any = [];
 
   constructor(
     private orderService: OrderService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private httpUser: UserService
   ) {}
 
   ngOnInit() {
     this.getCart();
+
+    this.httpUser.getUserByID(this.userId).subscribe((res) => 
+    {
+      this.userBalance = res.data.balance;
+    })
   }
+
 
   getCart() {
     this.orderService.cart().subscribe((cart: any) => {
@@ -120,27 +131,47 @@ export class CartComponent implements OnInit {
   }
 
   completeOrder() {
-    let user = this.cart.user;
-    if (
-      user.street == null ||
-      user.street.length == 0 ||
 
-      user.area == null ||
-      user.area.length == 0 ||
 
-      user.city == null ||
-      user.city.length == 0 ||
+    if(this.userBalance >= this.totalPrice){
+      this.httpUser.updateUser(this.userId, {
+        balance: this.userBalance - this.totalPrice,
+      }).subscribe((res) => console.log(res));
 
-      user.building_name == null ||
-      user.building_name.length == 0 ||
+      let user = this.cart.user;
+      if (
+        user.street == null ||
+        user.street.length == 0 ||
+  
+        user.area == null ||
+        user.area.length == 0 ||
+  
+        user.city == null ||
+        user.city.length == 0 ||
+  
+        user.building_name == null ||
+        user.building_name.length == 0 ||
+  
+        user.floor_number == null ||
+        user.floor_number.length == 0
+      ) {
+        this.showDataError = true;
+      } else {
+        this.router.navigate(['/payment']);
+      }
 
-      user.floor_number == null ||
-      user.floor_number.length == 0
-    ) {
-      this.showDataError = true;
-    } else {
-      this.router.navigate(['/payment']);
+    }else
+    {
+      this.messageBalance = [
+        { severity: 'error', summary: 'Error', detail: 'Your balance not enough' }
+    ];
     }
+
+
+
+
+
+
   }
 
   toProfile() {

@@ -1,7 +1,7 @@
 :host ::ng-deep .p-menubar {
     border-radius: 0;
     border: none;
-    background-color: #F1E1E1;
+    background-color: var(--header);
     color: black;
 }
 
@@ -11,24 +11,30 @@
 }
 :host ::ng-deep .phoneNumber {
     font-size: 16px;
+    color: var(--title-text-color);
 }
 :host ::ng-deep .register {
     font-size: 16px;
     margin-right: 55px;
+    color: var(--link-text-color);
+}
+:host ::ng-deep .login{
+    color: var(--link-text-color);
+
 }
 :host ::ng-deep .facebook {
     font-size: 16px;
-    color: blue;
+    color: var(--facebook-color);
     margin-right: 10px
 }
 :host ::ng-deep .twitter {
     font-size: 16px;
-    color: rgb(30, 177, 221);
+    color: var(--twitter-color);
     margin-right: 10px
 }
 :host ::ng-deep .instagram {
     font-size: 16px;
-    color: rgb(93, 19, 19);
+    color: var(--instagram-color);
     margin-right: 10px
 }
 // @media (min-width: 768px) and (max-width: 991px) {
@@ -43,3 +49,4 @@
         display: none;
     }
 }
+

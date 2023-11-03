@@ -6,6 +6,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ButtonModule } from 'primeng/button';
     MenubarModule,
     ImageModule,
     ButtonModule,
+    FormsModule,
+    InputSwitchModule
     
 
   ],

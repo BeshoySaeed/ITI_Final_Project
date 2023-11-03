@@ -1,5 +1,5 @@
 :host ::ng-deep .p-card{
-    background-color: rgb(247, 224, 183);
+    background-color: var(--sub-item-card);
     padding-top: 30px;
     height: 100%;
     position: relative;
@@ -42,5 +42,12 @@
         background-color: rgb(54, 54, 158);
         border-radius: 10px;
         z-index: 1;
+    }
+    .sub-btn{
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        color: var(--card-button-color);
+        background-color: var(--card-button-background);
     }
 }

@@ -1,6 +1,6 @@
 
 :host ::ng-deep .p-card{
-    background-color: rgb(250, 218, 158);
+    background-color: var(--menu-item-card);
     padding-top: 30px;
 }
 .cartIcon{

@@ -1,7 +1,9 @@
+@import '../../../../../styles.scss';
+
 :host ::ng-deep .p-menubar {
     border-radius: 0;
     border: none;
-    background-color: #fd702a ;
+    background-color: var(--header-footer-color) ;
     padding: 10px 20px;
 }
 
@@ -10,7 +12,7 @@
 
     .p-menuitem-icon,
     .p-menuitem-text {
-        color: #fff !important;
+        color: var(--header-footer-text-color) !important;
     }
 
     &:hover {
@@ -172,13 +174,15 @@ height: 100px;
 
 /* completion of animation effect code */ 
 
-///**************/////////////////
 
   .search-box{
     width: fit-content;
     height: fit-content;
     position: relative;
     margin-right: 60px;
+    display: flex;
+    align-items: center;
+    gap:2%;
   }
   .input-search{
     height: 50px;
@@ -190,7 +194,7 @@ height: 100px;
     outline: none;
     border-radius: 25px;
     transition: all .5s ease-in-out;
-    background-color: #f06f2f;
+    background-color: var(--header-footer-color);
     padding-right: 40px;
     color:#fff;
   }

@@ -1,40 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-// @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// @include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-// $final-project-primary: mat.define-palette(mat.$indigo-palette);
-// $final-project-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-// $final-project-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-// $final-project-theme: mat.define-light-theme((
-//   color: (
-//     primary: $final-project-primary,
-//     accent: $final-project-accent,
-//     warn: $final-project-warn,
-//   )
-// ));
-//
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-// @include mat.all-component-themes($final-project-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
@@ -50,9 +13,63 @@ $gutter: 1rem; //for primeflex grid system
   padding: 0;
 }
 
+/* dark  [
+  23231A,
+  322F20,
+  6A5837,
+  988F2A,
+  FE5FOO
+]
+*/
 html,
 body {
   height: 100%;
+
+  // components
+  --header: #f1e1e1;
+  --header-footer-color: #fd702a;
+  --header-footer-text-color: #fff;
+
+  // card
+  --category-item-card: #ffd924;
+  --menu-item-card: #ffd924;
+  --offer-item-card: #ffd924;
+  --sub-item-card: #ffd924;
+  --button-orange-color: #fd702a;
+
+  // text
+  --title-text-color: #2d1201;
+  --disabled-text-color: #2d120178;
+  --link-text-color: rgb(81, 81, 199);
+
+  // social icons
+  --facebook-color: #0866ff;
+  --twitter-color: #26a7de;
+  --instagram-color: #d62976;
+  --whatsapp-color: #31a73d;
+
+  // buttons
+  --card-button-background: #fd702a;
+  --card-button-color: #fff;
+
+
+  // overlay
+  --overlay: #92e69b;
+  &.dark {
+    --header-footer-color: #23231a;
+    --header-footer-text-color: #fff;
+    --disabled-text-color: #fff;
+    --link-text-color: #fff;
+    --title-text-color: #fff;
+    --facebook-color: #fff;
+    --twitter-color: #fff;
+    --instagram-color: #fff;
+    --header: #4d424d;
+    --category-item-card: #b17179;
+    --menu-item-card: #b17179;
+    --offer-item-card: #b17179;
+    --sub-item-card: #b17179;
+  }
 }
 
 body {

@@ -12,7 +12,6 @@ import { AllItemsComponent } from 'src/app/user/menu-module/components/all-items
 })
 export class NavbarComponent {
   // version = VERSION;
-
   constructor(
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig
@@ -49,4 +48,6 @@ export class NavbarComponent {
       },
     ];
   }
+
+
 }

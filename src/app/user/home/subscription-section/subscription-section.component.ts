@@ -3,7 +3,7 @@ import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptio
 import { DomSanitizer } from '@angular/platform-browser';
 import { SubscriptionPlan } from 'src/app/interface/subscription-plan';
 import { UserService } from 'src/app/services/user-service/user.service';
-import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-subscription-section',
@@ -16,7 +16,6 @@ export class SubscriptionSectionComponent {
   constructor(
     private subscriptionsService: SubscriptionsService,
     private userService:UserService,
-    private messageService:MessageService,
     private sanitizer: DomSanitizer
   ) {}
 

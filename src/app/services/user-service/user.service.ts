@@ -54,6 +54,13 @@ export class UserService {
     );
   }
 
+  setSubIdValue(id:number ,subscriptionData: object): Observable<object> {
+    return this.httpClient.put<object>(`${environment.host}/users/${id}/subID`, subscriptionData).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    ); 
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -55,27 +55,25 @@ export class SubscriptionSectionComponent {
 
   
    SubscribeButton(subId:any) {
-   
-    this.currentDate = new Date();
-     this.endDate = new Date(this.currentDate);
-     this.duration=30;
-    this.endDate.setDate(this.currentDate.getDate() + this.duration);
+    this.subscriptionsService.getById(subId).subscribe((subData: any) => {
+      this.duration = subData.data.duration;
+      this.currentDate = new Date();
+      this.endDate = new Date(this.currentDate);
+      this.endDate.setDate(this.currentDate.getDate() + (this.duration*30));
+      
      
-    //localStorage.setItem('subscribe_id',subId); 
+      this.formattedCurrentDate = this.formatDate(this.currentDate);
+      this.formattedEndDate = this.formatDate(this.endDate);
+
+      this.subscriptionData={ 
+       subscribe_id : subId,
+       start_date :  this.formattedCurrentDate,
+       end_date : this.formattedEndDate     
+     };
      
-       this.formattedCurrentDate = this.formatDate(this.currentDate);
-       this.formattedEndDate = this.formatDate(this.endDate);
-   // localStorage.setItem("startDate", this.currentDate.getTime());  
-    //  this.endDate = new Date(Number(this.currentDate.getTime()));
-    //  this.endDate.setDate(this.endDate.getDate() + this.duration);  // replace 30 with duration in months
-   // localStorage.setItem("endDate", this.endDate.getTime());
-    this.subscriptionData={
-      subscribe_id : subId,
-      start_date :  this.formattedCurrentDate,
-      end_date : this.formattedEndDate     
-    };
-    
-    this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
+     this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
+    })
+
   }
   
   checkSub(){

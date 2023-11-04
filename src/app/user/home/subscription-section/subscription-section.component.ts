@@ -26,8 +26,16 @@ export class SubscriptionSectionComponent {
   userId=1;
   user: any = []
   check:any = null;
-  subscriptionData : any ={
+  year: any;
+  month: any;
+  day: any;
+  formattedCurrentDate:any;
+  formattedEndDate: any; 
 
+  subscriptionData: any ={
+    subscribe_id : null,
+    start_date : null,
+    end_date: null
 };
 
   ngOnInit() {
@@ -49,31 +57,43 @@ export class SubscriptionSectionComponent {
    SubscribeButton(subId:any) {
    
     this.currentDate = new Date();
-    localStorage.setItem('subscribe_id',subId);  
-    this.duration=30;
-    localStorage.setItem("startDate", this.currentDate.getTime());  
-    this.endDate = new Date(Number(localStorage.getItem("startDate")));
-    this.endDate.setDate(this.endDate.getDate() + this.duration);  // replace 30 with duration in months
-    localStorage.setItem("endDate", this.endDate.getTime());
+     this.endDate = new Date(this.currentDate);
+     this.duration=30;
+    this.endDate.setDate(this.currentDate.getDate() + this.duration);
+     
+    //localStorage.setItem('subscribe_id',subId); 
+     
+       this.formattedCurrentDate = this.formatDate(this.currentDate);
+       this.formattedEndDate = this.formatDate(this.endDate);
+   // localStorage.setItem("startDate", this.currentDate.getTime());  
+    //  this.endDate = new Date(Number(this.currentDate.getTime()));
+    //  this.endDate.setDate(this.endDate.getDate() + this.duration);  // replace 30 with duration in months
+   // localStorage.setItem("endDate", this.endDate.getTime());
     this.subscriptionData={
       subscribe_id : subId,
-      start_date :  this.currentDate ,
-      end_date : this.endDate     
+      start_date :  this.formattedCurrentDate,
+      end_date : this.formattedEndDate     
     };
- 
-    //this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
-
+    
+    this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
   }
   
   checkSub(){
+    /*
     if(localStorage.getItem('subscribe_id')){
       this.check=localStorage.getItem('subscribe_id');
     }
-    /*
-    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-         this.check = response.subscribe_id;
-    }); 
     */
+    this.userService.getUserByID(this.userId).subscribe((response: any) => {
+      this.check = response.data.subscribe_id;
+    });
+    
   }
 
+   formatDate(date: Date): string {
+     this.year = date.getFullYear();
+    this.month = String(date.getMonth() + 1).padStart(2, '0');
+    this.day = String(date.getDate()).padStart(2, '0');
+    return `${this.year}-${this.month}-${this.day}`;
+  }
 }

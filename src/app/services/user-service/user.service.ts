@@ -52,7 +52,7 @@ export class UserService {
   }
 
   setSubIdValue(id:number ,subscriptionData: object): Observable<object> {
-    return this.httpClient.put(`${environment.host}/users/${id}/subID`, subscriptionData).pipe(
+    return this.httpClient.put<object>(`${environment.host}/users/${id}/subID`, subscriptionData).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     ); 

@@ -42,11 +42,12 @@ export class ItemComponent {
   ) {}
 
   ngOnInit() {
-    this.httpFav.getAll(1).subscribe((data) => {
+    this.httpFav.getAll(this.userId).subscribe((data) => {
       this.favItems = data.data;
       this.existingItem = this.favItems.find(
         (favItem: any) => favItem.item_id === this.data.id
       );
+      console.log(this.existingItem)
       if (this.existingItem) {
         this.isFavourite = true;
       }
@@ -159,11 +160,11 @@ export class ItemComponent {
           user_id: this.userId,
           item: item,
         })
-        .subscribe();
+        .subscribe((res => console.log(res)));
     } else {
       const favId = this.favItems.filter((e: any) => e.item_id == item.id)[0]
         .id;
-      this.httpFav.delete(favId).subscribe();
+      this.httpFav.delete(favId).subscribe((res) => console.log(res));
     }
   }
 }

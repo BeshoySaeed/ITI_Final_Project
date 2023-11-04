@@ -142,3 +142,27 @@ p {
 .inactive {
     background-color: $light-red-color;
 }
+
+.heart {
+    display: inline-block;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    transition: color 0.3s;
+    position: absolute;
+    top: -240px;
+    right: 20px;
+  }
+  
+  .pi.pi-heart-fill {
+    color: var(--color-heart); 
+  }
+  
+  .pi.pi-heart {
+    color: var(--default-heart); 
+    cursor: pointer;
+  }
+  
+  .pi.pi-heart:hover {
+    color: var(--hover-heart); 
+  }

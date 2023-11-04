@@ -25,16 +25,19 @@ html,
 body {
   height: 100%;
 
+
+  --background : #F7F5F3;
+
   // components
   --header: #f1e1e1;
   --header-footer-color: #fd702a;
   --header-footer-text-color: #fff;
 
   // card
-  --category-item-card: #ffd924;
-  --menu-item-card: #ffd924;
-  --offer-item-card: #ffd924;
-  --sub-item-card: #ffd924;
+  --category-item-card: #fff;
+  --menu-item-card: #fff;
+  --offer-item-card: #fff;
+  --sub-item-card: #fff;
   --button-orange-color: #fd702a;
 
   // text
@@ -49,13 +52,21 @@ body {
   --whatsapp-color: #31a73d;
 
   // buttons
-  --card-button-background: #fd702a;
-  --card-button-color: #fff;
+  --card-button-background: #EF5B30;
+  --card-button-color: #FEFAF9;
+  --card-button-hover-background: #13131B;
+  --card-button-hover-color: #FEFFFD;
 
+  // heart
+
+  --color-heart: red;
+  --default-heart: #ccc;
+  --hover-heart: #ff4d4d;
 
   // overlay
-  --overlay: #92e69b;
+  --overlay: #333833;
   &.dark {
+    
     --header-footer-color: #23231a;
     --header-footer-text-color: #fff;
     --disabled-text-color: #fff;
@@ -80,6 +91,41 @@ body {
 // ______________________________________________________________________________________
 // ******************************** Shared classes **************************************
 // ______________________________________________________________________________________
+
+.card-btn {
+
+  background-color: var(--card-button-background) ;
+  color: var(--card-button-color);
+  transition: 0.3s;
+  border-radius: 10px 10px 10px 0;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover{
+    background-color: var(--card-button-hover-background) ;
+    color: var(--card-button-hover-color);
+    border: 1px solid white;
+
+  }
+}
+
+.cart-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  padding: 10px;
+  border-radius: 30%;
+  background-color: var(--card-button-background) ;
+  color: var(--card-button-color);
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--card-button-hover-background) ;
+    color: var(--card-button-hover-color);
+  }
+}
+
 
 .page-title {
   margin: 0;

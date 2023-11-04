@@ -6,6 +6,7 @@
   <div
     class="flex flex-wrap justify-content-center gap-2 mt-3 text-center"
   >
+  
     <ng-container *ngFor="let offer of offers; let index = index">
       <div class="card-container">
         <p class="text-white discount">discount 50%</p>
@@ -20,7 +21,7 @@
             </div>
           </ng-template>
               <a routerLink="/cart">
-                <button class="offer-btn">
+                <button class="card-btn ">
                   <i class="pi pi-arrow-up-right" ></i>
                   Get Offer
                 </button>

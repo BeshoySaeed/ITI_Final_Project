@@ -1,5 +1,5 @@
 <!-- <a href="#"> -->
-<p-card>
+<p-card class="relative">
   <p-toast></p-toast>
   <h3>{{ data.title }}</h3>
 
@@ -31,8 +31,8 @@
       [disabled]="data.active == 0"
     >
       <i
-        class="pi pi-shopping-cart"
-        style="color: #fd702a; font-size: 4rem; cursor: pointer"
+        class="pi pi-shopping-cart cart-icon text-3xl"
+      
       ></i>
     </button>
     <p-dialog
@@ -92,8 +92,7 @@
   <ng-template pTemplate="">
     <i
       (click)="addFav(data)"
-      [ngClass]="isFavourite ? 'pi pi-heart-fill' : 'pi pi-heart'"
-      style="font-size: 2rem; color: orange; cursor: pointer"
+      [ngClass]="isFavourite ? 'pi pi-heart-fill heart' : 'pi pi-heart heart'"
     ></i>
   </ng-template>
 </p-card>

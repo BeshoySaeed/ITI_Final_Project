@@ -1,5 +1,6 @@
+
 :host ::ng-deep .p-card{
-    background-color: var(--offer-item-card);
+    background-color: #fff;
     padding-top: 30px;
 }
 .card-container{
@@ -13,11 +14,4 @@
     transform: rotate(-45deg);
     background-color: rgb(54, 54, 158);
     border-radius: 10px;
-}
-.offer-btn{
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: var(--card-button-color);
-    background-color: var(--card-button-background);
 }

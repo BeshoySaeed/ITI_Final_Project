@@ -35,24 +35,111 @@
   height: 80vh;
 
 }
-.overlay {
+:host ::ng-deep .overlay {
   z-index: 9;
   margin: 0px;
   position:absolute;
+
   right: 917px;
-  top: 62%;
+  top: 20%;}
+  @media (min-width: 1150px) and (max-width: 1300px) {
+
+  :host ::ng-deep .overlay {
+      z-index: 9;
+      margin: 0px;
+      position:absolute;
+    
+      right: 850px;
+      top: 20%;
+
+    }
+  }
+    @media (min-width: 1000px) and (max-width: 1150px) {
+
+      :host ::ng-deep .overlay {
+          z-index: 9;
+          margin: 0px;
+          position:absolute;
+        
+          right: 750px;
+          top: 20%;
+    
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 1000px) {
+
+        :host ::ng-deep .overlay {
+            z-index: 9;
+            margin: 0px;
+            position:absolute;
+          
+            right: 550px;
+            top: 20%;
+      
+          }
+        }
+        @media (min-width: 650px) and (max-width: 800px) {
+
+          :host ::ng-deep .overlay {
+              z-index: 9;
+              margin: 0px;
+              position:absolute;
+            
+              right: 380px;
+              top: 20%;
+        
+            }
+          }
+          @media (min-width: 500px) and (max-width: 650px) {
+
+            :host ::ng-deep .overlay {
+                z-index: 9;
+                margin: 0px;
+                position:absolute;
+              
+                right: 220px;
+                top: 20%;
+          
+              }
+            }
+            @media (min-width: 370px) and (max-width: 500px) {
+
+              :host ::ng-deep .overlay {
+                  z-index: 9;
+                  margin: 0px;
+                  position:absolute;
+                
+                  right: 100px;
+                  top: 20%;
+            
+                }
+              }
+// for mobile size}
+@media (max-width: 767px) {
+
+    .p-menuitem-text,
+    .p-menuitem-icon {
+
+        color: black !important;
+
+    }
 }
+
+
 :host ::ng-deep .p-button {
-  width: 152px;
+  width: 180px;
   background-color: #FD702A;
-  opacity: 0.5;
+  // opacity: 0.5;
   height: 100%;
   border: 0;
+  margin-left: 150px;
   color: #ffffff;
   position: relative;
   transform: translate(-50%, -50%);
   text-align: center;
   justify-content: center;
+  margin-top: 20px;
 }
 :host ::ng-deep .p-button:focus {
   box-shadow: 0 0 0 0;
@@ -64,15 +151,8 @@
 
 }
 
-// :host ::ng-deep .p-galleria-item-wrapper {
-//     display: flex;
-//     flex-direction: column;
-//     position: relative;
-//     height: 60%;
-// }
-// .p-galleria-indicator-onitem.p-galleria-indicators-bottom .p-galleria-indicators {
-//     bottom: 42%;
-//     left: 0;
-//     width: 100%;
-//     align-items: flex-end;
-// }
+:host ::ng-deep h1,h3,p {
+   color: #ffffff;
+  //  margin-left: -70px;
+   text-align: center;
+}

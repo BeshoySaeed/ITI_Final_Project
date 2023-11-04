@@ -26,7 +26,7 @@
         <p-card [header]="offer.title" [subheader]="offer.available" [style]="{ width: '300px', 'border-radius': '8%', 'position': 'relative' }">
             <ng-template pTemplate="header">
                 <div class="flex justify-content-center align-content-center">
-                    <img alt="Card" [src]="offer.img" class="border-circle w-8" />
+                    <img alt="Card" src='http://localhost:8000/images/item/{{offer.img}}' class="border-circle w-8" />
                 </div>
             </ng-template>
             <div class="flex flex-wrap gap-2">
@@ -44,7 +44,7 @@
         </p-card>
     </ng-container>
   </div>
-  <p-paginator  [rows]="4" [totalRecords]="categories?.length" (onPageChange)="onItemChange($event)"></p-paginator>
+  <p-paginator  [rows]="6" [totalRecords]="categories?.length" (onPageChange)="onItemChange($event)"></p-paginator>
 
 </div>
 

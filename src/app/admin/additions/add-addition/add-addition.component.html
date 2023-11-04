@@ -1,4 +1,4 @@
-<div class="add-user-container">
+<!-- <div class="add-user-container">
   <h3 class="admin-page-title">Add addition</h3>
 
   <div class="card">
@@ -6,6 +6,8 @@
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
       class="formgrid grid w-full mt-3 mx-auto form"
+      enctype="multipart/form-data" method="post"
+
     >
       <div class="col-12 mb-4">
         <div class="flex flex-column-reverse">
@@ -15,7 +17,7 @@
 
             type="text"
             pInputText
-            [required]="true"
+            [required]="false"
             [minlength]="4"
             formControlName="name"
             class="input p-2 border-round outline-none w-full"
@@ -55,7 +57,7 @@
             [format]="false"
             styleClass="w-full"
             class="mask-button w-full"
-            [required]="true"
+            [required]="false"
             [min]="1"
           >
           </p-inputNumber>
@@ -96,15 +98,16 @@
         <div class="flex flex-column-reverse">
           
           
-          <p-fileUpload
+          <input
             name="image"
+            formControlName="image"
+            type="file"
             url="./upload"
             accept="image/*"
-            (onSelect)="onSelect($event)"
+            ((change))="onSelect($event)"
             (onRemove)="onRemove()"
-            [showUploadButton]="false"
-            [showCancelButton]="false"
-            ></p-fileUpload>
+           
+            >
          
           <label for="image" class="block mb-2">Image *</label>
         </div>
@@ -128,10 +131,147 @@
       <button
         type="submit"
         class="primary-button w-5 mx-auto my-3"
-        [disabled]="form.invalid"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="add-Category-container">
+  <h3 class="admin-page-title">Add Category</h3>
+
+  <div class="card">
+    <form
+      [formGroup]="addCategoryForm"
+      (ngSubmit)="onSubmit()"
+      class="formgrid grid w-full mt-3 mx-auto form"
+      enctype="multiform/form-data" method="post"
+    >
+    <div class="col-12 mb-4">
+      <div class="flex flex-column-reverse">
+        <input
+          id="name"
+          [(ngModel)]="addition.name"
+
+          type="text"
+          pInputText
+          [required]="true"
+          [minlength]="4"
+          formControlName="name"
+          class="input p-2 border-round outline-none w-full"
+        />
+        <label for="name" class="block mb-2">Name *</label>
+      </div>
+
+      <div
+        class="error-message"
+        *ngIf="
+          addCategoryForm.controls['name'].touched &&
+          addCategoryForm.controls['name'].invalid
+        "
+      >
+        <small
+          class="block"
+          *ngIf="addCategoryForm.controls['name'].errors?.['required']"
+        >
+          addition name is required
+        </small>
+        <small
+          class="block"
+          *ngIf="addCategoryForm.controls['name'].errors?.['minlength']"
+        >
+          addition name is must be more than 3 characters
+        </small>
+      </div>
+    </div>
+
+      <div class="col-12 mb-4">
+        <div class="flex flex-column-reverse">
+          <p-inputNumber
+            [useGrouping]="false"
+            formControlName="price"
+            [(ngModel)]="addition.price"
+
+            [format]="false"
+            styleClass="w-full"
+            class="mask-button w-full"
+            [required]="true"
+            [min]="1"
+          >
+          </p-inputNumber>
+          <label for="price" class="block mb-2">Price *</label>
+        </div>
+  
+        <div
+          class="error-message"
+          *ngIf="
+            addCategoryForm.controls['price'].touched &&
+            addCategoryForm.controls['price'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addCategoryForm.controls['price'].errors?.['required']"
+          >
+            Price is required
+          </small>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4">
+        <div class="flex flex-column-reverse">
+          <textarea
+            rows="7"
+            cols="30"
+            pInputTextarea
+            formControlName="description"
+            [(ngModel)]="addition.description"
+
+          ></textarea>
+          <label for="description" class="block mb-2">Description</label>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4 pr-0 md:pr-3">
+        <div class="flex flex-column-reverse">
+          <p-fileUpload
+            name="image"
+            url="./upload"
+            accept="image/*"
+            (onSelect)="onSelect($event)"
+            (onRemove)="onRemove()"
+            [showUploadButton]="false"
+            [showCancelButton]="false"
+          ></p-fileUpload>
+          <label for="image" class="block mb-2">Image *</label>
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            addCategoryForm.controls['image'].touched &&
+            addCategoryForm.controls['image'].invalid
+          "
+        >
+          <small
+            class="block"
+            *ngIf="addCategoryForm.controls['image'].errors?.['required']"
+          >
+            Category image is required
+          </small>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="primary-button w-5 mx-auto my-3"
+        [disabled]="addCategoryForm.invalid"
       >
         Add
       </button>
     </form>
   </div>
 </div>
+
+

@@ -39,7 +39,7 @@ export class ItemService {
 
   addNew(object : any) : Observable<any>
   {
-    return this.http.post<any>(`${environment.host}/item`, object, {headers: this.headers})
+    return this.http.post<any>(`${environment.host}/item`, object,{headers: this.headers})
   }
 
   addItem(object: any): Observable<any>

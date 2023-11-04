@@ -6,6 +6,7 @@
       [formGroup]="addCategoryForm"
       (ngSubmit)="onSubmit()"
       class="formgrid grid w-full mt-3 mx-auto form"
+      enctype="multiform/form-data" method="post"
     >
       <div class="col-12 mb-4 pr-0 md:pr-3">
         <div class="flex flex-column-reverse">
@@ -17,7 +18,6 @@
             [minlength]="4"
             formControlName="name"
             class="input p-2 border-round outline-none w-full"
-            [(ngModel)]="category.name"
           />
           <label for="name" class="block mb-2">Name *</label>
         </div>

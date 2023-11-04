@@ -8,7 +8,7 @@
       <p *ngIf="data.active == 1; else inactive">Active</p>
       <ng-template #inactive>Inactive</ng-template>
     </div>
-    <img [src]="data.img" alt="{{ data.name }}" />
+    <img src='http://localhost:8000/images/item/{{data.img}}' alt="{{ data.name }}" />
   </ng-template>
   <p class="count">{{ data.name }}</p>
 

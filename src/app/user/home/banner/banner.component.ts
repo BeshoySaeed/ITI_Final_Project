@@ -13,7 +13,7 @@ import { ItemService } from 'src/app/services/ItemService/item.service';
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('500ms', style({ opacity: 1 })),
+        animate('500ms', style({ opacity: 0 })),
       ]),
       transition(':leave', [
         animate('500ms', style({ opacity: 0 })),
@@ -22,9 +22,11 @@ import { ItemService } from 'src/app/services/ItemService/item.service';
   ],
 })
 export class BannerComponent {
-      images: any[] | undefined;
+      image: any[] | undefined;
       items: any;
 
+
+     
     responsiveOptions: any[] = [
         {
             breakpoint: '1024px',
@@ -44,7 +46,7 @@ export class BannerComponent {
 
     ngOnInit() {
         this.photoService.getData().then((images) => {
-            this.images = images;
+            this.image = images;
         });
         this.itemHttp.getItems().subscribe(items =>{
           this.items = items;

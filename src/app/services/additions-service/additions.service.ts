@@ -9,7 +9,7 @@ import { Addition } from 'src/app/interface/addition';
 })
 export class AdditionsService {
   headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
   })
   
   constructor(private httpClient: HttpClient) {}
@@ -27,7 +27,7 @@ export class AdditionsService {
 
 
   storeAddition(addition:object): Observable<object> {
-    return this.httpClient.post<object>(`${environment.host}/addition`, addition, {headers: this.headers}).pipe(
+    return this.httpClient.post<object>(`${environment.host}/addition/`, addition, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

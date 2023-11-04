@@ -15,8 +15,11 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
 })
 export class AddMenuItemsComponent {
   form!: FormGroup;
+  formData!: FormData;
+
   categories : any = [];
   additionSelected: any;
+
 
   additions : any = [];
 
@@ -35,6 +38,12 @@ export class AddMenuItemsComponent {
       addition_id: ""
     }
   constructor(private fb: FormBuilder, private httpItem: ItemService, private route: Router, private httpCategory : CategoriesService, private httpAddition: AdditionsService) {
+    
+  }
+  ngOnInit() {
+
+
+
     this.form = this.fb.group({
       name: [''],
       price: [''],
@@ -45,8 +54,7 @@ export class AddMenuItemsComponent {
       active: [true],
       image: [null, Validators.required],
     });
-  }
-  ngOnInit() {
+
     this.httpCategory.getAllCategory().subscribe(data =>
       {
         this.categories = data.data
@@ -63,19 +71,31 @@ export class AddMenuItemsComponent {
 
 
   onSubmit() {
-    console.log(this.item);
-    this.httpItem.addNew(this.item).subscribe((e) =>console.log(e));
+    // const formData = new FormData();
+    this.formData.append('name', this.form.get('name')?.value);
+    this.formData.append('price', this.form.get('price')?.value);
+    this.formData.append('description', this.form.get('description')?.value);
+    this.formData.append('discount', this.form.get('discount')?.value);
+    this.formData.append('active', '1');
+    this.formData.append('category_id', this.form.get('category')?.value);
+    
+
+
+    // console.log(this.item);
+    this.httpItem.addNew(this.formData).subscribe((e) =>console.log(e));
     this.route.navigate(['/admin/menu-items'])
-    console.log(this.additionSelected)
+    // console.log(this.additionSelected)
 
   }
 
   onSelect(event: any) {
-    this.item.img = event.files[0].name;
-    const file = event.files[0];
-    this.form.patchValue({
-      image: file,
-    });
+    this.formData = new FormData()
+      let file = event.files[0];
+      this.formData.append('img', file);
+      this.item.img = file.name;
+      this.form.patchValue({
+        image: file
+      });
   }
 
   onRemove() {

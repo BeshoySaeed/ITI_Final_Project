@@ -86,7 +86,7 @@
       <ng-template pTemplate="body" let-item>
         <tr>
           <td>
-            <img width="150" [src]="item.img" [alt]="item.name" />
+            <img width="150"src='http://localhost:8000/images/addition/{{item.img}}'  [alt]="item.name" />
           </td>
           <td>
             {{ item.name }}
@@ -119,7 +119,7 @@
               placeholder="Top"
               [showDelay]="700"
               class="p-button-danger p-2 rounded"
-              (click)="deleteItem(item.id)"
+              (click)="deleteAddition(item.id)"
             >
               <i class="pi pi-fw pi-trash"></i>
             </button>

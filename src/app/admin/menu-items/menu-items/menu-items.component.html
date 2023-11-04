@@ -130,7 +130,7 @@
             ></button>
           </td>
           <td>
-            <img width="150" [src]="menuItem.image" [alt]="menuItem.name" />
+            <img width="150" src='http://localhost:8000/images/item/{{menuItem.img}}'  [alt]="menuItem.name" />
           </td>
           <td>
             {{ menuItem.name }}
@@ -204,11 +204,15 @@
                 <ng-template pTemplate="body" let-addition>
                   <tr>
                     <td>
-                      <img
+                      <!-- <img
                         width="100"
                         [src]="menuItem.image"
                         [alt]="menuItem.name"
-                      />
+                      /> -->
+
+                      <img width="150" src='http://localhost:8000/images/item/{{addition.img}}'  [alt]="menuItem.name" />
+
+
                     </td>
                     <td>{{ addition.name }}</td>
                     <td>{{ addition.price | currency : "USD" }}</td>

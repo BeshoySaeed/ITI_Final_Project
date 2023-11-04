@@ -47,9 +47,11 @@ export class UserSubscriptionComponent {
   duration: any;
   check:any = null;
   userId=1;
-  subscriptionData : any ={
-
-  };
+  subscriptionData: any ={
+    subscribe_id : null,
+    start_date : null,
+    end_date: null
+};
 
   constructor(private subService: SubscriptionsService, private userService: UserService) {}
   
@@ -129,11 +131,7 @@ export class UserSubscriptionComponent {
         this.todayDate =new Date();
         if(this.todayDate>=this.checkDate){
           
-          this.subscriptionData={
-            subscribe_id : null,
-            start_date :  null ,
-            end_date : null     
-          };
+
   
           this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
   

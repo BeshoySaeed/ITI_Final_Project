@@ -20,6 +20,7 @@ export class SubscriptionSectionComponent {
   ) {}
 
   subscriptions: SubscriptionPlan[] = [];
+  subId:any;
   currentDate : any ;
   endDate: any;
   duration:any;
@@ -31,6 +32,8 @@ export class SubscriptionSectionComponent {
   day: any;
   formattedCurrentDate:any;
   formattedEndDate: any; 
+  checkDate: any;
+  todayDate:any;
 
   subscriptionData: any ={
     subscribe_id : null,
@@ -41,6 +44,7 @@ export class SubscriptionSectionComponent {
   ngOnInit() {
     this.getAll();
     this.checkSub();
+    this.checkEndSub()
   }
 
   getAll() {
@@ -89,5 +93,26 @@ export class SubscriptionSectionComponent {
     this.month = String(date.getMonth() + 1).padStart(2, '0');
     this.day = String(date.getDate()).padStart(2, '0');
     return `${this.year}-${this.month}-${this.day}`;
+  }
+
+
+  checkEndSub()
+  {
+    
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.subId = response.data.subscribe_id;
+      this.checkDate = response.data.end_date;
+      if(this.subId){
+        this.todayDate =new Date();
+        if(this.todayDate>=this.checkDate){
+          
+  
+          this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
+  
+    
+          }
+      }
+    });
+
   }
 }

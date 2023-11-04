@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 interface Order {
   id: number;
@@ -45,9 +46,12 @@ export class UserSubscriptionComponent {
   todayDate:any;
   duration: any;
   check:any = null;
+  userId=1;
+  subscriptionData : any ={
 
+  };
 
-  constructor(private subService: SubscriptionsService) {}
+  constructor(private subService: SubscriptionsService, private userService: UserService) {}
   
   ngOnInit(){
     this.getSub();
@@ -59,11 +63,22 @@ export class UserSubscriptionComponent {
 
 
   getSub(){
+    /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.subId = response.subscribe_id;
+    }); 
+    if(this.subId){
+      this.subService.getById(this.subId).subscribe((subData: any) => {
+        this.subscribeObject = subData.data;
+      })
+    }
+   */
+
     if(localStorage.getItem('subscribe_id')){
      this.subId= localStorage.getItem('subscribe_id');
     this.subService.getById(this.subId).subscribe((subData: any) => {
       this.subscribeObject = subData.data;
-    //  console.log(this.subscribeObject);
+
     })
   }
   else {
@@ -80,7 +95,12 @@ export class UserSubscriptionComponent {
   }
 
   getDate() {
-    
+    /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.currentDate = response.start_date;
+      this.endDate = response.end_date;
+    }); 
+    */
    this.currentDate=localStorage.getItem('startDate');
    this.endDate=localStorage.getItem('endDate');
  
@@ -89,6 +109,17 @@ export class UserSubscriptionComponent {
 
 
   sumPrice(){    
+    /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.subId = response.subscribe_id;
+    });
+    
+    if(this.subId){
+      for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
+        this.total+= this.orders[i].price;   
+      }   
+    }
+    */
     if(localStorage.getItem('subscribe_id')){
     for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
          this.total+= this.orders[i].price;   
@@ -101,6 +132,28 @@ export class UserSubscriptionComponent {
 
   checkEndDate()
   {
+    /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.subId = response.subscribe_id;
+      this.checkDate = response.end_date;
+    });
+
+    if(this.subId){
+      this.todayDate =new Date();
+      if(this.todayDate>=this.checkDate){
+        
+        this.subscriptionData={
+          subscribe_id : null,
+          start_date :  null ,
+          end_date : null     
+        };
+
+        this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
+
+  
+        }
+    }
+   */
     if(localStorage.getItem('subscribe_id')){
       console.log('check date')
       this.todayDate =new Date();
@@ -121,5 +174,10 @@ export class UserSubscriptionComponent {
     if(localStorage.getItem('subscribe_id')){
       this.check=localStorage.getItem('subscribe_id');
     }
+     /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+         this.check = response.subscribe_id;
+    }); 
+    */
   }
 }

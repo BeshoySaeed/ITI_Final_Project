@@ -23,8 +23,12 @@ export class SubscriptionSectionComponent {
   currentDate : any ;
   endDate: any;
   duration:any;
-  userId:any;
+  userId=1;
+  user: any = []
   check:any = null;
+  subscriptionData : any ={
+
+};
 
   ngOnInit() {
     this.getAll();
@@ -43,16 +47,7 @@ export class SubscriptionSectionComponent {
 
   
    SubscribeButton(subId:any) {
-    /*
-    this.userService.setSubIdValue(this.userId,subId).subscribe((response: any) => {
-      if (response.status == 'success') {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'user is subscribed',
-        });
-      }
-    });*/
+   
     this.currentDate = new Date();
     localStorage.setItem('subscribe_id',subId);  
     this.duration=30;
@@ -60,7 +55,13 @@ export class SubscriptionSectionComponent {
     this.endDate = new Date(Number(localStorage.getItem("startDate")));
     this.endDate.setDate(this.endDate.getDate() + this.duration);  // replace 30 with duration in months
     localStorage.setItem("endDate", this.endDate.getTime());
+    this.subscriptionData={
+      subscribe_id : subId,
+      start_date :  this.currentDate ,
+      end_date : this.endDate     
+    };
  
+    //this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
 
   }
   
@@ -68,6 +69,11 @@ export class SubscriptionSectionComponent {
     if(localStorage.getItem('subscribe_id')){
       this.check=localStorage.getItem('subscribe_id');
     }
+    /*
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+         this.check = response.subscribe_id;
+    }); 
+    */
   }
 
 }

@@ -39,8 +39,8 @@ export class DiscountsComponent {
   applyFilterGlobal($event:any, dt:any, stringVal:string) {
     dt.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
-  status(active: string) {
-    let status = active == 'active'? 'success' : 'danger';
+  status(active: number) {
+    let status = active == 1 ? 'success' : 'danger';
     return status;
   }
 

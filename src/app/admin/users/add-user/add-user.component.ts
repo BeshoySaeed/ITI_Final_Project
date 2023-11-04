@@ -17,7 +17,7 @@ import { MessageService } from 'primeng/api';
 export class AddUserComponent {
   addUserForm!: FormGroup;
   loader = false;
-  userID = 12;
+  userID = 3;
   userPhone: any ={
     user_id : this.userID,
     phone : ''

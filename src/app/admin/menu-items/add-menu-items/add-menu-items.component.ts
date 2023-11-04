@@ -62,7 +62,7 @@ export class AddMenuItemsComponent {
 
   onSubmit() {
     this.httpItem.addNew(this.form.value).subscribe((e) => console.log(e));
-    // this.route.navigate(['/admin/menu-items']);
+    this.route.navigate(['/admin/menu-items']);
   }
 
   onSelect(event: any) {

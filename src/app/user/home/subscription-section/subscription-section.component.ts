@@ -77,11 +77,7 @@ export class SubscriptionSectionComponent {
   }
   
   checkSub(){
-    /*
-    if(localStorage.getItem('subscribe_id')){
-      this.check=localStorage.getItem('subscribe_id');
-    }
-    */
+ 
     this.userService.getUserByID(this.userId).subscribe((response: any) => {
       this.check = response.data.subscribe_id;
     });

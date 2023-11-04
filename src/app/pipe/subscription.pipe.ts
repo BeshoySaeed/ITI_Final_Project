@@ -7,9 +7,7 @@ import { UserService } from '../services/user-service/user.service';
 })
 export class SubscriptionPipe implements PipeTransform {
 
-  subId:any=null; //get subscribe id from local storage  
-
- // subId= localStorage.getItem('subscribe_id');
+  subId:any=null; 
 
  subscribeObject:any=[];
  percentage: any;

@@ -1,250 +1,257 @@
 <div class="container">
   <div class="container-form border-round-lg">
-  <h3 class="page-title mt-4">Register</h3>
-  <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="form">
-    <div class="row">
-      <div class="multi">
-        <div class="w-50 mb-3">
-          <label for="name_input" class="form-label">First Name</label>
-          <span class="">
-            <i class="pi pi-user"></i>
-          <input
-            type="text"
-            id="name_input"
-            pInputText
-            placeholder="First name"
-            formControlName="first_name"
-          />
-          </span>
-          <div
-            id="name_input_help"
-            *ngIf="
-              registerform.controls['first_name'].touched &&
-              registerform.controls['first_name'].invalid
-            "
-            class="form-text"
-          >
-            <small
-              *ngIf="registerform.controls['first_name'].errors?.['required']"
-              >This field is required</small
+    <h3 class="page-title mt-4">Register</h3>
+    <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="form">
+      <div class="row">
+        <div class="multi">
+          <div class="w-50 mb-3">
+            <label for="name_input" class="form-label">First Name</label>
+            <span class="">
+              <i class="pi pi-user"></i>
+              <input
+                type="text"
+                id="name_input"
+                pInputText
+                placeholder="First name"
+                formControlName="first_name"
+              />
+            </span>
+            <div
+              id="name_input_help"
+              *ngIf="
+                registerform.controls['first_name'].touched &&
+                registerform.controls['first_name'].invalid
+              "
+              class="form-text"
             >
+              <small
+                *ngIf="registerform.controls['first_name'].errors?.['required']"
+                >This field is required</small
+              >
+            </div>
+          </div>
+          <div class="w-50 mb-3">
+            <label for="name_input" class="form-label">Last Name</label>
+            <span class="">
+              <i class="pi pi-user"></i>
+              <input
+                type="text"
+                id="name_input"
+                pInputText
+                placeholder="Last name"
+                formControlName="last_name"
+              />
+            </span>
+
+            <div
+              id="name_input_help"
+              *ngIf="
+                registerform.controls['last_name'].touched &&
+                registerform.controls['last_name'].invalid
+              "
+              class="form-text"
+            >
+              <small
+                *ngIf="registerform.controls['last_name'].errors?.['required']"
+                >This field is required</small
+              >
+            </div>
           </div>
         </div>
-        <div class="w-50 mb-3">
-          <label for="name_input" class="form-label">Last Name</label>
-          <span class="">
-            <i class="pi pi-user"></i>
-          <input
-            type="text"
-            id="name_input"
-            pInputText
-            placeholder="Last name"
-            formControlName="last_name"
-          />
-        </span>
+        <div class="single">
+          <div class="mb-3 w-100">
+            <label for="email_input" class="form-label">Email</label>
+            <span class="">
+              <i class="pi pi-envelope"></i>
 
-          <div
-            id="name_input_help"
-            *ngIf="
-              registerform.controls['last_name'].touched &&
-              registerform.controls['last_name'].invalid
-            "
-            class="form-text"
-          >
-            <small
-              *ngIf="registerform.controls['last_name'].errors?.['required']"
-              >This field is required</small
+              <input
+                type="email"
+                pInputText
+                placeholder="Email"
+                id="email_input"
+                formControlName="email"
+              />
+            </span>
+
+            <div
+              id="email_input"
+              *ngIf="
+                registerform.controls['email'].touched &&
+                registerform.controls['email'].invalid
+              "
+              class="form-text"
             >
+              <small *ngIf="registerform.controls['email'].errors?.['required']"
+                >This field is required</small
+              >
+              <small *ngIf="registerform.controls['email'].errors?.['pattern']"
+                >the email must be like (example@example.com)</small
+              >
+            </div>
           </div>
         </div>
-      </div>
-      <div class="single">
-        <div class="mb-3 w-100">
-          <label for="email_input" class="form-label">Email</label>
-          <span class="">
+        <div class="multi">
+          <div class="mb-3 w-50">
+            <label for="Phone_input" class="form-label">Phone 1</label>
+            <span>
+              <i class="pi pi-phone"></i>
 
-          <i class="pi pi-envelope"></i>
-
-          <input
-            type="email"
-            pInputText
-            placeholder="Email"
-            id="email_input"
-            formControlName="email"
-          />
-          
-        </span>
-
-          <div
-            id="email_input"
-            *ngIf="
-              registerform.controls['email'].touched &&
-              registerform.controls['email'].invalid
-            "
-            class="form-text"
-          >
-            <small *ngIf="registerform.controls['email'].errors?.['required']"
-              >This field is required</small
+              <input
+                id="phone"
+                formControlName="phone1"
+                placeholder="+20-1999999999"
+                type="phone"
+                pInputText
+              />
+            </span>
+            <div
+              id="Phone_input_help"
+              *ngIf="
+                registerform.controls['phone1'].touched &&
+                registerform.controls['phone1'].invalid
+              "
+              class="form-text"
             >
-            <small *ngIf="registerform.controls['email'].errors?.['pattern']"
-              >the email must be like (example@example.com)</small
-            >
-
+              <small
+                *ngIf="registerform.controls['phone1'].errors?.['required']"
+                >This field is required</small
+              >
+              <small
+                *ngIf="registerform.controls['phone1'].errors?.['pattern']"
+              >
+                it must be 11 digits and start with (010 or 011 or 012 or
+                015)example 010xxxxxxxx</small
+              >
+            </div>
           </div>
+          <div class="mb-3 w-50">
+            <label for="Phone_input" class="form-label">Phone 2</label>
+            <span>
+              <i class="pi pi-phone"></i>
 
-        </div>
-
-      </div>
-      <div class="multi">
-        <div class="mb-3 w-50">
-          <label for="Phone_input" class="form-label">Phone 1</label>
-          <span>
-            <i class="pi pi-phone"></i>
-  
-          <input
-            id="phone"
-            formControlName="phone1"
-            placeholder="+20-1999999999"
-            type="phone"
-            pInputText
-          >
-          </span>
-          <div
-            id="Phone_input_help"
-            *ngIf="
-              registerform.controls['phone1'].touched &&
-              registerform.controls['phone1'].invalid
-            "
-            class="form-text"
-          >
-            <small *ngIf="registerform.controls['phone1'].errors?.['required']"
-              >This field is required</small
+              <input
+                id="phone"
+                formControlName="phone2"
+                placeholder="+20-1999999999"
+                type="phone"
+                pInputText
+              />
+            </span>
+            <div
+              id="Phone_input_help"
+              *ngIf="
+                registerform.controls['phone2'].touched &&
+                registerform.controls['phone2'].invalid
+              "
+              class="form-text"
             >
-            <small *ngIf="registerform.controls['phone1'].errors?.['pattern']">
-              it must be 11 digits and start with (010 or 011 or 012 or
-              015)example 010xxxxxxxx</small
-            >
-          </div>
-        </div>
-        <div class="mb-3 w-50">
-          <label for="Phone_input" class="form-label">Phone 2</label>
-          <span>
-            <i class="pi pi-phone"></i>
-  
-          <input
-            id="phone"
-            formControlName="phone2"
-            placeholder="+20-1999999999"
-            type="phone"
-            pInputText
-          >
-          </span>
-          <div
-            id="Phone_input_help"
-            *ngIf="
-              registerform.controls['phone2'].touched &&
-              registerform.controls['phone2'].invalid
-            "
-            class="form-text"
-          >
-            <small *ngIf="registerform.controls['phone2'].errors?.['required']"
-              >This field is required</small
-            >
-            <small *ngIf="registerform.controls['phone2'].errors?.['pattern']">
-              it must be 11 digits and start with (010 or 011 or 012 or
-              015)example 010xxxxxxxx</small
-            >
+              <small
+                *ngIf="registerform.controls['phone2'].errors?.['required']"
+                >This field is required</small
+              >
+              <small
+                *ngIf="registerform.controls['phone2'].errors?.['pattern']"
+              >
+                it must be 11 digits and start with (010 or 011 or 012 or
+                015)example 010xxxxxxxx</small
+              >
+            </div>
           </div>
         </div>
-      </div>
-      <div class="multi">
-        <div class="mb-3 w-50">
-          <label for="password_input" class="form-label">Password</label>
-        <span>
-                  <i class="pi pi-lock"></i>
+        <div class="multi">
+          <div class="mb-3 w-50">
+            <label for="password_input" class="form-label">Password</label>
+            <span>
+              <i class="pi pi-lock"></i>
 
-          <input
-            type="password"
-            pInputText
-            id="password_input"
-            placeholder="Password"
-            formControlName="password"
-          />
-        </span>
-          <div
-            id="password_input_help"
-            *ngIf="
-              registerform.controls['password'].touched &&
-              registerform.controls['password'].invalid
-            "
-            class="form-text"
-          >
-            <small
-              *ngIf="registerform.controls['password'].errors?.['required']"
-              >This field is required</small
+              <input
+                type="password"
+                pInputText
+                id="password_input"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </span>
+            <div
+              id="password_input_help"
+              *ngIf="
+                registerform.controls['password'].touched &&
+                registerform.controls['password'].invalid
+              "
+              class="form-text"
             >
-            <small
-              *ngIf="registerform.controls['password'].errors?.['minlength']"
-              >This field is minlength 8</small
+              <small
+                *ngIf="registerform.controls['password'].errors?.['required']"
+                >This field is required</small
+              >
+              <small
+                *ngIf="registerform.controls['password'].errors?.['minlength']"
+                >This field is minlength 8</small
+              >
+              <small
+                *ngIf="registerform.controls['password'].errors?.['pattern']"
+                >This field is must contain</small
+              >
+            </div>
+          </div>
+          <div class="mb-3 w-50">
+            <label for="confirmpassword_input" class="form-label"
+              >confirmPassword</label
             >
-            <small *ngIf="registerform.controls['password'].errors?.['pattern']"
-              >This field is must contain</small
+            <span>
+              <i class="pi pi-lock"></i>
+
+              <input
+                type="password"
+                pInputText
+                id="confirmpassword_input"
+                placeholder="Confirm password"
+                formControlName="password_confirmation"
+              />
+            </span>
+            <div
+              id="confirmpassword_input_help"
+              *ngIf="
+                registerform.controls['password_confirmation'].touched &&
+                registerform.controls['password_confirmation'].invalid
+              "
+              class="form-text"
             >
+              <small
+                *ngIf="registerform.controls['password_confirmation'].errors?.['required']"
+                >This field is required</small
+              >
+              <small
+                *ngIf="registerform.controls['password_confirmation'].errors?.['minlength']"
+                >This field is minlength 8</small
+              >
+              <small
+                *ngIf="registerform.controls['password_confirmation'].errors?.['pattern']"
+                >This field is must contain</small
+              >
+              <small
+                *ngIf="registerform.controls['password_confirmation'].errors?.['checkpass']"
+              >
+                Password and Confirm Password do not match.
+              </small>
+            </div>
           </div>
         </div>
-        <div class="mb-3 w-50">
-          <label for="confirmpassword_input" class="form-label"
-            >confirmPassword</label
-          >
-          <span>
-            <i class="pi pi-lock"></i>
-  
-          <input
-            type="password"
-            pInputText
-            id="confirmpassword_input"
-            placeholder="Confirm password"
-            formControlName="password_confirmation"
-          />
-         </span>
-          <div
-            id="confirmpassword_input_help"
-            *ngIf="
-              registerform.controls['password_confirmation'].touched &&
-              registerform.controls['password_confirmation'].invalid
-            "
-            class="form-text"
-          >
-            <small
-              *ngIf="registerform.controls['password_confirmation'].errors?.['required']"
-              >This field is required</small
-            >
-            <small
-              *ngIf="registerform.controls['password_confirmation'].errors?.['minlength']"
-              >This field is minlength 8</small
-            >
-            <small
-              *ngIf="registerform.controls['password_confirmation'].errors?.['pattern']"
-              >This field is must contain</small
-            >
-            <small
-              *ngIf="registerform.controls['password_confirmation'].errors?.['checkpass']"
-            >
-              Password and Confirm Password do not match.
-            </small>
-          </div>
-        </div>
-      </div>
 
-      <!-- <button type="submit" class="btn button" [disabled]="registerform.invalid">
+        <!-- <button type="submit" class="btn button" [disabled]="registerform.invalid">
         Rejecter
       </button> -->
-      <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
-      <button (click)="onSubmit()" class="primary-button w-5   my-5" [disabled]="registerform.invalid" > Register</button>
+        <!-- <button  class="btn button" [disabled]="registerform.invalid">Some action</button> -->
+        <button
+          (click)="onSubmit()"
+          class="primary-button w-5 my-5"
+          [disabled]="registerform.invalid"
+        >
+          Register
+        </button>
 
-      <!-- <button type="submit" label="Apply" class="primary-button w-5 mx-auto my-3" [disabled]="loginForm.invalid ? true : false" >Login</button> -->
-
-    </div>
-  </form>
-</div>
+        <!-- <button type="submit" label="Apply" class="primary-button w-5 mx-auto my-3" [disabled]="loginForm.invalid ? true : false" >Login</button> -->
+      </div>
+    </form>
+  </div>
 </div>

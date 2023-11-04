@@ -12,7 +12,7 @@
 
     <p class="count">{{ data.name }}</p>
 
-    <p class="count">{{ data.price | subscription | currency }}</p>
+    <p class="count">{{ data.price | subscription | async | currency }}</p>
 
     <ng-template pTemplate="footer">
       <a href="#">

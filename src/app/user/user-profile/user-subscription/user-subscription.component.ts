@@ -63,121 +63,92 @@ export class UserSubscriptionComponent {
 
 
   getSub(){
-    /*
-    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-      this.subId = response.subscribe_id;
-    }); 
-    if(this.subId){
-      this.subService.getById(this.subId).subscribe((subData: any) => {
-        this.subscribeObject = subData.data;
-      })
-    }
-   */
-
-    if(localStorage.getItem('subscribe_id')){
-     this.subId= localStorage.getItem('subscribe_id');
-    this.subService.getById(this.subId).subscribe((subData: any) => {
-      this.subscribeObject = subData.data;
-
-    })
-  }
-  else {
-    this.subscribeObject.name="None";
-    this.subscribeObject.subscribe_value=0;
-    this.subscribeObject.benefit="None";
-    this.subscribeObject.discount_value=0;
-    this.currentDate="None";
-    this.endDate="None";
-    this.total=0;
     
+    this.userService.getUserByID(this.userId).subscribe((response: any)=> {
+      this.subId = response.data.subscribe_id;
+      if(this.subId){
+        this.subService.getById(this.subId).subscribe((subData: any) => {
+          this.subscribeObject = subData.data;
+        })
+      }
+      else {
+        this.subscribeObject.name="None";
+        this.subscribeObject.subscribe_value=0;
+        this.subscribeObject.benefit="None";
+        this.subscribeObject.discount_value=0;
+        this.currentDate="None";
+        this.endDate="None";
+        this.total=0;
+        
+    
+      }
+    }); 
+ 
+   
 
-  }
+
   }
 
   getDate() {
-    /*
+    
     this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-      this.currentDate = response.start_date;
-      this.endDate = response.end_date;
+      this.currentDate = response.data.start_date;
+      this.endDate = response.data.end_date;
     }); 
-    */
-   this.currentDate=localStorage.getItem('startDate');
-   this.endDate=localStorage.getItem('endDate');
- 
+  
   }
 
 
 
   sumPrice(){    
-    /*
+    
     this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-      this.subId = response.subscribe_id;
+      this.subId = response.data.subscribe_id;
+      if(this.subId){
+        for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
+          this.total+= this.orders[i].price;   
+        }   
+      }
+      else{
+        this.total=0;
+      }
     });
     
-    if(this.subId){
-      for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
-        this.total+= this.orders[i].price;   
-      }   
-    }
-    */
-    if(localStorage.getItem('subscribe_id')){
-    for(let i=0; i<this.orders.length; i++){     //replace orders with history orders
-         this.total+= this.orders[i].price;   
-    }  
-  } 
-  else{
-    this.total=0;
-  }
+    
+
+
   }  
 
   checkEndDate()
   {
-    /*
+    
     this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-      this.subId = response.subscribe_id;
-      this.checkDate = response.end_date;
+      this.subId = response.data.subscribe_id;
+      this.checkDate = response.data.end_date;
+      if(this.subId){
+        this.todayDate =new Date();
+        if(this.todayDate>=this.checkDate){
+          
+          this.subscriptionData={
+            subscribe_id : null,
+            start_date :  null ,
+            end_date : null     
+          };
+  
+          this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
+  
+    
+          }
+      }
     });
 
-    if(this.subId){
-      this.todayDate =new Date();
-      if(this.todayDate>=this.checkDate){
-        
-        this.subscriptionData={
-          subscribe_id : null,
-          start_date :  null ,
-          end_date : null     
-        };
-
-        this.userService.setSubIdValue(this.userId, this.subscriptionData).subscribe();
-
-  
-        }
-    }
-   */
-    if(localStorage.getItem('subscribe_id')){
-      console.log('check date')
-      this.todayDate =new Date();
-      this.checkDate = localStorage.getItem('endDate');
-      if(this.todayDate>=this.checkDate){
-
-      localStorage.removeItem('subscribe_id');
-      localStorage.removeItem('startDate');
-      localStorage.removeItem('endDate');
-      localStorage.removeItem('discount_value');
-
-      }
-    }
-    
   }
 
   checkSub(){
-    if(localStorage.getItem('subscribe_id')){
-      this.check=localStorage.getItem('subscribe_id');
-    }
-     /*
+
     this.userService.getUserByID(this.userId).subscribe((response: any)=> {
-         this.check = response.subscribe_id;
+         this.check = response.data.subscribe_id;
     }); 
-    */
+    
   }
 }

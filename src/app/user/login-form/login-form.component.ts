@@ -37,7 +37,7 @@ export class LoginFormComponent {
   }
 
   onSubmit() {
-    const apiUrl = 'http://localhost:3232/api/login'; // Replace with your actual API URL
+    const apiUrl = 'http://localhost:8000/api/login'; // Replace with your actual API URL
     const formData = this.formGroup.getRawValue();
     const data = {
       email: formData.email,

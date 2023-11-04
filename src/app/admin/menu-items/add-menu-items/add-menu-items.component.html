@@ -2,6 +2,14 @@
   <h3 class="admin-page-title">Add Menu Item</h3>
 
   <div class="card">
+    <div class="loader" *ngIf="loading">
+      <p-progressSpinner
+        styleClass="w-4rem h-4rem"
+        strokeWidth="4"
+        animationDuration="1s"
+      ></p-progressSpinner>
+    </div>
+    
     <form
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
@@ -47,8 +55,7 @@
             name="category"
             styleClass="w-full"
             [options]="categories"
-            formControlName="category"
-            [(ngModel)]="item.category_id"
+            formControlName="category_id"
             optionLabel="name"
             optionValue="id"
           ></p-dropdown>
@@ -58,24 +65,15 @@
 
       <div class="col-12 md:col-6 mb-4">
         <div class="flex flex-column-reverse">
-          <!-- <p-multiSelect
+          <p-multiSelect
             name="additions"
             styleClass="w-full"
             defaultLabel="Select an item additions"
             [options]="additions"
-            [(ngModel)]="additionSelected"
-            (onClick)="selectAddition()"
-
             display="chip"
             formControlName="additions"
             optionLabel="name"
-          ></p-multiSelect> -->
-
-          <select formControlName="additions" id="" [(ngModel)]="additionSelected" multiple>
-            <ng-container *ngFor="let option of additions; let index = index">
-              <option [value]="option.id">{{ option.name }}</option>
-            </ng-container>
-          </select>
+          ></p-multiSelect>
           <label for="additions" class="block mb-2">Additions</label>
         </div>
       </div>

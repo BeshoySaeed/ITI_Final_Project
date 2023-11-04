@@ -32,7 +32,7 @@ addition={
   onSubmit() {
       this.dataServices.insertAddition(this.addition).subscribe(res =>{
         
-        // console.log(this.add);
+        console.log(res);
       })
       this.route.navigate(['/admin/additions'])
       console.log(this.addition);

@@ -10,7 +10,7 @@
     <p-table
       #dt1
       [value]="menuItems"
-      dataKey="name"
+      dataKey="id"
       [rows]="10"
       [showCurrentPageReport]="true"
       [rowsPerPageOptions]="[10, 25, 50]"
@@ -189,7 +189,7 @@
         <tr>
           <td colspan="12">
             <div class="p-3">
-              <p-table [value]="menuItem.additions" dataKey="id">
+              <p-table [value]="menuItem.itemAdditions" dataKey="id">
                 <ng-template pTemplate="header">
                   <tr>
                     <th>Image</th>
@@ -206,8 +206,8 @@
                     <td>
                       <img
                         width="100"
-                        [src]="menuItem.image"
-                        [alt]="menuItem.name"
+                        [src]="addition.image"
+                        [alt]="addition.name"
                       />
                     </td>
                     <td>{{ addition.name }}</td>

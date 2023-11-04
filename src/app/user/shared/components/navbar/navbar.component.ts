@@ -21,11 +21,6 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.items = [
-      // {
-      //   label: 'Saad',
-      //   icon: 'pi pi-send',
-      //   styleClass: 'send',
-      // },
       {
         label: 'Home',
         icon: 'pi pi-fw pi-home',

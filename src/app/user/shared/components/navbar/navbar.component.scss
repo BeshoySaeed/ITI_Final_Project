@@ -9,13 +9,28 @@
 
 :host ::ng-deep .links {
     font-size: 20px;
-
+    z-index: 3;
     .p-menuitem-icon,
     .p-menuitem-text {
         color: var(--header-footer-text-color) !important;
     }
 
+    &::before{
+        content: '';
+        background-color: rgb(184, 167, 167);
+        border-radius: 6px 0px 0px 6px;
+        height: 0%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transition: 0.3s;
+    }
     &:hover {
+
+        &::before{
+            height: 50%;
+        }
 
         .p-menuitem-icon,
         .p-menuitem-text {

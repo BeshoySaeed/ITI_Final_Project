@@ -45,14 +45,14 @@ export class PaymentRightSideComponent implements OnInit {
       this.http.post<any>('http://localhost:8000/api/paypal/payment', body).subscribe(
       response => {
         console.log(response)
-        if(response.success){
-          this.Order.editOrder(this.Order_id,{
-            status : "processing"
-          }).subscribe()
+        // if(response.success){
+          // this.Order.editOrder(this.Order_id,{
+          //   status : "processing"
+          // }).subscribe()
           const url=response.link;
           window.location.href=url;
 
-        }
+        // }
       },
       error => {
         console.error('Failed to initiate payment:', error);
@@ -65,12 +65,12 @@ export class PaymentRightSideComponent implements OnInit {
       const body = { value };
       this.http.post<any>('http://localhost:8000/api/stripe/payment',body).subscribe(
         response => {
-          if(response.success){
-            this.Order.editOrder(this.Order_id,{
-              status : "processing"
-            }).subscribe()
+          // if(response.success){
+          //   this.Order.editOrder(this.Order_id,{
+          //     status : "processing"
+          //   }).subscribe()
             this.redirectToCheckout(response.url);
-          }
+          // }
         },
         error => {
           console.error(error);

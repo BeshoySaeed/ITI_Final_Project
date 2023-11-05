@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { OrderService } from 'src/app/services/OrderService/order.service';
 import { UserService } from 'src/app/services/user-service/user.service';
@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   userId : any = localStorage.getItem('user_id');
   userBalance : any;
   showDataError: boolean = false;
+  Order_id:any;
   messageBalance : any = "your balance not enough"
   cart: any = [];
 
@@ -25,16 +26,42 @@ export class CartComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private httpUser: UserService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.orderService.getUserOrders(this.userId).subscribe((data:any)=>{
+      this.Order_id=data.filter((x:any)=>{
+        return x.status=="cart"
+      })[0].id
+
+      console.log(this.Order_id)
+      this.ChangeStatus()
+    })
     this.getCart();
 
     this.httpUser.getUserByID(this.userId).subscribe((res) => 
     {
       this.userBalance = res.data.balance;
-    })
-    
+    })    
+  }
+  ChangeStatus(){
+    this.route.queryParams
+    .subscribe(params => {
+      const message = params['original[message]'];
+      const status = params['original[status]'];
+      console.log(params);
+      if (status=="success"){
+        console.log(this.Order_id)
+        this.orderService.editOrder(this.Order_id,{
+            status : "processing"
+          }).subscribe();
+          setTimeout(() => {
+            window.location.href = 'http://localhost:4200/home'; 
+                  }, 30);
+        } 
+    }
+    );
   }
 
 

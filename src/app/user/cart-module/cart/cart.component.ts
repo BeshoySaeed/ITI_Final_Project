@@ -14,10 +14,10 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   loading: boolean = true;
   changed: boolean = false;
-  userId : any = localStorage.getItem('user_id');
-  userBalance : any;
+  userId: any = localStorage.getItem('user_id');
+  userBalance: any;
   showDataError: boolean = false;
-  messageBalance : any = "your balance not enough"
+  messageBalance: any = 'your balance not enough';
   cart: any = [];
 
   constructor(
@@ -30,12 +30,10 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.getCart();
 
-    this.httpUser.getUserByID(this.userId).subscribe((res) => 
-    {
+    this.httpUser.getUserByID(this.userId).subscribe((res) => {
       this.userBalance = res.data.balance;
-    })
+    });
   }
-
 
   getCart() {
     this.orderService.cart().subscribe((cart: any) => {
@@ -76,6 +74,7 @@ export class CartComponent implements OnInit {
 
     if (item.item.discount > 0) {
       totalPrice +=
+        parseFloat(item.item['price']) -
         (parseFloat(item.item['price']) * parseFloat(item.item.discount)) / 100;
       totalPrice *= parseFloat(item['quantity']);
     } else {
@@ -131,47 +130,23 @@ export class CartComponent implements OnInit {
   }
 
   completeOrder() {
-
-
-    if(this.userBalance >= this.totalPrice){
-      this.httpUser.updateUser(this.userId, {
-        balance: this.userBalance - this.totalPrice,
-      }).subscribe((res) => console.log(res));
-
-      let user = this.cart.user;
-      if (
-        user.street == null ||
-        user.street.length == 0 ||
-  
-        user.area == null ||
-        user.area.length == 0 ||
-  
-        user.city == null ||
-        user.city.length == 0 ||
-  
-        user.building_name == null ||
-        user.building_name.length == 0 ||
-  
-        user.floor_number == null ||
-        user.floor_number.length == 0
-      ) {
-        this.showDataError = true;
-      } else {
-        this.router.navigate(['/payment']);
-      }
-
-    }else
-    {
-      this.messageBalance = [
-        { severity: 'error', summary: 'Error', detail: 'Your balance not enough' }
-    ];
+    let user = this.cart.user;
+    if (
+      user.street == null ||
+      user.street.length == 0 ||
+      user.area == null ||
+      user.area.length == 0 ||
+      user.city == null ||
+      user.city.length == 0 ||
+      user.building_name == null ||
+      user.building_name.length == 0 ||
+      user.floor_number == null ||
+      user.floor_number.length == 0
+    ) {
+      this.showDataError = true;
+    } else {
+      this.router.navigate(['/payment']);
     }
-
-
-
-
-
-
   }
 
   toProfile() {

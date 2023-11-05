@@ -1,208 +1,216 @@
 <div class="register-container px-4">
-  <div class="user-image flex flex-column justify-content-center align-content-center">
-    <img src="../../../../assets/images/sponser.png" alt="">
-    <input type="text" name="name" [value]="user.first_name" disabled>
+  <div
+    class="user-image flex flex-column justify-content-center align-content-center"
+  >
+    <img src="../../../../assets/images/sponser.png" alt="" />
+    <input type="text" name="name" [value]="user.first_name" disabled />
   </div>
   <form [formGroup]="registerform" class="form">
     <div class="row">
-    <div class="multi">
-      <div class=" w-50 mb-3">
-        <label for="name_input" class="form-label">First Name</label>
-        <input
-          type="text"
-          id="name_input"
-          pInputText
-          formControlName="name"
-          [(ngModel)]="user.first_name"
-
-        />
-        <div
-          id="name_input_help"
-          *ngIf="
-            registerform.controls['name'].touched &&
-            registerform.controls['name'].invalid
-          "
-          class="form-text"
-        >
-          <small *ngIf="registerform.controls['name'].errors?.['required']"
-            >This field is required</small
+      <div class="multi">
+        <div class="w-50 mb-3">
+          <label for="name_input" class="form-label">First Name</label>
+          <input
+            type="text"
+            id="name_input"
+            pInputText
+            formControlName="name"
+            [(ngModel)]="user.first_name"
+          />
+          <div
+            id="name_input_help"
+            *ngIf="
+              registerform.controls['name'].touched &&
+              registerform.controls['name'].invalid
+            "
+            class="form-text"
           >
+            <small *ngIf="registerform.controls['name'].errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+        </div>
+        <div class="w-50 mb-3">
+          <label for="name_input" class="form-label">Last Name</label>
+          <input
+            type="text"
+            id="name_input"
+            pInputText
+            formControlName="lname"
+            [(ngModel)]="user.last_name"
+          />
+          <div
+            id="name_input_help"
+            *ngIf="
+              registerform.controls['name'].touched &&
+              registerform.controls['name'].invalid
+            "
+            class="form-text"
+          >
+            <small *ngIf="registerform.controls['name'].errors?.['required']"
+              >This field is required</small
+            >
+          </div>
         </div>
       </div>
-      <div class="w-50 mb-3">
-        <label for="name_input" class="form-label">Last Name</label>
-        <input
-          type="text"
-          id="name_input"
-          pInputText
-          formControlName="lname"
-          [(ngModel)]="user.last_name"
-
-        />
-        <div
-          id="name_input_help"
-          *ngIf="
-            registerform.controls['name'].touched &&
-            registerform.controls['name'].invalid
-          "
-          class="form-text"
-        >
-          <small *ngIf="registerform.controls['name'].errors?.['required']"
-            >This field is required</small
+      <div class="multi">
+        <div class="w-full mb-3 emailInput">
+          <label for="email_input" class="form-label">Email</label>
+          <input
+            type="email"
+            pInputText
+            id="email_input"
+            formControlName="email"
+            class="emailInput"
+            [(ngModel)]="user.email"
+          />
+          <div
+            id="email_input"
+            *ngIf="
+              registerform.controls['email'].touched &&
+              registerform.controls['email'].invalid
+            "
+            class="form-text"
           >
+            <small *ngIf="registerform.controls['email'].errors?.['required']"
+              >This field is required</small
+            >
+            <small *ngIf="registerform.controls['email'].errors?.['pattern']"
+              >the email must be like (example@example.com)</small
+            >
+          </div>
         </div>
       </div>
-    </div>
-    <div class="multi">
-      <div class="w-full mb-3 emailInput">
-        <label for="email_input" class="form-label">Email</label>
-        <input
-          type="email"
-          pInputText
-          id="email_input"
-          formControlName="email"
-          class="emailInput"
-          [(ngModel)]="user.email"
-
-        />
-        <div
-          id="email_input"
-          *ngIf="
-            registerform.controls['email'].touched &&
-            registerform.controls['email'].invalid
-          "
-          class="form-text"
-        >
-          <small *ngIf="registerform.controls['email'].errors?.['required']"
-            >This field is required</small
+      <div class="multi">
+        <div class="mb-3 w-50">
+          <label for="Phone_input" class="form-label">Phone 1</label>
+          <input
+            type="text"
+            pInputText
+            id="Phone_input"
+            formControlName="Phone"
+            [(ngModel)]="user.phones[0].phone"
+          />
+          <div
+            id="Phone_input_help"
+            *ngIf="
+              registerform.controls['Phone'].touched &&
+              registerform.controls['Phone'].invalid
+            "
+            class="form-text"
           >
-          <small *ngIf="registerform.controls['email'].errors?.['pattern']"
-            >the email must be like (example@example.com)</small
+            <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+              >This field is required</small
+            >
+            <small *ngIf="registerform.controls['Phone'].errors?.['pattern']">
+              it must be 11 digits and start with (010 or 011 or 012 or
+              015)example 010xxxxxxxx</small
+            >
+          </div>
+        </div>
+        <div class="mb-3 w-50">
+          <label for="Phone_input" class="form-label">Phone 2</label>
+          <input
+            type="text"
+            id="Phone_input"
+            pInputText
+            formControlName="Phone"
+            [(ngModel)]="user.phones[1].phone"
+          />
+          <div
+            id="Phone_input_help"
+            *ngIf="
+              registerform.controls['Phone'].touched &&
+              registerform.controls['Phone'].invalid
+            "
+            class="form-text"
           >
+            <small *ngIf="registerform.controls['Phone'].errors?.['required']"
+              >This field is required</small
+            >
+            <small *ngIf="registerform.controls['Phone'].errors?.['pattern']">
+              it must be 11 digits and start with (010 or 011 or 012 or
+              015)example 010xxxxxxxx</small
+            >
+          </div>
         </div>
       </div>
-    </div>
-<div class="multi">
-  <div class="mb-3 w-50">
-    <label for="Phone_input" class="form-label">Phone 1</label>
-    <input
-      type="text"
-      pInputText
-      id="Phone_input"
-      formControlName="Phone"
-      [(ngModel)]="user.phones[0].phone"
-    />
-    <div
-      id="Phone_input_help"
-      *ngIf="
-        registerform.controls['Phone'].touched &&
-        registerform.controls['Phone'].invalid
-      "
-      class="form-text"
-    >
-      <small *ngIf="registerform.controls['Phone'].errors?.['required']"
-        >This field is required</small>
-      <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
-    </div>
-  </div>
-  <div class="mb-3 w-50">
-    <label for="Phone_input" class="form-label">Phone 2</label>
-    <input
-      type="text"
-      id="Phone_input"
-      pInputText
-      formControlName="Phone"
-      [(ngModel)]="user.phones[1].phone"
-    />
-    <div
-      id="Phone_input_help"
-      *ngIf="
-        registerform.controls['Phone'].touched &&
-        registerform.controls['Phone'].invalid
-      "
-      class="form-text"
-    >
-      <small *ngIf="registerform.controls['Phone'].errors?.['required']"
-        >This field is required</small>
-        <small *ngIf="registerform.controls['Phone'].errors?.['pattern']"> it must be 11 digits and start with (010 or 011 or 012 or 015)example 010xxxxxxxx</small>
+      <div class="multi">
+        <div class="mb-3 w-50">
+          <label for="city" class="form-label">City</label>
+          <input
+            type="text"
+            pInputText
+            id="city"
+            formControlName="city"
+            [(ngModel)]="user.city"
+          />
+        </div>
+        <div class="mb-3 w-50">
+          <label for="area" class="form-label">Area</label>
+          <input
+            type="text"
+            pInputText
+            id="area"
+            formControlName="area"
+            [(ngModel)]="user.area"
+          />
+        </div>
       </div>
-  </div>
-</div>
-<div class="multi">
-    <div class="mb-3 w-50">
-    <label for="city" class="form-label">City</label>
-    <input
-      type="text"
-      pInputText
-      id="city"
-      formControlName="city"
-      [(ngModel)]="user.city"
-    />
+      <div class="multi">
+        <div class="mb-3 w-50">
+          <label for="city" class="form-label">Street</label>
+          <input
+            type="text"
+            pInputText
+            id="city"
+            formControlName="street"
+            [(ngModel)]="user.street"
+          />
+        </div>
+        <div class="mb-3 w-50">
+          <label for="area" class="form-label">Building number</label>
+          <input
+            type="text"
+            pInputText
+            id="area"
+            formControlName="building"
+            [(ngModel)]="user.building_name"
+          />
+        </div>
+      </div>
 
+      <div class="multi">
+        <div class="mb-3 w-50">
+          <label for="city" class="form-label">floor</label>
+          <input
+            type="text"
+            pInputText
+            id="city"
+            formControlName="floor"
+            [(ngModel)]="user.floor_number"
+          />
+        </div>
+        <div class="mb-3 w-50">
+          <label for="area" class="form-label">flat</label>
+          <input
+            type="text"
+            pInputText
+            id="area"
+            formControlName="flat"
+            [(ngModel)]="user.flat_number"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="primary-button w-50 mx-auto my-3"
+        (click)="submitted()"
+        [disabled]="this.registerform.valid"
+      >
+        Update
+      </button>
     </div>
-    <div class="mb-3 w-50">
-      <label for="area" class="form-label">Area</label>
-      <input
-        type="text"
-        pInputText
-        id="area"
-        formControlName="area"
-        [(ngModel)]="user.area"
-      />
-    </div>
+  </form>
 </div>
-<div class="multi">
-  <div class="mb-3 w-50">
-  <label for="city" class="form-label">Street</label>
-  <input
-    type="text"
-    pInputText
-    id="city"
-    formControlName="street"
-    [(ngModel)]="user.street"
-  />
-
-  </div>
-  <div class="mb-3 w-50">
-    <label for="area" class="form-label">Building number</label>
-    <input
-      type="text"
-      pInputText
-      id="area"
-      formControlName="building"
-      [(ngModel)]="user.building_name"
-    />
-  </div>
-</div>
-
-<div class="multi">
-  <div class="mb-3 w-50">
-  <label for="city" class="form-label">floor</label>
-  <input
-    type="text"
-    pInputText
-    id="city"
-    formControlName="floor"
-    [(ngModel)]="user.floor_number"
-  />
-
-  </div>
-  <div class="mb-3 w-50">
-    <label for="area" class="form-label">flat</label>
-    <input
-      type="text"
-      pInputText
-      id="area"
-      formControlName="flat"
-      [(ngModel)]="user.flat_number"
-    />
-  </div>
-</div>
-
-
-    <p-button [disabled]="this.registerform.valid"   (onClick)="submitted()">Update</p-button>
-
-  </div>
-   </form>
-</div>
-

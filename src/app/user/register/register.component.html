@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-8">
   <div class="container-form border-round-lg">
   <h3 class="page-title mt-4">Register</h3>
   <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="form">
@@ -22,7 +22,7 @@
               registerform.controls['first_name'].touched &&
               registerform.controls['first_name'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small
               *ngIf="registerform.controls['first_name'].errors?.['required']"
@@ -49,7 +49,7 @@
               registerform.controls['last_name'].touched &&
               registerform.controls['last_name'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small
               *ngIf="registerform.controls['last_name'].errors?.['required']"
@@ -81,7 +81,7 @@
               registerform.controls['email'].touched &&
               registerform.controls['email'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small *ngIf="registerform.controls['email'].errors?.['required']"
               >This field is required</small
@@ -101,13 +101,16 @@
           <span>
             <i class="pi pi-phone"></i>
   
-          <input
-            id="phone"
+            <p-inputMask
+            id="phone1"
+            [autoClear]="false"
+            [required]="true"
             formControlName="phone1"
+            mask="+20-1999999999"
             placeholder="+20-1999999999"
-            type="phone"
-            pInputText
-          >
+            styleClass="input p-2 border-round outline-none w-full pl-5"
+            class="mask-button"
+          ></p-inputMask>
           </span>
           <div
             id="Phone_input_help"
@@ -115,7 +118,7 @@
               registerform.controls['phone1'].touched &&
               registerform.controls['phone1'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small *ngIf="registerform.controls['phone1'].errors?.['required']"
               >This field is required</small
@@ -130,14 +133,15 @@
           <label for="Phone_input" class="form-label">Phone 2</label>
           <span>
             <i class="pi pi-phone"></i>
-  
-          <input
-            id="phone"
+            <p-inputMask
+            id="phone2"
+            [autoClear]="false"
             formControlName="phone2"
+            mask="+20-1999999999"
             placeholder="+20-1999999999"
-            type="phone"
-            pInputText
-          >
+            styleClass="input p-2 border-round outline-none w-full pl-5"
+            class="mask-button"
+          ></p-inputMask>
           </span>
           <div
             id="Phone_input_help"
@@ -145,11 +149,8 @@
               registerform.controls['phone2'].touched &&
               registerform.controls['phone2'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
-            <small *ngIf="registerform.controls['phone2'].errors?.['required']"
-              >This field is required</small
-            >
             <small *ngIf="registerform.controls['phone2'].errors?.['pattern']">
               it must be 11 digits and start with (010 or 011 or 012 or
               015)example 010xxxxxxxx</small
@@ -177,7 +178,7 @@
               registerform.controls['password'].touched &&
               registerform.controls['password'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small
               *ngIf="registerform.controls['password'].errors?.['required']"
@@ -194,7 +195,7 @@
         </div>
         <div class="mb-3 w-50">
           <label for="confirmpassword_input" class="form-label"
-            >confirmPassword</label
+            >Confirm Password</label
           >
           <span>
             <i class="pi pi-lock"></i>
@@ -213,7 +214,7 @@
               registerform.controls['password_confirmation'].touched &&
               registerform.controls['password_confirmation'].invalid
             "
-            class="form-text"
+            class="form-text mt-5"
           >
             <small
               *ngIf="registerform.controls['password_confirmation'].errors?.['required']"

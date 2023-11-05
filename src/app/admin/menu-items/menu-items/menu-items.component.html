@@ -130,7 +130,11 @@
             ></button>
           </td>
           <td>
-            <img width="150" src='http://localhost:8000/images/menu/{{menuItem.img}}' [alt]="menuItem.name" />
+            <img
+              width="150"
+              src="http://localhost:8000/images/menu/{{ menuItem.img }}"
+              [alt]="menuItem.name"
+            />
           </td>
           <td>
             {{ menuItem.name }}
@@ -145,7 +149,10 @@
             {{ menuItem.description }}
           </td>
           <td>
-            {{ menuItem.discount }}
+            <span *ngIf="menuItem.discount > 0; else noDiscount"
+              >{{ menuItem.discount }}%</span
+            >
+            <ng-template #noDiscount>No discount value</ng-template>
           </td>
           <!-- <td [ngStyle]="{'color': menuItem.active | Active }">
             {{ menuItem.active }}
@@ -212,7 +219,13 @@
                         [src]="menuItem.image"
                         [alt]="menuItem.name"
                       /> -->
-                      <img width="150" src='http://localhost:8000/images/item/{{addition.img}}'  [alt]="menuItem.name" />
+                      <img
+                        width="150"
+                        src="http://localhost:8000/images/item/{{
+                          addition.img
+                        }}"
+                        [alt]="menuItem.name"
+                      />
                     </td>
                     <td>{{ addition.name }}</td>
                     <td>{{ addition.price | currency : "USD" }}</td>

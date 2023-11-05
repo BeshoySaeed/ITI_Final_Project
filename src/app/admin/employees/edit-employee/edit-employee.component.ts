@@ -103,7 +103,7 @@ export class EditEmployeeComponent {
     this.branchesService
       .getAllBranches()
       .subscribe((branches: any) => {
-        this.branches = branches.data;
+        this.branches = branches;
       });
   }
 

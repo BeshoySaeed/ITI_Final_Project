@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OrderService } from 'src/app/services/OrderService/order.service';
+import { SharedpriceService } from 'src/app/services/Shared-price/sharedprice.service';
 
 @Component({
   selector: 'app-payment-order-list',
@@ -10,7 +11,7 @@ export class PaymentOrderListComponent {
   totalPrice: number = 0;
   items!: any;
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService ,private SharedPrice: SharedpriceService) {}
 
   ngOnInit() {
     this.getItems();
@@ -41,5 +42,6 @@ export class PaymentOrderListComponent {
         this.totalPrice *= parseFloat(item['quantity']);
       }
     }
+    this.SharedPrice.SetPrice(this.totalPrice)
   }
 }

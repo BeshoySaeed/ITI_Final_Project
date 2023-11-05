@@ -1,5 +1,6 @@
 <div class="right-side-container">
   <app-payment-order-list></app-payment-order-list>
+  <p-messages [(value)]="messageBalance" [enableService]="false" [closable]="false"></p-messages>
 
   <div [formGroup]="paymentForm">
       <div class="flex flex-column-reverse">

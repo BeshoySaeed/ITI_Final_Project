@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
     private orderService: OrderService,
     private messageService: MessageService,
     private router: Router,
-    private httpUser: UserService
+    private httpUser: UserService,
   ) {}
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class CartComponent implements OnInit {
     {
       this.userBalance = res.data.balance;
     })
+    
   }
 
 

@@ -131,41 +131,60 @@ export class CartComponent implements OnInit {
   }
 
   completeOrder() {
+    // if(this.userBalance >= this.totalPrice){
+    //   this.httpUser.updateUser(this.userId, {
+    //     balance: this.userBalance - this.totalPrice,
+    //   }).subscribe((res) => console.log(res));
 
+    //   let user = this.cart.user;
+    //   if (
+    //     user.street == null ||
+    //     user.street.length == 0 ||
+  
+    //     user.area == null ||
+    //     user.area.length == 0 ||
+  
+    //     user.city == null ||
+    //     user.city.length == 0 ||
+  
+    //     user.building_name == null ||
+    //     user.building_name.length == 0 ||
+  
+    //     user.floor_number == null ||
+    //     user.floor_number.length == 0
+    //   ) {
+    //     this.showDataError = true;
+    //   } else {
+    //     this.router.navigate(['/payment']);
+    //   }
 
-    if(this.userBalance >= this.totalPrice){
-      this.httpUser.updateUser(this.userId, {
-        balance: this.userBalance - this.totalPrice,
-      }).subscribe((res) => console.log(res));
-
-      let user = this.cart.user;
-      if (
-        user.street == null ||
-        user.street.length == 0 ||
-  
-        user.area == null ||
-        user.area.length == 0 ||
-  
-        user.city == null ||
-        user.city.length == 0 ||
-  
-        user.building_name == null ||
-        user.building_name.length == 0 ||
-  
-        user.floor_number == null ||
-        user.floor_number.length == 0
-      ) {
-        this.showDataError = true;
-      } else {
-        this.router.navigate(['/payment']);
-      }
-
-    }else
-    {
-      this.messageBalance = [
-        { severity: 'error', summary: 'Error', detail: 'Your balance not enough' }
-    ];
-    }
+    // }else
+    // {
+    //   this.messageBalance = [
+    //     { severity: 'error', summary: 'Error', detail: 'Your balance not enough' }
+    // ];
+    // }
+          let user = this.cart.user;
+    if (
+          user.street == null ||
+          user.street.length == 0 ||
+    
+          user.area == null ||
+          user.area.length == 0 ||
+    
+          user.city == null ||
+          user.city.length == 0 ||
+    
+          user.building_name == null ||
+          user.building_name.length == 0 ||
+    
+          user.floor_number == null ||
+          user.floor_number.length == 0
+        ) {
+          this.showDataError = true;
+        } else {
+          this.router.navigate(['/payment']);
+        }
 
 
 

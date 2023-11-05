@@ -18,7 +18,7 @@
   </div>
 
   <app-order-instructions [paymentForm]="paymentForm"></app-order-instructions>
-  <button type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid || !paymentForm.controls['confirmInstructions'].value">
+  <button (click)="Pay()" type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid || !paymentForm.controls['confirmInstructions'].value">
     Checkout
   </button>
 </div>

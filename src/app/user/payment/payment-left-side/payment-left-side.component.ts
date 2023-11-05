@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,10 @@ export class PaymentLeftSideComponent {
 
   payment_methods: any[] = [
     { name: 'Cash on delivery', key: 'cash_on_delivery' },
-    { name: 'Credit card', key: 'credit_card' },
+    { name: 'Paypal', key: 'Paypal' },
+    { name: 'Stripe', key: 'Stripe' },
     { name: 'Your balance', key: 'balance' }
 ];
+
+
 }

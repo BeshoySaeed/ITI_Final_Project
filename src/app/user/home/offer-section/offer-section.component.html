@@ -1,5 +1,5 @@
 <div class="container mt-8">
-  <h1 class="text-center mb-2 font-italic fw-bold font-light ">Offer</h1>
+  <h1 class="text-center mb-2 font-italic fw-bold heading ">Offer</h1>
   <p class="text-center mb-2 font-italic font-light text-3xl">
     we have an amazing offer for this
   </p>
@@ -12,14 +12,14 @@
         <p class="text-white discount">discount 50%</p>
         <p-card
           [header]="offer.title"
-          [subheader]="'description of meal description of meal '"
-          [style]="{ width: '360px', 'border-radius': '8%' }"
+          [style]="{ width: '360px', 'border-radius': '8%', 'color' : 'var(--title-text-color)' }"
         >
           <ng-template pTemplate="header">
             <div class="flex justify-content-center align-content-center">
               <img alt="Card" [src]="offer.img" style="margin-top: -30px" />
             </div>
           </ng-template>
+          <p class="description">description description about the product itemß</p>
               <a routerLink="/cart">
                 <button class="card-btn ">
                   <i class="pi pi-arrow-up-right" ></i>

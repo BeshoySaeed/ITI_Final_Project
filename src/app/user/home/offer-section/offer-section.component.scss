@@ -1,10 +1,13 @@
 
 :host ::ng-deep .p-card{
-    background-color: #fff;
+    background-color: var(--offer-item-card);
     padding-top: 30px;
 }
 .card-container{
     position: relative;
+}
+.heading{
+    color: var(--title-text-color);
 }
 .discount{
     position: absolute;
@@ -14,4 +17,7 @@
     transform: rotate(-45deg);
     background-color: rgb(54, 54, 158);
     border-radius: 10px;
+}
+.description{
+    color: var(--title-text-color);
 }

@@ -66,6 +66,8 @@ body {
   // overlay
   --overlay: #333833;
   &.dark {
+    --background : rgb(61, 61, 61);
+
     
     --header-footer-color: #23231a;
     --header-footer-text-color: #fff;
@@ -76,10 +78,19 @@ body {
     --twitter-color: #fff;
     --instagram-color: #fff;
     --header: #4d424d;
-    --category-item-card: #b17179;
-    --menu-item-card: #b17179;
-    --offer-item-card: #b17179;
-    --sub-item-card: #b17179;
+    
+
+      // card
+    --category-item-card: #464650;
+    --menu-item-card: #464650;
+    --offer-item-card: #464650; 
+    --sub-item-card: #464650;
+
+    
+    --card-button-background: #fff;
+    --card-button-color: black;
+    --card-button-hover-background: #EF5B30;
+    --card-button-hover-color: #FEFFFD;
   }
 }
 

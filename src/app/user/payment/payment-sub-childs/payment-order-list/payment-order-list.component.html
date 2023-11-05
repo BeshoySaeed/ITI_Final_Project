@@ -1,4 +1,7 @@
 <div class="payment-order-list-container mt-3 mb-5">
+    <div class="loader" *ngIf="loading">
+        <p-progressSpinner gressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+    </div>
     <h3 class="title">Your order</h3>
 
     <div class="list-container mt-5">

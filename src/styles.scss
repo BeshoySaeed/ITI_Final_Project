@@ -188,3 +188,19 @@ body {
 .phone {
   color: $title-text-color;
 }
+
+.payment-container,
+.payment-order-list-container {
+  position: relative;
+  .loader {
+    position: absolute;
+    background-color: #00000047;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin: 0 30px 30px 0;
+  }
+}

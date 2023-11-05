@@ -53,9 +53,12 @@ export class PaymentComponent {
     this.paymentForm.controls['phone1'].setValue(
       this.cart.user.phones[0].phone
     );
-    this.paymentForm.controls['phone2'].setValue(
-      this.cart.user.phones[1].phone
-    );
+
+    if(this.cart.user.phones.length == 2) {
+      this.paymentForm.controls['phone2'].setValue(
+        this.cart.user.phones[1].phone
+      );
+    }
 
     for (let control of this.formControllers) {
       this.paymentForm.controls[control].setValue(this.cart.user[control]);

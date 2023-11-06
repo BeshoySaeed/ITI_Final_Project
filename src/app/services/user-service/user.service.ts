@@ -23,7 +23,7 @@ export class UserService {
   }
 
 
-  getUserByID(id: number): Observable<any>{
+  getUserByID(id: any): Observable<any>{
     return this.httpClient.get<object>(`${environment.host}/users/${id}`, {headers: this.headers}).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
@@ -36,6 +36,12 @@ export class UserService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
+  }
+  setSubIdValue(id:any ,subscriptionData: object): Observable<object> {
+    return this.httpClient.put<object>(`${environment.host}/subs/${id}/subID`, subscriptionData ,{headers: this.headers}).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    ); 
   }
 
   

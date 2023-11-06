@@ -54,6 +54,7 @@ export class LoginFormComponent {
         this.successMsg = response;
         if (this.successMsg.status=='success') {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('user_id', response.user_id);
           this.authService.isLoggedIn$.next(true);
           this.router.navigate(['/home']);// Redirect to the login page
 

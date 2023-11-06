@@ -15,13 +15,12 @@
 
   <p class="count">{{ data.description }}</p>
 
-  <p class="count">{{ data.price | currency }}</p>
+  <p class="count">{{ data.price | subscription | async | currency }}</p>
   <p class="count">
     <span *ngIf="data.discount > 0; else noDiscount">{{ data.discount }}%</span>
     <ng-template #noDiscount>No discount value</ng-template>
   </p>
 
-  <p class="count">{{data.price | subscription | currency}}</p>
   <p class="count">{{data.discount }} %</p>
 
 

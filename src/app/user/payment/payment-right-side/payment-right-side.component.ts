@@ -45,14 +45,28 @@ export class PaymentRightSideComponent implements OnInit {
       this.http.post<any>('http://localhost:8000/api/paypal/payment', body).subscribe(
       response => {
         console.log(response)
-        // if(response.success){
-          // this.Order.editOrder(this.Order_id,{
-          //   status : "processing"
-          // }).subscribe()
+        if(response.success){
+          this.Order.editOrder(this.Order_id,{
+
+              area: this.paymentForm.get('area')?.value,
+              building_name: this.paymentForm.get('building_name')?.value,
+              city: this.paymentForm.get('city')?.value,
+              confirmInstructions: true,
+              discountCode:this.paymentForm.get('discountCode')?.value,
+              flat_number: this.paymentForm.get('flat_number')?.value,
+              floor_number: this.paymentForm.get('floor_number')?.value,
+              gps_location: this.paymentForm.get('gps_location')?.value,
+              notes:this.paymentForm.get('notes')?.value,
+              paymentMethod:this.paymentForm.value.paymentMethod,
+              phone1: this.paymentForm.get('phone1')?.value,
+              phone2: this.paymentForm.get('phone2')?.value,
+              street: this.paymentForm.get('street')?.value,
+
+          }).subscribe()
           const url=response.link;
           window.location.href=url;
 
-        // }
+        }
       },
       error => {
         console.error('Failed to initiate payment:', error);
@@ -65,12 +79,26 @@ export class PaymentRightSideComponent implements OnInit {
       const body = { value };
       this.http.post<any>('http://localhost:8000/api/stripe/payment',body).subscribe(
         response => {
-          // if(response.success){
-          //   this.Order.editOrder(this.Order_id,{
-          //     status : "processing"
-          //   }).subscribe()
+          if(response.success){
+            this.Order.editOrder(this.Order_id,{
+            
+              area: this.paymentForm.get('area')?.value,
+              building_name: this.paymentForm.get('building_name')?.value,
+              city: this.paymentForm.get('city')?.value,
+              confirmInstructions: true,
+              discountCode:this.paymentForm.get('discountCode')?.value,
+              flat_number: this.paymentForm.get('flat_number')?.value,
+              floor_number: this.paymentForm.get('floor_number')?.value,
+              gps_location: this.paymentForm.get('gps_location')?.value,
+              notes:this.paymentForm.get('notes')?.value,
+              paymentMethod:this.paymentForm.value.paymentMethod,
+              phone1: this.paymentForm.get('phone1')?.value,
+              phone2: this.paymentForm.get('phone2')?.value,
+              street: this.paymentForm.get('street')?.value,
+
+            }).subscribe()
             this.redirectToCheckout(response.url);
-          // }
+          }
         },
         error => {
           console.error(error);
@@ -83,7 +111,20 @@ export class PaymentRightSideComponent implements OnInit {
             balance: this.userBalance - this.SharedPrice.GetPrice(),
           }).subscribe((res) => console.log(res));
           this.Order.editOrder(this.Order_id,{
-            status : "processing"
+            status : "processing",
+            area: this.paymentForm.get('area')?.value,
+            building_name: this.paymentForm.get('building_name')?.value,
+            city: this.paymentForm.get('city')?.value,
+            confirmInstructions: true,
+            discountCode:this.paymentForm.get('discountCode')?.value,
+            flat_number: this.paymentForm.get('flat_number')?.value,
+            floor_number: this.paymentForm.get('floor_number')?.value,
+            gps_location: this.paymentForm.get('gps_location')?.value,
+            notes:this.paymentForm.get('notes')?.value,
+            paymentMethod:this.paymentForm.value.paymentMethod,
+            phone1: this.paymentForm.get('phone1')?.value,
+            phone2: this.paymentForm.get('phone2')?.value,
+            street: this.paymentForm.get('street')?.value,
           }).subscribe()
 
     
@@ -96,8 +137,28 @@ export class PaymentRightSideComponent implements OnInit {
           }
           
         }else{
-      console.log('cash')
-    }
+          this.Order.editOrder(this.Order_id,{
+            status:"processing",
+            area: this.paymentForm.get('area')?.value,
+            building_name: this.paymentForm.get('building_name')?.value,
+            city: this.paymentForm.get('city')?.value,
+            confirmInstructions: true,
+            discountCode:this.paymentForm.get('discountCode')?.value,
+            flat_number: this.paymentForm.get('flat_number')?.value,
+            floor_number: this.paymentForm.get('floor_number')?.value,
+            gps_location: this.paymentForm.get('gps_location')?.value,
+            notes:this.paymentForm.get('notes')?.value,
+            paymentMethod:this.paymentForm.value.paymentMethod,
+            phone1: this.paymentForm.get('phone1')?.value,
+            phone2: this.paymentForm.get('phone2')?.value,
+            street: this.paymentForm.get('street')?.value,
+          }).subscribe()
+
+          setTimeout(() => {
+            window.location.href = 'http://localhost:4200/home'; 
+                  }, 30);
+        } 
+                        
   }
 
 redirectToCheckout(url: string) {

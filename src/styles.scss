@@ -190,7 +190,8 @@ body {
 }
 
 .payment-container,
-.payment-order-list-container {
+.payment-order-list-container,
+.forget-password-container {
   position: relative;
   .loader {
     position: absolute;
@@ -201,6 +202,9 @@ body {
     align-items: center;
     width: -webkit-fill-available;
     height: -webkit-fill-available;
-    margin: 0 30px 30px 0;
   }
+}
+
+.payment-container .loader {
+  margin: 0 30px 30px 0;
 }

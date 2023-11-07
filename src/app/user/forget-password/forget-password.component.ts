@@ -13,6 +13,8 @@ export class ForgetPasswordComponent {
   formGroup : FormGroup;
   errors = null;
   successMsg : any;
+  loading: boolean = false;
+
   constructor(    public authService: AuthService, private router: Router
     ){
     this.formGroup = new FormGroup({
@@ -20,7 +22,15 @@ export class ForgetPasswordComponent {
         Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]),
     })
   }
+
+  ngOnInit() {
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/home']);
+    }
+  }
+  
   onSubmit(){
+    this.loading = true;
     this.authService.sendResetPasswordLink(this.formGroup.value).subscribe(
       (result) => {
         this.successMsg = result;
@@ -30,8 +40,8 @@ export class ForgetPasswordComponent {
             location.reload();
           }, 2000);
         } else {
-
           console.log("Password reset email failed to send.");
+          this.loading = false;
         }
 
       },(error) => {

@@ -4,7 +4,7 @@
     <span class="phoneNumber">Call Now | 01022334488</span>
   </ng-template>
 
-  <ng-template pTemplate="end" *ngIf="!isLoggedIn">
+  <div *ngIf="!isLoggedIn">
     <a routerLink="login" class="login">Login</a>
     <span class="stick"> | </span>
     <a href="" routerLink="register" class="register">Register</a>
@@ -12,9 +12,9 @@
     <i class="pi pi-facebook facebook"></i>
     <i class="pi pi-twitter twitter"></i>
     <i class="pi pi-instagram instagram"></i>
-  </ng-template>
+  </div>
 
-  <ng-template pTemplate="end" *ngIf="isLoggedIn">
+  <div *ngIf="isLoggedIn">
     <div class="flex align-items-center gap-2 " >
       <a (click)="logout()" class="login cursor-pointer">Logout</a>
       <span class="stick"> | </span>
@@ -24,5 +24,5 @@
       <i class="pi pi-twitter twitter"></i>
       <i class="pi pi-instagram instagram"></i>
     </div>
-  </ng-template>
+  </div>
 </p-menubar>

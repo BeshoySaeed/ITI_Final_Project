@@ -57,11 +57,6 @@ export class LoginFormComponent {
           localStorage.setItem('user_id', response.user_id);
           this.authService.isLoggedIn$.next(true);
           this.router.navigate(['/home']);// Redirect to the login page
-
-          setTimeout(() => {
-            location.reload();
-
-          }, 1);
         }
         else{
           console.error(this.successMsg);

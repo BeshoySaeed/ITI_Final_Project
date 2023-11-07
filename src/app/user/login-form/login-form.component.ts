@@ -54,6 +54,7 @@ export class LoginFormComponent {
         this.successMsg = response;
         if (this.successMsg.status=='success') {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('user_id', response.user_id);
           this.authService.isLoggedIn$.next(true);
           this.router.navigate(['/home']);// Redirect to the login page
 
@@ -72,6 +73,36 @@ export class LoginFormComponent {
       }
     );
   }
+Google(){
+   window.location.href = 'http://127.0.0.1:8000/api/auth/google'; 
+   const apiUrl= 'http://127.0.0.1:8000/api/auth/google';
+  // this.http.get(apiUrl)
+  // .subscribe(
+  //   (response: any) => {
+  //     if (response.role_id == 2) {
+  //       localStorage.setItem('role_id', response.role_id);
+  //       localStorage.setItem('user_id', response.user_id);
+  //     }
+  //     this.successMsg = response;
+  //     if (this.successMsg.status=='success') {
+  //       localStorage.setItem('token', response.token);
+  //       this.authService.isLoggedIn$.next(true);
+  //       this.router.navigate(['/home']);
 
+  //       setTimeout(() => {
+  //         location.reload();
+
+  //       }, 1);
+  //     }
+  //     else{
+  //       console.error(this.successMsg);
+
+  //     }
+  //   },
+  //   (error) => {
+  //     console.error('Login failed:', error);
+  //   }
+  // );
+}
 
 }

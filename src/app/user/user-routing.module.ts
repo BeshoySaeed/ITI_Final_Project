@@ -21,6 +21,7 @@ import { UserFavComponent } from './user-profile/user-fav/user-fav.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { AuthGuardService } from '../Guards/Auth/auth-guard.service';
+import { CreditCardFormComponent } from './payment/payment-sub-childs/credit-card-form/credit-card-form.component';
 
 
 
@@ -58,7 +59,12 @@ const routes: Routes = [
       {
         path: 'payment',
         component: PaymentComponent,
-        canActivate: [AuthGuardService]
+       // canActivate: [AuthGuardService]
+      },
+      {
+        path: 'card',
+        component: CreditCardFormComponent,
+       // canActivate: [AuthGuardService]
       },
       {
         path: 'about-us',

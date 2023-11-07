@@ -1,5 +1,6 @@
 <div class="right-side-container">
   <app-payment-order-list></app-payment-order-list>
+  <p-messages [(value)]="messageBalance" [enableService]="false" [closable]="false"></p-messages>
 
   <div [formGroup]="paymentForm">
       <div class="flex flex-column-reverse">
@@ -18,7 +19,7 @@
   </div>
 
   <app-order-instructions [paymentForm]="paymentForm"></app-order-instructions>
-  <button type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid || !paymentForm.controls['confirmInstructions'].value">
+  <button (click)="Pay()" type="submit" class="primary-button w-full mx-auto my-3" [disabled]="paymentForm.invalid || !paymentForm.controls['confirmInstructions'].value">
     Checkout
   </button>
 </div>

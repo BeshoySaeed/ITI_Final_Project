@@ -39,6 +39,7 @@ ngOnInit(): void {
       localStorage.removeItem("token");
       this.authService.isLoggedIn$.next(false);
       localStorage.removeItem("role_id");
+      localStorage.removeItem("user_id");
       this.router.navigate(['/home']);
   }
 

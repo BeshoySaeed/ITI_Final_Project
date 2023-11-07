@@ -10,11 +10,12 @@ import { PaymentLeftSideComponent } from './payment-left-side/payment-left-side.
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PaymentOrderListComponent } from './payment-sub-childs/payment-order-list/payment-order-list.component';
 import { OrderInstructionsComponent } from './payment-sub-childs/order-instructions/order-instructions.component';
-import { CreditCardFormComponent } from './payment-sub-childs/credit-card-form/credit-card-form.component';
 import { PaymentUserBalanceComponent } from './payment-sub-childs/payment-user-balance/payment-user-balance.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { BalanceDetailsComponent } from './payment-sub-childs/balance-details/balance-details.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CreditCardFormComponent } from './payment-sub-childs/credit-card-form/credit-card-form.component';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     InputNumberModule,
     InputTextareaModule,
     RadioButtonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    MessagesModule
   ],
 })
 export class PaymentModule {}

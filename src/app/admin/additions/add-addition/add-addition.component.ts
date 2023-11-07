@@ -42,7 +42,6 @@ addition={
     this.formData.append('price', this.addCategoryForm.get('price')?.value)
     this.formData.append('description', this.addCategoryForm.get('description')?.value)
 
-console.log(this.formData);
       this.dataServices.insertAddition(this.formData).subscribe(res =>{
         
         console.log(res);

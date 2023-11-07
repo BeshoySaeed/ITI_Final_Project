@@ -45,12 +45,10 @@ const routes: Routes = [
       {
         path: 'forgetpass',
         component: ForgetPasswordComponent,
-        canActivate: [AuthGuardService]
       },      
       {
         path: 'newpass',
         component: NewPasswordComponent,
-        canActivate: [AuthGuardService]
       },
       {
         path: 'register',
@@ -59,12 +57,12 @@ const routes: Routes = [
       {
         path: 'payment',
         component: PaymentComponent,
-       // canActivate: [AuthGuardService]
+       canActivate: [AuthGuardService]
       },
       {
         path: 'card',
         component: CreditCardFormComponent,
-       // canActivate: [AuthGuardService]
+       canActivate: [AuthGuardService]
       },
       {
         path: 'about-us',

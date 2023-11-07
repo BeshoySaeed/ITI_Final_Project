@@ -4,11 +4,13 @@ import { Component , inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
+  providers: [MessageService],
 })
 export class LoginFormComponent {
   value : any ;
@@ -16,7 +18,7 @@ export class LoginFormComponent {
   errors = null;
   successMsg : any;
   formGroup : FormGroup;
-  constructor(private http: HttpClient, private router: Router ,private login: AuthService){
+  constructor(private http: HttpClient, private router: Router ,private login: AuthService, private messageService: MessageService){
     this.formGroup = new FormGroup({
       email : new FormControl('',[Validators.required,
         // Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]
@@ -59,12 +61,16 @@ export class LoginFormComponent {
           this.router.navigate(['/home']);// Redirect to the login page
         }
         else{
-          console.error(this.successMsg);
-
+          console.error(this.successMsg, 'dddddddd');
         }
       },
       (error) => {
         console.error('Login failed:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Failed',
+          detail: error.error.message,
+        });
       }
     );
   }

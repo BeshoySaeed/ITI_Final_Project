@@ -40,6 +40,7 @@ import { RatingComponent } from './rating/rating.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from "primeng/tooltip"; 
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     RatingModule,
     InputTextareaModule,
     TooltipModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ToastModule
   ]
 })
 export class UserModule { }

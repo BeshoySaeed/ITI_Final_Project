@@ -10,20 +10,23 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
   styleUrls: ['./menu-items.component.scss'],
 })
 export class MenuItemsComponent {
-  menuItems : Item[] = [];
+  menuItems: Item[] = [];
   categories: any;
   itemCategory: any;
 
   loading: boolean = true;
 
-  constructor(private httpItem: ItemService, private httpCat: CategoriesService){}
+  constructor(
+    private httpItem: ItemService,
+    private httpCat: CategoriesService
+  ) {}
 
   ngOnInit() {
-    this.httpItem.getItems().subscribe((data) =>
-    {
+    this.httpItem.getItems().subscribe((data) => {
       this.menuItems = data;
+      console.log(this.menuItems);
       this.loading = false;
-    } )
+    });
     this.httpCat.getAllCategory().subscribe((data) => {
       this.categories = data.data;
     });
@@ -39,23 +42,23 @@ export class MenuItemsComponent {
 
   deleteItem(id: number) {
     this.httpItem.deleteItem(id).subscribe(() => {});
-    this.menuItems = this.menuItems.filter(item => item.id != id)
+    this.menuItems = this.menuItems.filter((item) => item.id != id);
   }
 
   status(active: string) {
-    let status = active == '1'? 'success' : 'danger';
+    let status = active == '1' ? 'success' : 'danger';
     return status;
   }
 
   categoryName(id: number) {
     if (!this.categories) {
-      return ''; 
+      return '';
     }
     const filteredCategory = this.categories.find((c: any) => c.id === id);
     if (filteredCategory) {
       return filteredCategory.name;
     } else {
-      return ''; 
+      return '';
     }
   }
 }

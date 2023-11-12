@@ -14,7 +14,7 @@ import { CategoriesService } from 'src/app/services/category-service/categories.
 })
 export class AddMenuItemsComponent {
   form!: FormGroup;
-  formData !: FormData;
+  formData!: FormData;
   categories: any = [];
   additions: any = [];
   loading: boolean = true;
@@ -66,26 +66,32 @@ export class AddMenuItemsComponent {
     this.formData.append('price', this.form.get('price')?.value);
     this.formData.append('description', this.form.get('description')?.value);
     this.formData.append('discount', this.form.get('discount')?.value);
-    this.formData.append('active', this.form.get('active')?.value == false ? '0' : '1');
-    this.formData.append('additions', JSON.stringify(this.form.get('additions')?.value));
+    this.formData.append(
+      'active',
+      this.form.get('active')?.value == false ? '0' : '1'
+    );
+    this.formData.append(
+      'additions',
+      JSON.stringify(this.form.get('additions')?.value)
+    );
     this.formData.append('category_id', this.form.get('category_id')?.value);
-    
-    console.log(this.form.value)
-    console.log(this.formData)
 
-    this.httpItem.addNew(this.formData).subscribe((e) =>console.log(e));
-    this.route.navigate(['/admin/menu-items'])
+    console.log(this.form.value);
+    console.log(this.formData);
+
+    this.httpItem.addNew(this.formData).subscribe((e) => console.log(e));
+    this.route.navigate(['/admin/menu-items']);
   }
 
   onSelect(event: any) {
-    this.formData = new FormData()
-      let file = event.files[0];
-      this.formData.append('image', file);
-      console.log(file)
-      this.item.img = file.name;
-      this.form.patchValue({
-        image: file
-      });
+    this.formData = new FormData();
+    let file = event.files[0];
+    this.formData.append('image', file);
+    console.log(file);
+    this.item.img = file.name;
+    this.form.patchValue({
+      image: file,
+    });
   }
 
   onRemove() {

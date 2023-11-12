@@ -19,31 +19,31 @@ interface Offer {
   styleUrls: ['./menu-section.component.scss'],
 })
 export class MenuSectionComponent {
-
   categories: any;
-  items:any;
+  items: any;
   displayeditems: any;
-  displayedCategories:any;
-  originalProducts:any;
+  displayedCategories: any;
+  originalProducts: any;
   filteredProducts: any;
-  constructor(private dataServices:ItemService ,
-              private dataService:CategoriesService ,
-              private primengConfig: PrimeNGConfig ,
-              private router:Router,
-              private route: ActivatedRoute) { }
+  constructor(
+    private dataServices: ItemService,
+    private dataService: CategoriesService,
+    private primengConfig: PrimeNGConfig,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.getitemschData();
     this.getCategoriesData();
 
-    this.primengConfig.ripple = true; 
+    this.primengConfig.ripple = true;
 
     // this.route.queryParams.subscribe((params) => {
-      // const categoryId = params['category'];
-      // this.getProductsByCategory(categoryId);
-      // console.log(params);
+    // const categoryId = params['category'];
+    // this.getProductsByCategory(categoryId);
+    // console.log(params);
     // });
-
   }
 
   // goToMenuPage(categoryId: string) {
@@ -53,48 +53,42 @@ export class MenuSectionComponent {
   //     });
   // }
 
-  getProductsByCategory(categoryId:string) {
+  getProductsByCategory(categoryId: string) {
     console.log(categoryId);
 
     this.dataService.getProductsByCategory(categoryId).subscribe((products) => {
       this.filteredProducts = products;
     });
     console.log(this.filteredProducts);
-
   }
 
-
   /*******************************/
-  displayBasic: any; 
-  
-  showBasicDialog() { 
-    this.displayBasic = true; 
-  } 
-//******************************** */
-  onItemChange(event:any) {
+  displayBasic: any;
+
+  showBasicDialog() {
+    this.displayBasic = true;
+  }
+  //******************************** */
+  onItemChange(event: any) {
     const startIndex = event.first; // Get the index of the first category to be displayed
     const endIndex = startIndex + event.rows; // Calculate the index of the last category to be displayed
     this.displayeditems = this.items.slice(startIndex, endIndex);
   }
 
-
-  getitemschData(){
-    this.dataServices.getItems().subscribe(res =>{
-    this.items=res;
-    this.displayeditems = this.items.slice(0, 4); // Display only 4 categories initially
-    // console.log(this.displayeditems);
-   })
+  getitemschData() {
+    this.dataServices.getItems().subscribe((res) => {
+      this.items = res;
+      this.displayeditems = this.items.slice(0, 4); // Display only 4 categories initially
+      console.log(this.displayeditems);
+    });
   }
-  getCategoriesData(){
-    this.dataService.getAllCategory().subscribe(res =>{
-    this.categories=res.data;
-    this.displayeditems = this.categories.slice(0, 4); // Display only 4 categories initially
-    // console.log(this.displayeditems);
-   })
+  getCategoriesData() {
+    this.dataService.getAllCategory().subscribe((res) => {
+      this.categories = res.data;
+      this.displayeditems = this.categories.slice(0, 4); // Display only 4 categories initially
+      // console.log(this.displayeditems);
+    });
   }
-
-
-
 
   getStarsCount(stars: number) {
     let starsArr = [];

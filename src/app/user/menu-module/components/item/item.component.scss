@@ -1,168 +1,158 @@
 @import "/src/styles.scss";
 :host ::ng-deep .p-card {
-    display: inline-block;
-    justify-content: space-between;
-    border-radius: 25px !important;
-    width: 350px;
-    height: 470px;
-    margin-left: 40px;
-    background-color: var(--menu-item-card);
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: 1px solid $Violet-Button-color;
+  display: inline-block;
+  justify-content: space-between;
+  border-radius: 25px !important;
+  width: 350px;
+  height: 470px;
+  margin-left: 40px;
+  background-color: var(--menu-item-card);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid $Violet-Button-color;
 }
 @media (min-width: 768px) and (max-width: 991px) {
-    :host ::ng-deep .p-card {
-
-        width: 300px;
-
-    }
+  :host ::ng-deep .p-card {
+    width: 300px;
+  }
 }
 // for mobile size
 @media (max-width: 767px) {
-
-    :host ::ng-deep .p-card {
-
-        width: 270px;
-
-    }
+  :host ::ng-deep .p-card {
+    width: 270px;
+  }
 }
 
 :host ::ng-deep .p-card-header {
-    border-radius: 25px 25px 0px 0px !important;
-    color: $black-color;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: -30px;
-    
+  border-radius: 25px 25px 0px 0px !important;
+  color: $black-color;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -30px;
 }
 :host ::ng-deep .p-card img {
-    width: 200px;
-    height: 200px;
-    border-radius:75px ;
-    
+  width: 200px;
+  height: 200px;
+  border-radius: 75px;
 }
 :host ::ng-deep .p-card .p-card-content {
-    font-size: 18px;
-    line-height: 200%;
-    // line-height-step: 20px;
-    font-style: italic;
-    font-family: sans-serif;
-    font-weight: 700;
-    color: $black-color;
-    margin-top: -30px;
-    text-align: center;
-    
+  font-size: 18px;
+  line-height: 200%;
+  // line-height-step: 20px;
+  font-style: italic;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: $black-color;
+  margin-top: -30px;
+  text-align: center;
 }
 :host ::ng-deep .p-card .p-card-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: -30px;
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
 }
 :host ::ng-deep .p-button.p-element {
-    margin-right: 5px;
-
+  margin-right: 5px;
 }
 
-.rotating{
-    transform: rotate(-60deg);
-    font-size: 17px; 
-    margin-top: 60px;
-    margin-left: -18px;
-    padding-top: 5px;
-    background-color: $Button-orange-color;
-    color:$white-color;
-    border-radius: 50px;
-    height: 30px;
-    width: 100px;
+.rotating {
+  transform: rotate(-60deg);
+  font-size: 17px;
+  margin-top: 60px;
+  margin-left: -18px;
+  padding-top: 5px;
+  background-color: $Button-orange-color;
+  color: $white-color;
+  border-radius: 50px;
+  height: 30px;
+  width: 100px;
 }
 
 .filled-star {
-    color: $light-yellow-color;
-  }
-.count{
-    font-size: 17px;
-    color: #000000c3;
+  color: $light-yellow-color;
+}
+.count {
+  font-size: 17px;
+  color: #000000c3;
+}
+:host ::ng-deep .p-button {
+  margin: 0 0.5rem 0 0;
+  min-width: 10rem;
+}
 
-  }
-  :host ::ng-deep .p-button { 
-    margin: 0 .5rem 0 0; 
-    min-width: 10rem; 
-} 
+p {
+  margin: 0;
+}
 
-p { 
-    margin: 0; 
-} 
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.confirmation-content { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-} 
-
-:host ::ng-deep .p-dialog .p-button { 
-    min-width: 6rem; 
-} 
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 6rem;
+}
 
 // pupop
 
-.cardData{
-    margin: 20px 0;
+.cardData {
+  margin: 20px 0;
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+  .data {
     display: flex;
-    // align-items: center;
+    gap: 10%;
+  }
+  img {
+    height: 100px;
+    width: auto;
+    border-radius: 0;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    .data{
-        display: flex;
-        gap: 10%;
-    }
-    img{
-        height: 100px;
-        width: auto;
-        border-radius: 0;
-    }
-    .actions{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin: 10px ;
-    }
+    margin: 10px;
+  }
 }
 
 .cart-button {
-    background-color: unset;
-    border: unset;
-    &:disabled {
-        i {
-            cursor: not-allowed !important;
-        }
+  background-color: unset;
+  border: unset;
+  &:disabled {
+    i {
+      cursor: not-allowed !important;
     }
+  }
 }
 
 .inactive {
-    background-color: $light-red-color;
+  background-color: $light-red-color;
 }
 
 .heart {
-    display: inline-block;
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-    transition: color 0.3s;
-    position: absolute;
-    top: -410px;
-    right: 20px;
-  }
-  
-  .pi.pi-heart-fill {
-    color: var(--color-heart); 
-  }
-  
-  .pi.pi-heart {
-    color: var(--default-heart); 
-    cursor: pointer;
-  }
-  
-  .pi.pi-heart:hover {
-    color: var(--hover-heart); 
-  }
+  display: inline-block;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  transition: color 0.3s;
+  position: absolute;
+  top: -360px;
+  right: 20px;
+}
+
+.pi.pi-heart-fill {
+  color: var(--color-heart);
+}
+
+.pi.pi-heart {
+  color: var(--default-heart);
+  cursor: pointer;
+}
+
+.pi.pi-heart:hover {
+  color: var(--hover-heart);
+}

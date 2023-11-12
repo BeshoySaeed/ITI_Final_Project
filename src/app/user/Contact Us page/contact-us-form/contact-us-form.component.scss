@@ -1,13 +1,12 @@
 @import "/src/styles.scss";
 
-body{
+body {
   background-color: #f6e0e0;
-
 }
 
 :host ::ng-deep .contact-us-form-container {
   // margin: 100px 100px 100px 30px;
-  
+
   width: 100%;
   background-color: white;
 
@@ -20,7 +19,7 @@ body{
     color: red;
   }
 }
-input::placeholder{
+input::placeholder {
   padding-left: 10px;
 }
 
@@ -43,55 +42,59 @@ input::placeholder{
     padding: 25px 40px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     @media (max-width: 400px) {
-        & {
-          width: 300px;
-        }
+      & {
+        width: 300px;
       }
-    }}
-    p {
-      font-size: 20px;
-      padding: 10px 0 20px;
-      font-weight: bold;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  }
+}
+p {
+  font-size: 20px;
+  padding: 10px 0 20px;
+  font-weight: bold;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+i {
+  position: absolute;
+  left: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+input {
+  padding: 10px 10px 10px 25px;
+  font-size: 18px;
+  width: 280px;
+  @media (max-width: 400px) {
+    & {
+      width: 230px;
     }
+  }
+}
 
-      .box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 15px;
-      }
-
-        label {
-          align-self: flex-start;
-          margin-bottom: 4px;
-        }
-        span {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-          i {
-            position: absolute;
-            left: 5px;
-            font-size: 18px;
-            font-weight: bold;
-          }
-          input {
-            padding: 10px 10px 10px 25px;
-            font-size: 18px;
-            width: 280px;
-            @media (max-width: 400px) {
-              & {
-                width: 230px;
-              }
-            }
-          }
-        
+form div input {
+  padding-left: 20px;
+}

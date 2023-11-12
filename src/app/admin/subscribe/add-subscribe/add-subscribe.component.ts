@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { SubscriptionsService } from 'src/app/services/Subscriptions/subscriptions.service';
 
@@ -34,6 +35,7 @@ export class AddSubscribeComponent {
     private fb: FormBuilder,
     private messageService: MessageService,
     private subscriptionsService: SubscriptionsService,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -74,6 +76,7 @@ export class AddSubscribeComponent {
           });
           this.resetForm();
           this.loader = false;
+          this.route.navigate(['/admin/subscription-plans']);
         }
       });
   }

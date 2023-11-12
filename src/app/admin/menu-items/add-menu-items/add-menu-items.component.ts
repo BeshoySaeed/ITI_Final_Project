@@ -80,7 +80,7 @@ export class AddMenuItemsComponent {
     console.log(this.formData);
 
     this.httpItem.addNew(this.formData).subscribe((e) => console.log(e));
-    this.route.navigate(['/admin/menu-items']);
+    // this.route.navigate(['/admin/menu-items']);
   }
 
   onSelect(event: any) {

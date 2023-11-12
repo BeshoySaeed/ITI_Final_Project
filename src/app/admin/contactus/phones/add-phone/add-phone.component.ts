@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CustomerServicePhonesService } from 'src/app/services/Customer service data/phones/customer-service-phones.service';
 
@@ -16,7 +17,8 @@ export class AddPhoneComponent {
   constructor(
     private fb: FormBuilder,
     private phonesService: CustomerServicePhonesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -33,18 +35,17 @@ export class AddPhoneComponent {
 
   onSubmit() {
     this.loader = true;
-    this.phonesService
-      .store(this.AddPhone.value)
-      .subscribe((response: any) => {
-        if (response.status == 'success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Phone is added',
-          });
-          this.resetForm();
-          this.loader = false;
-        }
-      });
+    this.phonesService.store(this.AddPhone.value).subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Phone is added',
+        });
+        this.resetForm();
+        this.loader = false;
+        this.route.navigate(['/admin/contact-us-info/phones']);
+      }
+    });
   }
 }

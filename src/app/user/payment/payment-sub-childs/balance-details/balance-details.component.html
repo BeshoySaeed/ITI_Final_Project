@@ -5,14 +5,14 @@
     <div class="p-3 col-12 md:col-6">
       <div class="content p-4">
         <p class="title text-center">Previous balance</p>
-        <p class="value text-center mt-2">$100</p>
+        <p class="value text-center mt-2">{{ userBalance }}</p>
       </div>
     </div>
 
     <div class="p-3 col-12 md:col-6">
       <div class="content p-4">
         <p class="title text-center">Current balance</p>
-        <p class="value text-center mt-2">$75</p>
+        <p class="value text-center mt-2">{{ userBalance - totalPrice }}</p>
       </div>
     </div>
   </div>

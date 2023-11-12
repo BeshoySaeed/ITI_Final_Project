@@ -3,7 +3,6 @@
 @import "primeicons/primeicons.css";
 @import "/src/styles.scss";
 
- 
 * {
   box-sizing: border-box;
 }
@@ -13,12 +12,9 @@
   text-align: center;
   background-color: $Background-orange-color;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-
 }
 
-
-.all{
+.all {
   background-color: white;
   text-align: center;
   display: inline-block;
@@ -31,41 +27,35 @@ form {
   margin-top: 70px;
 }
 
-
-
-
-h1{
+h1 {
   color: $Button-orange-color;
 }
 
+input::placeholder {
+  color: silver;
+  padding-left: 10px;
+}
 
-input::placeholder{
-    color: silver;
-    padding-left: 10px;
-  }
-
-.text_danger{
-    color: $Button-orange-color;
-    margin-left: 15px;
-    margin-top: 8px;
-}  
+.text_danger {
+  color: $Button-orange-color;
+  margin-left: 15px;
+  margin-top: 8px;
+}
 
 .form-label {
   display: flex;
   margin-bottom: 5px;
 }
 
-.fileDiv{
+.fileDiv {
   width: 70%;
 }
 
 .column {
   float: left;
   width: 50%;
- 
 }
-.row{
-
+.row {
   display: flex;
   gap: 9px;
 }
@@ -84,16 +74,15 @@ input::placeholder{
 }
 
 @media screen and (max-width: 600px) {
-  .column,.row {
+  .column,
+  .row {
     width: 100%;
     display: block;
   }
-  .fileDiv{
+  .fileDiv {
     width: 100%;
   }
 }
-
-
 
 /****/
 .container {
@@ -114,55 +103,59 @@ input::placeholder{
     padding: 25px 40px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     @media (max-width: 400px) {
-        & {
-          width: 300px;
-        }
+      & {
+        width: 300px;
       }
-    }}
-    p {
-      font-size: 20px;
-      padding: 10px 0 20px;
-      font-weight: bold;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  }
+}
+p {
+  font-size: 20px;
+  padding: 10px 0 20px;
+  font-weight: bold;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+i {
+  position: absolute;
+  left: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+input {
+  padding: 10px 10px 10px 25px;
+  font-size: 18px;
+  width: 280px;
+  @media (max-width: 400px) {
+    & {
+      width: 230px;
     }
+  }
+}
 
-      .box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 15px;
-      }
-
-        label {
-          align-self: flex-start;
-          margin-bottom: 4px;
-        }
-        span {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-          i {
-            position: absolute;
-            left: 5px;
-            font-size: 18px;
-            font-weight: bold;
-          }
-          input {
-            padding: 10px 10px 10px 25px;
-            font-size: 18px;
-            width: 280px;
-            @media (max-width: 400px) {
-              & {
-                width: 230px;
-              }
-            }
-          }
-        
+.p-inputgroup input {
+  padding-left: 30px;
+}

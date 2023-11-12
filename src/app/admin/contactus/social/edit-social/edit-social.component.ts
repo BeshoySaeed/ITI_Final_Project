@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { SocialMediaAccount } from 'src/app/interface/social-media-account';
 import { SocialMediaAccountsService } from 'src/app/services/Social media accounts/social-media-accounts.service';
@@ -21,9 +21,10 @@ export class EditSocialComponent {
     private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
     private socialService: SocialMediaAccountsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private route: Router
   ) {}
-  
+
   ngOnInit() {
     this.initializeForm();
 
@@ -63,7 +64,7 @@ export class EditSocialComponent {
       );
     });
   }
-  
+
   onSubmit() {
     this.loader = true;
 
@@ -77,6 +78,7 @@ export class EditSocialComponent {
             detail: 'Social Account is updated',
           });
           this.loader = false;
+          this.route.navigate(['/admin/contact-us-info/social-media-accounts']);
         }
       });
   }

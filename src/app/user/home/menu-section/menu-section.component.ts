@@ -5,14 +5,6 @@ import { ItemService } from 'src/app/services/ItemService/item.service';
 import { CategoriesService } from 'src/app/services/category-service/categories.service';
 // import {}  from
 
-interface Offer {
-  img: string;
-  title: string;
-  available: string;
-  price: string;
-  stars: number;
-}
-
 @Component({
   selector: 'app-menu-section',
   templateUrl: './menu-section.component.html',

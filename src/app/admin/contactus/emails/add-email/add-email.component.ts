@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CustomerServiceEmailsService } from 'src/app/services/Customer service data/emails/customer-service-emails.service';
 
@@ -16,7 +17,8 @@ export class AddEmailComponent {
   constructor(
     private fb: FormBuilder,
     private emailsService: CustomerServiceEmailsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -39,18 +41,17 @@ export class AddEmailComponent {
   onSubmit() {
     this.loader = true;
 
-    this.emailsService
-      .store(this.AddEmail.value)
-      .subscribe((response: any) => {
-        if (response.status == 'success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Email is added',
-          });
-          this.resetForm();
-          this.loader = false;
-        }
-      });
+    this.emailsService.store(this.AddEmail.value).subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Email is added',
+        });
+        this.resetForm();
+        this.loader = false;
+        this.route.navigate(['/admin/contact-us-info/emails']);
+      }
+    });
   }
 }

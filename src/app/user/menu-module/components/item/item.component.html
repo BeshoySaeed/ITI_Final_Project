@@ -24,9 +24,6 @@
     <ng-template #noDiscount>No discount value</ng-template>
   </p>
 
-  <p class="count">{{ data.price | subscription | currency }}</p>
-  <p class="count">{{ data.discount }} %</p>
-
   <ng-template pTemplate="footer">
     <button
       class="cart-button"
@@ -52,7 +49,10 @@
       <ng-container *ngFor="let addition of data.itemAdditions; index as i">
         <div class="cardData">
           <div class="data">
-            <img src="../../../../../assets/food-5.jpg" alt="" />
+            <img
+              src="http://localhost:8000/images/addition/{{ addition.img }}"
+              alt=""
+            />
             <div class="info-data">
               <p class="title">{{ addition.name }}</p>
               <p class="desc">{{ addition.description }}</p>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { EmployeesService } from 'src/app/services/Employees/employees.service';
 import { BrancheServiceService } from 'src/app/services/branch/branche-service.service';
@@ -34,6 +35,7 @@ export class AddEmployeeComponent {
     private employeesService: EmployeesService,
     private messageService: MessageService,
     private branchesService: BrancheServiceService,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -56,7 +58,7 @@ export class AddEmployeeComponent {
       joined_at: ['', Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)],
       branch_id: [1],
     });
-    
+
     this.getAllBranches();
   }
 
@@ -68,11 +70,9 @@ export class AddEmployeeComponent {
   }
 
   getAllBranches() {
-    this.branchesService
-      .getAllBranches()
-      .subscribe((branches: any) => {
-        this.branches = branches;
-      });
+    this.branchesService.getAllBranches().subscribe((branches: any) => {
+      this.branches = branches;
+    });
   }
 
   onSubmit() {
@@ -89,6 +89,7 @@ export class AddEmployeeComponent {
           });
           this.resetForm();
           this.loader = false;
+          this.route.navigate(['/admin/employees']);
         }
       });
   }

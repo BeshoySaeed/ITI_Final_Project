@@ -2,24 +2,32 @@
   <ng-template pTemplate="start">
     <i class="pi pi-phone phone"></i>
     <span class="phoneNumber">Call Now | 01022334488</span>
+    <a routerLink="/admin" *ngIf="isAdmin" class="ml-2"> DashBoard </a>
   </ng-template>
 
   <div *ngIf="!isLoggedIn">
     <a routerLink="login" class="login">Login</a>
     <span class="stick"> | </span>
     <a href="" routerLink="register" class="register">Register</a>
-    <p-inputSwitch [(ngModel)]="checked" (onChange)="changeColor()"></p-inputSwitch>
+    <p-inputSwitch
+      [(ngModel)]="checked"
+      (onChange)="changeColor()"
+    ></p-inputSwitch>
     <i class="pi pi-facebook facebook"></i>
     <i class="pi pi-twitter twitter"></i>
     <i class="pi pi-instagram instagram"></i>
   </div>
 
   <div *ngIf="isLoggedIn">
-    <div class="flex align-items-center gap-2 " >
+    <div class="flex align-items-center gap-2">
       <a (click)="logout()" class="login cursor-pointer">Logout</a>
       <span class="stick"> | </span>
       <a href="" routerLink="profile" class="register">Profile</a>
-      <p-inputSwitch  class="mt-1 black " [(ngModel)]="checked" (onChange)="changeColor()"></p-inputSwitch>
+      <p-inputSwitch
+        class="mt-1 black"
+        [(ngModel)]="checked"
+        (onChange)="changeColor()"
+      ></p-inputSwitch>
       <i class="pi pi-facebook facebook"></i>
       <i class="pi pi-twitter twitter"></i>
       <i class="pi pi-instagram instagram"></i>

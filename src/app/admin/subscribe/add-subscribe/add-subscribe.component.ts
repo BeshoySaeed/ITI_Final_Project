@@ -64,7 +64,6 @@ export class AddSubscribeComponent {
 
   onSubmit() {
     this.loader = true;
-
     this.subscriptionsService
       .store(this.AddSubscribe.value)
       .subscribe((response: any) => {

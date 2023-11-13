@@ -4,9 +4,13 @@
 
   <div class="card">
     <div class="loader" *ngIf="loader">
-      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+      <p-progressSpinner
+        styleClass="w-4rem h-4rem"
+        strokeWidth="4"
+        animationDuration="1s"
+      ></p-progressSpinner>
     </div>
-    
+
     <form
       [formGroup]="AddSubscribe"
       (ngSubmit)="onSubmit()"
@@ -175,10 +179,19 @@
 
       <div class="col-12 mb-4">
         <div class="flex flex-column-reverse">
-          <p-editor formControlName="benefit" id="benefit" [required]="true" [style]="{ height: '250px' }">
+          <p-editor
+            formControlName="benefit"
+            id="benefit"
+            [required]="true"
+            [style]="{ height: '250px' }"
+          >
             <ng-template pTemplate="header">
               <span class="ql-formats">
-                <button type="button" class="ql-bold" aria-label="Bold"></button>
+                <button
+                  type="button"
+                  class="ql-bold"
+                  aria-label="Bold"
+                ></button>
                 <button
                   type="button"
                   class="ql-italic"
@@ -196,7 +209,7 @@
                   class="ql-blockquote"
                   aria-label="blockquote"
                 ></button>
-  
+
                 <select
                   title="Text Color"
                   class="ql-color"

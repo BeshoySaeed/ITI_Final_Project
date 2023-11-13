@@ -8,11 +8,11 @@
       </tr>
       <tr>
         <td>Subscription price</td>
-        <td>{{ subscribeObject.subscribe_value }} EGP</td>
+        <td>{{ subscribeObject.subscribe_value | currency }}</td>
       </tr>
       <tr>
         <td>Subscription benefit</td>
-        <td>{{ subscribeObject.benefit }}</td>
+        <td [innerHTML]="setHTML(subscribeObject.benefit)"></td>
       </tr>
       <tr>
         <td>Discount Value</td>
@@ -28,11 +28,11 @@
       </tr>
       <tr>
         <td>Paid Up</td>
-        <td>{{ total }} EGP</td>
+        <td>{{ subValue - userBalance | currency }}</td>
       </tr>
       <tr>
         <td>Remaining</td>
-        <td>{{ subscribeObject.subscribe_value - total }} EGP</td>
+        <td>{{ userBalance | currency }}</td>
       </tr>
     </table>
   </div>

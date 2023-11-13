@@ -85,6 +85,7 @@ export class PaymentRightSideComponent implements OnInit {
           (response) => {
             if (response.success) {
               this.Order.editOrder(this.Order_id, {
+                status: 'processing',
                 area: this.paymentForm.get('area')?.value,
                 building_name: this.paymentForm.get('building_name')?.value,
                 city: this.paymentForm.get('city')?.value,

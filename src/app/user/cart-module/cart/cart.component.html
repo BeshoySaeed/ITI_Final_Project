@@ -3,7 +3,6 @@
 
   <h1 class="cart text-center">Cart</h1>
   <div class="card">
-
     <p-table
       #dt1
       [value]="cart.items"
@@ -58,7 +57,7 @@
           <td>
             <img
               width="150"
-              [src]="menuItem.item.image"
+              src="http://localhost:8000/images/item/{{ menuItem.item.image }}"
               [alt]="menuItem.item.name"
             />
           </td>
@@ -124,7 +123,9 @@
                     <td>
                       <img
                         width="100"
-                        [src]="addition.addition.image"
+                        src="http://localhost:8000/images/addition/{{
+                          addition.addition.img
+                        }}"
                         [alt]="addition.addition.name"
                       />
                     </td>
@@ -181,7 +182,9 @@
           Required fields are 'street', 'area', 'city', 'building name or
           number', 'floor number'
         </p>
-        <button class="profile-button" (click)="toProfile()">Go to Profile</button>
+        <button class="profile-button" (click)="toProfile()">
+          Go to Profile
+        </button>
       </div>
     </div>
   </div>

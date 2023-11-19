@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
       this.cart = cart.data;
       this.calculateTotalPrice();
       this.loading = false;
-
+      console.log(cart);
       if (this.cart.items.length == 0) {
         localStorage.setItem('cart', 'false');
       }

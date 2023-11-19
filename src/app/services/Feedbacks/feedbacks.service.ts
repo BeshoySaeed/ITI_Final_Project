@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { Feedback } from 'src/app/interface/feedback';
@@ -9,21 +13,18 @@ import { environment } from 'src/environments/environment.development';
 })
 export class FeedbacksService {
   apiRoute = `${environment.host}/feedbacks`;
-  headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-  })
-  
+
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<any> {
-    return this.httpClient.get<object>(`${this.apiRoute}`, {headers: this.headers}).pipe(
+    return this.httpClient.get<object>(`${this.apiRoute}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
   }
 
   store(feedback: Feedback): Observable<object> {
-    return this.httpClient.post<object>(`${this.apiRoute}`, feedback, {headers: this.headers}).pipe(
+    return this.httpClient.post<object>(`${this.apiRoute}`, feedback).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

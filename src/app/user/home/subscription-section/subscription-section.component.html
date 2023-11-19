@@ -33,7 +33,7 @@
           <div class="text-center" *ngIf="check == null">
             <p-button
               label="Get plan"
-              (click)="SubscribeButton(index + 1)"
+              (click)="SubscribeButton(plan.id)"
               icon="pi pi-arrow-up-right"
               styleClass="p-button-secondary w-100 plan-button"
             ></p-button>

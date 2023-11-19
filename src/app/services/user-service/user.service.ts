@@ -12,45 +12,31 @@ import { catchError, retry, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-  });
-
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers(): Observable<object> {
-    return this.httpClient
-      .get<object>(`${environment.host}/users`, { headers: this.headers })
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
+    return this.httpClient.get<object>(`${environment.host}/users`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
 
   getUserByID(id: any): Observable<any> {
-    return this.httpClient
-      .get<object>(`${environment.host}/users/${id}`, { headers: this.headers })
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
+    return this.httpClient.get<object>(`${environment.host}/users/${id}`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
 
   storeUser(user: object): Observable<object> {
-    return this.httpClient
-      .post<object>(`${environment.host}/users`, user, {
-        headers: this.headers,
-      })
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
+    return this.httpClient.post<object>(`${environment.host}/users`, user).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
   setSubIdValue(id: any, subscriptionData: object): Observable<object> {
     return this.httpClient
-      .put<object>(`${environment.host}/subs/${id}/subID`, subscriptionData, {
-        headers: this.headers,
-      })
+      .put<object>(`${environment.host}/subs/${id}/subID`, subscriptionData)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -59,9 +45,7 @@ export class UserService {
 
   updateUser(id: any, user: object): Observable<object> {
     return this.httpClient
-      .patch<object>(`${environment.host}/users/${id}`, user, {
-        headers: this.headers,
-      })
+      .patch<object>(`${environment.host}/users/${id}`, user)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -70,9 +54,7 @@ export class UserService {
 
   deleteUserById(id: number): Observable<object> {
     return this.httpClient
-      .delete<object>(`${environment.host}/users/${id}`, {
-        headers: this.headers,
-      })
+      .delete<object>(`${environment.host}/users/${id}`)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error

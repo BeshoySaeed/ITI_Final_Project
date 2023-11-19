@@ -4,31 +4,28 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ItemsService {
   http: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  item :any
+  item: any;
 
   //create service
-  getAllproducts():Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/item`)
+  getAllproducts(): Observable<object> {
+    return this.httpClient.get<object>(`${environment.host}/item`);
   }
-  getAllCategories(){
-    return this.httpClient.get<object>(`${environment.host}/partners`)
-
+  getAllCategories() {
+    return this.httpClient.get<object>(`${environment.host}/partners`);
   }
-  getProductsByCategory(keyword:string){
-    // return this.http.get('https://fakestoreapi.com/products/category/' + keyword);
-    return this.httpClient.get<object>(`${environment.host}/partners`+keyword);
-
+  getProductsByCategory(keyword: string) {
+    return this.httpClient.get<object>(
+      `${environment.host}/partners` + keyword
+    );
   }
-  getProductsById(id:any){
-    // return this.http.get('https://fakestoreapi.com/products/' +id);
-    return this.httpClient.get<object>(`${environment.host}/partners`+id)
-
+  getProductsById(id: any) {
+    return this.httpClient.get<object>(`${environment.host}/partners` + id);
   }
 }

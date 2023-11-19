@@ -28,6 +28,7 @@ export class EditCategoryComponent {
       console.log(this.categoryId);
       this.httpCat.getCategoryByID(this.categoryId).subscribe((object) => {
         this.category = object.data;
+        console.log(object);
       });
     });
 

@@ -27,16 +27,10 @@ export class UserFavService {
     );
   }
 
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-  });
-
   constructor(private http: HttpClient) {}
 
   getAll(userId: number): Observable<any> {
-    return this.http.get<any>(`${environment.host}/user-favourites/${userId}`, {
-      headers: this.headers,
-    });
+    return this.http.get<any>(`${environment.host}/user-favourites/${userId}`);
     // .pipe(
     //   retry(2),
     //   catchError(this.handleError)
@@ -46,8 +40,7 @@ export class UserFavService {
   add(object: object): Observable<object> {
     return this.http.post<object>(
       `${environment.host}/user-favourites`,
-      object,
-      { headers: this.headers }
+      object
     );
     // .pipe(
     //   retry(2),
@@ -56,9 +49,7 @@ export class UserFavService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${environment.host}/user-favourites/${id}`, {
-      headers: this.headers,
-    });
+    return this.http.delete(`${environment.host}/user-favourites/${id}`);
     // .pipe(
     //   retry(2),
     //   catchError(this.handleError)

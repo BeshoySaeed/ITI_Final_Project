@@ -83,7 +83,7 @@ export class SubscriptionSectionComponent {
             if (response.success) {
               this.userService
                 .setSubIdValue(this.userId, this.subscriptionData)
-                .subscribe();
+                .subscribe((res) => console.log(res));
               const url = response.link;
               window.location.href = url;
             }

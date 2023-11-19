@@ -6,17 +6,16 @@ import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TagModule } from 'primeng/tag';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { UserModule } from './user/user.module';
+import { HeaderDataInterceptor } from './interceptors/header-data.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
 
   imports: [
     CommonModule,
@@ -30,10 +29,16 @@ import { UserModule } from './user/user.module';
     FormsModule,
     PaginatorModule,
     ButtonModule,
-    RatingModule
+    RatingModule,
   ],
 
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderDataInterceptor,
+      multi: true,
+    },
+  ],
 
   bootstrap: [AppComponent],
 })

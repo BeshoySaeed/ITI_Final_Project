@@ -16,11 +16,7 @@
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
       [paginator]="true"
-      [globalFilterFields]="[
-        'name',
-        'price',
-        'description',
-      ]"
+      [globalFilterFields]="['name', 'price', 'description']"
     >
       <ng-template pTemplate="caption">
         <div class="flex">
@@ -86,7 +82,11 @@
       <ng-template pTemplate="body" let-item>
         <tr>
           <td>
-            <img width="150"src='http://localhost:8000/images/addition/{{item.img}}'  [alt]="item.name" />
+            <img
+              width="150"
+              src="http://localhost:8000/images/addition/{{ item.img }}"
+              [alt]="item.name"
+            />
           </td>
           <td>
             {{ item.name }}

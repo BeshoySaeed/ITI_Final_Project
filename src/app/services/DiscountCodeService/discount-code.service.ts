@@ -6,79 +6,68 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DiscountCodeService {
-  headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-  })
-  
-  constructor(private httpDiscountCode: GenericService, private http : HttpClient) { }
+  constructor(
+    private httpDiscountCode: GenericService,
+    private http: HttpClient
+  ) {}
 
-
-  addDisc(object : DiscountCode) :Observable <DiscountCode>
-  {
-    return this.http.post<DiscountCode>(`${environment.host}/discountCode`, object, {headers: this.headers})
+  addDisc(object: DiscountCode): Observable<DiscountCode> {
+    return this.http.post<DiscountCode>(
+      `${environment.host}/discountCode`,
+      object
+    );
   }
 
-  getId(id : number) : Observable<any>
-  {
-    return this.http.get<DiscountCode>(`${environment.host}/discountCode/${id}`, {headers: this.headers})
+  getId(id: number): Observable<any> {
+    return this.http.get<DiscountCode>(
+      `${environment.host}/discountCode/${id}`
+    );
   }
 
-  delete(id: number) : Observable<any>
-  {
-    return this.http.delete(`${environment.host}/discountCode/${id}`, {headers: this.headers})
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${environment.host}/discountCode/${id}`);
   }
 
-  getDiscountCodes(): Observable<DiscountCode[]>
-  {
-    return this.httpDiscountCode.getAll('discountCode')
-    .pipe(
+  getDiscountCodes(): Observable<DiscountCode[]> {
+    return this.httpDiscountCode.getAll('discountCode').pipe(
       map((item: any) => {
-        return item.data
+        return item.data;
       })
     );
   }
 
-  getDiscountCodeById(id: number) : Observable<DiscountCode>
-  {
-    return this.httpDiscountCode.getById('discountCode', id)
-    .pipe(
+  getDiscountCodeById(id: number): Observable<DiscountCode> {
+    return this.httpDiscountCode.getById('discountCode', id).pipe(
       map((item: any) => {
-        return item.data
+        return item.data;
       })
     );
   }
 
-  deleteDiscountCode(id: number) : Observable<DiscountCode>
-  {
-    return this.httpDiscountCode.delete('discountCode', id)
-    .pipe(
+  deleteDiscountCode(id: number): Observable<DiscountCode> {
+    return this.httpDiscountCode.delete('discountCode', id).pipe(
       map((item: any) => {
-        return item.data
+        return item.data;
       })
     );
   }
 
-
-  addDiscountCode(object: DiscountCode): Observable<DiscountCode>
-  {
-    return this.httpDiscountCode.post('discountCode', object)
-    .pipe(
+  addDiscountCode(object: DiscountCode): Observable<DiscountCode> {
+    return this.httpDiscountCode.post('discountCode', object).pipe(
       map((item: any) => {
-        return item.data
+        return item.data;
       })
     );
   }
 
-  editDiscountCode(id:number, object:any): Observable<DiscountCode>
-  {
-    return this.httpDiscountCode.update('discountCode' ,id ,object)
-    .pipe(
+  editDiscountCode(id: number, object: any): Observable<DiscountCode> {
+    return this.httpDiscountCode.update('discountCode', id, object).pipe(
       map((item: any) => {
-        return item.data
+        return item.data;
       })
-    )
+    );
   }
 }

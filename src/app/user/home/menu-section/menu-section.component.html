@@ -26,7 +26,7 @@
   </div>
   <div class="flex flex-wrap justify-content-center gap-2 mt-3">
     <ng-container *ngFor="let offer of displayeditems; let index = index">
-      <p-card
+      <!-- <p-card
         [header]="offer.title"
         [subheader]="offer.available"
         [style]="{
@@ -36,13 +36,7 @@
         }"
       >
         <ng-template pTemplate="header">
-          <div class="flex justify-content-center align-content-center">
-            <img
-              alt="Card"
-              src="http://localhost:8000/images/item/{{ offer.image }}"
-              class="border-circle w-8"
-            />
-          </div>
+          <div class="flex justify-content-center align-content-center"></div>
         </ng-template>
         <div class="flex flex-wrap gap-2">
           <ng-container *ngFor="let _ of getStarsCount(offer.stars)">
@@ -57,7 +51,7 @@
             class="pi pi-shopping-cart cart-icon"
           ></i>
         </div>
-      </p-card>
+      </p-card> -->
     </ng-container>
   </div>
   <p-paginator

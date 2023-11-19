@@ -22,7 +22,6 @@ export class EditMenuItemsComponent {
   item: any = {
     id: 0,
     name: '',
-    img: '',
     price: '',
     description: '',
     discount: '',
@@ -87,7 +86,7 @@ export class EditMenuItemsComponent {
 
   onSubmit() {
     this.httpItem
-      .editItem(this.itemId, this.form.value)
+      .editItem(this.itemId, this.item)
       .subscribe((x) => console.log(x));
     this.route.navigate(['/admin/menu-items/']);
   }

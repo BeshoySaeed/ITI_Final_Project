@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdditionsService } from 'src/app/services/additions-service/additions.service';
+import { CategoriesService } from 'src/app/services/category-service/categories.service';
 
 @Component({
   selector: 'app-edit-addition',
@@ -8,16 +11,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditAdditionComponent {
   form!: FormGroup;
+  additionId: any;
   item = {
-    id: 1,
-    name: 'Addition 1',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg',
-    description: 'This is the first item in our menu.',
-    price: 5,
+    id: '',
+    name: '',
+    description: '',
+    price: '',
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private httpAddition: AdditionsService,
+    private route: Router
+  ) {}
   ngOnInit() {
     this.form = this.fb.group({
       name: [this.item.name],
@@ -25,10 +32,23 @@ export class EditAdditionComponent {
       description: [this.item.description],
       image: [null],
     });
+
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.additionId = Number(paramMap.get('id'));
+      console.log(this.additionId);
+      this.httpAddition
+        .getAllAdditionId(this.additionId)
+        .subscribe((object) => {
+          this.item = object.data;
+          console.log(object);
+          console.log(this.item);
+        });
+    });
   }
 
   onSubmit() {
-    console.log(this.form);
+    this.httpAddition.updateAddition(this.additionId, this.item).subscribe();
+    this.route.navigate(['/admin/additions']);
   }
 
   onSelect(event: any) {

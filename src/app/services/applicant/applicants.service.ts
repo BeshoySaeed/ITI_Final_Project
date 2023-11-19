@@ -1,16 +1,16 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApplicantsService {
-  headers = new HttpHeaders({
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-  })
-  
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -19,21 +19,26 @@ export class ApplicantsService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
     }
     // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getAllApplicantss(): Observable<object> {
-    return this.httpClient.get<object>(`${environment.host}/jobApplicants`, {headers: this.headers})
+    return this.httpClient.get<object>(`${environment.host}/jobApplicants`);
   }
 
-  insertApplicant(data: any){
-    return this.httpClient.post<object>(`${environment.host}/jobApplicants`,data);
+  insertApplicant(data: any) {
+    return this.httpClient.post<object>(
+      `${environment.host}/jobApplicants`,
+      data
+    );
   }
-  
 }
-
